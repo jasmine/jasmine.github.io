@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+  <title>boot.js</title>
+  <link rel="stylesheet" href="css/docco.css"/>
+  <link rel="stylesheet" href="css/jasmine_docco.css"/>
+  <link rel="stylesheet" href="lib/jasmine.css"/>
+  <script src="lib/jasmine.js"></script>
+  <script src="lib/jasmine-html.js"></script>
+  <script src="lib/boot.js"></script>
+  <script src="src/introduction.js"></script>
+  <link rel="icon" href="images/jasmine.ico" sizes="16x16">
+  <link rel="icon" href="images/jasmine_32x32.ico" sizes="32x32">
+</head>
+<body>
+<div id="container">
+  <div id="background"></div>
+  <div class="title-banner">
+    <a href="http://github.com/pivotal/jasmine">
+      <img src="images/jasmine-h-small.png"/>
+    </a>
+    <span class="spacer"></span>
+    <div class="powered">
+      <span>Powered by</span>
+    </div>
+    <a href="http://pivotallabs.com/" target="_blank">
+      <img src="images/pivotal_logo.gif"/>
+    </a>
+  </div>
+  <table cellspacing="0" cellpadding="0">
+    <thead>
+    <tr>
+      <th class="docs">
+        <h1>boot.js</h1>
+      </th>
+      <th class="code"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr id="section-1">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-1">&#182;</a>
+        </div>
+        
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="cm">/*</span>
+<span class="cm"> Copyright (c) 2008-2013 Pivotal Labs</span>
+
+<span class="cm"> Permission is hereby granted, free of charge, to any person obtaining</span>
+<span class="cm"> a copy of this software and associated documentation files (the</span>
+<span class="cm"> &quot;Software&quot;), to deal in the Software without restriction, including</span>
+<span class="cm"> without limitation the rights to use, copy, modify, merge, publish,</span>
+<span class="cm"> distribute, sublicense, and/or sell copies of the Software, and to</span>
+<span class="cm"> permit persons to whom the Software is furnished to do so, subject to</span>
+<span class="cm"> the following conditions:</span>
+
+<span class="cm"> The above copyright notice and this permission notice shall be</span>
+<span class="cm"> included in all copies or substantial portions of the Software.</span>
+
+<span class="cm"> THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,</span>
+<span class="cm"> EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF</span>
+<span class="cm"> MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND</span>
+<span class="cm"> NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE</span>
+<span class="cm"> LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION</span>
+<span class="cm"> OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION</span>
+<span class="cm"> WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</span>
+<span class="cm"> */</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Jasmine_Boot.js">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Jasmine_Boot.js">&#182;</a>
+        </div>
+        <h1>Jasmine Boot.js</h1>
+
+<p>For Jasmine 2.0 we&rsquo;ve introduced this file as a separable per environment, or per project, location for Jasmine setup, configuration and customization. This is the default <code>boot.js</code> that is included in the Jasmine Core distribution.</p>
+
+<p>A <code>boot.js</code> needs to be loaded and code similar to this needs to be executed <em>after</em> <code>jasmine.js</code> has been loaded.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Require_&amp;amp;_Instantiate">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Require_&amp;amp;_Instantiate">&#182;</a>
+        </div>
+        <h2>Require &amp; Instantiate</h2>
+
+<p>These lines invoke the requiring of Jasmine. Specifically, this requires and attaches all of Jasmine&rsquo;s code to the <code>jasmine</code> reference. And since this is being run in a browser, we&rsquo;re additionally requiring the HTML-specific Jasmine code.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nb">window</span><span class="p">.</span><span class="nx">jasmine</span> <span class="o">=</span> <span class="nx">jasmineRequire</span><span class="p">.</span><span class="nx">core</span><span class="p">(</span><span class="nx">jasmineRequire</span><span class="p">);</span>
+  <span class="nx">jasmineRequire</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">);</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-4">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-4">&#182;</a>
+        </div>
+        <p>This creates (if necessary) and gets the Jasmine environment &ndash; where all of the cod</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="kd">var</span> <span class="nx">env</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">getEnv</span><span class="p">();</span>
+
+  <span class="kd">var</span> <span class="nx">jasmineInterface</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">describe</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">description</span><span class="p">,</span> <span class="nx">specDefinitions</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">env</span><span class="p">.</span><span class="nx">describe</span><span class="p">(</span><span class="nx">description</span><span class="p">,</span> <span class="nx">specDefinitions</span><span class="p">);</span>
+    <span class="p">},</span>
+
+    <span class="nx">xdescribe</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">description</span><span class="p">,</span> <span class="nx">specDefinitions</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">env</span><span class="p">.</span><span class="nx">xdescribe</span><span class="p">(</span><span class="nx">description</span><span class="p">,</span> <span class="nx">specDefinitions</span><span class="p">);</span>
+    <span class="p">},</span>
+
+    <span class="nx">it</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">desc</span><span class="p">,</span> <span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">env</span><span class="p">.</span><span class="nx">it</span><span class="p">(</span><span class="nx">desc</span><span class="p">,</span> <span class="nx">func</span><span class="p">);</span>
+    <span class="p">},</span>
+
+    <span class="nx">xit</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">desc</span><span class="p">,</span> <span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">env</span><span class="p">.</span><span class="nx">xit</span><span class="p">(</span><span class="nx">desc</span><span class="p">,</span> <span class="nx">func</span><span class="p">);</span>
+    <span class="p">},</span>
+
+    <span class="nx">beforeEach</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">beforeEachFunction</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">env</span><span class="p">.</span><span class="nx">beforeEach</span><span class="p">(</span><span class="nx">beforeEachFunction</span><span class="p">);</span>
+    <span class="p">},</span>
+
+    <span class="nx">afterEach</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">afterEachFunction</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">env</span><span class="p">.</span><span class="nx">afterEach</span><span class="p">(</span><span class="nx">afterEachFunction</span><span class="p">);</span>
+    <span class="p">},</span>
+
+    <span class="nx">expect</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">actual</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">env</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">actual</span><span class="p">);</span>
+    <span class="p">},</span>
+
+    <span class="nx">pending</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">env</span><span class="p">.</span><span class="nx">pending</span><span class="p">();</span>
+    <span class="p">},</span>
+
+    <span class="nx">addMatchers</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">matchers</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">env</span><span class="p">.</span><span class="nx">addMatchers</span><span class="p">(</span><span class="nx">matchers</span><span class="p">);</span>
+    <span class="p">},</span>
+
+    <span class="nx">spyOn</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">methodName</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">env</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">methodName</span><span class="p">);</span>
+    <span class="p">},</span>
+
+    <span class="nx">clock</span><span class="o">:</span> <span class="nx">env</span><span class="p">.</span><span class="nx">clock</span><span class="p">,</span>
+    <span class="nx">jsApiReporter</span><span class="o">:</span> <span class="k">new</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">JsApiReporter</span><span class="p">({</span>
+      <span class="nx">timer</span><span class="o">:</span> <span class="k">new</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Timer</span><span class="p">()</span>
+    <span class="p">})</span>
+  <span class="p">};</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nb">window</span> <span class="o">==</span> <span class="s2">&quot;undefined&quot;</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">exports</span> <span class="o">==</span> <span class="s2">&quot;object&quot;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">extend</span><span class="p">(</span><span class="nx">exports</span><span class="p">,</span> <span class="nx">jasmineInterface</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">extend</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="nx">jasmineInterface</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kd">var</span> <span class="nx">queryString</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">QueryString</span><span class="p">({</span>
+    <span class="nx">getWindowLocation</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">;</span> <span class="p">}</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-5">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-5">&#182;</a>
+        </div>
+        <p>TODO: move all of catching to raise so we don&rsquo;t break our brains</p>
+
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="kd">var</span> <span class="nx">catchingExceptions</span> <span class="o">=</span> <span class="nx">queryString</span><span class="p">.</span><span class="nx">getParam</span><span class="p">(</span><span class="s2">&quot;catch&quot;</span><span class="p">);</span>
+  <span class="nx">env</span><span class="p">.</span><span class="nx">catchExceptions</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">catchingExceptions</span> <span class="o">===</span> <span class="s2">&quot;undefined&quot;</span> <span class="o">?</span> <span class="kc">true</span> <span class="o">:</span> <span class="nx">catchingExceptions</span><span class="p">);</span>
+
+  <span class="kd">var</span> <span class="nx">htmlReporter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">HtmlReporter</span><span class="p">({</span>
+    <span class="nx">env</span><span class="o">:</span> <span class="nx">env</span><span class="p">,</span>
+    <span class="nx">queryString</span><span class="o">:</span> <span class="nx">queryString</span><span class="p">,</span>
+    <span class="nx">onRaiseExceptionsClick</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">queryString</span><span class="p">.</span><span class="nx">setParam</span><span class="p">(</span><span class="s2">&quot;catch&quot;</span><span class="p">,</span> <span class="o">!</span><span class="nx">env</span><span class="p">.</span><span class="nx">catchingExceptions</span><span class="p">());</span> <span class="p">},</span>
+    <span class="nx">getContainer</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span> <span class="p">},</span>
+    <span class="nx">createElement</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span> <span class="p">},</span>
+    <span class="nx">createTextNode</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span> <span class="p">},</span>
+    <span class="nx">timer</span><span class="o">:</span> <span class="k">new</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Timer</span><span class="p">()</span>
+  <span class="p">});</span>
+
+  <span class="nx">env</span><span class="p">.</span><span class="nx">addReporter</span><span class="p">(</span><span class="nx">jasmineInterface</span><span class="p">.</span><span class="nx">jsApiReporter</span><span class="p">);</span>
+  <span class="nx">env</span><span class="p">.</span><span class="nx">addReporter</span><span class="p">(</span><span class="nx">htmlReporter</span><span class="p">);</span>
+
+  <span class="kd">var</span> <span class="nx">specFilter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">HtmlSpecFilter</span><span class="p">({</span>
+    <span class="nx">filterString</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">queryString</span><span class="p">.</span><span class="nx">getParam</span><span class="p">(</span><span class="s2">&quot;spec&quot;</span><span class="p">);</span> <span class="p">}</span>
+  <span class="p">});</span>
+
+  <span class="nx">env</span><span class="p">.</span><span class="nx">specFilter</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">spec</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">specFilter</span><span class="p">.</span><span class="nx">matches</span><span class="p">(</span><span class="nx">spec</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>
+  <span class="p">};</span>
+
+  <span class="kd">var</span> <span class="nx">currentWindowOnload</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span><span class="p">;</span>
+
+  <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">currentWindowOnload</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">currentWindowOnload</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="nx">htmlReporter</span><span class="p">.</span><span class="nx">initialize</span><span class="p">();</span>
+    <span class="nx">env</span><span class="p">.</span><span class="nx">execute</span><span class="p">();</span>
+  <span class="p">};</span>
+
+  <span class="kd">function</span> <span class="nx">extend</span><span class="p">(</span><span class="nx">destination</span><span class="p">,</span> <span class="nx">source</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">property</span> <span class="k">in</span> <span class="nx">source</span><span class="p">)</span> <span class="nx">destination</span><span class="p">[</span><span class="nx">property</span><span class="p">]</span> <span class="o">=</span> <span class="nx">source</span><span class="p">[</span><span class="nx">property</span><span class="p">];</span>
+    <span class="k">return</span> <span class="nx">destination</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="p">}());</span></pre>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+<script>
+  document.querySelector(".version").innerHTML = jasmine.version;
+</script>
+</html>
