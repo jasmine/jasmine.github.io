@@ -10,6 +10,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     mustache (0.99.4)
+    rake (10.1.0)
     redcarpet (1.17.2)
     tilt (1.4.1)
 
@@ -17,5 +18,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  rake
   rocco!
   tilt
