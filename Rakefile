@@ -11,7 +11,10 @@ task :pages do
   version = '2.0'
 
   Dir.glob("#{version}/src/*.js").each do |jsfile|
-    with_context = OpenStruct.new(jasmine_version: version)
+    with_context = OpenStruct.new(
+      jasmine_version: version,
+      jsfile: jsfile
+    )
     layout = "layout_#{version}.mustache"
     Dir.chdir 'tmp' do
       File.open("#{layout}", 'w+') do |f|
