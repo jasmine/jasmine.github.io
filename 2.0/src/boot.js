@@ -1,3 +1,15 @@
+/**
+ # Jasmine Boot.js
+
+ For Jasmine 2.0 we've made the location of this file configurable via jasmine.yml, at which point you can customize it.
+
+ To copy the current version of `boot.js` you can run `jasmine copy_boot_js` if you are using the jasmine gem, otherwise you can grab this file from the [jasmine-core](https://github.com/pivotal/jasmine) repo.
+
+ This is the default `boot.js` that is included in the Jasmine Core distribution.
+
+ The `boot.js` file will be loaded after `jasmine.js` but before any source or specs.
+
+*/
 /*
  Copyright (c) 2008-2013 Pivotal Labs
 
@@ -21,30 +33,28 @@
  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-/**
- # Jasmine Boot.js
-
- For Jasmine 2.0 we've introduced this file as a separable per environment, or per project, location for Jasmine setup, configuration and customization. This is the default `boot.js` that is included in the Jasmine Core distribution.
-
- A `boot.js` needs to be loaded and code similar to this needs to be executed _after_ `jasmine.js` has been loaded.
-
-*/
 (function() {
 
   /**
    * ## Require &amp; Instantiate
    *
-   * These lines invoke the requiring of Jasmine. Specifically, this requires and attaches all of Jasmine's code to the `jasmine` reference. And since this is being run in a browser, we're additionally requiring the HTML-specific Jasmine code.
+   * These lines invoke the requiring of Jasmine. Specifically, this requires and attaches all of Jasmine's code to the `jasmine` reference.
    */
   window.jasmine = jasmineRequire.core(jasmineRequire);
+  /**
+   * Since this is being run in a browser we're additionally requiring the HTML-specific Jasmine code.
+   */
   jasmineRequire.html(jasmine);
 
   /**
    *
-   * This creates (if necessary) and gets the Jasmine environment - where all of the cod
+   * This creates the Jasmine environment, which is used to run your specs.
    */
   var env = jasmine.getEnv();
 
+  /**
+   * We use this reference to inject jasmine's functionality into the `window`. The functions in this object are the full extent of jasmine's public interface.
+   */
   var jasmineInterface = {
     describe: function(description, specDefinitions) {
       return env.describe(description, specDefinitions);
@@ -92,6 +102,9 @@
     })
   };
 
+  /**
+   * Add all of the jasmine public interface to the proper global, so you can just write `describe` in your specs instead of `jasmine.describe`.
+   */
   if (typeof window == "undefined" && typeof exports == "object") {
     extend(exports, jasmineInterface);
   } else {
@@ -102,10 +115,12 @@
     getWindowLocation: function() { return window.location; }
   });
 
-  // TODO: move all of catching to raise so we don't break our brains
   var catchingExceptions = queryString.getParam("catch");
   env.catchExceptions(typeof catchingExceptions === "undefined" ? true : catchingExceptions);
 
+  /**
+   * Set up the reporters that we use to present results later. This reporter draws the results from the suite on the screen as it receives them.
+   */
   var htmlReporter = new jasmine.HtmlReporter({
     env: env,
     queryString: queryString,
@@ -116,9 +131,15 @@
     timer: new jasmine.Timer()
   });
 
+  /**
+   * The `jsApiReporter` also receives spec results, and is used by other projects that receive results from javascript. In practice, this approach is much easier than scraping the page.
+   */
   env.addReporter(jasmineInterface.jsApiReporter);
   env.addReporter(htmlReporter);
 
+  /**
+   * Filter which specs will be run by matching the start of the full name against the `spec` query param.
+   */
   var specFilter = new jasmine.HtmlSpecFilter({
     filterString: function() { return queryString.getParam("spec"); }
   });
@@ -133,6 +154,9 @@
     if (currentWindowOnload) {
       currentWindowOnload();
     }
+    /**
+     * This actually starts the `HtmlReporter` so it is ready to receive results and starts the jasmine test suite.
+     */
     htmlReporter.initialize();
     env.execute();
   };
