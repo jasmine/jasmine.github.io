@@ -97,6 +97,11 @@
     },
 
     clock: env.clock,
+
+    addCustomEqualityTester: function(tester) {
+      env.addCustomEqualityTester(tester);
+    },
+
     jsApiReporter: new jasmine.JsApiReporter({
       timer: new jasmine.Timer()
     })

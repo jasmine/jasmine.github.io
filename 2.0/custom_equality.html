@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+  <title>custom_equality.js</title>
+  <link href='http://fonts.googleapis.com/css?family=Lora|Istok+Web:700' rel='stylesheet' type='text/css'/>
+  <link rel="stylesheet" href="css/docco.css"/>
+  <link rel="stylesheet" href="css/jasmine_docco.css"/>
+  <link rel="stylesheet" href="lib/jasmine.css"/>
+  
+  <script src="lib/jasmine.js"></script>
+  <script src="lib/jasmine-html.js"></script>
+  <script src="lib/boot.js"></script>
+  <script src="src/custom_equality.js"></script>
+  
+  <link rel="icon" href="images/jasmine.ico" sizes="16x16">
+  <link rel="icon" href="images/jasmine_32x32.ico" sizes="32x32">
+</head>
+<body>
+<div id="container">
+  <div id="background"></div>
+  <div class="title-banner">
+    <a href="http://github.com/pivotal/jasmine">
+      <img src="images/jasmine-h-small.png"/>
+    </a>
+    <span class="spacer"></span>
+    <div class="powered">
+      <span>Powered by</span>
+    </div>
+    <a href="http://pivotallabs.com/" target="_blank">
+      <img src="images/pivotal_logo.gif"/>
+    </a>
+  </div>
+  <table cellspacing="0" cellpadding="0">
+    <thead>
+    <tr>
+      <th class="docs">
+        <h1>custom_equality.js</h1>
+      </th>
+      <th class="code"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr id="section-Custom_Equality_Matchers">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Custom_Equality_Matchers">&#182;</a>
+        </div>
+        <h2>Custom Equality Matchers</h2>
+
+<p>You can customize how jasmine determines if two objects are equal by defining your own custom equality matchers.
+A custom equality matcher is a function that takes two arguments.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="kd">var</span> <span class="nx">myCustomEquality</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">first</span><span class="p">,</span> <span class="nx">second</span><span class="p">)</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-2">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-2">&#182;</a>
+        </div>
+        <p>If the custom equality matcher knows how to compare the two items, it should return either true or false</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">first</span> <span class="o">==</span> <span class="s2">&quot;string&quot;</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">second</span> <span class="o">==</span> <span class="s2">&quot;string&quot;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">first</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="nx">second</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+  <span class="p">}</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-3">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-3">&#182;</a>
+        </div>
+        <p>Otherwise, it should return undefined, to tell jasmine&rsquo;s equality tester that it can&rsquo;t compare the items</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="p">};</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-4">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-4">&#182;</a>
+        </div>
+        <p>Then you register your matcher so jasmine knows about it.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">jasmine</span><span class="p">.</span><span class="nx">addCustomEqualityTester</span><span class="p">(</span><span class="nx">myCustomEquality</span><span class="p">);</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-5">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-5">&#182;</a>
+        </div>
+        <p>Then when you do comparisons in a spec, custom equality matchers will be checked first before the default equality logic.</p>
+
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;with custom equality&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should be custom equal&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s2">&quot;aaa&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should be custom not equal&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toEqual</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+<script>
+  document.querySelector(".version").innerHTML = jasmine.version;
+</script>
+</html>
