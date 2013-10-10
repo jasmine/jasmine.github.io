@@ -83,7 +83,7 @@ describe("Custom matcher: 'toBeGoofy'", function() {
    * Register the custom matchers with Jasmine. All properties on the object passed in will be available as custom matchers (e.g., in this case `toBeGoofy`).
    */
   beforeEach(function() {
-    addMatchers(customMatchers);
+    jasmine.addMatchers(customMatchers);
   });
 
   /**
