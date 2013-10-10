@@ -679,7 +679,7 @@ describe("jasmine.objectContaining", function() {
 
 
 /**
- ## Mocking the JavaScript Clock
+ ## Mocking the JavaScript Timeout Functions
 
  __This syntax has changed for Jasmine 2.0.__
 
@@ -690,15 +690,15 @@ describe("Manually ticking the Jasmine Clock", function() {
   var timerCallback;
 
   /**
-   It is installed with a call to `jasmine.getEnv().clock.install` in a spec or suite that needs to call the timer functions.
+   It is installed with a call to `jasmine.clock().install` in a spec or suite that needs to call the timer functions.
    */
   beforeEach(function() {
     timerCallback = jasmine.createSpy("timerCallback");
-    jasmine.getEnv().clock.install();
+    jasmine.clock().install();
   });
 
   /**
-   Calls to any registered callback are triggered when the clock is ticked forward via the `jasmine.Clock.tick` function, which takes a number of milliseconds.
+   Calls to any registered callback are triggered when the clock is ticked forward via the `jasmine.clock().tick` function, which takes a number of milliseconds.
    */
   it("causes a timeout to be called synchronously", function() {
     setTimeout(function() {
@@ -707,7 +707,7 @@ describe("Manually ticking the Jasmine Clock", function() {
 
     expect(timerCallback).not.toHaveBeenCalled();
 
-    jasmine.getEnv().clock.tick(101);
+    jasmine.clock().tick(101);
 
     expect(timerCallback).toHaveBeenCalled();
   });
@@ -719,13 +719,13 @@ describe("Manually ticking the Jasmine Clock", function() {
 
     expect(timerCallback).not.toHaveBeenCalled();
 
-    jasmine.getEnv().clock.tick(101);
+    jasmine.clock().tick(101);
     expect(timerCallback.calls.count()).toEqual(1);
 
-    jasmine.getEnv().clock.tick(50);
+    jasmine.clock().tick(50);
     expect(timerCallback.calls.count()).toEqual(1);
 
-    jasmine.getEnv().clock.tick(50);
+    jasmine.clock().tick(50);
     expect(timerCallback.calls.count()).toEqual(2);
   });
 });

@@ -915,12 +915,12 @@ arguments</p>
         </div>
       </td>
     </tr>
-    <tr id="section-Mocking_the_JavaScript_Clock">
+    <tr id="section-Mocking_the_JavaScript_Timeout_Functions">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-Mocking_the_JavaScript_Clock">&#182;</a>
+          <a class="pilcrow" href="#section-Mocking_the_JavaScript_Timeout_Functions">&#182;</a>
         </div>
-        <h2>Mocking the JavaScript Clock</h2>
+        <h2>Mocking the JavaScript Timeout Functions</h2>
 
 <p><strong>This syntax has changed for Jasmine 2.0.</strong></p>
 
@@ -938,13 +938,13 @@ arguments</p>
         <div class="pilwrap">
           <a class="pilcrow" href="#section-27">&#182;</a>
         </div>
-        <p>It is installed with a call to <code>jasmine.getEnv().clock.install</code> in a spec or suite that needs to call the timer functions.</p>
+        <p>It is installed with a call to <code>jasmine.clock().install</code> in a spec or suite that needs to call the timer functions.</p>
       </td>
       <td class="code">
         <div class="highlight">
           <pre>  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">timerCallback</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s2">&quot;timerCallback&quot;</span><span class="p">);</span>
-    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">getEnv</span><span class="p">().</span><span class="nx">clock</span><span class="p">.</span><span class="nx">install</span><span class="p">();</span>
+    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">clock</span><span class="p">().</span><span class="nx">install</span><span class="p">();</span>
   <span class="p">});</span></pre>
         </div>
       </td>
@@ -954,7 +954,7 @@ arguments</p>
         <div class="pilwrap">
           <a class="pilcrow" href="#section-28">&#182;</a>
         </div>
-        <p>Calls to any registered callback are triggered when the clock is ticked forward via the <code>jasmine.Clock.tick</code> function, which takes a number of milliseconds.</p>
+        <p>Calls to any registered callback are triggered when the clock is ticked forward via the <code>jasmine.clock().tick</code> function, which takes a number of milliseconds.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -965,7 +965,7 @@ arguments</p>
 
     <span class="nx">expect</span><span class="p">(</span><span class="nx">timerCallback</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
 
-    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">getEnv</span><span class="p">().</span><span class="nx">clock</span><span class="p">.</span><span class="nx">tick</span><span class="p">(</span><span class="mi">101</span><span class="p">);</span>
+    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">clock</span><span class="p">().</span><span class="nx">tick</span><span class="p">(</span><span class="mi">101</span><span class="p">);</span>
 
     <span class="nx">expect</span><span class="p">(</span><span class="nx">timerCallback</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
   <span class="p">});</span>
@@ -977,13 +977,13 @@ arguments</p>
 
     <span class="nx">expect</span><span class="p">(</span><span class="nx">timerCallback</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
 
-    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">getEnv</span><span class="p">().</span><span class="nx">clock</span><span class="p">.</span><span class="nx">tick</span><span class="p">(</span><span class="mi">101</span><span class="p">);</span>
+    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">clock</span><span class="p">().</span><span class="nx">tick</span><span class="p">(</span><span class="mi">101</span><span class="p">);</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">timerCallback</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">count</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 
-    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">getEnv</span><span class="p">().</span><span class="nx">clock</span><span class="p">.</span><span class="nx">tick</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">clock</span><span class="p">().</span><span class="nx">tick</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">timerCallback</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">count</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 
-    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">getEnv</span><span class="p">().</span><span class="nx">clock</span><span class="p">.</span><span class="nx">tick</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">clock</span><span class="p">().</span><span class="nx">tick</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">timerCallback</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">count</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">});</span></pre>
