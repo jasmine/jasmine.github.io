@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+  <title>custom_matcher.js</title>
+  <link href='http://fonts.googleapis.com/css?family=Lora|Istok+Web:700' rel='stylesheet' type='text/css'/>
+  <link rel="stylesheet" href="css/docco.css"/>
+  <link rel="stylesheet" href="css/jasmine_docco.css"/>
+  <link rel="stylesheet" href="lib/jasmine.css"/>
+  
+  <script src="lib/jasmine.js"></script>
+  <script src="lib/jasmine-html.js"></script>
+  <script src="lib/boot.js"></script>
+  <script src="src/custom_matcher.js"></script>
+  
+  <link rel="icon" href="images/jasmine.ico" sizes="16x16">
+  <link rel="icon" href="images/jasmine_32x32.ico" sizes="32x32">
+</head>
+<body>
+<div id="container">
+  <div id="background"></div>
+  <div id="jump_to">
+    Jump To &hellip;
+    <div id="jump_wrapper">
+      <div id="jump_page">
+        <a class="source" href="boot.html">boot.js</a>
+        <a class="source" href="custom_equality.html">custom_equality.js</a>
+        <a class="source" href="custom_matcher.html">custom_matcher.js</a>
+        <a class="source" href="introduction.html">introduction.js</a>
+      </div>
+    </div>
+  </div>
+  <div class="title-banner">
+    <a href="http://github.com/pivotal/jasmine">
+      <img src="images/jasmine-h-small.png"/>
+    </a>
+    <span class="spacer"></span>
+    <div class="powered">
+      <span>Powered by</span>
+    </div>
+    <a href="http://pivotallabs.com/" target="_blank">
+      <img src="images/pivotal_logo.gif"/>
+    </a>
+  </div>
+  <table cellspacing="0" cellpadding="0">
+    <thead>
+    <tr>
+      <th class="docs">
+        <h1>custom_matcher.js</h1>
+      </th>
+      <th class="code"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr id="section-Custom_Matchers">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Custom_Matchers">&#182;</a>
+        </div>
+        <h2>Custom Matchers</h2>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;custom matchers&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-2">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-2">&#182;</a>
+        </div>
+        <p>To register a matcher, call <code>addMatchers</code> in a <code>beforeEach</code>.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">addMatchers</span><span class="p">({</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-3">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-3">&#182;</a>
+        </div>
+        <p>You can include multiple matchers in this object.
+The keys will be used as the matcher name.
+The factory method will receive the jasmine <code>matchersUtil</code> and any <code>customEqualityTesters</code> that have been registered.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>      <span class="nx">toBeGoofy</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">util</span><span class="p">,</span> <span class="nx">customEqualityTesters</span><span class="p">)</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-4">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-4">&#182;</a>
+        </div>
+        <p>The factory method should return an object with a <code>compare</code> function that will be called to check the expectation.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>        <span class="k">return</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-5">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-5">&#182;</a>
+        </div>
+        <p>The compare function receives the value passed to <code>expect()</code> as the first argument,
+and the value (if any) passed to the matcher itself as second argument.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>          <span class="nx">compare</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">actual</span><span class="p">,</span> <span class="nx">expected</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">expected</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nx">expected</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{};</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-6">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-6">&#182;</a>
+        </div>
+        <p>The <code>pass</code> attribute tells the expectation whether your matcher matched.
+If the used with <code>.not</code>, the expectation will negate this to determine whether the expectation is met.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>            <span class="nx">result</span><span class="p">.</span><span class="nx">pass</span> <span class="o">=</span> <span class="nx">util</span><span class="p">.</span><span class="nx">equals</span><span class="p">(</span><span class="nx">actual</span><span class="p">.</span><span class="nx">hyuk</span><span class="p">,</span> <span class="s2">&quot;gawrsh&quot;</span> <span class="o">+</span> <span class="nx">expected</span><span class="p">,</span> <span class="nx">customEqualityTesters</span><span class="p">);</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-7">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-7">&#182;</a>
+        </div>
+        <p>You can also include a custom failure message if the automatically determined ones are not descriptive enough.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">pass</span><span class="p">)</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-8">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-8">&#182;</a>
+        </div>
+        <p>The matcher succeeded, so return the error message as if the user used <code>.not</code></p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>              <span class="nx">result</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s2">&quot;Expected &quot;</span> <span class="o">+</span> <span class="nx">actual</span> <span class="o">+</span> <span class="s2">&quot; not to be quite so goofy&quot;</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-9">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-9">&#182;</a>
+        </div>
+        <p>The matcher failed, so return the error message as if the user did not use <code>.not</code></p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>              <span class="nx">result</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s2">&quot;Expected &quot;</span> <span class="o">+</span> <span class="nx">actual</span> <span class="o">+</span> <span class="s2">&quot; to be goofy, but it was not very goofy&quot;</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+          <span class="p">}</span>
+        <span class="p">};</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-10">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-10">&#182;</a>
+        </div>
+        <p>Once the matcher is registered with jasmine, you can use it exactly as you would any of the build in matchers.</p>
+
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should use custom matchers&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">({</span><span class="nx">hyuk</span><span class="o">:</span> <span class="s1">&#39;gawrsh&#39;</span> <span class="p">}).</span><span class="nx">toBeGoofy</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should use custom matchers with parameters&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">({</span><span class="nx">hyuk</span><span class="o">:</span> <span class="s1">&#39;gawrsh is fun&#39;</span> <span class="p">}).</span><span class="nx">toBeGoofy</span><span class="p">(</span><span class="s1">&#39; is fun&#39;</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should negate custom matchers&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">({</span><span class="nx">hyuk</span><span class="o">:</span> <span class="s1">&#39;this is fun&#39;</span> <span class="p">}).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeGoofy</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+<script>
+  document.querySelector(".version").innerHTML = jasmine.version;
+</script>
+</html>
