@@ -46,47 +46,20 @@
     </tr>
     </thead>
     <tbody>
-    <tr id="section-Jasmine_Boot.js">
+    <tr id="section-1">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-Jasmine_Boot.js">&#182;</a>
+          <a class="pilcrow" href="#section-1">&#182;</a>
         </div>
-        <h1>Jasmine Boot.js</h1>
+        <p>Starting with version 2.0, this file &ldquo;boots&rdquo; Jasmine, performing all of the necessary initialization before executing the loaded environment and all of a project&rsquo;s specs. This file should be loaded after <code>jasmine.js</code>, but before any project source files or spec files are loaded. Thus this file can also be used to customize Jasmine for a project.</p>
 
-<p>For Jasmine 2.0 we&rsquo;ve made the location of this file configurable via jasmine.yml, at which point you can customize it.</p>
+<p>If a project is using Jasmine via the standalone distribution, this file can be customized directly. If a project is using Jasmine via the <a href="http://github.com/pivotal/jasmine-gem">Ruby gem</a>, this file can be copied into the support directory via <code>jasmine copy_boot_js</code>. Other environments (e.g., Python) will have different mechanisms.</p>
 
-<p>To copy the current version of <code>boot.js</code> you can run <code>jasmine copy_boot_js</code> if you are using the jasmine gem, otherwise you can grab this file from the <a href="https://github.com/pivotal/jasmine">jasmine-core</a> repo.</p>
-
-<p>This is the default <code>boot.js</code> that is included in the Jasmine Core distribution.</p>
-
-<p>The <code>boot.js</code> file will be loaded after <code>jasmine.js</code> but before any source or specs.</p>
+<p>The location of <code>boot.js</code> can be specified and/or overridden in <code>jasmine.yml</code>.</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="cm">/*</span>
-<span class="cm"> Copyright (c) 2008-2013 Pivotal Labs</span>
-
-<span class="cm"> Permission is hereby granted, free of charge, to any person obtaining</span>
-<span class="cm"> a copy of this software and associated documentation files (the</span>
-<span class="cm"> &quot;Software&quot;), to deal in the Software without restriction, including</span>
-<span class="cm"> without limitation the rights to use, copy, modify, merge, publish,</span>
-<span class="cm"> distribute, sublicense, and/or sell copies of the Software, and to</span>
-<span class="cm"> permit persons to whom the Software is furnished to do so, subject to</span>
-<span class="cm"> the following conditions:</span>
-
-<span class="cm"> The above copyright notice and this permission notice shall be</span>
-<span class="cm"> included in all copies or substantial portions of the Software.</span>
-
-<span class="cm"> THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,</span>
-<span class="cm"> EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF</span>
-<span class="cm"> MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND</span>
-<span class="cm"> NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE</span>
-<span class="cm"> LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION</span>
-<span class="cm"> OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION</span>
-<span class="cm"> WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</span>
-<span class="cm"> */</span>
-
-<span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre>
+          <pre><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre>
         </div>
       </td>
     </tr>
@@ -97,7 +70,7 @@
         </div>
         <h2>Require &amp; Instantiate</h2>
 
-<p>These lines invoke the requiring of Jasmine. Specifically, this requires and attaches all of Jasmine&rsquo;s code to the <code>jasmine</code> reference.</p>
+<p>Require Jasmine&rsquo;s core files. Specifically, this requires and attaches all of Jasmine&rsquo;s code to the <code>jasmine</code> reference.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -110,7 +83,7 @@
         <div class="pilwrap">
           <a class="pilcrow" href="#section-3">&#182;</a>
         </div>
-        <p>Since this is being run in a browser we&rsquo;re additionally requiring the HTML-specific Jasmine code.</p>
+        <p>Since this is being run in a browser and the results should populate to an HTML page, require the HTML-specific Jasmine code, injecting the same reference.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -123,7 +96,7 @@
         <div class="pilwrap">
           <a class="pilcrow" href="#section-4">&#182;</a>
         </div>
-        <p>This creates the Jasmine environment, which is used to run your specs.</p>
+        <p>Create the Jasmine environment. This is used to run all specs in a project.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -131,12 +104,14 @@
         </div>
       </td>
     </tr>
-    <tr id="section-5">
+    <tr id="section-The_Global_Interface">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-5">&#182;</a>
+          <a class="pilcrow" href="#section-The_Global_Interface">&#182;</a>
         </div>
-        <p>We use this reference to inject jasmine&rsquo;s functionality into the <code>window</code>. The functions in this object are the full extent of jasmine&rsquo;s public interface.</p>
+        <h2>The Global Interface</h2>
+
+<p>Build up the functions that will be exposed as the Jasmine public interface. A project can customize, rename or alias any of these functions as desired, provided the implementation remains unchanged.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -199,7 +174,7 @@
         <div class="pilwrap">
           <a class="pilcrow" href="#section-6">&#182;</a>
         </div>
-        <p>Add all of the jasmine public interface to the proper global, so you can just write <code>describe</code> in your specs instead of <code>jasmine.describe</code>.</p>
+        <p>Add all of the Jasmine public interface to the proper global, so a project can use the public interface directly. For example, calling <code>describe</code> in specs instead of <code>jasmine.getEnv().describe</code>.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -207,9 +182,22 @@
     <span class="nx">extend</span><span class="p">(</span><span class="nx">exports</span><span class="p">,</span> <span class="nx">jasmineInterface</span><span class="p">);</span>
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="nx">extend</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="nx">jasmineInterface</span><span class="p">);</span>
-  <span class="p">}</span>
+  <span class="p">}</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Runner_Parameters">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Runner_Parameters">&#182;</a>
+        </div>
+        <h2>Runner Parameters</h2>
 
-  <span class="kd">var</span> <span class="nx">queryString</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">QueryString</span><span class="p">({</span>
+<p>More browser specifc code &ndash; wrap the query string in an object and to allow for getting/setting parameters from the runner user interface.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="kd">var</span> <span class="nx">queryString</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">QueryString</span><span class="p">({</span>
     <span class="nx">getWindowLocation</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">;</span> <span class="p">}</span>
   <span class="p">});</span>
 
@@ -218,12 +206,14 @@
         </div>
       </td>
     </tr>
-    <tr id="section-7">
+    <tr id="section-Reporters">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-7">&#182;</a>
+          <a class="pilcrow" href="#section-Reporters">&#182;</a>
         </div>
-        <p>Set up the reporters that we use to present results later. This reporter draws the results from the suite on the screen as it receives them.</p>
+        <h2>Reporters</h2>
+
+<p>The <code>HtmlReporter</code> builds all of the HTML UI for the runner page. This reporter paints the dots, stars, and x&rsquo;s for specs, as well as all spec names and all failures (if any).</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -239,12 +229,12 @@
         </div>
       </td>
     </tr>
-    <tr id="section-8">
+    <tr id="section-9">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-8">&#182;</a>
+          <a class="pilcrow" href="#section-9">&#182;</a>
         </div>
-        <p>The <code>jsApiReporter</code> also receives spec results, and is used by other projects that receive results from javascript. In practice, this approach is much easier than scraping the page.</p>
+        <p>The <code>jsApiReporter</code> also receives spec results, and is used by any enivorment that needs to extract the results  from JavaScript.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -253,10 +243,10 @@
         </div>
       </td>
     </tr>
-    <tr id="section-9">
+    <tr id="section-10">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-9">&#182;</a>
+          <a class="pilcrow" href="#section-10">&#182;</a>
         </div>
         <p>Filter which specs will be run by matching the start of the full name against the <code>spec</code> query param.</p>
       </td>
@@ -268,32 +258,44 @@
 
   <span class="nx">env</span><span class="p">.</span><span class="nx">specFilter</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">spec</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">specFilter</span><span class="p">.</span><span class="nx">matches</span><span class="p">(</span><span class="nx">spec</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>
-  <span class="p">};</span>
+  <span class="p">};</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Execution">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Execution">&#182;</a>
+        </div>
+        <h2>Execution</h2>
 
-  <span class="kd">var</span> <span class="nx">currentWindowOnload</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span><span class="p">;</span>
+<p>Replace the browser window&rsquo;s <code>onload</code>, ensure it&rsquo;s called, and then run all of the loaded specs. This includes initializing the <code>HtmlReporter</code> instance and then executing the loaded Jasmine environment. All of this will happen after all of the specs are loaded.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="kd">var</span> <span class="nx">currentWindowOnload</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span><span class="p">;</span>
 
   <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">currentWindowOnload</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">currentWindowOnload</span><span class="p">();</span>
-    <span class="p">}</span></pre>
+    <span class="p">}</span>
+    <span class="nx">htmlReporter</span><span class="p">.</span><span class="nx">initialize</span><span class="p">();</span>
+    <span class="nx">env</span><span class="p">.</span><span class="nx">execute</span><span class="p">();</span>
+  <span class="p">};</span></pre>
         </div>
       </td>
     </tr>
-    <tr id="section-10">
+    <tr id="section-12">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-10">&#182;</a>
+          <a class="pilcrow" href="#section-12">&#182;</a>
         </div>
-        <p>This actually starts the <code>HtmlReporter</code> so it is ready to receive results and starts the jasmine test suite.</p>
+        <p>Helper function for readability above.</p>
 
       </td>
       <td class="code">
         <div class="highlight">
-          <pre>    <span class="nx">htmlReporter</span><span class="p">.</span><span class="nx">initialize</span><span class="p">();</span>
-    <span class="nx">env</span><span class="p">.</span><span class="nx">execute</span><span class="p">();</span>
-  <span class="p">};</span>
-
-  <span class="kd">function</span> <span class="nx">extend</span><span class="p">(</span><span class="nx">destination</span><span class="p">,</span> <span class="nx">source</span><span class="p">)</span> <span class="p">{</span>
+          <pre>  <span class="kd">function</span> <span class="nx">extend</span><span class="p">(</span><span class="nx">destination</span><span class="p">,</span> <span class="nx">source</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">property</span> <span class="k">in</span> <span class="nx">source</span><span class="p">)</span> <span class="nx">destination</span><span class="p">[</span><span class="nx">property</span><span class="p">]</span> <span class="o">=</span> <span class="nx">source</span><span class="p">[</span><span class="nx">property</span><span class="p">];</span>
     <span class="k">return</span> <span class="nx">destination</span><span class="p">;</span>
   <span class="p">}</span>
