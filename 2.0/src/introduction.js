@@ -731,6 +731,25 @@ describe("Manually ticking the Jasmine Clock", function() {
 });
 
 /**
+### Using the mock clock for a single spec
+*/
+describe("Single spec mock clock", function() {
+  it("can install and uninstall", function() {
+    clock.useMock(function() {
+      setTimeout(function() {
+        timerCallback();
+      }, 100);
+
+      expect(timerCallback).not.toHaveBeenCalled();
+
+      clock.tick(101);
+
+      expect(timerCallback).toHaveBeenCalled();
+    });
+  });
+});
+
+/**
  ## Asynchronous Support
 
  __This syntax has changed for Jasmine 2.0.__

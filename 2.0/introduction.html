@@ -11,6 +11,7 @@
   <script src="lib/jasmine.js"></script>
   <script src="lib/jasmine-html.js"></script>
   <script src="lib/boot.js"></script>
+  <script src="lib/mock-ajax.js"></script>
   <script src="src/introduction.js"></script>
   
   <link rel="icon" href="images/jasmine.ico" sizes="16x16">
@@ -23,6 +24,7 @@
     Jump To &hellip;
     <div id="jump_wrapper">
       <div id="jump_page">
+        <a class="source" href="ajax.html">ajax.js</a>
         <a class="source" href="boot.html">boot.js</a>
         <a class="source" href="custom_equality.html">custom_equality.js</a>
         <a class="source" href="custom_matcher.html">custom_matcher.js</a>
@@ -990,6 +992,33 @@ arguments</p>
         </div>
       </td>
     </tr>
+    <tr id="section-Using_the_mock_clock_for_a_single_spec">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Using_the_mock_clock_for_a_single_spec">&#182;</a>
+        </div>
+        <h3>Using the mock clock for a single spec</h3>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Single spec mock clock&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can install and uninstall&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">clock</span><span class="p">.</span><span class="nx">useMock</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">timerCallback</span><span class="p">();</span>
+      <span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">timerCallback</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+
+      <span class="nx">clock</span><span class="p">.</span><span class="nx">tick</span><span class="p">(</span><span class="mi">101</span><span class="p">);</span>
+
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">timerCallback</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
     <tr id="section-Asynchronous_Support">
       <td class="docs">
         <div class="pilwrap">
@@ -1010,10 +1039,10 @@ arguments</p>
         </div>
       </td>
     </tr>
-    <tr id="section-30">
+    <tr id="section-31">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-30">&#182;</a>
+          <a class="pilcrow" href="#section-31">&#182;</a>
         </div>
         <p>Calls to <code>beforeEach</code>, <code>it</code>, and <code>afterEach</code> can take an optional single argument that should be called when the async work is complete.</p>
       </td>
@@ -1028,10 +1057,10 @@ arguments</p>
         </div>
       </td>
     </tr>
-    <tr id="section-31">
+    <tr id="section-32">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-31">&#182;</a>
+          <a class="pilcrow" href="#section-32">&#182;</a>
         </div>
         <p>This spec will not start until the <code>done</code> function is called in the call to <code>beforeEach</code> above. And this spec will not complete until its <code>done</code> is called.</p>
       </td>
