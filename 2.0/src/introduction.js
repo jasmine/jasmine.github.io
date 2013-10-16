@@ -735,14 +735,14 @@ describe("Manually ticking the Jasmine Clock", function() {
 */
 describe("Single spec mock clock", function() {
   it("can install and uninstall", function() {
-    clock.useMock(function() {
+    jasmine.clock.useMock(function() {
       setTimeout(function() {
         timerCallback();
       }, 100);
 
       expect(timerCallback).not.toHaveBeenCalled();
 
-      clock.tick(101);
+      jasmine.clock.tick(101);
 
       expect(timerCallback).toHaveBeenCalled();
     });
