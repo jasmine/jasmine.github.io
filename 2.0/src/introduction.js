@@ -1,17 +1,12 @@
 /**
  Jasmine is a behavior-driven development framework for testing JavaScript code. It does not depend on any other JavaScript frameworks. It does not require a DOM. And it has a clean, obvious syntax so that you can easily write tests.
-
  This guide is running against Jasmine version <span class="version">FILLED IN AT RUNTIME</span>.
  */
 /**
  ## Suites: `describe` Your Tests
-
  A test suite begins with a call to the global Jasmine function `describe` with two parameters: a string and a function. The string is a name or title for a spec suite - usually what is under test. The function is a block of code that implements the suite.
-
  ## Specs
-
  Specs are defined by calling the global Jasmine function `it`, which, like `describe` takes a string and a function. The string is a title for this spec and the function is the spec, or test. A spec contains one or more expectations that test the state of the code under test.
-
  An expectation in Jasmine is an assertion that can be either true or false. A spec with all true expectations is a passing spec. A spec with one or more expectations that evaluate to false is a failing spec.
  */
 describe("A suite", function() {
@@ -22,7 +17,6 @@ describe("A suite", function() {
 
 /**
  ### It's Just Functions
-
  Since `describe` and `it` blocks are functions, they can contain any executable code necessary to implement the test. JavaScript scoping rules apply, so variables declared in a `describe` are available to any `it` block inside the suite.
  */
 describe("A suite is just a function", function() {
@@ -37,13 +31,11 @@ describe("A suite is just a function", function() {
 
 /**
  ## Expectations
-
  Expectations are built with the function `expect` which takes a value, called the actual. It is chained with a Matcher function, which takes the expected value.
  */
 describe("The 'toBe' matcher compares with ===", function() {
   /**
    ### Matchers
-
    Each matcher implements a boolean comparison between the actual value and the expected value. It is responsible for reporting to Jasmine if the expectation is true or false. Jasmine will then pass or fail the spec.
    */
 
@@ -53,7 +45,6 @@ describe("The 'toBe' matcher compares with ===", function() {
 
   /**
    Any matcher can evaluate to a negative assertion by chaining the call to `expect` with a `not` before calling the matcher.
-
    */
 
   it("and can have a negative case", function() {
@@ -63,9 +54,7 @@ describe("The 'toBe' matcher compares with ===", function() {
 
 /**
  ### Included Matchers
-
  Jasmine has a rich set of matchers included. Each is used here - all expectations and specs pass.
-
  There is also the ability to write [custom matchers](https://github.com/pivotal/jasmine/wiki/Matchers) for when a project's domain calls for specific assertions that are not included below.
  */
 
@@ -156,21 +145,24 @@ describe("Included matchers:", function() {
   });
 
   it("The 'toBeLessThan' matcher is for mathematical comparisons", function() {
-    var pi = 3.1415926, e = 2.78;
+    var pi = 3.1415926,
+      e = 2.78;
 
     expect(e).toBeLessThan(pi);
     expect(pi).not.toBeLessThan(e);
   });
 
   it("The 'toBeGreaterThan' is for mathematical comparisons", function() {
-    var pi = 3.1415926, e = 2.78;
+    var pi = 3.1415926,
+      e = 2.78;
 
     expect(pi).toBeGreaterThan(e);
     expect(e).not.toBeGreaterThan(pi);
   });
 
   it("The 'toBeCloseTo' matcher is for precision math comparison", function() {
-    var pi = 3.1415926, e = 2.78;
+    var pi = 3.1415926,
+      e = 2.78;
 
     expect(pi).not.toBeCloseTo(e, 2);
     expect(pi).toBeCloseTo(e, 0);
@@ -191,9 +183,7 @@ describe("Included matchers:", function() {
 
 /**
  ## Grouping Related Specs with `describe`
-
  The `describe` function is for grouping related specs. The string parameter is for naming the collection of specs, and will be concatenated with specs to make a spec's full name. This aids in finding specs in a large suite. If you name them well, your specs read as full sentences in traditional [BDD][bdd] style.
-
  [bdd]: http://en.wikipedia.org/wiki/Behavior-driven_development
  */
 describe("A spec", function() {
@@ -215,11 +205,8 @@ describe("A spec", function() {
 
 /**
  ### Setup and Teardown
-
  To help a test suite DRY up any duplicated setup and teardown code, Jasmine provides the global `beforeEach` and `afterEach` functions. As the name implies the `beforeEach` function is called once before each spec in the `describe` is run and the `afterEach` function is called once after each spec.
-
  Here is the same set of specs written a little differently. The variable under test is defined at the top-level scope -- the `describe` block --  and initialization code is moved into a `beforeEach` function. The `afterEach` function resets the variable before continuing.
-
  */
 
 describe("A spec (with setup and tear-down)", function() {
@@ -246,9 +233,7 @@ describe("A spec (with setup and tear-down)", function() {
 
 /**
  ### Nesting `describe` Blocks
-
  Calls to `describe` can be nested, with specs defined at any level. This allows a suite to be composed as a tree of functions. Before a spec is executed, Jasmine walks down the tree executing each `beforeEach` function in order. After the spec is executed, Jasmine walks through the `afterEach` functions similarly.
-
  */
 describe("A spec", function() {
   var foo;
@@ -286,9 +271,7 @@ describe("A spec", function() {
 
 /**
  ## Disabling Suites
-
  Suites and specs can be disabled with the `xdescribe` and `xit` functions, respectively. These suites and any specs inside them are skipped when run and thus their results will not appear in the results.
-
  */
 xdescribe("A spec", function() {
   var foo;
@@ -305,9 +288,7 @@ xdescribe("A spec", function() {
 
 /**
  ## Pending Specs
-
  Pending specs do not run, but their names will show up in the results as `pending`.
-
  */
 
 describe("Pending specs", function() {
@@ -333,11 +314,8 @@ describe("Pending specs", function() {
 
 /**
  ## Spies
-
  Jasmine's has test double functions called spies. A spy can stub any function and tracks calls to it and all arguments. There are special matchers for interacting with spies.
-
  __This syntax has changed for Jasmine 2.0.__
-
  The `toHaveBeenCalled` matcher will return true if the spy was called. The `toHaveBeenCalledWith` matcher will return true if the argument list matches any of the recorded calls to the spy.
  */
 
@@ -373,7 +351,6 @@ describe("A spy", function() {
 
 /**
  ### Spies: `and.callThrough`
-
  By chaining the spy with `and.callThrough`, the spy will still track all calls to it but in addition it will delegate to the actual implementation.
  */
 describe("A spy, when configured to call through", function() {
@@ -410,7 +387,6 @@ describe("A spy, when configured to call through", function() {
 
 /**
  ### Spies: `and.returnValue`
-
  By chaining the spy with `and.returnValue`, all calls to the function will return a specific value.
  */
 describe("A spy, when configured to fake a return value", function() {
@@ -447,7 +423,6 @@ describe("A spy, when configured to fake a return value", function() {
 
 /**
  ### Spies: `and.callFake`
-
  By chaining the spy with `and.callFake`, all calls to the spy will delegate to the supplied function.
  */
 describe("A spy, when configured with an alternate implementation", function() {
@@ -487,7 +462,6 @@ describe("A spy, when configured with an alternate implementation", function() {
 
 /**
  ### Spies: `and.throwError`
-
  By chaining the spy with `and.callThrow`, all calls to the spy will `throw` the specified value.
  */
 describe("A spy, when configured to throw a value", function() {
@@ -512,7 +486,6 @@ describe("A spy, when configured to throw a value", function() {
 
 /**
  ### Spies: `and.stub`
-
  When a calling strategy is used for a spy, the original stubbing behavior can be returned at any time with `and.stub`.
  */
 describe("A spy", function() {
@@ -543,19 +516,113 @@ describe("A spy", function() {
 /**
  ### Other tracking properties
 
- Other things you can find out about a spy:
-
- call count
- any call at all
- arguments
-
+ Every call to a spy is tracked and exposed on the `calls` property.
  */
+describe("A spy", function() {
+  var foo, bar = null;
+
+  beforeEach(function() {
+    foo = {
+      setBar: function(value) {
+        bar = value;
+      }
+    };
+
+    spyOn(foo, 'setBar');
+  });
+
+  /**
+   * `.calls.any()`: returns `false` if the spy has not been called at all, and then `true` once at least one call happens.
+   */
+  it("tracks if it was called at all", function() {
+    expect(foo.setBar.calls.any()).toEqual(false);
+
+    foo.setBar();
+
+    expect(foo.setBar.calls.any()).toEqual(true);
+  });
+
+  /**
+   * `.calls.count()`: returns the number of times the spy was called
+   */
+  it("tracks the number of times it was called", function() {
+    expect(foo.setBar.calls.count()).toEqual(0);
+
+    foo.setBar();
+    foo.setBar();
+
+    expect(foo.setBar.calls.count()).toEqual(2);
+  });
+
+  /**
+   * `.calls.argsFor(index)`: returns the arguments passed to call number `index`
+   */
+  it("tracks the arguments of each call", function() {
+    foo.setBar(123);
+    foo.setBar(456, "baz");
+
+    expect(foo.setBar.calls.argsFor(0)).toEqual([123]);
+    expect(foo.setBar.calls.argsFor(1)).toEqual([456, "baz"]);
+  });
+
+  /**
+   * `.calls.allArgs()`: returns the arguments to all calls
+   */
+  it("tracks the arguments of all calls", function() {
+    foo.setBar(123);
+    foo.setBar(456, "baz");
+
+    expect(foo.setBar.calls.allArgs()).toEqual([[123],[456, "baz"]]);
+  });
+
+  /**
+   * `.calls.all()`: returns the context (the `this`) and arguments passed all calls
+   */
+  it("can provide the context and arguments to all calls", function() {
+    foo.setBar(123);
+
+    expect(foo.setBar.calls.all()).toEqual([{object: foo, args: [123]}]);
+  });
+
+  /**
+   * `.calls.mostRecent()`: returns the context (the `this`) and arguments for the most recent call
+   */
+  it("has a shortcut to the most recent call", function() {
+    foo.setBar(123);
+    foo.setBar(456, "baz");
+
+    expect(foo.setBar.calls.mostRecent()).toEqual({object: foo, args: [456, "baz"]});
+  });
+
+  /**
+   * `.calls.first()`: returns the context (the `this`) and arguments for the first call
+   */
+  it("has a shortcut to the first call", function() {
+    foo.setBar(123);
+    foo.setBar(456, "baz");
+
+    expect(foo.setBar.calls.first()).toEqual({object: foo, args: [123]});
+  });
+
+  /**
+   * `.calls.reset()`: clears all tracking for a spy
+   */
+  it("can be reset", function() {
+    foo.setBar(123);
+    foo.setBar(456, "baz");
+
+    expect(foo.setBar.calls.any()).toBe(true);
+
+    foo.setBar.calls.reset();
+
+    expect(foo.setBar.calls.any()).toBe(false);
+  });
+});
+
 
 /**
  ### Spies: `createSpy`
-
  When there is not a function to spy on, `jasmine.createSpy` can create a "bare" spy. This spy acts as any other spy - tracking calls, arguments, etc. But there is no implementation behind it. Spies are JavaScript objects and can be used as such.
-
  */
 describe("A spy, when created manually", function() {
   var whatAmI;
@@ -589,7 +656,6 @@ describe("A spy, when created manually", function() {
 
 /**
  ### Spies: `createSpyObj`
-
  In order to create a mock with multiple spies, use `jasmine.createSpyObj` and pass an array of strings. It returns an object that has a property for each string that is a spy.
  */
 describe("Multiple spies, when created manually", function() {
@@ -624,7 +690,6 @@ describe("Multiple spies, when created manually", function() {
 
 /**
  ## Matching Anything with `jasmine.any`
-
  `jasmine.any` takes a constructor or "class" name as an expected value. It returns `true` if the constructor matches the constructor of the actual value.
  */
 
@@ -648,31 +713,43 @@ describe("jasmine.any", function() {
 
 /**
  ## Partial Matching with `jasmine.objectContaining`
-
  `jasmine.objectContaining` is for those times when an expectation only cares about certain key/value pairs in the actual.
-
  */
 
 describe("jasmine.objectContaining", function() {
   var foo;
 
   beforeEach(function() {
-    foo = {a: 1, b: 2, bar: "baz"};
+    foo = {
+      a: 1,
+      b: 2,
+      bar: "baz"
+    };
   });
 
   it("matches objects with the expect key/value pairs", function() {
-    expect(foo).toEqual(jasmine.objectContaining({bar: "baz"}));
-    expect(foo).not.toEqual(jasmine.objectContaining({c: 37}));
+    expect(foo).toEqual(jasmine.objectContaining({
+      bar: "baz"
+    }));
+    expect(foo).not.toEqual(jasmine.objectContaining({
+      c: 37
+    }));
   });
 
   describe("when used with a spy", function() {
     it("is useful for comparing arguments", function() {
       var callback = jasmine.createSpy('callback');
 
-      callback({bar: "baz"});
+      callback({
+        bar: "baz"
+      });
 
-      expect(callback).toHaveBeenCalledWith(jasmine.objectContaining({bar: "baz"}));
-      expect(callback).not.toHaveBeenCalledWith(jasmine.objectContaining({c: 37}));
+      expect(callback).toHaveBeenCalledWith(jasmine.objectContaining({
+        bar: "baz"
+      }));
+      expect(callback).not.toHaveBeenCalledWith(jasmine.objectContaining({
+        c: 37
+      }));
     });
   });
 });
@@ -680,11 +757,8 @@ describe("jasmine.objectContaining", function() {
 
 /**
  ## Mocking the JavaScript Timeout Functions
-
  __This syntax has changed for Jasmine 2.0.__
-
  The Jasmine Clock is available for a test suites that need the ability to use `setTimeout` or `setInterval` callbacks. It makes the timer callbacks synchronous, executing the registered functions only once the clock is ticked forward in time. This makes timer-related code much easier to test.
-
  */
 describe("Manually ticking the Jasmine Clock", function() {
   var timerCallback;
@@ -731,33 +805,30 @@ describe("Manually ticking the Jasmine Clock", function() {
 });
 
 /**
-### Using the mock clock for a single spec
-*/
-describe("Single spec mock clock", function() {
-  it("can install and uninstall", function() {
-    clock.useMock(function() {
-      setTimeout(function() {
-        timerCallback();
-      }, 100);
-
-      expect(timerCallback).not.toHaveBeenCalled();
-
-      clock.tick(101);
-
-      expect(timerCallback).toHaveBeenCalled();
-    });
-  });
-});
+ ### Using the mock clock for a single spec
+ */
+// TODO: implement this and make it available
+//describe("Single spec mock clock", function() {
+//  it("can install and uninstall", function() {
+//    jasmine.clock().useMock(function() {
+//      setTimeout(function() {
+//        timerCallback();
+//      }, 100);
+//
+//      expect(timerCallback).not.toHaveBeenCalled();
+//
+//      jasmine.clock().tick(101);
+//
+//      expect(timerCallback).toHaveBeenCalled();
+//    });
+//  });
+//});
 
 /**
  ## Asynchronous Support
-
  __This syntax has changed for Jasmine 2.0.__
-
  Jasmine also has support for running specs that require testing asynchronous operations.
-
  TODO: How to set the timeout in boot.js
-
  */
 describe("Asynchronous specs", function() {
   var value;
