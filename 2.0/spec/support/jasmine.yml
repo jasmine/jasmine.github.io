@@ -4,7 +4,6 @@ src_files:
 stylesheets:
 boot_files:
   - 'boot.js'
-helpers:
 
 <%
 
@@ -20,5 +19,6 @@ end
 boot_dir: <%= relative_src_path.inspect %>
 spec_files: <%= file_names.inspect %>
 spec_dir: <%= relative_src_path.inspect %>
-
+helpers:
+    - 'support/**/*.js'
 
