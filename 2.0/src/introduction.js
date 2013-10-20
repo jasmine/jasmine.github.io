@@ -839,7 +839,7 @@ describe("Asynchronous specs", function() {
     setTimeout(function() {
       value = 0;
       done();
-    }, 500);
+    }, 1);
   });
 
   /**
