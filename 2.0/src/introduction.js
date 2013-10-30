@@ -772,6 +772,14 @@ describe("Manually ticking the Jasmine Clock", function() {
   });
 
   /**
+   *    Be sure to uninstall the clock after you are done to restore the original timer functions.
+   *       */
+  afterEach(function() {
+    jasmine.clock().uninstall();
+  });
+
+
+  /**
    Calls to any registered callback are triggered when the clock is ticked forward via the `jasmine.clock().tick` function, which takes a number of milliseconds.
    */
   it("causes a timeout to be called synchronously", function() {
