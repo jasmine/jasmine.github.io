@@ -87,12 +87,12 @@ To use it, you need to download the <code>mock-ajax.js</code> file and add it to
         <div class="pilwrap">
           <a class="pilcrow" href="#section-3">&#182;</a>
         </div>
-        <p>When you want to mock out all ajax calls across an entire suite, use <code>installMock()</code> in a <code>beforeEach</code>.</p>
+        <p>When you want to mock out all ajax calls across an entire suite, use <code>install()</code> in a <code>beforeEach</code>.</p>
       </td>
       <td class="code">
         <div class="highlight">
           <pre>    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">installMock</span><span class="p">();</span>
+      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">install</span><span class="p">();</span>
     <span class="p">});</span></pre>
         </div>
       </td>
@@ -102,12 +102,12 @@ To use it, you need to download the <code>mock-ajax.js</code> file and add it to
         <div class="pilwrap">
           <a class="pilcrow" href="#section-4">&#182;</a>
         </div>
-        <p>Because jasmine-ajax stubs out the global XMLHttpRequest for the page, you&rsquo;ll want to <code>uninstallMock</code> in an <code>afterEach</code> so specs or setup that expect to make a real ajax request can.</p>
+        <p>Because jasmine-ajax stubs out the global XMLHttpRequest for the page, you&rsquo;ll want to <code>uninstall()</code> in an <code>afterEach</code> so specs or setup that expect to make a real ajax request can.</p>
       </td>
       <td class="code">
         <div class="highlight">
           <pre>    <span class="nx">afterEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">uninstallMock</span><span class="p">();</span>
+      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">uninstall</span><span class="p">();</span>
     <span class="p">});</span>
 
     <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;specifying response when you need it&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -146,7 +146,7 @@ Jasmine-Ajax mocks out your request at the XMLHttpRequest object, so should be c
       </td>
       <td class="code">
         <div class="highlight">
-          <pre>      <span class="nx">expect</span><span class="p">(</span><span class="nx">mostRecentAjaxRequest</span><span class="p">().</span><span class="nx">url</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;/some/cool/url&#39;</span><span class="p">);</span>
+          <pre>      <span class="nx">expect</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">requests</span><span class="p">.</span><span class="nx">mostRecent</span><span class="p">().</span><span class="nx">url</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;/some/cool/url&#39;</span><span class="p">);</span>
       <span class="nx">expect</span><span class="p">(</span><span class="nx">doneFn</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span></pre>
         </div>
       </td>
@@ -160,7 +160,7 @@ Jasmine-Ajax mocks out your request at the XMLHttpRequest object, so should be c
       </td>
       <td class="code">
         <div class="highlight">
-          <pre>      <span class="nx">mostRecentAjaxRequest</span><span class="p">().</span><span class="nx">response</span><span class="p">({</span></pre>
+          <pre>      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">requests</span><span class="p">.</span><span class="nx">mostRecent</span><span class="p">().</span><span class="nx">response</span><span class="p">({</span></pre>
         </div>
       </td>
     </tr>
@@ -278,15 +278,15 @@ Then <code>andReturn</code> receives the same type of argument as <code>response
         <div class="pilwrap">
           <a class="pilcrow" href="#section-15">&#182;</a>
         </div>
-        <p>If you only want to use it in a single spec, you can use <code>useMock</code>.
-<code>useMock</code> takes a function that will be called after ajax has been mocked, and the mock will be uninstalled when the function completes.</p>
+        <p>If you only want to use it in a single spec, you can use <code>withMock</code>.
+<code>withMock</code> takes a function that will be called after ajax has been mocked, and the mock will be uninstalled when the function completes.</p>
 
       </td>
       <td class="code">
         <div class="highlight">
           <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;allows use in a single spec&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">doneFn</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s1">&#39;success&#39;</span><span class="p">);</span>
-    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">useMock</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">withMock</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
       <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
       <span class="nx">xhr</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">arguments</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
@@ -299,7 +299,7 @@ Then <code>andReturn</code> receives the same type of argument as <code>response
 
       <span class="nx">expect</span><span class="p">(</span><span class="nx">doneFn</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
 
-      <span class="nx">mostRecentAjaxRequest</span><span class="p">().</span><span class="nx">response</span><span class="p">({</span>
+      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">requests</span><span class="p">.</span><span class="nx">mostRecent</span><span class="p">().</span><span class="nx">response</span><span class="p">({</span>
         <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
         <span class="s2">&quot;responseText&quot;</span><span class="o">:</span> <span class="s1">&#39;in spec response&#39;</span>
       <span class="p">});</span>

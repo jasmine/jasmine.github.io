@@ -9,17 +9,17 @@ describe("mocking ajax", function() {
    */
   describe("suite wide usage", function() {
     /**
-     * When you want to mock out all ajax calls across an entire suite, use `installMock()` in a `beforeEach`.
+     * When you want to mock out all ajax calls across an entire suite, use `install()` in a `beforeEach`.
      */
     beforeEach(function() {
-      jasmine.Ajax.installMock();
+      jasmine.Ajax.install();
     });
 
     /**
-     * Because jasmine-ajax stubs out the global XMLHttpRequest for the page, you'll want to `uninstallMock` in an `afterEach` so specs or setup that expect to make a real ajax request can.
+     * Because jasmine-ajax stubs out the global XMLHttpRequest for the page, you'll want to `uninstall()` in an `afterEach` so specs or setup that expect to make a real ajax request can.
      */
     afterEach(function() {
-      jasmine.Ajax.uninstallMock();
+      jasmine.Ajax.uninstall();
     });
 
     it("specifying response when you need it", function() {
@@ -42,13 +42,13 @@ describe("mocking ajax", function() {
       /**
        * At this point the ajax request won't have returned, so any assertions about intermediate states (like spinners) can be run here.
        */
-      expect(mostRecentAjaxRequest().url).toBe('/some/cool/url');
+      expect(jasmine.Ajax.requests.mostRecent().url).toBe('/some/cool/url');
       expect(doneFn).not.toHaveBeenCalled();
 
       /**
        * Now we tell the request what it's response should look like
        */
-      mostRecentAjaxRequest().response({
+      jasmine.Ajax.requests.mostRecent().response({
         /**
          * HTTP response code
          */
@@ -101,12 +101,12 @@ describe("mocking ajax", function() {
   });
 
   /**
-   * If you only want to use it in a single spec, you can use `useMock`.
-   * `useMock` takes a function that will be called after ajax has been mocked, and the mock will be uninstalled when the function completes.
+   * If you only want to use it in a single spec, you can use `withMock`.
+   * `withMock` takes a function that will be called after ajax has been mocked, and the mock will be uninstalled when the function completes.
    */
   it("allows use in a single spec", function() {
     var doneFn = jasmine.createSpy('success');
-    jasmine.Ajax.useMock(function() {
+    jasmine.Ajax.withMock(function() {
       var xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function(arguments) {
         if (this.readyState == this.DONE) {
@@ -119,7 +119,7 @@ describe("mocking ajax", function() {
 
       expect(doneFn).not.toHaveBeenCalled();
 
-      mostRecentAjaxRequest().response({
+      jasmine.Ajax.requests.mostRecent().response({
         "status": 200,
         "responseText": 'in spec response'
       });
