@@ -7,13 +7,11 @@
   <link rel="stylesheet" href="css/docco.css"/>
   <link rel="stylesheet" href="css/jasmine_docco.css"/>
   <link rel="stylesheet" href="lib/jasmine.css"/>
-  
   <script src="lib/jasmine.js"></script>
   <script src="lib/jasmine-html.js"></script>
   <script src="lib/boot.js"></script>
-  <script src="lib/mock-ajax.js"></script>
+  <script src="src/support/mock-ajax.js"></script>
   <script src="src/introduction.js"></script>
-  
   <link rel="icon" href="images/jasmine.ico" sizes="16x16">
   <link rel="icon" href="images/jasmine_32x32.ico" sizes="32x32">
 </head>
@@ -1126,6 +1124,21 @@ The Jasmine Clock is available for a test suites that need the ability to use <c
         <div class="pilwrap">
           <a class="pilcrow" href="#section-36">&#182;</a>
         </div>
+        <p>Be sure to uninstall the clock after you are done to restore the original timer functions.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">afterEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">clock</span><span class="p">().</span><span class="nx">uninstall</span><span class="p">();</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-37">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-37">&#182;</a>
+        </div>
         <p>Calls to any registered callback are triggered when the clock is ticked forward via the <code>jasmine.clock().tick</code> function, which takes a number of milliseconds.</p>
       </td>
       <td class="code">
@@ -1212,10 +1225,10 @@ TODO: How to set the timeout in boot.js</p>
         </div>
       </td>
     </tr>
-    <tr id="section-39">
+    <tr id="section-40">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-39">&#182;</a>
+          <a class="pilcrow" href="#section-40">&#182;</a>
         </div>
         <p>Calls to <code>beforeEach</code>, <code>it</code>, and <code>afterEach</code> can take an optional single argument that should be called when the async work is complete.</p>
       </td>
@@ -1225,15 +1238,15 @@ TODO: How to set the timeout in boot.js</p>
     <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
       <span class="nx">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
       <span class="nx">done</span><span class="p">();</span>
-    <span class="p">},</span> <span class="mi">500</span><span class="p">);</span>
+    <span class="p">},</span> <span class="mi">1</span><span class="p">);</span>
   <span class="p">});</span></pre>
         </div>
       </td>
     </tr>
-    <tr id="section-40">
+    <tr id="section-41">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-40">&#182;</a>
+          <a class="pilcrow" href="#section-41">&#182;</a>
         </div>
         <p>This spec will not start until the <code>done</code> function is called in the call to <code>beforeEach</code> above. And this spec will not complete until its <code>done</code> is called.</p>
       </td>
