@@ -69,10 +69,6 @@
       return env.spyOn(obj, methodName);
     },
 
-    addCustomEqualityTester: function(tester) {
-      env.addCustomEqualityTester(tester);
-    },
-
     jsApiReporter: new jasmine.JsApiReporter({
       timer: new jasmine.Timer()
     })
@@ -127,7 +123,6 @@
    */
   var htmlReporter = new jasmine.HtmlReporter({
     env: env,
-    queryString: queryString,
     onRaiseExceptionsClick: function() { queryString.setParam("catch", !env.catchingExceptions()); },
     getContainer: function() { return document.body; },
     createElement: function() { return document.createElement.apply(document, arguments); },
@@ -151,6 +146,14 @@
   env.specFilter = function(spec) {
     return specFilter.matches(spec.getFullName());
   };
+
+  /**
+   * Setting up timing functions to be able to be overridden. Certain browsers (Safari, IE 8, phantomjs) require this hack.
+   */
+  window.setTimeout = window.setTimeout;
+  window.setInterval = window.setInterval;
+  window.clearTimeout = window.clearTimeout;
+  window.clearInterval = window.clearInterval;
 
   /**
    * ## Execution
