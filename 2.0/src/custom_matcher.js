@@ -76,6 +76,12 @@ var customMatchers = {
 };
 
 /**
+* ### Custom negative comparators
+*
+* If you need more control over the negative comparison (the `not` case) than the simple boolean inversion above, you can also have your matcher factory include another key, `negativeCompare` alongside `compare`, for which the value is a function to invoke when `.not` is used. This function/key is optional.
+*/
+
+/**
  * ## Registration and Usage
  */
 describe("Custom matcher: 'toBeGoofy'", function() {

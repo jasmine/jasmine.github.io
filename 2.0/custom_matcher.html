@@ -227,6 +227,21 @@
         </div>
       </td>
     </tr>
+    <tr id="section-Custom_negative_comparators">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Custom_negative_comparators">&#182;</a>
+        </div>
+        <h3>Custom negative comparators</h3>
+
+<p>If you need more control over the negative comparison (the <code>not</code> case) than the simple boolean inversion above, you can also have your matcher factory include another key, <code>negativeCompare</code> alongside <code>compare</code>, for which the value is a function to invoke when <code>.not</code> is used. This function/key is optional.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre></pre>
+        </div>
+      </td>
+    </tr>
     <tr id="section-Registration_and_Usage">
       <td class="docs">
         <div class="pilwrap">
@@ -240,10 +255,10 @@
         </div>
       </td>
     </tr>
-    <tr id="section-14">
+    <tr id="section-15">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-14">&#182;</a>
+          <a class="pilcrow" href="#section-15">&#182;</a>
         </div>
         <p>Register the custom matchers with Jasmine. All properties on the object passed in will be available as custom matchers (e.g., in this case <code>toBeGoofy</code>).</p>
       </td>
@@ -255,10 +270,10 @@
         </div>
       </td>
     </tr>
-    <tr id="section-15">
+    <tr id="section-16">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-15">&#182;</a>
+          <a class="pilcrow" href="#section-16">&#182;</a>
         </div>
         <p>Once a custom matcher is registered with Jasmine, it is available on any expectation.</p>
 
