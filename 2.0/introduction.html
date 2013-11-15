@@ -1297,5 +1297,8 @@ TODO: How to set the timeout in boot.js</p>
     </tbody>
   </table>
 </div>
+<script>
+  (document.querySelector(".version") || {}).innerHTML = (typeof jasmine !== "undefined") ? jasmine.version : "";
+</script>
 </body>
 </html>

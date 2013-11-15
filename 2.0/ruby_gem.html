@@ -477,5 +477,8 @@ It is the runner&rsquo;s job to convert the result objects from the page, and pa
     </tbody>
   </table>
 </div>
+<script>
+  (document.querySelector(".version") || {}).innerHTML = (typeof jasmine !== "undefined") ? jasmine.version : "";
+</script>
 </body>
 </html>
