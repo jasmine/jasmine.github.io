@@ -13,48 +13,32 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-.title-banner {
-  padding: 12px;
-  display: -moz-box;
-  display: -webkit-box;
-  display: -ms-box;
-  display: box;
-  -moz-box-orient: horizontal;
-  -webkit-box-orient: horizontal;
-  -ms-box-orient: horizontal;
-  box-orient: horizontal;
-  -moz-box-pack: start;
-  -webkit-box-pack: start;
-  -ms-box-pack: start;
-  box-pack: start;
+#jump_to {
+  z-index: 100;
 }
 
-.title-banner a,
-.title-banner span,
-.title-banner div {
-  display: -moz-box;
-  display: -webkit-box;
-  display: -ms-box;
-  display: box;
-  -moz-box-orient: vertical;
-  -webkit-box-orient: vertical;
-  -ms-box-orient: vertical;
-  box-orient: vertical;
-  -moz-box-pack: center;
-  -webkit-box-pack: center;
-  -ms-box-pack: center;
-  box-pack: center;
+.title-banner {
+  position: relative;
+  height: 105px;
+}
+
+.title-banner .jasmine-logo {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
+.title-banner .pivotal-logo {
+  position: absolute;
+  top: 23px;
+  right: 12px;
+  display: table;
 }
 
 .powered {
   padding: 7px 12px 12px;
-}
-
-.spacer {
-  -moz-box-flex: 1;
-  -webkit-box-flex: 1;
-  -ms-box-flex: 1;
-  box-flex: 1;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 strong {
