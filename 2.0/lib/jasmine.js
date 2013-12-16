@@ -97,13 +97,12 @@ getJasmineRequireObj().base = function(j$) {
   j$.MAX_PRETTY_PRINT_DEPTH = 40;
   j$.DEFAULT_TIMEOUT_INTERVAL = 5000;
 
-  j$.getGlobal = function() {
-    function getGlobal() {
-      return this;
-    }
-
-    return getGlobal();
-  };
+  j$.getGlobal = (function() {
+    var jasmineGlobal = eval.call(null, "this");
+    return function() {
+      return jasmineGlobal;
+    };
+  })();
 
   j$.getEnv = function(options) {
     var env = j$.currentEnv_ = j$.currentEnv_ || new j$.Env(options);
@@ -231,14 +230,13 @@ getJasmineRequireObj().Spec = function(j$) {
     this.id = attrs.id;
     this.description = attrs.description || '';
     this.fn = attrs.fn;
-    this.beforeFns = attrs.beforeFns || function() {};
-    this.afterFns = attrs.afterFns || function() {};
-    this.catchingExceptions = attrs.catchingExceptions;
+    this.beforeFns = attrs.beforeFns || function() { return []; };
+    this.afterFns = attrs.afterFns || function() { return []; };
     this.onStart = attrs.onStart || function() {};
     this.exceptionFormatter = attrs.exceptionFormatter || function() {};
     this.getSpecName = attrs.getSpecName || function() { return ''; };
     this.expectationResultFactory = attrs.expectationResultFactory || function() { };
-    this.queueRunner = attrs.queueRunner || function() {};
+    this.queueRunnerFactory = attrs.queueRunnerFactory || function() {};
     this.catchingExceptions = attrs.catchingExceptions || function() { return true; };
 
     this.timer = attrs.timer || {setTimeout: setTimeout, clearTimeout: clearTimeout};
@@ -267,7 +265,8 @@ getJasmineRequireObj().Spec = function(j$) {
   };
 
   Spec.prototype.execute = function(onComplete) {
-    var self = this;
+    var self = this,
+        timeout;
 
     this.onStart(this);
 
@@ -278,13 +277,13 @@ getJasmineRequireObj().Spec = function(j$) {
 
     function timeoutable(fn) {
       return function(done) {
-        var timeout = Function.prototype.apply.apply(self.timer.setTimeout, [j$.getGlobal(), [function() {
+        timeout = Function.prototype.apply.apply(self.timer.setTimeout, [j$.getGlobal(), [function() {
           onException(new Error('Timeout - Async callback was not invoked within timeout specified by jasmine.DEFAULT_TIMEOUT_INTERVAL.'));
           done();
         }, j$.DEFAULT_TIMEOUT_INTERVAL]]);
 
         var callDone = function() {
-          Function.prototype.apply.apply(self.timer.clearTimeout, [j$.getGlobal(), [timeout]]);
+          clearTimeoutable();
           done();
         };
 
@@ -292,18 +291,26 @@ getJasmineRequireObj().Spec = function(j$) {
       };
     }
 
-    var befores = this.beforeFns() || [],
-      afters = this.afterFns() || [],
-      thisOne = (this.fn.length) ? timeoutable(this.fn) : this.fn;
-    var allFns = befores.concat(thisOne).concat(afters);
+    function clearTimeoutable() {
+      Function.prototype.apply.apply(self.timer.clearTimeout, [j$.getGlobal(), [timeout]]);
+      timeout = void 0;
+    }
 
-    this.queueRunner({
-      fns: allFns,
+    var allFns = this.beforeFns().concat(this.fn).concat(this.afterFns()),
+      allTimeoutableFns = [];
+    for (var i = 0; i < allFns.length; i++) {
+      var fn = allFns[i];
+      allTimeoutableFns.push(fn.length > 0 ? timeoutable(fn) : fn);
+    }
+
+    this.queueRunnerFactory({
+      fns: allTimeoutableFns,
       onException: onException,
       onComplete: complete
     });
 
     function onException(e) {
+      clearTimeoutable();
       if (Spec.isPendingSpecException(e)) {
         self.pend();
         return;
@@ -641,7 +648,7 @@ getJasmineRequireObj().Env = function(j$) {
         onStart: specStarted,
         description: description,
         expectationResultFactory: expectationResultFactory,
-        queueRunner: queueRunnerFactory,
+        queueRunnerFactory: queueRunnerFactory,
         fn: fn,
         timer: {setTimeout: realSetTimeout, clearTimeout: realClearTimeout}
       });
@@ -976,14 +983,17 @@ getJasmineRequireObj().Clock = function() {
 getJasmineRequireObj().DelayedFunctionScheduler = function() {
   function DelayedFunctionScheduler() {
     var self = this;
+    var scheduledLookup = [];
     var scheduledFunctions = {};
     var currentTime = 0;
     var delayedFnCount = 0;
 
     self.tick = function(millis) {
       millis = millis || 0;
-      currentTime = currentTime + millis;
-      runFunctionsWithinRange(currentTime - millis, currentTime);
+      var endTime = currentTime + millis;
+
+      runScheduledFunctions(endTime);
+      currentTime = endTime;
     };
 
     self.scheduleFunction = function(funcToCall, millis, params, recurring, timeoutKey, runAtMillis) {
@@ -999,7 +1009,8 @@ getJasmineRequireObj().DelayedFunctionScheduler = function() {
       millis = millis || 0;
       timeoutKey = timeoutKey || ++delayedFnCount;
       runAtMillis = runAtMillis || (currentTime + millis);
-      scheduledFunctions[timeoutKey] = {
+
+      var funcToSchedule = {
         runAtMillis: runAtMillis,
         funcToCall: f,
         recurring: recurring,
@@ -1007,58 +1018,73 @@ getJasmineRequireObj().DelayedFunctionScheduler = function() {
         timeoutKey: timeoutKey,
         millis: millis
       };
+
+      if (runAtMillis in scheduledFunctions) {
+        scheduledFunctions[runAtMillis].push(funcToSchedule);
+      } else {
+        scheduledFunctions[runAtMillis] = [funcToSchedule];
+        scheduledLookup.push(runAtMillis);
+        scheduledLookup.sort(function (a, b) {
+          return a - b;
+        });
+      }
+
       return timeoutKey;
     };
 
     self.removeFunctionWithId = function(timeoutKey) {
-      delete scheduledFunctions[timeoutKey];
+      for (var runAtMillis in scheduledFunctions) {
+        var funcs = scheduledFunctions[runAtMillis];
+        var i = indexOfFirstToPass(funcs, function (func) {
+          return func.timeoutKey === timeoutKey;
+        });
+
+        if (i > -1) {
+          if (funcs.length === 1) {
+            delete scheduledFunctions[runAtMillis];
+            deleteFromLookup(runAtMillis);
+          } else {
+            funcs.splice(i, 1);
+          }
+
+          // intervals get rescheduled when executed, so there's never more
+          // than a single scheduled function with a given timeoutKey
+          break;
+        }
+      }
     };
 
     self.reset = function() {
       currentTime = 0;
+      scheduledLookup = [];
       scheduledFunctions = {};
       delayedFnCount = 0;
     };
 
     return self;
 
-    // finds/dupes functions within range and removes them.
-    function functionsWithinRange(startMillis, endMillis) {
-      var fnsToRun = [];
-      for (var timeoutKey in scheduledFunctions) {
-        var scheduledFunc = scheduledFunctions[timeoutKey];
-        if (scheduledFunc &&
-          scheduledFunc.runAtMillis >= startMillis &&
-          scheduledFunc.runAtMillis <= endMillis) {
+    function indexOfFirstToPass(array, testFn) {
+      var index = -1;
 
-          // remove fn -- we'll reschedule later if it is recurring.
-          self.removeFunctionWithId(timeoutKey);
-          if (!scheduledFunc.recurring) {
-            fnsToRun.push(scheduledFunc); // schedules each function only once
-          } else {
-            fnsToRun.push(buildNthInstanceOf(scheduledFunc, 0));
-            var additionalTimesFnRunsInRange =
-              Math.floor((endMillis - scheduledFunc.runAtMillis) / scheduledFunc.millis);
-            for (var i = 0; i < additionalTimesFnRunsInRange; i++) {
-              fnsToRun.push(buildNthInstanceOf(scheduledFunc, i + 1));
-            }
-            reschedule(buildNthInstanceOf(scheduledFunc, additionalTimesFnRunsInRange));
-          }
+      for (var i = 0; i < array.length; ++i) {
+        if (testFn(array[i])) {
+          index = i;
+          break;
         }
       }
 
-      return fnsToRun;
+      return index;
     }
 
-    function buildNthInstanceOf(scheduledFunc, n) {
-      return {
-        runAtMillis: scheduledFunc.runAtMillis + (scheduledFunc.millis * n),
-        funcToCall: scheduledFunc.funcToCall,
-        params: scheduledFunc.params,
-        millis: scheduledFunc.millis,
-        recurring: scheduledFunc.recurring,
-        timeoutKey: scheduledFunc.timeoutKey
-      };
+    function deleteFromLookup(key) {
+      var value = Number(key);
+      var i = indexOfFirstToPass(scheduledLookup, function (millis) {
+        return millis === value;
+      });
+
+      if (i > -1) {
+        scheduledLookup.splice(i, 1);
+      }
     }
 
     function reschedule(scheduledFn) {
@@ -1070,21 +1096,30 @@ getJasmineRequireObj().DelayedFunctionScheduler = function() {
         scheduledFn.runAtMillis + scheduledFn.millis);
     }
 
-
-    function runFunctionsWithinRange(startMillis, endMillis) {
-      var funcsToRun = functionsWithinRange(startMillis, endMillis);
-      if (funcsToRun.length === 0) {
+    function runScheduledFunctions(endTime) {
+      if (scheduledLookup.length === 0 || scheduledLookup[0] > endTime) {
         return;
       }
 
-      funcsToRun.sort(function(a, b) {
-        return a.runAtMillis - b.runAtMillis;
-      });
+      do {
+        currentTime = scheduledLookup.shift();
 
-      for (var i = 0; i < funcsToRun.length; ++i) {
-        var funcToRun = funcsToRun[i];
-        funcToRun.funcToCall.apply(null, funcToRun.params || []);
-      }
+        var funcsToRun = scheduledFunctions[currentTime];
+        delete scheduledFunctions[currentTime];
+
+        for (var i = 0; i < funcsToRun.length; ++i) {
+          var funcToRun = funcsToRun[i];
+          funcToRun.funcToCall.apply(null, funcToRun.params || []);
+
+          if (funcToRun.recurring) {
+            reschedule(funcToRun);
+          }
+        }
+      } while (scheduledLookup.length > 0 &&
+              // checking first if we're out of time prevents setTimeout(0)
+              // scheduled in a funcToRun from forcing an extra iteration
+                 currentTime !== endTime  &&
+                 scheduledLookup[0] <= endTime);
     }
   }
 
@@ -2363,5 +2398,5 @@ getJasmineRequireObj().toThrowError = function(j$) {
 };
 
 getJasmineRequireObj().version = function() {
-  return "2.0.0-rc5";
+  return "2.0.0";
 };
