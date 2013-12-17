@@ -3,11 +3,17 @@
  This guide is running against Jasmine version <span class="version">FILLED IN AT RUNTIME</span>.
  */
 /**
+ ## Standalone Distribution
+ The [standalone distribution](https://github.com/pivotal/jasmine/tree/master/dist) contains everything you need to start running Jasmine.
+ Opening `SpecRunner.html` will run the included specs.  You'll note that both the source files and their respective specs are linked in the `<head>` of the `SpecRunner.html`.
+ To start using Jasmine, replace the source/spec files with your own.
+ */
+/**
  ## Suites: `describe` Your Tests
- A test suite begins with a call to the global Jasmine function `describe` with two parameters: a string and a function. The string is a name or title for a spec suite - usually what is under test. The function is a block of code that implements the suite.
+ A test suite begins with a call to the global Jasmine function `describe` with two parameters: a string and a function. The string is a name or title for a spec suite - usually what is being tested.  The function is a block of code that implements the suite.
  ## Specs
- Specs are defined by calling the global Jasmine function `it`, which, like `describe` takes a string and a function. The string is a title for this spec and the function is the spec, or test. A spec contains one or more expectations that test the state of the code under test.
- An expectation in Jasmine is an assertion that can be either true or false. A spec with all true expectations is a passing spec. A spec with one or more expectations that evaluate to false is a failing spec.
+ Specs are defined by calling the global Jasmine function `it`, which, like `describe` takes a string and a function. The string is the title of the spec and the function is the spec, or test. A spec contains one or more expectations that test the state of the code.
+ An expectation in Jasmine is an assertion that is either true or false. A spec with all true expectations is a passing spec. A spec with one or more false expectations is a failing spec.
  */
 describe("A suite", function() {
   it("contains spec with an expectation", function() {

@@ -16,7 +16,7 @@ def build_html(version, options = {})
     end
   end
 
-  `bundle exec rocco -l #{options[:language] || 'js'} -t tmp/#{layout} -o tmp/#{prefix} #{Dir.glob(File.join(version, 'src', '*.{js,rb}')).map(&:inspect).join(' ')}`
+  system("bundle exec rocco -l #{options[:language] || 'js'} -t tmp/#{layout} -o tmp/#{prefix} #{Dir.glob(File.join(version, 'src', '*.{js,rb}')).map(&:inspect).join(' ')}")
 
   puts "Copying HTML"
   if files_to_copy.nil?

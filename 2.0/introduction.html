@@ -7,13 +7,11 @@
   <link rel="stylesheet" href="css/docco.css"/>
   <link rel="stylesheet" href="css/jasmine_docco.css"/>
   <link rel="stylesheet" href="lib/jasmine.css"/>
-  
   <script src="lib/jasmine.js"></script>
   <script src="lib/jasmine-html.js"></script>
   <script src="lib/boot.js"></script>
   <script src="src/support/mock-ajax.js"></script>
   <script src="src/introduction.js"></script>
-  
   <link rel="icon" href="images/jasmine.ico" sizes="16x16">
   <link rel="icon" href="images/jasmine_32x32.ico" sizes="32x32">
 </head>
@@ -54,22 +52,28 @@
     </tr>
     </thead>
     <tbody>
-    <tr id="section-Suites:_&lt;code&gt;describe&lt;/code&gt;_Your_Tests">
+    <tr id="section-Standalone_Distribution">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-Suites:_&lt;code&gt;describe&lt;/code&gt;_Your_Tests">&#182;</a>
+          <a class="pilcrow" href="#section-Standalone_Distribution">&#182;</a>
         </div>
         <p>Jasmine is a behavior-driven development framework for testing JavaScript code. It does not depend on any other JavaScript frameworks. It does not require a DOM. And it has a clean, obvious syntax so that you can easily write tests.
 This guide is running against Jasmine version <span class="version">FILLED IN AT RUNTIME</span>.</p>
 
+<h2>Standalone Distribution</h2>
+
+<p>The <a href="https://github.com/pivotal/jasmine/tree/master/dist">standalone distribution</a> contains everything you need to start running Jasmine.
+Opening <code>SpecRunner.html</code> will run the included specs.  You&rsquo;ll note that both the source files and their respective specs are linked in the <code>&lt;head&gt;</code> of the <code>SpecRunner.html</code>.
+To start using Jasmine, replace the source/spec files with your own.</p>
+
 <h2>Suites: <code>describe</code> Your Tests</h2>
 
-<p>A test suite begins with a call to the global Jasmine function <code>describe</code> with two parameters: a string and a function. The string is a name or title for a spec suite &ndash; usually what is under test. The function is a block of code that implements the suite.</p>
+<p>A test suite begins with a call to the global Jasmine function <code>describe</code> with two parameters: a string and a function. The string is a name or title for a spec suite &ndash; usually what is being tested.  The function is a block of code that implements the suite.</p>
 
 <h2>Specs</h2>
 
-<p>Specs are defined by calling the global Jasmine function <code>it</code>, which, like <code>describe</code> takes a string and a function. The string is a title for this spec and the function is the spec, or test. A spec contains one or more expectations that test the state of the code under test.
-An expectation in Jasmine is an assertion that can be either true or false. A spec with all true expectations is a passing spec. A spec with one or more expectations that evaluate to false is a failing spec.</p>
+<p>Specs are defined by calling the global Jasmine function <code>it</code>, which, like <code>describe</code> takes a string and a function. The string is the title of the spec and the function is the spec, or test. A spec contains one or more expectations that test the state of the code.
+An expectation in Jasmine is an assertion that is either true or false. A spec with all true expectations is a passing spec. A spec with one or more false expectations is a failing spec.</p>
       </td>
       <td class="code">
         <div class="highlight">
