@@ -26,19 +26,33 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   top: 12px;
   left: 12px;
+  width: 273px;
+  height: 75px;
+  background-image: url(../images/jasmine-horizontal.png);
+  background-image: url(../images/jasmine-horizontal.svg), none;
+  background-repeat: no-repeat no-repeat;
+  background-size: 100%;
 }
 
-.title-banner .pivotal-logo {
+.powered-container {
   position: absolute;
   top: 23px;
   right: 12px;
-  display: table;
+}
+
+.title-banner .pivotal-logo {
+  width: 150px;
+  height: 54px;
+  background-image: url(../images/pivotal_logo.png);
+  background-image: url(../images/pivotal_logo.svg), none;
+  background-repeat: no-repeat no-repeat;
+  background-size: 100%;
+  float: left;
 }
 
 .powered {
-  padding: 7px 12px 12px;
-  display: table-cell;
-  vertical-align: middle;
+  padding: 15px 12px 12px;
+  float: left;
 }
 
 strong {
