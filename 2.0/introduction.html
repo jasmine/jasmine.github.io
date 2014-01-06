@@ -677,11 +677,11 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
         <h3>Spies: <code>and.throwError</code></h3>
 
-<p>By chaining the spy with <code>and.callThrow</code>, all calls to the spy will <code>throw</code> the specified value.</p>
+<p>By chaining the spy with <code>and.throwError</code>, all calls to the spy will <code>throw</code> the specified value as an error.</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy, when configured to throw a value&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy, when configured to throw an error&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">;</span>
 
   <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>

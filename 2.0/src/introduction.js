@@ -61,7 +61,7 @@ describe("The 'toBe' matcher compares with ===", function() {
 /**
  ### Included Matchers
  Jasmine has a rich set of matchers included. Each is used here - all expectations and specs pass.
- There is also the ability to write [custom matchers](https://github.com/pivotal/jasmine/wiki/Matchers) for when a project's domain calls for specific assertions that are not included below.
+ There is also the ability to write [custom matchers](custom_matcher.html) for when a project's domain calls for specific assertions that are not included below.
  */
 
 describe("Included matchers:", function() {
@@ -468,9 +468,9 @@ describe("A spy, when configured with an alternate implementation", function() {
 
 /**
  ### Spies: `and.throwError`
- By chaining the spy with `and.callThrow`, all calls to the spy will `throw` the specified value.
+ By chaining the spy with `and.throwError`, all calls to the spy will `throw` the specified value as an error.
  */
-describe("A spy, when configured to throw a value", function() {
+describe("A spy, when configured to throw an error", function() {
   var foo, bar;
 
   beforeEach(function() {
