@@ -48,3 +48,18 @@ task :pages do
   build_html(version, files: ruby_files, prefix: 'ruby', language: 'rb', layout_options: { no_tests: true })
 end
 
+desc "build spec runner for 2.0"
+task :spec_runner do
+  template = Tilt.new('src/specRunner.html.erb')
+  context = OpenStruct.new({ version: '2.0' })
+
+  File.open('2.0/lib/specRunner.html', 'w+') do |f|
+    f << template.render(context)
+  end
+end
+
+desc "run specs in phantom"
+task :phantom => :spec_runner do
+  require 'phantomjs'
+  system "#{Phantomjs.path} src/phantom_runner.js #{File.expand_path('2.0/lib/specRunner.html')} --no-color"
+end
