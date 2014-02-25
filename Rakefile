@@ -52,13 +52,13 @@ task :pages do
   build_html(version, files: ruby_files, prefix: 'ruby', language: 'rb', layout_options: { no_tests: true })
 end
 
-desc "build spec runner for 2.0"
+desc "build spec runner"
 task :spec_runner do
   version = get_version
   template = Tilt.new('src/specRunner.html.erb')
   context = OpenStruct.new({ version: version })
 
-  File.open('2.0/lib/specRunner.html', 'w+') do |f|
+  File.open("#{version}/lib/specRunner.html", 'w+') do |f|
     f << template.render(context)
   end
 end
