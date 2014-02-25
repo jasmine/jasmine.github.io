@@ -2,7 +2,7 @@ require 'fileutils'
 require 'tilt'
 
 def get_version
-  ENV['JASMINE_VERSION'] || '2.0'
+  ENV['JASMINE_VERSION'] || 'edge'
 end
 
 def build_html(version, options = {})
@@ -31,7 +31,7 @@ def build_html(version, options = {})
   end
 end
 
-desc "build all 2.0 files"
+desc "build all files for $JASMINE_VERSION"
 task :pages do
   FileUtils.rmtree 'tmp' if File.exist? 'tmp'
   FileUtils.mkdir 'tmp'
@@ -52,7 +52,7 @@ task :pages do
   build_html(version, files: ruby_files, prefix: 'ruby', language: 'rb', layout_options: { no_tests: true })
 end
 
-desc "build spec runner"
+desc "build spec runner for $JASMINE_VERSION"
 task :spec_runner do
   version = get_version
   template = Tilt.new('src/specRunner.html.erb')
@@ -63,7 +63,7 @@ task :spec_runner do
   end
 end
 
-desc "run specs in phantom"
+desc "run specs in phantom for $JASMINE_VERSION"
 task :phantom => :spec_runner do
   require 'phantomjs'
   version = get_version
