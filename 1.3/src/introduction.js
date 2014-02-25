@@ -382,7 +382,7 @@ describe("A spy, when configured to call through", function() {
     expect(foo.getBar).toHaveBeenCalled();
   });
 
-  it("should not effect other functions", function() {
+  it("should not affect other functions", function() {
     expect(bar).toEqual(123);
   });
 
@@ -419,7 +419,7 @@ describe("A spy, when faking a return value", function() {
     expect(foo.getBar).toHaveBeenCalled();
   });
 
-  it("should not effect other functions", function() {
+  it("should not affect other functions", function() {
     expect(bar).toEqual(123);
   });
 
@@ -458,7 +458,7 @@ describe("A spy, when faking a return value", function() {
     expect(foo.getBar).toHaveBeenCalled();
   });
 
-  it("should not effect other functions", function() {
+  it("should not affect other functions", function() {
     expect(bar).toEqual(123);
   });
 
@@ -565,7 +565,7 @@ describe("jasmine.any", function() {
 /**
  ## Mocking the JavaScript Clock
 
- The Jasmine Mock Clock is available for a test suites that need the ability to use `setTimeout` or `setInterval` callbacks. It makes the timer callbacks synchronous, thus making them easier to test.
+ The Jasmine Mock Clock is available for test suites that need the ability to use `setTimeout` or `setInterval` callbacks. It makes the timer callbacks synchronous, thus making them easier to test.
 
  */
 describe("Manually ticking the Jasmine Mock Clock", function() {
@@ -621,7 +621,7 @@ describe("Manually ticking the Jasmine Mock Clock", function() {
 describe("Asynchronous specs", function() {
   var value, flag;
 
-  it("should support async execution of test preparation and exepectations", function() {
+  it("should support async execution of test preparation and expectations", function() {
 
     /**
      Specs are written by defining a set of blocks with calls to `runs`, which usually finish with an asynchronous call.
@@ -708,7 +708,7 @@ describe("Asynchronous specs", function() {
 
 // ## Downloads
 //
-// * The [Standalone Release](http://github.com/pivotal/jasmine/downloads) is for simple, browser page, or console projects
+// * The [Standalone Release](https://github.com/pivotal/jasmine/tree/master/dist) is for simple, browser page, or console projects
 // * The [Jasmine Ruby Gem](http://github.com/pivotal/jasmine-gem) is for Rails, Ruby, or Ruby-friendly development
 // * [Other Environments](http://github.com/pivotal/jasmine/wiki) are supported as well
 //
