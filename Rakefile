@@ -1,6 +1,10 @@
 require 'fileutils'
 require 'tilt'
 
+def get_version
+  ENV['JASMINE_VERSION'] || '2.0'
+end
+
 def build_html(version, options = {})
   layout_template = Tilt.new('src/layout.erb')
   files_to_copy = options[:files]
@@ -34,7 +38,7 @@ task :pages do
 
   layout_template = Tilt.new('src/layout.erb')
 
-  version = '2.0'
+  version = get_version
   files_without_specs = %w(boot)
   ruby_files = %w(ruby_gem)
 
@@ -50,8 +54,9 @@ end
 
 desc "build spec runner for 2.0"
 task :spec_runner do
+  version = get_version
   template = Tilt.new('src/specRunner.html.erb')
-  context = OpenStruct.new({ version: '2.0' })
+  context = OpenStruct.new({ version: version })
 
   File.open('2.0/lib/specRunner.html', 'w+') do |f|
     f << template.render(context)
@@ -61,5 +66,7 @@ end
 desc "run specs in phantom"
 task :phantom => :spec_runner do
   require 'phantomjs'
-  system "#{Phantomjs.path} src/phantom_runner.js #{File.expand_path('2.0/lib/specRunner.html')} --no-color"
+  version = get_version
+
+  system "#{Phantomjs.path} src/phantom_runner.js #{File.expand_path("#{version}/lib/specRunner.html")} --no-color"
 end
