@@ -68,5 +68,16 @@ task :phantom => :spec_runner do
   require 'phantomjs'
   version = get_version
 
+  puts "Running specs for documentation of jasmine version #{version}"
   system "#{Phantomjs.path} src/phantom_runner.js #{File.expand_path("#{version}/lib/specRunner.html")} --no-color"
+end
+
+desc "update jasmine library for edge docs"
+task :update_edge_jasmine do
+  FileUtils.mkdir_p('edge/lib')
+  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/jasmine.js' > edge/lib/jasmine.js`
+  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/jasmine-html.js' > edge/lib/jasmine-html.js`
+  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/jasmine.css' > edge/lib/jasmine.css`
+  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/boot.js' > edge/lib/boot.js`
+  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/console/console.js' > edge/lib/console.js`
 end
