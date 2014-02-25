@@ -20,18 +20,6 @@
 <body>
 <div id="container">
   <div id="background"></div>
-  {{#sources?}}
-  <div id="jump_to">
-    Jump To &hellip;
-    <div id="jump_wrapper">
-      <div id="jump_page">
-        {{#sources}}
-        <a class="source" href="{{ url }}">{{ basename }}</a>
-        {{/sources}}
-      </div>
-    </div>
-  </div>
-  {{/sources?}}
   <div class="title-banner">
     <a class='jasmine-logo' href="http://github.com/pivotal/jasmine"></a>
     <div class='powered-container'>
@@ -39,6 +27,14 @@
       <a href="http://pivotallabs.com/" target="_blank" class="pivotal-logo"></a>
     </div>
   </div>
+  {{#sources?}}
+  <ul class="jump_to">
+	<li> Jump To: </li>
+    {{#sources}}
+    <li><a class="source" href="{{ url }}">{{ basename }}</a></li>
+    {{/sources}}
+  </ul>
+  {{/sources?}}
   <table cellspacing="0" cellpadding="0">
     <thead>
     <tr>

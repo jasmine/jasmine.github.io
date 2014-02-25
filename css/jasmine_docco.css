@@ -13,10 +13,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-#jump_to {
-  z-index: 100;
-}
-
 .title-banner {
   position: relative;
   height: 105px;
@@ -25,7 +21,7 @@ h1, h2, h3, h4, h5, h6 {
 .title-banner .jasmine-logo {
   position: absolute;
   top: 12px;
-  left: 12px;
+  left: 40px;
   width: 273px;
   height: 75px;
   background-image: url(/images/jasmine-horizontal.png);
@@ -53,6 +49,21 @@ h1, h2, h3, h4, h5, h6 {
 .powered {
   padding: 15px 12px 12px;
   float: left;
+}
+
+.jump_to {
+	list-style: none;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.jump_to li {
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.jump_to a:hover {
+	color: #772a70;
 }
 
 strong {
