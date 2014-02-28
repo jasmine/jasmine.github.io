@@ -456,11 +456,26 @@ It is the runner&rsquo;s job to convert the result objects from the page, and pa
           <a class="pilcrow" href="#section-30">&#182;</a>
         </div>
         <p>When the tests have finished, call <code>done</code> on the formatter to run any necessary completion logic.</p>
-
       </td>
       <td class="code">
         <div class="highlight">
           <pre>    <span class="vi">@formatter</span><span class="o">.</span><span class="n">done</span>
+  <span class="k">end</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-31">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-31">&#182;</a>
+        </div>
+        <p>If the runner needs some javascript to be loaded into the page as part of the load, it returns the full path in <code>boot_js</code></p>
+
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="k">def</span> <span class="nf">boot_js</span>
+    <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s1">&#39;runner_boot.js&#39;</span><span class="p">,</span> <span class="bp">__FILE__</span><span class="p">)</span>
   <span class="k">end</span>
 <span class="k">end</span></pre>
         </div>
