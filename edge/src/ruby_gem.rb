@@ -96,4 +96,9 @@ class My::Custom::Runner
     # When the tests have finished, call `done` on the formatter to run any necessary completion logic.
     @formatter.done
   end
+
+  # If the runner needs some javascript to be loaded into the page as part of the load, it returns the full path in `boot_js`
+  def boot_js
+    File.expand_path('runner_boot.js', __FILE__)
+  end
 end
