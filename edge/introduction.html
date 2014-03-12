@@ -1113,15 +1113,15 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-Mocking_the_JavaScript_Timeout_Functions">
+    <tr id="section-Jasmine_Clock">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-Mocking_the_JavaScript_Timeout_Functions">&#182;</a>
+          <a class="pilcrow" href="#section-Jasmine_Clock">&#182;</a>
         </div>
-        <h2>Mocking the JavaScript Timeout Functions</h2>
+        <h2>Jasmine Clock</h2>
 
 <p><strong>This syntax has changed for Jasmine 2.0.</strong>
-The Jasmine Clock is available for a test suites that need the ability to use <code>setTimeout</code> or <code>setInterval</code> callbacks. It makes the timer callbacks synchronous, executing the registered functions only once the clock is ticked forward in time. This makes timer-related code much easier to test.</p>
+The Jasmine Clock is available for testing time dependent code.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -1135,7 +1135,7 @@ The Jasmine Clock is available for a test suites that need the ability to use <c
         <div class="pilwrap">
           <a class="pilcrow" href="#section-36">&#182;</a>
         </div>
-        <p>It is installed with a call to <code>jasmine.clock().install</code> in a spec or suite that needs to call the timer functions.</p>
+        <p>It is installed with a call to <code>jasmine.clock().install</code> in a spec or suite that needs to manipulate time.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -1151,7 +1151,7 @@ The Jasmine Clock is available for a test suites that need the ability to use <c
         <div class="pilwrap">
           <a class="pilcrow" href="#section-37">&#182;</a>
         </div>
-        <p>Be sure to uninstall the clock after you are done to restore the original timer functions.</p>
+        <p>Be sure to uninstall the clock after you are done to restore the original functions.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -1161,12 +1161,16 @@ The Jasmine Clock is available for a test suites that need the ability to use <c
         </div>
       </td>
     </tr>
-    <tr id="section-38">
+    <tr id="section-Mocking_the_JavaScript_Timeout_Functions">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-38">&#182;</a>
+          <a class="pilcrow" href="#section-Mocking_the_JavaScript_Timeout_Functions">&#182;</a>
         </div>
-        <p>Calls to any registered callback are triggered when the clock is ticked forward via the <code>jasmine.clock().tick</code> function, which takes a number of milliseconds.</p>
+        <h3>Mocking the JavaScript Timeout Functions</h3>
+
+<p>You can make <code>setTimeout</code> or <code>setInterval</code> synchronous executing the registered functions only once the clock is ticked forward in time.</p>
+
+<p>To execute registered functions, move time forward via the <code>jasmine.clock().tick</code> function, which takes a number of milliseconds.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -1197,6 +1201,41 @@ The Jasmine Clock is available for a test suites that need the ability to use <c
 
     <span class="nx">jasmine</span><span class="p">.</span><span class="nx">clock</span><span class="p">().</span><span class="nx">tick</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">timerCallback</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">count</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Mocking_the_Date">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Mocking_the_Date">&#182;</a>
+        </div>
+        <h3>Mocking the Date</h3>
+
+<p>The Jasmine Clock can also be used to mock the current date.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Mocking the Date object&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;mocks the Date object and sets it to a given time&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">baseTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">2013</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">23</span><span class="p">);</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-40">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-40">&#182;</a>
+        </div>
+        <p>If you do not provide a base time to <code>mockDate</code> it will use the current date.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">clock</span><span class="p">().</span><span class="nx">mockDate</span><span class="p">(</span><span class="nx">baseTime</span><span class="p">);</span>
+
+      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">clock</span><span class="p">().</span><span class="nx">tick</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">baseTime</span><span class="p">.</span><span class="nx">getTime</span><span class="p">()</span> <span class="o">+</span> <span class="mi">50</span><span class="p">);</span>
+    <span class="p">});</span>
   <span class="p">});</span>
 <span class="p">});</span></pre>
         </div>
@@ -1219,10 +1258,10 @@ Jasmine also has support for running specs that require testing asynchronous ope
         </div>
       </td>
     </tr>
-    <tr id="section-40">
+    <tr id="section-42">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-40">&#182;</a>
+          <a class="pilcrow" href="#section-42">&#182;</a>
         </div>
         <p>Calls to <code>beforeEach</code>, <code>it</code>, and <code>afterEach</code> can take an optional single argument that should be called when the async work is complete.</p>
       </td>
@@ -1237,10 +1276,10 @@ Jasmine also has support for running specs that require testing asynchronous ope
         </div>
       </td>
     </tr>
-    <tr id="section-41">
+    <tr id="section-43">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-41">&#182;</a>
+          <a class="pilcrow" href="#section-43">&#182;</a>
         </div>
         <p>This spec will not start until the <code>done</code> function is called in the call to <code>beforeEach</code> above. And this spec will not complete until its <code>done</code> is called.</p>
       </td>
@@ -1254,10 +1293,10 @@ Jasmine also has support for running specs that require testing asynchronous ope
         </div>
       </td>
     </tr>
-    <tr id="section-42">
+    <tr id="section-44">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-42">&#182;</a>
+          <a class="pilcrow" href="#section-44">&#182;</a>
         </div>
         <p>You can configure how long Jasmine will wait for your asynchonous code to run by setting <code>jasmine.DEFAULT_TIMEOUT_INTERVAL</code></p>
       </td>

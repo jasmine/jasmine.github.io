@@ -782,15 +782,15 @@ describe("jasmine.objectContaining", function() {
 
 
 /**
- ## Mocking the JavaScript Timeout Functions
+ ## Jasmine Clock
  __This syntax has changed for Jasmine 2.0.__
- The Jasmine Clock is available for a test suites that need the ability to use `setTimeout` or `setInterval` callbacks. It makes the timer callbacks synchronous, executing the registered functions only once the clock is ticked forward in time. This makes timer-related code much easier to test.
+ The Jasmine Clock is available for testing time dependent code.
  */
 describe("Manually ticking the Jasmine Clock", function() {
   var timerCallback;
 
   /**
-   It is installed with a call to `jasmine.clock().install` in a spec or suite that needs to call the timer functions.
+   It is installed with a call to `jasmine.clock().install` in a spec or suite that needs to manipulate time.
    */
   beforeEach(function() {
     timerCallback = jasmine.createSpy("timerCallback");
@@ -798,15 +798,17 @@ describe("Manually ticking the Jasmine Clock", function() {
   });
 
   /**
-   *    Be sure to uninstall the clock after you are done to restore the original timer functions.
-   *       */
+   Be sure to uninstall the clock after you are done to restore the original functions.
+   */
   afterEach(function() {
     jasmine.clock().uninstall();
   });
 
-
   /**
-   Calls to any registered callback are triggered when the clock is ticked forward via the `jasmine.clock().tick` function, which takes a number of milliseconds.
+   ### Mocking the JavaScript Timeout Functions
+   You can make `setTimeout` or `setInterval` synchronous executing the registered functions only once the clock is ticked forward in time.
+
+   To execute registered functions, move time forward via the `jasmine.clock().tick` function, which takes a number of milliseconds.
    */
   it("causes a timeout to be called synchronously", function() {
     setTimeout(function() {
@@ -836,7 +838,23 @@ describe("Manually ticking the Jasmine Clock", function() {
     jasmine.clock().tick(50);
     expect(timerCallback.calls.count()).toEqual(2);
   });
+
+  /**
+   ### Mocking the Date
+   The Jasmine Clock can also be used to mock the current date.
+  */
+  describe("Mocking the Date object", function(){
+    it("mocks the Date object and sets it to a given time", function() {
+      var baseTime = new Date(2013, 9, 23);
+      // If you do not provide a base time to `mockDate` it will use the current date.
+      jasmine.clock().mockDate(baseTime);
+
+      jasmine.clock().tick(50);
+      expect(new Date().getTime()).toEqual(baseTime.getTime() + 50);
+    });
+  });
 });
+
 
 /**
  ## Asynchronous Support
