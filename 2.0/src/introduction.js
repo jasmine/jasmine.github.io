@@ -864,6 +864,10 @@ describe("Asynchronous specs", function() {
     expect(value).toBeGreaterThan(0);
     done();
   });
+
+  /**
+   You can configure how long Jasmine will wait for your asynchonous code to run by setting `jasmine.DEFAULT_TIMEOUT_INTERVAL`
+   */
 });
 
 
