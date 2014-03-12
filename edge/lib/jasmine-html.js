@@ -51,7 +51,7 @@ jasmineRequire.HtmlReporter = function(j$) {
     this.initialize = function() {
       htmlReporterMain = createDom('div', {className: 'html-reporter'},
         createDom('div', {className: 'banner'},
-          createDom('span', {className: 'title'}, 'Jasmine'),
+          createDom('a', {className: 'title', href: 'http://jasmine.github.io/', target: '_blank'}),
           createDom('span', {className: 'version'}, j$.version)
         ),
         createDom('ul', {className: 'symbol-summary'}),
@@ -95,6 +95,10 @@ jasmineRequire.HtmlReporter = function(j$) {
 
     var failures = [];
     this.specDone = function(result) {
+      if(result.status == 'empty' && console && console.error) {
+        console.error('Spec \'' + result.fullName + '\' has no expectations.');
+      }
+
       if (result.status != 'disabled') {
         specsExecuted++;
       }
@@ -159,10 +163,18 @@ jasmineRequire.HtmlReporter = function(j$) {
           )
         );
       }
-      var statusBarMessage = '' + pluralize('spec', specsExecuted) + ', ' + pluralize('failure', failureCount);
-      if (pendingSpecCount) { statusBarMessage += ', ' + pluralize('pending spec', pendingSpecCount); }
+      var statusBarMessage = '';
+      var statusBarClassName = 'bar ';
 
-      var statusBarClassName = 'bar ' + ((failureCount > 0) ? 'failed' : 'passed');
+      if (totalSpecsDefined > 0) {
+        statusBarMessage += pluralize('spec', specsExecuted) + ', ' + pluralize('failure', failureCount);
+        if (pendingSpecCount) { statusBarMessage += ', ' + pluralize('pending spec', pendingSpecCount); }
+        statusBarClassName += (failureCount > 0) ? 'failed' : 'passed';
+      } else {
+        statusBarClassName += 'skipped';
+        statusBarMessage += 'No specs found';
+      }
+
       alert.appendChild(createDom('span', {className: statusBarClassName}, statusBarMessage));
 
       var results = find('.results');
@@ -189,12 +201,16 @@ jasmineRequire.HtmlReporter = function(j$) {
               specListNode = createDom('ul', {className: 'specs'});
               domParent.appendChild(specListNode);
             }
+            var specDescription = resultNode.result.description;
+            if(resultNode.result.status == 'empty') {
+              specDescription = 'SPEC HAS NO EXPECTATIONS ' + specDescription;
+            }
             specListNode.appendChild(
               createDom('li', {
                   className: resultNode.result.status,
                   id: 'spec-' + resultNode.result.id
                 },
-                createDom('a', {href: specHref(resultNode.result)}, resultNode.result.description)
+                createDom('a', {href: specHref(resultNode.result)}, specDescription)
               )
             );
           }
