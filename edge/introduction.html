@@ -1202,38 +1202,6 @@ The Jasmine Clock is available for a test suites that need the ability to use <c
         </div>
       </td>
     </tr>
-    <tr id="section-Using_the_mock_clock_for_a_single_spec">
-      <td class="docs">
-        <div class="pilwrap">
-          <a class="pilcrow" href="#section-Using_the_mock_clock_for_a_single_spec">&#182;</a>
-        </div>
-        <h3>Using the mock clock for a single spec</h3>
-
-<p>TODO: implement this and make it available
-describe(&ldquo;Single spec mock clock&rdquo;, function() {
-it(&ldquo;can install and uninstall&rdquo;, function() {
-  jasmine.clock().useMock(function() {
-    setTimeout(function() {
-      timerCallback();
-    }, 100);</p>
-
-<pre><code>expect(timerCallback).not.toHaveBeenCalled();
-
-jasmine.clock().tick(101);
-
-expect(timerCallback).toHaveBeenCalled();
-</code></pre>
-
-<p>});
-});
-});</p>
-      </td>
-      <td class="code">
-        <div class="highlight">
-          <pre></pre>
-        </div>
-      </td>
-    </tr>
     <tr id="section-Asynchronous_Support">
       <td class="docs">
         <div class="pilwrap">
@@ -1242,8 +1210,7 @@ expect(timerCallback).toHaveBeenCalled();
         <h2>Asynchronous Support</h2>
 
 <p><strong>This syntax has changed for Jasmine 2.0.</strong>
-Jasmine also has support for running specs that require testing asynchronous operations.
-TODO: How to set the timeout in boot.js</p>
+Jasmine also has support for running specs that require testing asynchronous operations.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -1252,10 +1219,10 @@ TODO: How to set the timeout in boot.js</p>
         </div>
       </td>
     </tr>
-    <tr id="section-41">
+    <tr id="section-40">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-41">&#182;</a>
+          <a class="pilcrow" href="#section-40">&#182;</a>
         </div>
         <p>Calls to <code>beforeEach</code>, <code>it</code>, and <code>afterEach</code> can take an optional single argument that should be called when the async work is complete.</p>
       </td>
@@ -1270,10 +1237,10 @@ TODO: How to set the timeout in boot.js</p>
         </div>
       </td>
     </tr>
-    <tr id="section-42">
+    <tr id="section-41">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-42">&#182;</a>
+          <a class="pilcrow" href="#section-41">&#182;</a>
         </div>
         <p>This spec will not start until the <code>done</code> function is called in the call to <code>beforeEach</code> above. And this spec will not complete until its <code>done</code> is called.</p>
       </td>

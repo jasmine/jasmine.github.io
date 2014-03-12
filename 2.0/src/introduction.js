@@ -839,30 +839,9 @@ describe("Manually ticking the Jasmine Clock", function() {
 });
 
 /**
- ### Using the mock clock for a single spec
- */
-// TODO: implement this and make it available
-//describe("Single spec mock clock", function() {
-//  it("can install and uninstall", function() {
-//    jasmine.clock().useMock(function() {
-//      setTimeout(function() {
-//        timerCallback();
-//      }, 100);
-//
-//      expect(timerCallback).not.toHaveBeenCalled();
-//
-//      jasmine.clock().tick(101);
-//
-//      expect(timerCallback).toHaveBeenCalled();
-//    });
-//  });
-//});
-
-/**
  ## Asynchronous Support
  __This syntax has changed for Jasmine 2.0.__
  Jasmine also has support for running specs that require testing asynchronous operations.
- TODO: How to set the timeout in boot.js
  */
 describe("Asynchronous specs", function() {
   var value;
