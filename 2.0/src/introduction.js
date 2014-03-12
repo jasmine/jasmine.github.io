@@ -158,7 +158,7 @@ describe("Included matchers:", function() {
     expect(pi).not.toBeLessThan(e);
   });
 
-  it("The 'toBeGreaterThan' is for mathematical comparisons", function() {
+  it("The 'toBeGreaterThan' matcher is for mathematical comparisons", function() {
     var pi = 3.1415926,
       e = 2.78;
 
