@@ -521,7 +521,7 @@ Here is the same set of specs written a little differently. The variable under t
         </div>
         <h2>Spies</h2>
 
-<p>Jasmine&rsquo;s has test double functions called spies. A spy can stub any function and tracks calls to it and all arguments. There are special matchers for interacting with spies.
+<p>Jasmine&rsquo;s has test double functions called spies. A spy can stub any function and tracks calls to it and all arguments. A spy only exists in the <code>describe</code> or <code>it</code> block it is defined, and will be removed after each spec. There are special matchers for interacting with spies.
 <strong>This syntax has changed for Jasmine 2.0.</strong>
 The <code>toHaveBeenCalled</code> matcher will return true if the spy was called. The <code>toHaveBeenCalledWith</code> matcher will return true if the argument list matches any of the recorded calls to the spy.</p>
       </td>
