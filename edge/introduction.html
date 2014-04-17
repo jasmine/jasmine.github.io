@@ -1298,11 +1298,31 @@ Jasmine also has support for running specs that require testing asynchronous ope
         <div class="pilwrap">
           <a class="pilcrow" href="#section-44">&#182;</a>
         </div>
-        <p>You can configure how long Jasmine will wait for your asynchonous code to run by setting <code>jasmine.DEFAULT_TIMEOUT_INTERVAL</code></p>
+        <p>By default jasmine will wait for 5 seconds for an asynchronous spec to finish before causing at timeout failure.
+If specific specs should fail faster or need more time this can be adjusted by setting <code>jasmine.DEFAULT_TIMEOUT_INTERVAL</code> around them.</p>
+
+<p>If the entire suite should have a different timeout, <code>jasmine.DEFAULT_TIMEOUT_INTERVAL</code> can be set globally, outside of any given <code>describe</code>.</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="p">});</span></pre>
+          <pre>  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;long asynchronous specs&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">originalTimeout</span><span class="p">;</span>
+    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">originalTimeout</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">DEFAULT_TIMEOUT_INTERVAL</span><span class="p">;</span>
+      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">DEFAULT_TIMEOUT_INTERVAL</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">;</span>
+    <span class="p">});</span>
+
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;takes a long time&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">done</span><span class="p">();</span>
+      <span class="p">},</span> <span class="mi">9000</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="nx">afterEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">DEFAULT_TIMEOUT_INTERVAL</span> <span class="o">=</span> <span class="nx">originalTimeout</span><span class="p">;</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
         </div>
       </td>
     </tr>

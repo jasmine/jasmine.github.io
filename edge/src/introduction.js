@@ -884,8 +884,28 @@ describe("Asynchronous specs", function() {
   });
 
   /**
-   You can configure how long Jasmine will wait for your asynchonous code to run by setting `jasmine.DEFAULT_TIMEOUT_INTERVAL`
+   By default jasmine will wait for 5 seconds for an asynchronous spec to finish before causing at timeout failure.
+   If specific specs should fail faster or need more time this can be adjusted by setting `jasmine.DEFAULT_TIMEOUT_INTERVAL` around them.
+
+   If the entire suite should have a different timeout, `jasmine.DEFAULT_TIMEOUT_INTERVAL` can be set globally, outside of any given `describe`.
    */
+  describe("long asynchronous specs", function() {
+    var originalTimeout;
+    beforeEach(function() {
+      originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+      jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+    });
+
+    it("takes a long time", function(done) {
+      setTimeout(function() {
+        done();
+      }, 9000);
+    });
+
+    afterEach(function() {
+      jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
+    });
+  });
 });
 
 
