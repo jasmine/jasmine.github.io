@@ -93,7 +93,7 @@
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="n">rails</span> <span class="n">g</span> <span class="ss">jasmine</span><span class="p">:</span><span class="n">install</span></pre>
+          <pre><span class="n">rails</span> <span class="n">g</span> <span class="n">jasmine</span><span class="ss">:install</span></pre>
         </div>
       </td>
     </tr>
@@ -120,7 +120,7 @@ The command line tool will also modify your Rakefile to load the jasmine tasks</
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="n">rails</span> <span class="n">g</span> <span class="ss">jasmine</span><span class="p">:</span><span class="n">examples</span>
+          <pre><span class="n">rails</span> <span class="n">g</span> <span class="n">jasmine</span><span class="ss">:examples</span>
 <span class="n">jasmine</span> <span class="n">examples</span></pre>
         </div>
       </td>
@@ -162,7 +162,7 @@ The command line tool will also modify your Rakefile to load the jasmine tasks</
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="n">rake</span> <span class="ss">jasmine</span><span class="p">:</span><span class="n">ci</span></pre>
+          <pre><span class="n">rake</span> <span class="n">jasmine</span><span class="ss">:ci</span></pre>
         </div>
       </td>
     </tr>
@@ -258,7 +258,7 @@ The command line tool will also modify your Rakefile to load the jasmine tasks</
       </td>
       <td class="code">
         <div class="highlight">
-          <pre>  <span class="n">config</span><span class="o">.</span><span class="n">formatters</span> <span class="o">&lt;&lt;</span> <span class="ss">My</span><span class="p">:</span><span class="ss">:Custom</span><span class="o">::</span><span class="no">Formatter</span></pre>
+          <pre>  <span class="n">config</span><span class="o">.</span><span class="n">formatters</span> <span class="o">&lt;&lt;</span> <span class="no">My</span><span class="o">::</span><span class="no">Custom</span><span class="o">::</span><span class="no">Formatter</span></pre>
         </div>
       </td>
     </tr>
@@ -273,7 +273,7 @@ The lambda allows you to configure other options that need to be configured at i
       </td>
       <td class="code">
         <div class="highlight">
-          <pre>  <span class="n">config</span><span class="o">.</span><span class="n">runner</span> <span class="o">=</span> <span class="nb">lambda</span> <span class="p">{</span> <span class="o">|</span><span class="n">formatter</span><span class="p">,</span> <span class="n">server_url</span><span class="o">|</span> <span class="ss">My</span><span class="p">:</span><span class="ss">:Custom</span><span class="o">::</span><span class="no">Runner</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">formatter</span><span class="p">,</span> <span class="n">server_url</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="p">}</span>
+          <pre>  <span class="n">config</span><span class="o">.</span><span class="n">runner</span> <span class="o">=</span> <span class="nb">lambda</span> <span class="p">{</span> <span class="o">|</span><span class="n">formatter</span><span class="p">,</span> <span class="n">server_url</span><span class="o">|</span> <span class="no">My</span><span class="o">::</span><span class="no">Custom</span><span class="o">::</span><span class="no">Runner</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">formatter</span><span class="p">,</span> <span class="n">server_url</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="p">}</span>
 <span class="k">end</span></pre>
         </div>
       </td>
@@ -300,7 +300,7 @@ The lambda allows you to configure other options that need to be configured at i
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="k">class</span> <span class="nc">My</span><span class="o">::</span><span class="ss">Custom</span><span class="p">:</span><span class="ss">:Formatter</span></pre>
+          <pre><span class="k">class</span> <span class="nc">My</span><span class="o">::</span><span class="no">Custom</span><span class="o">::</span><span class="no">Formatter</span></pre>
         </div>
       </td>
     </tr>
@@ -360,7 +360,7 @@ The parameter will be an array of <code>Jasmine::Result</code> objects</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="k">class</span> <span class="nc">My</span><span class="o">::</span><span class="ss">Custom</span><span class="p">:</span><span class="ss">:Runner</span>
+          <pre><span class="k">class</span> <span class="nc">My</span><span class="o">::</span><span class="no">Custom</span><span class="o">::</span><span class="no">Runner</span>
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">formatter</span><span class="p">,</span> <span class="n">jasmine_server_url</span><span class="p">,</span> <span class="n">result_batch_size</span><span class="p">)</span></pre>
         </div>
       </td>

@@ -26,7 +26,7 @@ var customMatchers = {
       /**
        * ## A Function to `compare`
        *
-       * The compare function receives the value passed to `expect()` as the first argument - the acutal - and the value (if any) passed to the matcher itself as second argument.
+       * The compare function receives the value passed to `expect()` as the first argument - the actual - and the value (if any) passed to the matcher itself as second argument.
        */
       compare: function(actual, expected) {
 
