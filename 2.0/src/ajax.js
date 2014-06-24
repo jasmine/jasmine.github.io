@@ -30,7 +30,7 @@ describe("mocking ajax", function() {
        * Jasmine-Ajax mocks out your request at the XMLHttpRequest object, so should be compatible with other libraries that do ajax requests.
        */
       var xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function(arguments) {
+      xhr.onreadystatechange = function(args) {
         if (this.readyState == this.DONE) {
           doneFn(this.responseText);
         }
@@ -87,7 +87,7 @@ describe("mocking ajax", function() {
        * Make your requests as normal
        */
       var xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function(arguments) {
+      xhr.onreadystatechange = function(args) {
         if (this.readyState == this.DONE) {
           doneFn(this.responseText);
         }
@@ -96,7 +96,7 @@ describe("mocking ajax", function() {
       xhr.open("GET", "/another/url");
       xhr.send();
 
-      expect(doneFn).toHaveBeenCalledWith('immediate response')
+      expect(doneFn).toHaveBeenCalledWith('immediate response');
     });
   });
 
@@ -108,7 +108,7 @@ describe("mocking ajax", function() {
     var doneFn = jasmine.createSpy('success');
     jasmine.Ajax.withMock(function() {
       var xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function(arguments) {
+      xhr.onreadystatechange = function(args) {
         if (this.readyState == this.DONE) {
           doneFn(this.responseText);
         }
