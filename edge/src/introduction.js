@@ -631,6 +631,24 @@ describe("A spy", function() {
   });
 
   /**
+   * When inspecting the return from `all()`, `mostRecent()` and `first()`, the `object` property is set to the value of `this` when the spy was called.
+   */
+  it("tracks the context", function() {
+    var spy = jasmine.createSpy('spy');
+    var baz = {
+      fn: spy
+    };
+    var quux = {
+      fn: spy
+    };
+    baz.spied(123);
+    quux.spied(456);
+
+    expect(spy.calls.first().object).toBe(baz);
+    expect(spy.calls.mostRecent().object).toBe(quux);
+  });
+
+  /**
    * `.calls.reset()`: clears all tracking for a spy
    */
   it("can be reset", function() {
