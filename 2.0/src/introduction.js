@@ -641,8 +641,8 @@ describe("A spy", function() {
     var quux = {
       fn: spy
     };
-    baz.spied(123);
-    quux.spied(456);
+    baz.fn(123);
+    quux.fn(456);
 
     expect(spy.calls.first().object).toBe(baz);
     expect(spy.calls.mostRecent().object).toBe(quux);
