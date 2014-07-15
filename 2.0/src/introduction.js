@@ -211,7 +211,7 @@ describe("A spec", function() {
 
 /**
  ### Setup and Teardown
- To help a test suite DRY up any duplicated setup and teardown code, Jasmine provides the global `beforeEach` and `afterEach` functions. As the name implies the `beforeEach` function is called once before each spec in the `describe` is run and the `afterEach` function is called once after each spec.
+ To help a test suite DRY up any duplicated setup and teardown code, Jasmine provides the global `beforeEach` and `afterEach` functions. As the name implies, the `beforeEach` function is called once before each spec in the `describe` is run, and the `afterEach` function is called once after each spec.
  Here is the same set of specs written a little differently. The variable under test is defined at the top-level scope -- the `describe` block --  and initialization code is moved into a `beforeEach` function. The `afterEach` function resets the variable before continuing.
  */
 
