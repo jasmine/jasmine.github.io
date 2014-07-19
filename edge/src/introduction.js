@@ -4,7 +4,7 @@
  */
 /**
  ## Standalone Distribution
- The [standalone distribution](https://github.com/pivotal/jasmine/tree/master/dist) contains everything you need to start running Jasmine.
+ The [releases page](https://github.com/pivotal/jasmine/releases) has links to download the standalone distribution, which contains everything you need to start running Jasmine.
  After downloading a particular version and unzipping, opening `SpecRunner.html` will run the included specs.  You'll note that both the source files and their respective specs are linked in the `<head>` of the `SpecRunner.html`.
  To start using Jasmine, replace the source/spec files with your own.
  */
