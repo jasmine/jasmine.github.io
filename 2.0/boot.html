@@ -46,7 +46,7 @@
         <div class="pilwrap">
           <a class="pilcrow" href="#section-1">&#182;</a>
         </div>
-        <p>Starting with version 2.0, this file &ldquo;boots&rdquo; Jasmine, performing all of the necessary initialization before executing the loaded environment and all of a project&rsquo;s specs. This file should be loaded after <code>jasmine.js</code>, but before any project source files or spec files are loaded. Thus this file can also be used to customize Jasmine for a project.</p>
+        <p>Starting with version 2.0, this file &ldquo;boots&rdquo; Jasmine, performing all of the necessary initialization before executing the loaded environment and all of a project&rsquo;s specs. This file should be loaded after <code>jasmine.js</code> and <code>jasmine_html.js</code>, but before any project source files or spec files are loaded. Thus this file can also be used to customize Jasmine for a project.</p>
 
 <p>If a project is using Jasmine via the standalone distribution, this file can be customized directly. If a project is using Jasmine via the <a href="http://github.com/pivotal/jasmine-gem">Ruby gem</a>, this file can be copied into the support directory via <code>jasmine copy_boot_js</code>. Other environments (e.g., Python) will have different mechanisms.</p>
 
