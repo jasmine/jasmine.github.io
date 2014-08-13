@@ -93,7 +93,7 @@
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="n">rails</span> <span class="n">g</span> <span class="n">jasmine</span><span class="ss">:install</span></pre>
+          <pre><span class="n">rails</span> <span class="n">g</span> <span class="ss">jasmine</span><span class="p">:</span><span class="n">install</span></pre>
         </div>
       </td>
     </tr>
@@ -120,7 +120,7 @@ The command line tool will also modify your Rakefile to load the jasmine tasks</
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="n">rails</span> <span class="n">g</span> <span class="n">jasmine</span><span class="ss">:examples</span>
+          <pre><span class="n">rails</span> <span class="n">g</span> <span class="ss">jasmine</span><span class="p">:</span><span class="n">examples</span>
 <span class="n">jasmine</span> <span class="n">examples</span></pre>
         </div>
       </td>
@@ -162,7 +162,7 @@ The command line tool will also modify your Rakefile to load the jasmine tasks</
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="n">rake</span> <span class="n">jasmine</span><span class="ss">:ci</span></pre>
+          <pre><span class="n">rake</span> <span class="ss">jasmine</span><span class="p">:</span><span class="n">ci</span></pre>
         </div>
       </td>
     </tr>
@@ -258,7 +258,7 @@ The command line tool will also modify your Rakefile to load the jasmine tasks</
       </td>
       <td class="code">
         <div class="highlight">
-          <pre>  <span class="n">config</span><span class="o">.</span><span class="n">formatters</span> <span class="o">&lt;&lt;</span> <span class="no">My</span><span class="o">::</span><span class="no">Custom</span><span class="o">::</span><span class="no">Formatter</span></pre>
+          <pre>  <span class="n">config</span><span class="o">.</span><span class="n">formatters</span> <span class="o">&lt;&lt;</span> <span class="ss">My</span><span class="p">:</span><span class="ss">:Custom</span><span class="o">::</span><span class="no">Formatter</span></pre>
         </div>
       </td>
     </tr>
@@ -273,8 +273,56 @@ The lambda allows you to configure other options that need to be configured at i
       </td>
       <td class="code">
         <div class="highlight">
-          <pre>  <span class="n">config</span><span class="o">.</span><span class="n">runner</span> <span class="o">=</span> <span class="nb">lambda</span> <span class="p">{</span> <span class="o">|</span><span class="n">formatter</span><span class="p">,</span> <span class="n">server_url</span><span class="o">|</span> <span class="no">My</span><span class="o">::</span><span class="no">Custom</span><span class="o">::</span><span class="no">Runner</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">formatter</span><span class="p">,</span> <span class="n">server_url</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="p">}</span>
+          <pre>  <span class="n">config</span><span class="o">.</span><span class="n">runner</span> <span class="o">=</span> <span class="nb">lambda</span> <span class="p">{</span> <span class="o">|</span><span class="n">formatter</span><span class="p">,</span> <span class="n">server_url</span><span class="o">|</span> <span class="ss">My</span><span class="p">:</span><span class="ss">:Custom</span><span class="o">::</span><span class="no">Runner</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">formatter</span><span class="p">,</span> <span class="n">server_url</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="p">}</span>
 <span class="k">end</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Configuring_the_default_phantomjs_runner">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Configuring_the_default_phantomjs_runner">&#182;</a>
+        </div>
+        <h3>Configuring the default phantomjs runner</h3>
+
+<p>The phantomjs runner supports some additional options.</p>
+
+<p>If you want to see the output from <code>console.log</code> messages from your specs, set show<em>console</em>log to true.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="n">show_console_log</span><span class="p">:</span> <span class="kp">true</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-19">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-19">&#182;</a>
+        </div>
+        <p>If you need to configure the phantomjs webpage object, you can specify a config script.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="n">phantom_config_script</span><span class="p">:</span> <span class="s1">&#39;relative/path/from/project/root.js&#39;</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-20">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-20">&#182;</a>
+        </div>
+        <p>This file will be <code>require</code>d by the phantom runner and the <code>configure</code> function will be passed the constructed <code>page</code> object.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="n">exports</span><span class="o">.</span><span class="n">configure</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">page</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">page</span><span class="o">.</span><span class="n">viewportSize</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">width</span><span class="p">:</span> <span class="mi">340</span><span class="p">,</span>
+    <span class="ss">height</span><span class="p">:</span> <span class="mi">220</span>
+  <span class="p">};</span>
+<span class="p">};</span></pre>
         </div>
       </td>
     </tr>
@@ -291,23 +339,23 @@ The lambda allows you to configure other options that need to be configured at i
         </div>
       </td>
     </tr>
-    <tr id="section-19">
+    <tr id="section-22">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-19">&#182;</a>
+          <a class="pilcrow" href="#section-22">&#182;</a>
         </div>
         <p>Your custom formatter must implement 2 methods, <code>format</code> and <code>done</code></p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="k">class</span> <span class="nc">My</span><span class="o">::</span><span class="no">Custom</span><span class="o">::</span><span class="no">Formatter</span></pre>
+          <pre><span class="k">class</span> <span class="nc">My</span><span class="o">::</span><span class="ss">Custom</span><span class="p">:</span><span class="ss">:Formatter</span></pre>
         </div>
       </td>
     </tr>
-    <tr id="section-20">
+    <tr id="section-23">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-20">&#182;</a>
+          <a class="pilcrow" href="#section-23">&#182;</a>
         </div>
         <p><code>format</code> is called by the runner every time it gets a batch of results from the page.
 The parameter will be an array of <code>Jasmine::Result</code> objects</p>
@@ -322,10 +370,10 @@ The parameter will be an array of <code>Jasmine::Result</code> objects</p>
         </div>
       </td>
     </tr>
-    <tr id="section-21">
+    <tr id="section-24">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-21">&#182;</a>
+          <a class="pilcrow" href="#section-24">&#182;</a>
         </div>
         <p><code>done</code> will be called by the runner after all results have come in.</p>
       </td>
@@ -351,24 +399,24 @@ The parameter will be an array of <code>Jasmine::Result</code> objects</p>
         </div>
       </td>
     </tr>
-    <tr id="section-23">
+    <tr id="section-26">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-23">&#182;</a>
+          <a class="pilcrow" href="#section-26">&#182;</a>
         </div>
         <p>Once constructed, a runner only needs to implement a <code>run</code> method</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="k">class</span> <span class="nc">My</span><span class="o">::</span><span class="no">Custom</span><span class="o">::</span><span class="no">Runner</span>
+          <pre><span class="k">class</span> <span class="nc">My</span><span class="o">::</span><span class="ss">Custom</span><span class="p">:</span><span class="ss">:Runner</span>
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">formatter</span><span class="p">,</span> <span class="n">jasmine_server_url</span><span class="p">,</span> <span class="n">result_batch_size</span><span class="p">)</span></pre>
         </div>
       </td>
     </tr>
-    <tr id="section-24">
+    <tr id="section-27">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-24">&#182;</a>
+          <a class="pilcrow" href="#section-27">&#182;</a>
         </div>
         <p>The formatter passed in is responsible for making sure all configured formatters receive the same messages.</p>
       </td>
@@ -378,10 +426,10 @@ The parameter will be an array of <code>Jasmine::Result</code> objects</p>
         </div>
       </td>
     </tr>
-    <tr id="section-25">
+    <tr id="section-28">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-25">&#182;</a>
+          <a class="pilcrow" href="#section-28">&#182;</a>
         </div>
         <p>The <code>jasmine_server_url</code> is the full http://&lt;host&gt;:&lt;port&gt; url where the jasmine server was started</p>
       </td>
@@ -393,10 +441,10 @@ The parameter will be an array of <code>Jasmine::Result</code> objects</p>
         </div>
       </td>
     </tr>
-    <tr id="section-26">
+    <tr id="section-29">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-26">&#182;</a>
+          <a class="pilcrow" href="#section-29">&#182;</a>
         </div>
         <p><code>run</code> is responsible coordinating the test run.</p>
       </td>
@@ -406,10 +454,10 @@ The parameter will be an array of <code>Jasmine::Result</code> objects</p>
         </div>
       </td>
     </tr>
-    <tr id="section-27">
+    <tr id="section-30">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-27">&#182;</a>
+          <a class="pilcrow" href="#section-30">&#182;</a>
         </div>
         <p>Here we&rsquo;re using Phantom to load the page and run the specs</p>
       </td>
@@ -420,10 +468,10 @@ The parameter will be an array of <code>Jasmine::Result</code> objects</p>
         </div>
       </td>
     </tr>
-    <tr id="section-28">
+    <tr id="section-31">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-28">&#182;</a>
+          <a class="pilcrow" href="#section-31">&#182;</a>
         </div>
         <p>The <code>phantom_jasmine_run.js</code> script writes out batches of results as JSON</p>
       </td>
@@ -434,10 +482,10 @@ The parameter will be an array of <code>Jasmine::Result</code> objects</p>
         </div>
       </td>
     </tr>
-    <tr id="section-29">
+    <tr id="section-32">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-29">&#182;</a>
+          <a class="pilcrow" href="#section-32">&#182;</a>
         </div>
         <p>Formatters expect to get <code>Jasmine::Result</code> objects.
 It is the runner&rsquo;s job to convert the result objects from the page, and pass them to the <code>format</code> method of their formatter.</p>
@@ -451,10 +499,10 @@ It is the runner&rsquo;s job to convert the result objects from the page, and pa
         </div>
       </td>
     </tr>
-    <tr id="section-30">
+    <tr id="section-33">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-30">&#182;</a>
+          <a class="pilcrow" href="#section-33">&#182;</a>
         </div>
         <p>When the tests have finished, call <code>done</code> on the formatter to run any necessary completion logic.</p>
       </td>
@@ -465,10 +513,10 @@ It is the runner&rsquo;s job to convert the result objects from the page, and pa
         </div>
       </td>
     </tr>
-    <tr id="section-31">
+    <tr id="section-34">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-31">&#182;</a>
+          <a class="pilcrow" href="#section-34">&#182;</a>
         </div>
         <p>If the runner needs some javascript to be loaded into the page as part of the load, it returns the full path in <code>boot_js</code></p>
 

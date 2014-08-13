@@ -49,6 +49,23 @@ Jasmine.configure do |config|
   config.runner = lambda { |formatter, server_url| My::Custom::Runner.new(formatter, server_url, 100) }
 end
 
+#### Configuring the default phantomjs runner
+# The phantomjs runner supports some additional options.
+#
+# If you want to see the output from `console.log` messages from your specs, set show_console_log to true.
+show_console_log: true
+
+# If you need to configure the phantomjs webpage object, you can specify a config script.
+phantom_config_script: 'relative/path/from/project/root.js'
+
+# This file will be `require`d by the phantom runner and the `configure` function will be passed the constructed `page` object.
+exports.configure = function(page) {
+  page.viewportSize = {
+    width: 340,
+    height: 220
+  };
+};
+
 ### Custom Formatters
 
 # Your custom formatter must implement 2 methods, `format` and `done`
