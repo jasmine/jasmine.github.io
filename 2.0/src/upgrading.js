@@ -35,7 +35,7 @@ describe("Upgrading to jasmine 2.0", function() {
                * The comparison should now return an object with `pass` and `message` attributes.
                *
                * For more information on the <a href="custom_matcher.html">use of custom matchers</a>.
-               * This page is intedned to show the changes necessary to upgrade a 1.x suite to 2.0
+               * This page is intended to show the changes necessary to upgrade a 1.x suite to 2.0
                */
               /* was:
                 this.message = function() {
