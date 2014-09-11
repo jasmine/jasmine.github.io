@@ -63,6 +63,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       return env.xdescribe(description, specDefinitions);
     },
 
+    fdescribe: function(description, specDefinitions) {
+      return env.fdescribe(description, specDefinitions);
+    },
+
     it: function(desc, func) {
       return env.it(desc, func);
     },
@@ -71,12 +75,24 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       return env.xit(desc, func);
     },
 
+    fit: function(desc, func) {
+      return env.fit(desc, func);
+    },
+
     beforeEach: function(beforeEachFunction) {
       return env.beforeEach(beforeEachFunction);
     },
 
     afterEach: function(afterEachFunction) {
       return env.afterEach(afterEachFunction);
+    },
+
+    beforeAll: function(beforeAllFunction) {
+      return env.beforeAll(beforeAllFunction);
+    },
+
+    afterAll: function(afterAllFunction) {
+      return env.afterAll(afterAllFunction);
     },
 
     expect: function(actual) {

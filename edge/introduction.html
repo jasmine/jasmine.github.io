@@ -324,16 +324,29 @@ There is also the ability to write <a href="custom_matcher.html">custom matchers
         </div>
         <h3>Setup and Teardown</h3>
 
-<p>To help a test suite DRY up any duplicated setup and teardown code, Jasmine provides the global <code>beforeEach</code> and <code>afterEach</code> functions. As the name implies, the <code>beforeEach</code> function is called once before each spec in the <code>describe</code> is run, and the <code>afterEach</code> function is called once after each spec.
-Here is the same set of specs written a little differently. The variable under test is defined at the top-level scope &mdash; the <code>describe</code> block &mdash;  and initialization code is moved into a <code>beforeEach</code> function. The <code>afterEach</code> function resets the variable before continuing.</p>
+<p>To help a test suite DRY up any duplicated setup and teardown code, Jasmine provides the global <code>beforeEach</code>, <code>afterEach</code>, <code>beforeAll</code>, and <code>afterAll</code> functions.</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spec (with setup and tear-down)&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">foo</span><span class="p">;</span>
+          <pre></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-9">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-9">&#182;</a>
+        </div>
+        <p>As the name implies, the <code>beforeEach</code> function is called once before each spec in the <code>describe</code> is run, and the <code>afterEach</code> function is called once after each spec.</p>
+
+<p>Here is the same set of specs written a little differently. The variable under test is defined at the top-level scope &mdash; the <code>describe</code> block &mdash;  and initialization code is moved into a <code>beforeEach</code> function. The <code>afterEach</code> function resets the variable before continuing.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spec using beforeEach and afterEach&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
   <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="nx">foo</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
   <span class="p">});</span>
 
@@ -348,6 +361,40 @@ Here is the same set of specs written a little differently. The variable under t
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can have more than one expectation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
     <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-10">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-10">&#182;</a>
+        </div>
+        <p>The <code>beforeAll</code> function is called only once before all the specs in <code>describe</code> are run, and the <code>afterAll</code> function is called after all specs finish. These functions can be used to speed up test suites with expensive setup and teardown.</p>
+
+<p>However, be careful using <code>beforeAll</code> and <code>afterAll</code>! Since they are not reset between specs, it is easy to accidentally leak state between your specs so that they erroneously pass or fail.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spec using beforeAll and afterAll&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">foo</span><span class="p">;</span>
+
+  <span class="nx">beforeAll</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="nx">afterAll</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;sets the initial value of foo before specs run&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="nx">foo</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;does not reset foo between specs&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">});</span></pre>
         </div>
@@ -470,10 +517,10 @@ Here is the same set of specs written a little differently. The variable under t
         </div>
       </td>
     </tr>
-    <tr id="section-13">
+    <tr id="section-15">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-13">&#182;</a>
+          <a class="pilcrow" href="#section-15">&#182;</a>
         </div>
         <p>Any spec declared with <code>xit</code> is marked as pending.</p>
       </td>
@@ -485,10 +532,10 @@ Here is the same set of specs written a little differently. The variable under t
         </div>
       </td>
     </tr>
-    <tr id="section-14">
+    <tr id="section-16">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-14">&#182;</a>
+          <a class="pilcrow" href="#section-16">&#182;</a>
         </div>
         <p>Any spec declared without a function body will also be marked pending in results.</p>
       </td>
@@ -498,10 +545,10 @@ Here is the same set of specs written a little differently. The variable under t
         </div>
       </td>
     </tr>
-    <tr id="section-15">
+    <tr id="section-17">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-15">&#182;</a>
+          <a class="pilcrow" href="#section-17">&#182;</a>
         </div>
         <p>And if you call the function <code>pending</code> anywhere in the spec body, no matter the expectations, the spec will be marked pending.</p>
       </td>
@@ -794,10 +841,10 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-23">
+    <tr id="section-25">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-23">&#182;</a>
+          <a class="pilcrow" href="#section-25">&#182;</a>
         </div>
         <p><code>.calls.any()</code>: returns <code>false</code> if the spy has not been called at all, and then <code>true</code> once at least one call happens.</p>
       </td>
@@ -813,10 +860,10 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-24">
+    <tr id="section-26">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-24">&#182;</a>
+          <a class="pilcrow" href="#section-26">&#182;</a>
         </div>
         <p><code>.calls.count()</code>: returns the number of times the spy was called</p>
       </td>
@@ -833,10 +880,10 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-25">
+    <tr id="section-27">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-25">&#182;</a>
+          <a class="pilcrow" href="#section-27">&#182;</a>
         </div>
         <p><code>.calls.argsFor(index)</code>: returns the arguments passed to call number <code>index</code></p>
       </td>
@@ -852,10 +899,10 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-26">
+    <tr id="section-28">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-26">&#182;</a>
+          <a class="pilcrow" href="#section-28">&#182;</a>
         </div>
         <p><code>.calls.allArgs()</code>: returns the arguments to all calls</p>
       </td>
@@ -870,10 +917,10 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-27">
+    <tr id="section-29">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-27">&#182;</a>
+          <a class="pilcrow" href="#section-29">&#182;</a>
         </div>
         <p><code>.calls.all()</code>: returns the context (the <code>this</code>) and arguments passed all calls</p>
       </td>
@@ -887,10 +934,10 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-28">
+    <tr id="section-30">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-28">&#182;</a>
+          <a class="pilcrow" href="#section-30">&#182;</a>
         </div>
         <p><code>.calls.mostRecent()</code>: returns the context (the <code>this</code>) and arguments for the most recent call</p>
       </td>
@@ -905,10 +952,10 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-29">
+    <tr id="section-31">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-29">&#182;</a>
+          <a class="pilcrow" href="#section-31">&#182;</a>
         </div>
         <p><code>.calls.first()</code>: returns the context (the <code>this</code>) and arguments for the first call</p>
       </td>
@@ -923,10 +970,10 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-30">
+    <tr id="section-32">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-30">&#182;</a>
+          <a class="pilcrow" href="#section-32">&#182;</a>
         </div>
         <p>When inspecting the return from <code>all()</code>, <code>mostRecent()</code> and <code>first()</code>, the <code>object</code> property is set to the value of <code>this</code> when the spy was called.</p>
       </td>
@@ -949,10 +996,10 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-31">
+    <tr id="section-33">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-31">&#182;</a>
+          <a class="pilcrow" href="#section-33">&#182;</a>
         </div>
         <p><code>.calls.reset()</code>: clears all tracking for a spy</p>
       </td>
@@ -1157,10 +1204,10 @@ The Jasmine Clock is available for testing time dependent code.</p>
         </div>
       </td>
     </tr>
-    <tr id="section-37">
+    <tr id="section-39">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-37">&#182;</a>
+          <a class="pilcrow" href="#section-39">&#182;</a>
         </div>
         <p>It is installed with a call to <code>jasmine.clock().install</code> in a spec or suite that needs to manipulate time.</p>
       </td>
@@ -1173,10 +1220,10 @@ The Jasmine Clock is available for testing time dependent code.</p>
         </div>
       </td>
     </tr>
-    <tr id="section-38">
+    <tr id="section-40">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-38">&#182;</a>
+          <a class="pilcrow" href="#section-40">&#182;</a>
         </div>
         <p>Be sure to uninstall the clock after you are done to restore the original functions.</p>
       </td>
@@ -1249,10 +1296,10 @@ The Jasmine Clock is available for testing time dependent code.</p>
         </div>
       </td>
     </tr>
-    <tr id="section-41">
+    <tr id="section-43">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-41">&#182;</a>
+          <a class="pilcrow" href="#section-43">&#182;</a>
         </div>
         <p>If you do not provide a base time to <code>mockDate</code> it will use the current date.</p>
       </td>
@@ -1285,10 +1332,10 @@ Jasmine also has support for running specs that require testing asynchronous ope
         </div>
       </td>
     </tr>
-    <tr id="section-43">
+    <tr id="section-45">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-43">&#182;</a>
+          <a class="pilcrow" href="#section-45">&#182;</a>
         </div>
         <p>Calls to <code>beforeEach</code>, <code>it</code>, and <code>afterEach</code> can take an optional single argument that should be called when the async work is complete.</p>
       </td>
@@ -1303,10 +1350,10 @@ Jasmine also has support for running specs that require testing asynchronous ope
         </div>
       </td>
     </tr>
-    <tr id="section-44">
+    <tr id="section-46">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-44">&#182;</a>
+          <a class="pilcrow" href="#section-46">&#182;</a>
         </div>
         <p>This spec will not start until the <code>done</code> function is called in the call to <code>beforeEach</code> above. And this spec will not complete until its <code>done</code> is called.</p>
       </td>
@@ -1320,10 +1367,10 @@ Jasmine also has support for running specs that require testing asynchronous ope
         </div>
       </td>
     </tr>
-    <tr id="section-45">
+    <tr id="section-47">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-45">&#182;</a>
+          <a class="pilcrow" href="#section-47">&#182;</a>
         </div>
         <p>By default jasmine will wait for 5 seconds for an asynchronous spec to finish before causing a timeout failure.
 If specific specs should fail faster or need more time this can be adjusted by setting <code>jasmine.DEFAULT_TIMEOUT_INTERVAL</code> around them.</p>
