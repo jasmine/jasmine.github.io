@@ -607,7 +607,7 @@ describe("A spy", function() {
   it("can provide the context and arguments to all calls", function() {
     foo.setBar(123);
 
-    expect(foo.setBar.calls.all()).toEqual([{object: foo, args: [123]}]);
+    expect(foo.setBar.calls.all()).toEqual([{object: foo, args: [123], returnValue: undefined}]);
   });
 
   /**
@@ -617,7 +617,7 @@ describe("A spy", function() {
     foo.setBar(123);
     foo.setBar(456, "baz");
 
-    expect(foo.setBar.calls.mostRecent()).toEqual({object: foo, args: [456, "baz"]});
+    expect(foo.setBar.calls.mostRecent()).toEqual({object: foo, args: [456, "baz"], returnValue: undefined});
   });
 
   /**
@@ -627,7 +627,7 @@ describe("A spy", function() {
     foo.setBar(123);
     foo.setBar(456, "baz");
 
-    expect(foo.setBar.calls.first()).toEqual({object: foo, args: [123]});
+    expect(foo.setBar.calls.first()).toEqual({object: foo, args: [123], returnValue: undefined});
   });
 
   /**

@@ -49,7 +49,8 @@ jasmineRequire.HtmlReporter = function(j$) {
       symbols;
 
     this.initialize = function() {
-      htmlReporterMain = createDom('div', {className: 'html-reporter'},
+      clearPrior();
+      htmlReporterMain = createDom('div', {className: 'jasmine_html-reporter'},
         createDom('div', {className: 'banner'},
           createDom('a', {className: 'title', href: 'http://jasmine.github.io/', target: '_blank'}),
           createDom('span', {className: 'version'}, j$.version)
@@ -95,7 +96,7 @@ jasmineRequire.HtmlReporter = function(j$) {
 
     var failures = [];
     this.specDone = function(result) {
-      if(result.status == 'empty' && console && console.error) {
+      if(noExpectations(result) && console && console.error) {
         console.error('Spec \'' + result.fullName + '\' has no expectations.');
       }
 
@@ -104,7 +105,7 @@ jasmineRequire.HtmlReporter = function(j$) {
       }
 
       symbols.appendChild(createDom('li', {
-          className: result.status,
+          className: noExpectations(result) ? 'empty' : result.status,
           id: 'spec_' + result.id,
           title: result.fullName
         }
@@ -150,7 +151,7 @@ jasmineRequire.HtmlReporter = function(j$) {
           type: 'checkbox'
         })
       ));
-      var checkbox = find('input');
+      var checkbox = find('#raise-exceptions');
 
       checkbox.checked = !env.catchingExceptions();
       checkbox.onclick = onRaiseExceptionsClick;
@@ -202,7 +203,7 @@ jasmineRequire.HtmlReporter = function(j$) {
               domParent.appendChild(specListNode);
             }
             var specDescription = resultNode.result.description;
-            if(resultNode.result.status == 'empty') {
+            if(noExpectations(resultNode.result)) {
               specDescription = 'SPEC HAS NO EXPECTATIONS ' + specDescription;
             }
             specListNode.appendChild(
@@ -246,7 +247,16 @@ jasmineRequire.HtmlReporter = function(j$) {
     return this;
 
     function find(selector) {
-      return getContainer().querySelector('.html-reporter ' + selector);
+      return getContainer().querySelector('.jasmine_html-reporter ' + selector);
+    }
+
+    function clearPrior() {
+      // return the reporter
+      var oldReporter = find('');
+      
+      if(oldReporter) {
+        getContainer().removeChild(oldReporter);
+      }
     }
 
     function createDom(type, attrs, childrenVarArgs) {
@@ -286,7 +296,12 @@ jasmineRequire.HtmlReporter = function(j$) {
     }
 
     function setMenuModeTo(mode) {
-      htmlReporterMain.setAttribute('class', 'html-reporter ' + mode);
+      htmlReporterMain.setAttribute('class', 'jasmine_html-reporter ' + mode);
+    }
+
+    function noExpectations(result) {
+      return (result.failedExpectations.length + result.passedExpectations.length) === 0 &&
+        result.status === 'passed';
     }
   }
 
