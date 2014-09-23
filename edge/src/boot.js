@@ -32,51 +32,7 @@
    *
    * Build up the functions that will be exposed as the Jasmine public interface. A project can customize, rename or alias any of these functions as desired, provided the implementation remains unchanged.
    */
-  var jasmineInterface = {
-    describe: function(description, specDefinitions) {
-      return env.describe(description, specDefinitions);
-    },
-
-    xdescribe: function(description, specDefinitions) {
-      return env.xdescribe(description, specDefinitions);
-    },
-
-    it: function(desc, func) {
-      return env.it(desc, func);
-    },
-
-    xit: function(desc, func) {
-      return env.xit(desc, func);
-    },
-
-    beforeEach: function(beforeEachFunction) {
-      return env.beforeEach(beforeEachFunction);
-    },
-
-    afterEach: function(afterEachFunction) {
-      return env.afterEach(afterEachFunction);
-    },
-
-    expect: function(actual) {
-      return env.expect(actual);
-    },
-
-    pending: function() {
-      return env.pending();
-    },
-
-    spyOn: function(obj, methodName) {
-      return env.spyOn(obj, methodName);
-    },
-
-    addCustomEqualityTester: function(tester) {
-      env.addCustomEqualityTester(tester);
-    },
-
-    jsApiReporter: new jasmine.JsApiReporter({
-      timer: new jasmine.Timer()
-    })
-  };
+  var jasmineInterface = jasmineRequire.interface(jasmine, env);
 
   /**
    * Add all of the Jasmine global/public interface to the proper global, so a project can use the public interface directly. For example, calling `describe` in specs instead of `jasmine.getEnv().describe`.
@@ -86,27 +42,6 @@
   } else {
     extend(window, jasmineInterface);
   }
-
-  /**
-   * Expose the interface for adding custom equality testers.
-   */
-  jasmine.addCustomEqualityTester = function(tester) {
-    env.addCustomEqualityTester(tester);
-  };
-
-  /**
-   * Expose the interface for adding custom expectation matchers
-   */
-  jasmine.addMatchers = function(matchers) {
-    return env.addMatchers(matchers);
-  };
-
-  /**
-   * Expose the mock interface for the JavaScript timeout functions
-   */
-  jasmine.clock = function() {
-    return env.clock;
-  };
 
   /**
    * ## Runner Parameters
@@ -127,7 +62,6 @@
    */
   var htmlReporter = new jasmine.HtmlReporter({
     env: env,
-    queryString: queryString,
     onRaiseExceptionsClick: function() { queryString.setParam("catch", !env.catchingExceptions()); },
     getContainer: function() { return document.body; },
     createElement: function() { return document.createElement.apply(document, arguments); },
@@ -151,6 +85,14 @@
   env.specFilter = function(spec) {
     return specFilter.matches(spec.getFullName());
   };
+
+  /**
+   * Setting up timing functions to be able to be overridden. Certain browsers (Safari, IE 8, phantomjs) require this hack.
+   */
+  window.setTimeout = window.setTimeout;
+  window.setInterval = window.setInterval;
+  window.clearTimeout = window.clearTimeout;
+  window.clearInterval = window.clearInterval;
 
   /**
    * ## Execution
