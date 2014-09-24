@@ -1,7 +1,7 @@
 /**
  Starting with version 2.0, this file "boots" Jasmine, performing all of the necessary initialization before executing the loaded environment and all of a project's specs. This file should be loaded after `jasmine.js` and `jasmine_html.js`, but before any project source files or spec files are loaded. Thus this file can also be used to customize Jasmine for a project.
 
- If a project is using Jasmine via the standalone distribution, this file can be customized directly. If a project is using Jasmine via the [Ruby gem][jasmine-gem], this file can be copied into the support directory via `jasmine copy_boot_js`. Other environments (e.g., Python) will have different mechanisms.
+ If a project is using Jasmine via the standalone distribution, this file can be [customized](custom_boot.html) directly. If a project is using Jasmine via the [Ruby gem][jasmine-gem], this file can be copied into the support directory via `jasmine copy_boot_js`. Other environments (e.g., Python) will have different mechanisms.
 
  The location of `boot.js` can be specified and/or overridden in `jasmine.yml`.
 
@@ -30,7 +30,7 @@
   /**
    * ## The Global Interface
    *
-   * Build up the functions that will be exposed as the Jasmine public interface. A project can customize, rename or alias any of these functions as desired, provided the implementation remains unchanged.
+   * Build up the functions that will be exposed as the Jasmine public interface. A project can [customize](custom_boot.html), rename or alias any of these functions as desired, provided the implementation remains unchanged.
    */
   var jasmineInterface = jasmineRequire.interface(jasmine, env);
 
