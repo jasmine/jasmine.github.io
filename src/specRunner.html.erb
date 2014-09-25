@@ -24,7 +24,7 @@
   <% end %>
 
   <% Dir.glob(File.join(version, 'src', '*.js')).each do |file| %>
-    <% unless File.basename(file) == 'boot.js' %>
+    <% unless File.basename(file) =~ /boot\.js\z/ %>
       <script src="../src/<%= File.basename(file) %>"></script>
     <% end %>
   <% end %>

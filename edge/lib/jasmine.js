@@ -821,7 +821,7 @@ getJasmineRequireObj().Env = function(j$) {
         message += error.message || error;
       }
 
-      currentSpec.addExpectationResult(false, {
+      currentRunnable().addExpectationResult(false, {
         matcherName: '',
         passed: false,
         expected: '',
@@ -1490,6 +1490,7 @@ getJasmineRequireObj().MockDate = function() {
     }
 
     function createDateProperties() {
+      FakeDate.prototype = GlobalDate.prototype;
 
       FakeDate.now = function() {
         if (GlobalDate.now) {
@@ -2790,12 +2791,20 @@ getJasmineRequireObj().interface = function(jasmine, env) {
       return env.xdescribe(description, specDefinitions);
     },
 
+    fdescribe: function(description, specDefinitions) {
+      return env.fdescribe(description, specDefinitions);
+    },
+
     it: function(desc, func) {
       return env.it(desc, func);
     },
 
     xit: function(desc, func) {
       return env.xit(desc, func);
+    },
+
+    fit: function(desc, func) {
+      return env.fit(desc, func);
     },
 
     beforeEach: function(beforeEachFunction) {
