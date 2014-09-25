@@ -211,15 +211,18 @@ describe("A spec", function() {
 
 /**
  ### Setup and Teardown
- To help a test suite DRY up any duplicated setup and teardown code, Jasmine provides the global `beforeEach` and `afterEach` functions. As the name implies, the `beforeEach` function is called once before each spec in the `describe` is run, and the `afterEach` function is called once after each spec.
- Here is the same set of specs written a little differently. The variable under test is defined at the top-level scope -- the `describe` block --  and initialization code is moved into a `beforeEach` function. The `afterEach` function resets the variable before continuing.
+ To help a test suite DRY up any duplicated setup and teardown code, Jasmine provides the global `beforeEach`, `afterEach`, `beforeAll`, and `afterAll` functions.
  */
 
-describe("A spec (with setup and tear-down)", function() {
-  var foo;
+/** As the name implies, the `beforeEach` function is called once before each spec in the `describe` is run, and the `afterEach` function is called once after each spec.
+ *
+ *
+ Here is the same set of specs written a little differently. The variable under test is defined at the top-level scope -- the `describe` block --  and initialization code is moved into a `beforeEach` function. The `afterEach` function resets the variable before continuing.
+ */
+describe("A spec using beforeEach and afterEach", function() {
+  var foo = 0;
 
   beforeEach(function() {
-    foo = 0;
     foo += 1;
   });
 
@@ -236,6 +239,33 @@ describe("A spec (with setup and tear-down)", function() {
     expect(true).toEqual(true);
   });
 });
+
+/** The `beforeAll` function is called only once before all the specs in `describe` are run, and the `afterAll` function is called after all specs finish. These functions can be used to speed up test suites with expensive setup and teardown.
+ *
+ *
+ * However, be careful using `beforeAll` and `afterAll`! Since they are not reset between specs, it is easy to accidentally leak state between your specs so that they erroneously pass or fail.
+ */
+describe("A spec using beforeAll and afterAll", function() {
+  var foo;
+
+  beforeAll(function() {
+    foo = 1;
+  });
+
+  afterAll(function() {
+    foo = 0;
+  });
+
+  it("sets the initial value of foo before specs run", function() {
+    expect(foo).toEqual(1);
+    foo += 1;
+  });
+
+  it("does not reset foo between specs", function() {
+    expect(foo).toEqual(2);
+  });
+});
+
 
 /**
 ### The `this` keyword
