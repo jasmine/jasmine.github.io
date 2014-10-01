@@ -23,10 +23,8 @@
     <script src="../src/support/<%= File.basename(file) %>"></script>
   <% end %>
 
-  <% Dir.glob(File.join(version, 'src', '*.js')).each do |file| %>
-    <% unless File.basename(file) =~ /boot\.js\z/ %>
-      <script src="../src/<%= File.basename(file) %>"></script>
-    <% end %>
+  <% spec_files.each do |file| %>
+    <script src="../src/<%= File.basename(file) %>"></script>
   <% end %>
 </head>
 <!-- TODO: turbolinks breaks spec filter links -->

@@ -61,10 +61,20 @@ desc "build spec runner for $JASMINE_VERSION"
 task :spec_runner do
   version = get_version
   template = Tilt.new('src/specRunner.html.erb')
-  context = OpenStruct.new({ version: version })
+  spec_files = Dir.glob(File.join(version, 'src', '*.js'))
+  spec_files.reject! { |filename| filename =~ /boot\.js\z/ }
+  context = OpenStruct.new({ version: version, spec_files: spec_files })
 
-  File.open("#{version}/lib/specRunner.html", 'w+') do |f|
+  File.open(File.join(version, 'lib', 'specRunner.html'), 'w+') do |f|
     f << template.render(context)
+  end
+
+  if spec_files.any? { |filename| filename =~ /focused_specs\.js\z/ }
+    spec_files.reject! { |filename| filename =~ /focused_specs\.js\z/ }
+
+    File.open(File.join(version, 'lib', 'specRunner2.html'), 'w+') do |f|
+      f << template.render(context)
+    end
   end
 end
 
@@ -74,7 +84,9 @@ task :phantom => :spec_runner do
   version = get_version
 
   puts "Running specs for documentation of jasmine version #{version}"
-  system "#{Phantomjs.path} src/phantom_runner.js #{File.expand_path("#{version}/lib/specRunner.html")} --no-color"
+  Dir.glob(File.join(version, 'lib', 'specRunner*.html')).each do |runner|
+    system "#{Phantomjs.path} src/phantom_runner.js #{File.expand_path(runner)} --no-color"
+  end
 end
 
 desc "update jasmine library for edge docs"
