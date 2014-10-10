@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+  <title>custom_reporter.js</title>
+  <link href='http://fonts.googleapis.com/css?family=Lora|Istok+Web:700' rel='stylesheet' type='text/css'/>
+  <link rel="stylesheet" href="/css/docco.css"/>
+  <link rel="stylesheet" href="/css/jasmine_docco.css"/>
+  <link rel="stylesheet" href="lib/jasmine.css"/>
+  <script src="lib/jasmine.js"></script>
+  <script src="lib/jasmine-html.js"></script>
+  <script src="lib/boot.js"></script>
+  <script src="src/support/mock-ajax.js"></script>
+  <script src="src/custom_reporter.js"></script>
+  <link rel="icon" href="/images/jasmine.ico" sizes="16x16"/>
+  <link rel="icon" href="/images/jasmine_32x32.ico" sizes="32x32"/>
+</head>
+<body>
+<div id="container">
+  <div id="background"></div>
+  <div class="title-banner">
+    <a class='jasmine-logo' href="http://github.com/pivotal/jasmine"></a>
+    <div class='powered-container'>
+      <span class='powered'>Powered by</span>
+      <a href="http://pivotallabs.com/" target="_blank" class="pivotal-logo"></a>
+    </div>
+  </div>
+  <ul class="jump_to">
+	<li> Jump To: </li>
+    <li><a class="source" href="ajax.html">ajax.js</a></li>
+    <li><a class="source" href="boot.html">boot.js</a></li>
+    <li><a class="source" href="custom_boot.html">custom_boot.js</a></li>
+    <li><a class="source" href="custom_equality.html">custom_equality.js</a></li>
+    <li><a class="source" href="custom_matcher.html">custom_matcher.js</a></li>
+    <li><a class="source" href="custom_reporter.html">custom_reporter.js</a></li>
+    <li><a class="source" href="focused_specs.html">focused_specs.js</a></li>
+    <li><a class="source" href="introduction.html">introduction.js</a></li>
+    <li><a class="source" href="python_egg.html">python_egg.py</a></li>
+    <li><a class="source" href="ruby_gem.html">ruby_gem.rb</a></li>
+    <li><a class="source" href="upgrading.html">upgrading.js</a></li>
+  </ul>
+  <table cellspacing="0" cellpadding="0">
+    <thead>
+    <tr>
+      <th class="docs">
+        <h1>custom_reporter.js</h1>
+      </th>
+      <th class="code"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr id="section-1">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-1">&#182;</a>
+        </div>
+        <p>If you don&rsquo;t like the way the built-in jasmine reporters look, you can always write your own.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-2">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-2">&#182;</a>
+        </div>
+        <p>A jasmine reporter is just an object with the right functions available.
+None of the functions here are required when creating a custom reporter, any that are not specified on your reporter will just be ignored.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="kd">var</span> <span class="nx">myReporter</span> <span class="o">=</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-jasmineStarted">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-jasmineStarted">&#182;</a>
+        </div>
+        <h3>jasmineStarted</h3>
+
+<p><code>jasmineStarted</code> is called after all of the specs have been loaded, but just before execution starts.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">jasmineStarted</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">suiteInfo</span><span class="p">)</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-4">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-4">&#182;</a>
+        </div>
+        <p>suiteInfo contains a property that tells how many specs have been defined</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Running suite with &#39;</span> <span class="o">+</span> <span class="nx">suiteInfo</span><span class="p">.</span><span class="nx">totalSpecsDefined</span><span class="p">);</span>
+  <span class="p">},</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-suiteStarted">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-suiteStarted">&#182;</a>
+        </div>
+        <h3>suiteStarted</h3>
+
+<p><code>suiteStarted</code> is invoked when a <code>describe</code> starts to run</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">suiteStarted</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-6">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-6">&#182;</a>
+        </div>
+        <p>the result contains some meta data about the suite itself.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Suite started: &#39;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">description</span> <span class="o">+</span> <span class="s1">&#39; whose full description is: &#39;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">fullName</span><span class="p">);</span>
+  <span class="p">},</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-specStarted">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-specStarted">&#182;</a>
+        </div>
+        <h3>specStarted</h3>
+
+<p><code>specStarted</code> is invoked when an <code>it</code> starts to run (including associated <code>beforeEach</code> functions)</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">specStarted</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-8">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-8">&#182;</a>
+        </div>
+        <p>the result contains some meta data about the spec itself.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Spec started: &#39;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">description</span> <span class="o">+</span> <span class="s1">&#39; whose full description is: &#39;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">fullName</span><span class="p">);</span>
+  <span class="p">},</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-specDone">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-specDone">&#182;</a>
+        </div>
+        <h3>specDone</h3>
+
+<p><code>specDone</code> is invoked when an <code>it</code> and its associated <code>beforeEach</code> and <code>afterEach</code> functions have been run.</p>
+
+<p>While jasmine doesn&rsquo;t require any specific functions, not defining a <code>specDone</code> will make it impossible for a reporter to know when a spec has failed.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">specDone</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-10">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-10">&#182;</a>
+        </div>
+        <p>The result here is the same object as in <code>specStarted</code> but with the addition of a status and a list of failedExpectations.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Spec: &#39;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">description</span> <span class="o">+</span> <span class="s1">&#39; was &#39;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">failedExpectations</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-11">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-11">&#182;</a>
+        </div>
+        <p>Each <code>failedExpectation</code> has a message that describes the failure and a stack trace.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Failure: &#39;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">failedExpectations</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">message</span><span class="p">);</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">failedExpecatations</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">stack</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">},</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-suiteDone">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-suiteDone">&#182;</a>
+        </div>
+        <h3>suiteDone</h3>
+
+<p><code>suiteDone</code> is invoked when all of the child specs and suites for a given suite have been run</p>
+
+<p>While jasmine doesn&rsquo;t require any specific functions, not defining a <code>suiteDone</code> will make it impossible for a reporter to know when a suite has failures in an <code>afterAll</code>.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">suiteDone</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-13">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-13">&#182;</a>
+        </div>
+        <p>The result here is the same object as in <code>suiteStarted</code> but with the addition of a status and a list of failedExpectations.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Suite: &#39;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">description</span> <span class="o">+</span> <span class="s1">&#39; was &#39;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">failedExpectations</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-14">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-14">&#182;</a>
+        </div>
+        <p>Any <code>failedExpectation</code>s on the suite itself are the result of a failure in an <code>afterAll</code>.
+Each <code>failedExpectation</code> has a message that describes the failure and a stack trace.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;AfterAll &#39;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">failedExpectations</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">message</span><span class="p">);</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">failedExpecatations</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">stack</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">},</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-jasmineDone">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-jasmineDone">&#182;</a>
+        </div>
+        <h3>jasmineDone</h3>
+
+<p>When the entire suite has finished execution <code>jasmineDone</code> is called</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">jasmineDone</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Finished suite&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-16">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-16">&#182;</a>
+        </div>
+        <p>Register the reporter with jasmine</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">jasmine</span><span class="p">.</span><span class="nx">getEnv</span><span class="p">().</span><span class="nx">addReporter</span><span class="p">(</span><span class="nx">myReporter</span><span class="p">);</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-17">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-17">&#182;</a>
+        </div>
+        <p>If you look at the console output for this page, you should see the output from this reporter</p>
+
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Top Level suite&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;spec&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Nested suite&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;nested spec&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script>
+  (document.querySelector(".version") || {}).innerHTML = (typeof jasmine !== "undefined") ? jasmine.version : "";
+</script>
+</body>
+</html>
