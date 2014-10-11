@@ -59,7 +59,7 @@ var myReporter = {
        * Each `failedExpectation` has a message that describes the failure and a stack trace.
        */
       console.log('Failure: ' + result.failedExpectations[i].message);
-      console.log(result.failedExpecatations[i].stack);
+      console.log(result.failedExpectations[i].stack);
     }
   },
   /**
@@ -80,7 +80,7 @@ var myReporter = {
        * Each `failedExpectation` has a message that describes the failure and a stack trace.
        */
       console.log('AfterAll ' + result.failedExpectations[i].message);
-      console.log(result.failedExpecatations[i].stack);
+      console.log(result.failedExpectations[i].stack);
     }
   },
   /**
