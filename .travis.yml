@@ -3,7 +3,7 @@ language: ruby
 script: bundle exec rake phantom
 matrix:
   include:
-    env:
-      - JASMINE_VERSION="2.0"
-    env:
-      - JASMINE_VERSION="edge"
+  - env:
+    - JASMINE_VERSION="2.0"
+  - env:
+    - JASMINE_VERSION="edge"
