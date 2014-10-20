@@ -39,7 +39,7 @@ task :pages do
   layout_template = Tilt.new('src/layout.erb')
 
   version = get_version
-  files_without_specs = %w(boot custom_boot)
+  files_without_specs = %w(boot custom_boot node)
   ruby_files = %w(ruby_gem)
   python_files = %w(python_egg)
 
