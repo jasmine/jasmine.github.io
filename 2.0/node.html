@@ -7,6 +7,11 @@
   <link rel="stylesheet" href="/css/docco.css"/>
   <link rel="stylesheet" href="/css/jasmine_docco.css"/>
   <link rel="stylesheet" href="lib/jasmine.css"/>
+  <script src="lib/jasmine.js"></script>
+  <script src="lib/jasmine-html.js"></script>
+  <script src="lib/boot.js"></script>
+  <script src="src/support/mock-ajax.js"></script>
+  <script src="src/node.js"></script>
   <link rel="icon" href="/images/jasmine.ico" sizes="16x16"/>
   <link rel="icon" href="/images/jasmine_32x32.ico" sizes="32x32"/>
 </head>
@@ -27,7 +32,7 @@
     <li><a class="source" href="custom_equality.html">custom_equality.js</a></li>
     <li><a class="source" href="custom_matcher.html">custom_matcher.js</a></li>
     <li><a class="source" href="introduction.html">introduction.js</a></li>
-    <li><a class="source" href="node_js.html">node.js</a></li>
+    <li><a class="source" href="node.html">node.js</a></li>
     <li><a class="source" href="python_egg.html">python_egg.py</a></li>
     <li><a class="source" href="ruby_gem.html">ruby_gem.rb</a></li>
     <li><a class="source" href="upgrading.html">upgrading.js</a></li>
@@ -36,18 +41,18 @@
     <thead>
     <tr>
       <th class="docs">
-        <h1>python_egg.py</h1>
+        <h1>node.js</h1>
       </th>
       <th class="code"></th>
     </tr>
     </thead>
     <tbody>
-    <tr id="section-Using_Jasmine_with_Python">
+    <tr id="section-Using_Jasmine_with_node">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-Using_Jasmine_with_Python">&#182;</a>
+          <a class="pilcrow" href="#section-Using_Jasmine_with_node">&#182;</a>
         </div>
-        <h1>Using Jasmine with node</h1>
+        <h2>Using Jasmine with node</h2>
 
 <p>The Jasmine node package contains helper code for developing and running Jasmine tests for node-based projects.</p>
       </td>
@@ -62,29 +67,30 @@
         <div class="pilwrap">
           <a class="pilcrow" href="#section-Install">&#182;</a>
         </div>
-        <h2>Install</h2>
+        <h3>Install</h3>
 
 <p>You can install Jasmine using npm, locally in your project and globally to use the CLI tool.</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="n">npm</span> <span class="n">install</span> <span class="n">-D</span> <span class="n">jasmine</span></pre>
-          <pre><span class="n">npm</span> <span class="n">install</span> <span class="n">-g</span> <span class="n">jasmine</span></pre>
+          <pre><span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">D</span> <span class="nx">jasmine</span>
+
+<span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">jasmine</span></pre>
         </div>
       </td>
     </tr>
-    <tr id="section-init_a_Project">
+    <tr id="section-Init_a_Project">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-init_a_Project">&#182;</a>
+          <a class="pilcrow" href="#section-Init_a_Project">&#182;</a>
         </div>
-        <h2>init a Project</h2>
+        <h3>Init a Project</h3>
 
-<p>Initailize a project for Jasmine by creating a spec directory and configuration json for you.</p>
+<p>Initialize a project for Jasmine by creating a spec directory and configuration json for you.</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="n">jasmine</span><span class="o">-</span><span class="n">init</span></pre>
+          <pre><span class="nx">jasmine</span> <span class="nx">init</span></pre>
         </div>
       </td>
     </tr>
@@ -93,7 +99,7 @@
         <div class="pilwrap">
           <a class="pilcrow" href="#section-Configuration">&#182;</a>
         </div>
-        <h2>Configuration</h2>
+        <h3>Configuration</h3>
 
 <p>Customize <code>spec/support/jasmine.json</code> to enumerate the source files and spec files you would like the
 Jasmine runner to include. You may use dir glob strings.</p>
@@ -109,13 +115,14 @@ Jasmine runner to include. You may use dir glob strings.</p>
         <div class="pilwrap">
           <a class="pilcrow" href="#section-Usage">&#182;</a>
         </div>
-        <h2>Usage</h2>
+        <h3>Usage</h3>
 
 <p>Once you have set up your <code>jasmine.json</code>, you can start Jasmine by running <code>jasmine</code>.</p>
+
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="n">jasmine</span></pre>
+          <pre><span class="nx">jasmine</span></pre>
         </div>
       </td>
     </tr>
