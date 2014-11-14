@@ -6,4 +6,6 @@ matrix:
   - env:
     - JASMINE_VERSION="2.0"
   - env:
+    - JASMINE_VERSION="2.1"
+  - env:
     - JASMINE_VERSION="edge"

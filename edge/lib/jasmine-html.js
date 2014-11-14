@@ -84,7 +84,7 @@ jasmineRequire.HtmlReporter = function(j$) {
     };
 
     this.suiteDone = function(result) {
-      if (result.failedExpectations && result.failedExpectations.length > 0) {
+      if (result.status == 'failed') {
         failedSuites.push(result);
       }
 
@@ -101,7 +101,7 @@ jasmineRequire.HtmlReporter = function(j$) {
 
     var failures = [];
     this.specDone = function(result) {
-      if(noExpectations(result) && console && console.error) {
+      if(noExpectations(result) && typeof console !== 'undefined' && typeof console.error !== 'undefined') {
         console.error('Spec \'' + result.fullName + '\' has no expectations.');
       }
 

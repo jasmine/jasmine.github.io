@@ -564,6 +564,7 @@ getJasmineRequireObj().Env = function(j$) {
       options.catchException = catchException;
       options.clearStack = options.clearStack || clearStack;
       options.timer = {setTimeout: realSetTimeout, clearTimeout: realClearTimeout};
+      options.fail = self.fail;
 
       new j$.QueueRunner(options).execute();
     };
@@ -727,7 +728,7 @@ getJasmineRequireObj().Env = function(j$) {
       return runnablesExplictlySet;
     };
 
-    var specFactory = function(description, fn, suite) {
+    var specFactory = function(description, fn, suite, timeout) {
       totalSpecsDefined++;
       var spec = new j$.Spec({
         id: getNextSpecId(),
@@ -742,7 +743,10 @@ getJasmineRequireObj().Env = function(j$) {
         expectationResultFactory: expectationResultFactory,
         queueRunnerFactory: queueRunnerFactory,
         userContext: function() { return suite.clonedSharedUserContext(); },
-        queueableFn: { fn: fn, type: 'it', timeout: function() { return j$.DEFAULT_TIMEOUT_INTERVAL; } }
+        queueableFn: {
+          fn: fn,
+          timeout: function() { return timeout || j$.DEFAULT_TIMEOUT_INTERVAL; }
+        }
       });
 
       runnableLookupTable[spec.id] = spec;
@@ -766,20 +770,20 @@ getJasmineRequireObj().Env = function(j$) {
       }
     };
 
-    this.it = function(description, fn) {
-      var spec = specFactory(description, fn, currentDeclarationSuite);
+    this.it = function(description, fn, timeout) {
+      var spec = specFactory(description, fn, currentDeclarationSuite, timeout);
       currentDeclarationSuite.addChild(spec);
       return spec;
     };
 
-    this.xit = function(description, fn) {
-      var spec = this.it(description, fn);
+    this.xit = function() {
+      var spec = this.it.apply(this, arguments);
       spec.pend();
       return spec;
     };
 
-    this.fit = function(description, fn ){
-      var spec = this.it(description, fn);
+    this.fit = function(){
+      var spec = this.it.apply(this, arguments);
 
       focusedRunnables.push(spec.id);
       unfocusAncestor();
@@ -794,20 +798,32 @@ getJasmineRequireObj().Env = function(j$) {
       return currentRunnable().expect(actual);
     };
 
-    this.beforeEach = function(beforeEachFunction) {
-      currentDeclarationSuite.beforeEach({ fn: beforeEachFunction, type: 'beforeEach', timeout: function() { return j$.DEFAULT_TIMEOUT_INTERVAL; } });
+    this.beforeEach = function(beforeEachFunction, timeout) {
+      currentDeclarationSuite.beforeEach({
+        fn: beforeEachFunction,
+        timeout: function() { return timeout || j$.DEFAULT_TIMEOUT_INTERVAL; }
+      });
     };
 
-    this.beforeAll = function(beforeAllFunction) {
-      currentDeclarationSuite.beforeAll({ fn: beforeAllFunction, type: 'beforeAll', timeout: function() { return j$.DEFAULT_TIMEOUT_INTERVAL; } });
+    this.beforeAll = function(beforeAllFunction, timeout) {
+      currentDeclarationSuite.beforeAll({
+        fn: beforeAllFunction,
+        timeout: function() { return timeout || j$.DEFAULT_TIMEOUT_INTERVAL; }
+      });
     };
 
-    this.afterEach = function(afterEachFunction) {
-      currentDeclarationSuite.afterEach({ fn: afterEachFunction, type: 'afterEach', timeout: function() { return j$.DEFAULT_TIMEOUT_INTERVAL; } });
+    this.afterEach = function(afterEachFunction, timeout) {
+      currentDeclarationSuite.afterEach({
+        fn: afterEachFunction,
+        timeout: function() { return timeout || j$.DEFAULT_TIMEOUT_INTERVAL; }
+      });
     };
 
-    this.afterAll = function(afterAllFunction) {
-      currentDeclarationSuite.afterAll({ fn: afterAllFunction, type: 'afterAll', timeout: function() { return j$.DEFAULT_TIMEOUT_INTERVAL; } });
+    this.afterAll = function(afterAllFunction, timeout) {
+      currentDeclarationSuite.afterAll({
+        fn: afterAllFunction,
+        timeout: function() { return timeout || j$.DEFAULT_TIMEOUT_INTERVAL; }
+      });
     };
 
     this.pending = function() {
@@ -866,26 +882,31 @@ getJasmineRequireObj().JsApiReporter = function() {
       return status;
     };
 
-    var suites = {};
+    var suites = [],
+      suites_hash = {};
 
     this.suiteStarted = function(result) {
-      storeSuite(result);
+      suites_hash[result.id] = result;
     };
 
     this.suiteDone = function(result) {
       storeSuite(result);
     };
 
+    this.suiteResults = function(index, length) {
+      return suites.slice(index, index + length);
+    };
+
     function storeSuite(result) {
-      suites[result.id] = result;
+      suites.push(result);
+      suites_hash[result.id] = result;
     }
 
     this.suites = function() {
-      return suites;
+      return suites_hash;
     };
 
     var specs = [];
-    this.specStarted = function(result) { };
 
     this.specDone = function(result) {
       specs.push(result);
@@ -1703,6 +1724,7 @@ getJasmineRequireObj().QueueRunner = function(j$) {
     this.catchException = attrs.catchException || function() { return true; };
     this.userContext = attrs.userContext || {};
     this.timer = attrs.timeout || {setTimeout: setTimeout, clearTimeout: clearTimeout};
+    this.fail = attrs.fail || function() {};
   }
 
   QueueRunner.prototype.execute = function() {
@@ -1747,6 +1769,11 @@ getJasmineRequireObj().QueueRunner = function(j$) {
           self.run(queueableFns, iterativeIndex + 1);
         }),
         timeoutId;
+
+      next.fail = function() {
+        self.fail.apply(null, arguments);
+        next();
+      };
 
       if (queueableFn.timeout) {
         timeoutId = Function.prototype.apply.apply(self.timer.setTimeout, [j$.getGlobal(), [function() {
@@ -1968,7 +1995,6 @@ getJasmineRequireObj().Suite = function() {
 
   Suite.prototype.disable = function() {
     this.disabled = true;
-    this.result.status = 'disabled';
   };
 
   Suite.prototype.beforeEach = function(fn) {
@@ -1989,6 +2015,18 @@ getJasmineRequireObj().Suite = function() {
 
   Suite.prototype.addChild = function(child) {
     this.children.push(child);
+  };
+
+  Suite.prototype.status = function() {
+    if (this.disabled) {
+      return 'disabled';
+    }
+
+    if (this.result.failedExpectations.length > 0) {
+      return 'failed';
+    } else {
+      return 'finished';
+    }
   };
 
   Suite.prototype.execute = function(onComplete) {
@@ -2021,7 +2059,7 @@ getJasmineRequireObj().Suite = function() {
     });
 
     function complete() {
-      self.result.status = self.disabled ? 'disabled' : 'finished';
+      self.result.status = self.status();
       self.resultCallback(self.result);
 
       if (onComplete) {
@@ -2149,7 +2187,9 @@ getJasmineRequireObj().matchersUtil = function(j$) {
     contains: function(haystack, needle, customTesters) {
       customTesters = customTesters || [];
 
-      if (Object.prototype.toString.apply(haystack) === '[object Array]') {
+      if ((Object.prototype.toString.apply(haystack) === '[object Array]') ||
+        (!!haystack && !haystack.indexOf))
+      {
         for (var i = 0; i < haystack.length; i++) {
           if (eq(haystack[i], needle, [], [], customTesters)) {
             return true;
@@ -2157,6 +2197,7 @@ getJasmineRequireObj().matchersUtil = function(j$) {
         }
         return false;
       }
+
       return !!haystack && haystack.indexOf(needle) >= 0;
     },
 
@@ -2862,5 +2903,5 @@ getJasmineRequireObj().interface = function(jasmine, env) {
 };
 
 getJasmineRequireObj().version = function() {
-  return '2.0.4';
+  return '2.1.0';
 };
