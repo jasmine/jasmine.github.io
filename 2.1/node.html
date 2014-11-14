@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+  <title>node.js</title>
+  <link href='http://fonts.googleapis.com/css?family=Lora|Istok+Web:700' rel='stylesheet' type='text/css'/>
+  <link rel="stylesheet" href="/css/docco.css"/>
+  <link rel="stylesheet" href="/css/jasmine_docco.css"/>
+  <link rel="stylesheet" href="lib/jasmine.css"/>
+  <link rel="icon" href="/images/jasmine.ico" sizes="16x16"/>
+  <link rel="icon" href="/images/jasmine_32x32.ico" sizes="32x32"/>
+</head>
+<body>
+<div id="container">
+  <div id="background"></div>
+  <div class="title-banner">
+    <a class='jasmine-logo' href="http://github.com/pivotal/jasmine"></a>
+    <div class='powered-container'>
+      <span class='powered'>Powered by</span>
+      <a href="http://pivotallabs.com/" target="_blank" class="pivotal-logo"></a>
+    </div>
+  </div>
+  <ul class="jump_to">
+	<li> Jump To: </li>
+    <li><a class="source" href="ajax.html">ajax.js</a></li>
+    <li><a class="source" href="boot.html">boot.js</a></li>
+    <li><a class="source" href="custom_boot.html">custom_boot.js</a></li>
+    <li><a class="source" href="custom_equality.html">custom_equality.js</a></li>
+    <li><a class="source" href="custom_matcher.html">custom_matcher.js</a></li>
+    <li><a class="source" href="custom_reporter.html">custom_reporter.js</a></li>
+    <li><a class="source" href="focused_specs.html">focused_specs.js</a></li>
+    <li><a class="source" href="introduction.html">introduction.js</a></li>
+    <li><a class="source" href="node.html">node.js</a></li>
+    <li><a class="source" href="python_egg.html">python_egg.py</a></li>
+    <li><a class="source" href="ruby_gem.html">ruby_gem.rb</a></li>
+    <li><a class="source" href="upgrading.html">upgrading.js</a></li>
+  </ul>
+  <table cellspacing="0" cellpadding="0">
+    <thead>
+    <tr>
+      <th class="docs">
+        <h1>node.js</h1>
+      </th>
+      <th class="code"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr id="section-Using_Jasmine_with_node">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Using_Jasmine_with_node">&#182;</a>
+        </div>
+        <h2>Using Jasmine with node</h2>
+
+<p>The Jasmine node package contains helper code for developing and running Jasmine tests for node-based projects.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Install">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Install">&#182;</a>
+        </div>
+        <h3>Install</h3>
+
+<p>You can install Jasmine using npm, locally in your project and globally to use the CLI tool.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">D</span> <span class="nx">jasmine</span>
+
+<span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">jasmine</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Init_a_Project">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Init_a_Project">&#182;</a>
+        </div>
+        <h3>Init a Project</h3>
+
+<p>Initialize a project for Jasmine by creating a spec directory and configuration json for you.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">jasmine</span> <span class="nx">init</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Configuration">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Configuration">&#182;</a>
+        </div>
+        <h3>Configuration</h3>
+
+<p>Customize <code>spec/support/jasmine.json</code> to enumerate the source files and spec files you would like the
+Jasmine runner to include. You may use dir glob strings.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Usage">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Usage">&#182;</a>
+        </div>
+        <h3>Usage</h3>
+
+<p>Once you have set up your <code>jasmine.json</code>, you can start Jasmine by running <code>jasmine</code>.</p>
+
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">jasmine</span></pre>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script>
+  (document.querySelector(".version") || {}).innerHTML = (typeof jasmine !== "undefined") ? jasmine.version : "";
+</script>
+</body>
+</html>
