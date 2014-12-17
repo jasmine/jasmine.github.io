@@ -1140,6 +1140,36 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
+    <tr id="section-Matching_existance_with_&lt;code&gt;jasmine.anything&lt;/code&gt;">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Matching_existance_with_&lt;code&gt;jasmine.anything&lt;/code&gt;">&#182;</a>
+        </div>
+        <h2>Matching existance with <code>jasmine.anything</code></h2>
+
+<p><code>jasmine.anything</code> returns <code>true</code> if the actual value is not <code>null</code> or <code>undefined</code>.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;jasmine.anything&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;matches anything&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">anything</span><span class="p">());</span>
+  <span class="p">});</span>
+
+  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;when used with a spy&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is useful when the argument can be ignored&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+      <span class="nx">foo</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="p">});</span>
+
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">anything</span><span class="p">());</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
     <tr id="section-Partial_Matching_with_&lt;code&gt;jasmine.objectContaining&lt;/code&gt;">
       <td class="docs">
         <div class="pilwrap">
@@ -1208,10 +1238,10 @@ The Jasmine Clock is available for testing time dependent code.</p>
         </div>
       </td>
     </tr>
-    <tr id="section-39">
+    <tr id="section-40">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-39">&#182;</a>
+          <a class="pilcrow" href="#section-40">&#182;</a>
         </div>
         <p>It is installed with a call to <code>jasmine.clock().install</code> in a spec or suite that needs to manipulate time.</p>
       </td>
@@ -1224,10 +1254,10 @@ The Jasmine Clock is available for testing time dependent code.</p>
         </div>
       </td>
     </tr>
-    <tr id="section-40">
+    <tr id="section-41">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-40">&#182;</a>
+          <a class="pilcrow" href="#section-41">&#182;</a>
         </div>
         <p>Be sure to uninstall the clock after you are done to restore the original functions.</p>
       </td>
@@ -1300,10 +1330,10 @@ The Jasmine Clock is available for testing time dependent code.</p>
         </div>
       </td>
     </tr>
-    <tr id="section-43">
+    <tr id="section-44">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-43">&#182;</a>
+          <a class="pilcrow" href="#section-44">&#182;</a>
         </div>
         <p>If you do not provide a base time to <code>mockDate</code> it will use the current date.</p>
       </td>
@@ -1336,10 +1366,10 @@ Jasmine also has support for running specs that require testing asynchronous ope
         </div>
       </td>
     </tr>
-    <tr id="section-45">
+    <tr id="section-46">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-45">&#182;</a>
+          <a class="pilcrow" href="#section-46">&#182;</a>
         </div>
         <p>Calls to <code>beforeEach</code>, <code>it</code>, and <code>afterEach</code> can take an optional single argument that should be called when the async work is complete.</p>
       </td>
@@ -1354,10 +1384,10 @@ Jasmine also has support for running specs that require testing asynchronous ope
         </div>
       </td>
     </tr>
-    <tr id="section-46">
+    <tr id="section-47">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-46">&#182;</a>
+          <a class="pilcrow" href="#section-47">&#182;</a>
         </div>
         <p>This spec will not start until the <code>done</code> function is called in the call to <code>beforeEach</code> above. And this spec will not complete until its <code>done</code> is called.</p>
       </td>
@@ -1371,10 +1401,10 @@ Jasmine also has support for running specs that require testing asynchronous ope
         </div>
       </td>
     </tr>
-    <tr id="section-47">
+    <tr id="section-48">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-47">&#182;</a>
+          <a class="pilcrow" href="#section-48">&#182;</a>
         </div>
         <p>By default jasmine will wait for 5 seconds for an asynchronous spec to finish before causing a timeout failure.
 If specific specs should fail faster or need more time this can be adjusted by setting <code>jasmine.DEFAULT_TIMEOUT_INTERVAL</code> around them.</p>
