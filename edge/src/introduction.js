@@ -370,7 +370,7 @@ describe("Pending specs", function() {
 
 /**
  ## Spies
- Jasmine's has test double functions called spies. A spy can stub any function and tracks calls to it and all arguments. A spy only exists in the `describe` or `it` block it is defined, and will be removed after each spec. There are special matchers for interacting with spies.
+ Jasmine has test double functions called spies. A spy can stub any function and tracks calls to it and all arguments. A spy only exists in the `describe` or `it` block it is defined, and will be removed after each spec. There are special matchers for interacting with spies.
  __This syntax has changed for Jasmine 2.0.__
  The `toHaveBeenCalled` matcher will return true if the spy was called. The `toHaveBeenCalledWith` matcher will return true if the argument list matches any of the recorded calls to the spy.
  */
