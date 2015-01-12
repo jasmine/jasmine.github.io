@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2008-2014 Pivotal Labs
+Copyright (c) 2008-2015 Pivotal Labs
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -52,6 +52,7 @@ getJasmineRequireObj = (function (jasmineGlobal) {
     j$.JsApiReporter = jRequire.JsApiReporter();
     j$.matchersUtil = jRequire.matchersUtil(j$);
     j$.ObjectContaining = jRequire.ObjectContaining(j$);
+    j$.ArrayContaining = jRequire.ArrayContaining(j$);
     j$.pp = jRequire.pp(j$);
     j$.QueueRunner = jRequire.QueueRunner(j$);
     j$.ReportDispatcher = jRequire.ReportDispatcher();
@@ -158,6 +159,10 @@ getJasmineRequireObj().base = function(j$, jasmineGlobal) {
 
   j$.stringMatching = function(expected) {
     return new j$.StringMatching(expected);
+  };
+
+  j$.arrayContaining = function(sample) {
+    return new j$.ArrayContaining(sample);
   };
 
   j$.createSpy = function(name, originalFn) {
@@ -853,7 +858,8 @@ getJasmineRequireObj().Env = function(j$) {
         passed: false,
         expected: '',
         actual: '',
-        message: message
+        message: message,
+        error: error && error.message ? error : null
       });
     };
   }
@@ -2177,6 +2183,32 @@ getJasmineRequireObj().Anything = function(j$) {
   return Anything;
 };
 
+getJasmineRequireObj().ArrayContaining = function(j$) {
+  function ArrayContaining(sample) {
+    this.sample = sample;
+  }
+
+  ArrayContaining.prototype.asymmetricMatch = function(other) {
+    var className = Object.prototype.toString.call(this.sample);
+    if (className !== '[object Array]') { throw new Error('You must provide an array to arrayContaining, not \'' + this.sample + '\'.'); }
+
+    for (var i = 0; i < this.sample.length; i++) {
+      var item = this.sample[i];
+      if (!j$.matchersUtil.contains(other, item)) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  ArrayContaining.prototype.jasmineToString = function () {
+    return '<jasmine.arrayContaining(' + jasmine.pp(this.sample) +')>';
+  };
+
+  return ArrayContaining;
+};
+
 getJasmineRequireObj().ObjectContaining = function(j$) {
 
   function ObjectContaining(sample) {
@@ -2419,7 +2451,7 @@ getJasmineRequireObj().matchersUtil = function(j$) {
     return result;
 
     function has(obj, key) {
-      return obj.hasOwnProperty(key);
+      return Object.prototype.hasOwnProperty.call(obj, key);
     }
 
     function isFunction(obj) {
