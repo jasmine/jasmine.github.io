@@ -1006,26 +1006,24 @@ describe("Asynchronous specs", function() {
 
   /**
    By default jasmine will wait for 5 seconds for an asynchronous spec to finish before causing a timeout failure.
-   If specific specs should fail faster or need more time this can be adjusted by setting `jasmine.DEFAULT_TIMEOUT_INTERVAL` around them.
+   If specific specs should fail faster or need more time this can be adjusted by passing a timeout value to `it`, etc.
 
    If the entire suite should have a different timeout, `jasmine.DEFAULT_TIMEOUT_INTERVAL` can be set globally, outside of any given `describe`.
    */
   describe("long asynchronous specs", function() {
-    var originalTimeout;
-    beforeEach(function() {
-      originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-      jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
-    });
+    beforeEach(function(done) {
+      done();
+    }, 1000);
 
     it("takes a long time", function(done) {
       setTimeout(function() {
         done();
       }, 9000);
-    });
+    }, 10000);
 
-    afterEach(function() {
-      jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
-    });
+    afterEach(function(done) {
+      done();
+    }, 1000);
   });
 });
 
