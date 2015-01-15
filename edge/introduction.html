@@ -1289,6 +1289,42 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
+    <tr id="section-Custom_asymmetric_equality_tester">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Custom_asymmetric_equality_tester">&#182;</a>
+        </div>
+        <h2>Custom asymmetric equality tester</h2>
+
+<p>When you need to check that something meets a certain criteria, without being strictly equal, you can also specify a custom asymmetric equality tester simply by providing an object that has an <code>asymmetricMatch</code> function.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;custom asymmetry&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">tester</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">asymmetricMatch</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">actual</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">secondValue</span> <span class="o">=</span> <span class="nx">actual</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">];</span>
+      <span class="k">return</span> <span class="nx">secondValue</span> <span class="o">===</span> <span class="s1">&#39;bar&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;dives in deep&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="s2">&quot;foo,bar,baz,quux&quot;</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">tester</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;when used with a spy&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is useful for comparing arguments&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">callback</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s1">&#39;callback&#39;</span><span class="p">);</span>
+
+      <span class="nx">callback</span><span class="p">(</span><span class="s1">&#39;foo,bar,baz&#39;</span><span class="p">);</span>
+
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">callback</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="nx">tester</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
     <tr id="section-Jasmine_Clock">
       <td class="docs">
         <div class="pilwrap">
@@ -1306,10 +1342,10 @@ The Jasmine Clock is available for testing time dependent code.</p>
         </div>
       </td>
     </tr>
-    <tr id="section-42">
+    <tr id="section-43">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-42">&#182;</a>
+          <a class="pilcrow" href="#section-43">&#182;</a>
         </div>
         <p>It is installed with a call to <code>jasmine.clock().install</code> in a spec or suite that needs to manipulate time.</p>
       </td>
@@ -1322,10 +1358,10 @@ The Jasmine Clock is available for testing time dependent code.</p>
         </div>
       </td>
     </tr>
-    <tr id="section-43">
+    <tr id="section-44">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-43">&#182;</a>
+          <a class="pilcrow" href="#section-44">&#182;</a>
         </div>
         <p>Be sure to uninstall the clock after you are done to restore the original functions.</p>
       </td>
@@ -1398,10 +1434,10 @@ The Jasmine Clock is available for testing time dependent code.</p>
         </div>
       </td>
     </tr>
-    <tr id="section-46">
+    <tr id="section-47">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-46">&#182;</a>
+          <a class="pilcrow" href="#section-47">&#182;</a>
         </div>
         <p>If you do not provide a base time to <code>mockDate</code> it will use the current date.</p>
       </td>
@@ -1434,10 +1470,10 @@ Jasmine also has support for running specs that require testing asynchronous ope
         </div>
       </td>
     </tr>
-    <tr id="section-48">
+    <tr id="section-49">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-48">&#182;</a>
+          <a class="pilcrow" href="#section-49">&#182;</a>
         </div>
         <p>Calls to <code>beforeEach</code>, <code>it</code>, and <code>afterEach</code> can take an optional single argument that should be called when the async work is complete.</p>
       </td>
@@ -1452,10 +1488,10 @@ Jasmine also has support for running specs that require testing asynchronous ope
         </div>
       </td>
     </tr>
-    <tr id="section-49">
+    <tr id="section-50">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-49">&#182;</a>
+          <a class="pilcrow" href="#section-50">&#182;</a>
         </div>
         <p>This spec will not start until the <code>done</code> function is called in the call to <code>beforeEach</code> above. And this spec will not complete until its <code>done</code> is called.</p>
       </td>
@@ -1469,10 +1505,10 @@ Jasmine also has support for running specs that require testing asynchronous ope
         </div>
       </td>
     </tr>
-    <tr id="section-50">
+    <tr id="section-51">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-50">&#182;</a>
+          <a class="pilcrow" href="#section-51">&#182;</a>
         </div>
         <p>By default jasmine will wait for 5 seconds for an asynchronous spec to finish before causing a timeout failure.
 If specific specs should fail faster or need more time this can be adjusted by passing a timeout value to <code>it</code>, etc.</p>
