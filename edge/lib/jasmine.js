@@ -20,13 +20,16 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-getJasmineRequireObj = (function (jasmineGlobal) {
+var getJasmineRequireObj = (function (jasmineGlobal) {
   var jasmineRequire;
 
   if (typeof module !== 'undefined' && module.exports) {
     jasmineGlobal = global;
     jasmineRequire = exports;
   } else {
+    if (typeof window !== 'undefined' && typeof window.toString === 'function' && window.toString() === '[object GjsGlobal]') {
+      jasmineGlobal = window;
+    }
     jasmineRequire = jasmineGlobal.jasmineRequire = jasmineGlobal.jasmineRequire || {};
   }
 
@@ -209,6 +212,11 @@ getJasmineRequireObj().base = function(j$, jasmineGlobal) {
   };
 
   j$.createSpyObj = function(baseName, methodNames) {
+    if (j$.isArray_(baseName) && j$.util.isUndefined(methodNames)) {
+      methodNames = baseName;
+      baseName = 'unknown';
+    }
+
     if (!j$.isArray_(methodNames) || methodNames.length === 0) {
       throw 'createSpyObj requires a non-empty array of method names to create spies for';
     }
@@ -304,7 +312,8 @@ getJasmineRequireObj().Spec = function(j$) {
       description: this.description,
       fullName: this.getFullName(),
       failedExpectations: [],
-      passedExpectations: []
+      passedExpectations: [],
+      pendingReason: ''
     };
   }
 
@@ -353,7 +362,7 @@ getJasmineRequireObj().Spec = function(j$) {
 
   Spec.prototype.onException = function onException(e) {
     if (Spec.isPendingSpecException(e)) {
-      this.pend();
+      this.pend(extractCustomPendingMessage(e));
       return;
     }
 
@@ -370,8 +379,11 @@ getJasmineRequireObj().Spec = function(j$) {
     this.disabled = true;
   };
 
-  Spec.prototype.pend = function() {
+  Spec.prototype.pend = function(message) {
     this.markedPending = true;
+    if (message) {
+      this.result.pendingReason = message;
+    }
   };
 
   Spec.prototype.status = function() {
@@ -396,6 +408,14 @@ getJasmineRequireObj().Spec = function(j$) {
 
   Spec.prototype.getFullName = function() {
     return this.getSpecName(this);
+  };
+
+  var extractCustomPendingMessage = function(e) {
+    var fullMessage = e.toString(),
+        boilerplateStart = fullMessage.indexOf(Spec.pendingSpecExceptionMessage),
+        boilerplateEnd = boilerplateStart + Spec.pendingSpecExceptionMessage.length;
+
+    return fullMessage.substr(boilerplateEnd);
   };
 
   Spec.pendingSpecExceptionMessage = '=> marked Pending';
@@ -650,6 +670,7 @@ getJasmineRequireObj().Env = function(j$) {
         onStart: suiteStarted,
         expectationFactory: expectationFactory,
         expectationResultFactory: expectationResultFactory,
+        runnablesExplictlySetGetter: runnablesExplictlySetGetter,
         resultCallback: function(attrs) {
           if (!suite.disabled) {
             clearResourcesForRunnable(suite.id);
@@ -842,8 +863,12 @@ getJasmineRequireObj().Env = function(j$) {
       });
     };
 
-    this.pending = function() {
-      throw j$.Spec.pendingSpecExceptionMessage;
+    this.pending = function(message) {
+      var fullMessage = j$.Spec.pendingSpecExceptionMessage;
+      if(message) {
+        fullMessage += message;
+      }
+      throw fullMessage;
     };
 
     this.fail = function(error) {
@@ -1495,7 +1520,7 @@ getJasmineRequireObj().MockDate = function() {
         case 6:
           return new GlobalDate(arguments[0], arguments[1], arguments[2], arguments[3],
                                 arguments[4], arguments[5]);
-        case 7:
+        default:
           return new GlobalDate(arguments[0], arguments[1], arguments[2], arguments[3],
                                 arguments[4], arguments[5], arguments[6]);
       }
@@ -1698,7 +1723,8 @@ getJasmineRequireObj().QueueRunner = function(j$) {
     for(iterativeIndex = recursiveIndex; iterativeIndex < length; iterativeIndex++) {
       var queueableFn = queueableFns[iterativeIndex];
       if (queueableFn.fn.length > 0) {
-        return attemptAsync(queueableFn);
+        attemptAsync(queueableFn);
+        return;
       } else {
         attemptSync(queueableFn);
       }
@@ -1923,6 +1949,7 @@ getJasmineRequireObj().Suite = function() {
     this.clearStack = attrs.clearStack || function(fn) {fn();};
     this.expectationFactory = attrs.expectationFactory;
     this.expectationResultFactory = attrs.expectationResultFactory;
+    this.runnablesExplictlySetGetter = attrs.runnablesExplictlySetGetter || function() {};
 
     this.beforeFns = [];
     this.afterFns = [];
@@ -2034,14 +2061,8 @@ getJasmineRequireObj().Suite = function() {
   };
 
   Suite.prototype.isExecutable = function() {
-    var foundActive = false;
-    for(var i = 0; i < this.children.length; i++) {
-      if(this.children[i].isExecutable()) {
-        foundActive = true;
-        break;
-      }
-    }
-    return foundActive;
+    var runnablesExplicitlySet = this.runnablesExplictlySetGetter();
+    return !runnablesExplicitlySet && hasExecutableChild(this.children);
   };
 
   Suite.prototype.sharedUserContext = function() {
@@ -2092,6 +2113,17 @@ getJasmineRequireObj().Suite = function() {
 
   function isFailure(args) {
     return !args[0];
+  }
+
+  function hasExecutableChild(children) {
+    var foundActive = false;
+    for (var i = 0; i < children.length; i++) {
+      if (children[i].isExecutable()) {
+        foundActive = true;
+        break;
+      }
+    }
+    return foundActive;
   }
 
   function clone(obj) {
@@ -2180,6 +2212,10 @@ getJasmineRequireObj().Anything = function(j$) {
     return !j$.util.isUndefined(other) && other !== null;
   };
 
+  Anything.prototype.jasmineToString = function() {
+    return '<jasmine.anything>';
+  };
+
   return Anything;
 };
 
@@ -2247,6 +2283,10 @@ getJasmineRequireObj().StringMatching = function(j$) {
 
   StringMatching.prototype.asymmetricMatch = function(other) {
     return this.regexp.test(other);
+  };
+
+  StringMatching.prototype.jasmineToString = function() {
+    return '<jasmine.stringMatching(' + this.regexp + ')>';
   };
 
   return StringMatching;
@@ -2970,7 +3010,7 @@ getJasmineRequireObj().interface = function(jasmine, env) {
     },
 
     pending: function() {
-      return env.pending();
+      return env.pending.apply(env, arguments);
     },
 
     fail: function() {

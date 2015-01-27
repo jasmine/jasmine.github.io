@@ -361,10 +361,11 @@ describe("Pending specs", function() {
   it("can be declared with 'it' but without a function");
 
   /** And if you call the function `pending` anywhere in the spec body, no matter the expectations, the spec will be marked pending.
+   * A string passed to `pending` will be treated as a reason and displayed when the suite finishes.
    */
   it("can be declared by calling 'pending' in the spec body", function() {
     expect(true).toBe(false);
-    pending();
+    pending('this is why it is pending');
   });
 });
 

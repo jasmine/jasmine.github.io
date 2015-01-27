@@ -554,13 +554,14 @@ There is also the ability to write <a href="custom_matcher.html">custom matchers
         <div class="pilwrap">
           <a class="pilcrow" href="#section-17">&#182;</a>
         </div>
-        <p>And if you call the function <code>pending</code> anywhere in the spec body, no matter the expectations, the spec will be marked pending.</p>
+        <p>And if you call the function <code>pending</code> anywhere in the spec body, no matter the expectations, the spec will be marked pending.
+A string passed to <code>pending</code> will be treated as a reason and displayed when the suite finishes.</p>
       </td>
       <td class="code">
         <div class="highlight">
           <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can be declared by calling &#39;pending&#39; in the spec body&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
-    <span class="nx">pending</span><span class="p">();</span>
+    <span class="nx">pending</span><span class="p">(</span><span class="s1">&#39;this is why it is pending&#39;</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">});</span></pre>
         </div>
