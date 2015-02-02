@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+  <title>focused_specs.js</title>
+  <link href='http://fonts.googleapis.com/css?family=Lora|Istok+Web:700' rel='stylesheet' type='text/css'/>
+  <link rel="stylesheet" href="/css/docco.css"/>
+  <link rel="stylesheet" href="/css/jasmine_docco.css"/>
+  <link rel="stylesheet" href="lib/jasmine.css"/>
+  <script src="lib/jasmine.js"></script>
+  <script src="lib/jasmine-html.js"></script>
+  <script src="lib/boot.js"></script>
+  <script src="src/support/mock-ajax.js"></script>
+  <script src="src/focused_specs.js"></script>
+  <link rel="icon" href="/images/jasmine.ico" sizes="16x16"/>
+  <link rel="icon" href="/images/jasmine_32x32.ico" sizes="32x32"/>
+</head>
+<body>
+<div id="container">
+  <div id="background"></div>
+  <div class="title-banner">
+    <a class='jasmine-logo' href="http://github.com/pivotal/jasmine"></a>
+    <div class='powered-container'>
+      <span class='powered'>Powered by</span>
+      <a href="http://pivotallabs.com/" target="_blank" class="pivotal-logo"></a>
+    </div>
+  </div>
+  <ul class="jump_to">
+	<li> Jump To: </li>
+    <li><a class="source" href="ajax.html">ajax.js</a></li>
+    <li><a class="source" href="boot.html">boot.js</a></li>
+    <li><a class="source" href="custom_boot.html">custom_boot.js</a></li>
+    <li><a class="source" href="custom_equality.html">custom_equality.js</a></li>
+    <li><a class="source" href="custom_matcher.html">custom_matcher.js</a></li>
+    <li><a class="source" href="custom_reporter.html">custom_reporter.js</a></li>
+    <li><a class="source" href="focused_specs.html">focused_specs.js</a></li>
+    <li><a class="source" href="introduction.html">introduction.js</a></li>
+    <li><a class="source" href="node.html">node.js</a></li>
+    <li><a class="source" href="python_egg.html">python_egg.py</a></li>
+    <li><a class="source" href="ruby_gem.html">ruby_gem.rb</a></li>
+    <li><a class="source" href="upgrading.html">upgrading.js</a></li>
+  </ul>
+  <table cellspacing="0" cellpadding="0">
+    <thead>
+    <tr>
+      <th class="docs">
+        <h1>focused_specs.js</h1>
+      </th>
+      <th class="code"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr id="section-1">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-1">&#182;</a>
+        </div>
+        <p>Focusing specs will make it so that they are the only specs that run.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Focused specs&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-2">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-2">&#182;</a>
+        </div>
+        <p>Any spec declared with <code>fit</code> is focused.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">fit</span><span class="p">(</span><span class="s2">&quot;is focused and will run&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;is not focused and will not run&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBeFalsy</span><span class="p">();</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-3">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-3">&#182;</a>
+        </div>
+        <p>You can focus on a <code>describe</code> with <code>fdescribe</code></p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">fdescribe</span><span class="p">(</span><span class="s1">&#39;focused describe&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;will run&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+    <span class="p">});</span>
+
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;will also run&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+    <span class="p">});</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-4">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-4">&#182;</a>
+        </div>
+        <p>If you nest focused and unfocused specs inside <code>fdescribes</code>, only focused specs run.</p>
+
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">fdescribe</span><span class="p">(</span><span class="s1">&#39;another focused describe&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">fit</span><span class="p">(</span><span class="s2">&quot;is focused and will run&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+    <span class="p">});</span>
+
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;is not focused and will not run&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBeFalsy</span><span class="p">();</span>
+    <span class="p">});</span>
+   <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script>
+  (document.querySelector(".version") || {}).innerHTML = (typeof jasmine !== "undefined") ? jasmine.version : "";
+</script>
+</body>
+</html>
