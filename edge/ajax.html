@@ -157,7 +157,7 @@ Jasmine-Ajax mocks out your request at the XMLHttpRequest object, so should be c
       </td>
       <td class="code">
         <div class="highlight">
-          <pre>      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">requests</span><span class="p">.</span><span class="nx">mostRecent</span><span class="p">().</span><span class="nx">response</span><span class="p">({</span></pre>
+          <pre>      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">requests</span><span class="p">.</span><span class="nx">mostRecent</span><span class="p">().</span><span class="nx">respondWith</span><span class="p">({</span></pre>
         </div>
       </td>
     </tr>
@@ -235,7 +235,7 @@ Jasmine-Ajax mocks out your request at the XMLHttpRequest object, so should be c
           <a class="pilcrow" href="#section-13">&#182;</a>
         </div>
         <p>Call <code>stubRequest</code> with the url you want to return immediately.
-Then <code>andReturn</code> receives the same type of argument as <code>response</code></p>
+Then <code>andReturn</code> receives the same type of argument as <code>respondWith</code>.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -296,7 +296,7 @@ Then <code>andReturn</code> receives the same type of argument as <code>response
 
       <span class="nx">expect</span><span class="p">(</span><span class="nx">doneFn</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
 
-      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">requests</span><span class="p">.</span><span class="nx">mostRecent</span><span class="p">().</span><span class="nx">response</span><span class="p">({</span>
+      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">requests</span><span class="p">.</span><span class="nx">mostRecent</span><span class="p">().</span><span class="nx">respondWith</span><span class="p">({</span>
         <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
         <span class="s2">&quot;responseText&quot;</span><span class="o">:</span> <span class="s1">&#39;in spec response&#39;</span>
       <span class="p">});</span>
