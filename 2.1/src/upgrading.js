@@ -189,4 +189,25 @@ describe("Upgrading to jasmine 2.0", function() {
       jasmine.clock().uninstall();
     });
   });
+  
+  /**
+   ## Focused specs
+   */ 
+  describe('Focused specs', function () {
+    /**
+     * The syntax for focused suites changed from `ddescribe` to `fdescribe` starting 2.1.0
+     */
+    it('should provide an interface for focused suites', function (){
+      expect(ddescribe).toBeUndefined();
+      expect(fdescribe).toBeDefined()
+    });
+    
+    /**
+     * The syntax for focused specs changed from `iit` to `fit` starting 2.1.0
+     */
+    it('should provide an interface for focused suites', function (){
+      expect(iit).toBeUndefined();
+      expect(fit).toBeDefined()
+    });
+  })
 });
