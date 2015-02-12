@@ -48,7 +48,7 @@ describe("mocking ajax", function() {
       /**
        * Now we tell the request what it's response should look like
        */
-      jasmine.Ajax.requests.mostRecent().response({
+      jasmine.Ajax.requests.mostRecent().respondWith({
         /**
          * HTTP response code
          */
@@ -77,7 +77,7 @@ describe("mocking ajax", function() {
 
       /**
        * Call `stubRequest` with the url you want to return immediately.
-       * Then `andReturn` receives the same type of argument as `response`
+       * Then `andReturn` receives the same type of argument as `respondWith`.
        */
       jasmine.Ajax.stubRequest('/another/url').andReturn({
         "responseText": 'immediate response'
@@ -119,7 +119,7 @@ describe("mocking ajax", function() {
 
       expect(doneFn).not.toHaveBeenCalled();
 
-      jasmine.Ajax.requests.mostRecent().response({
+      jasmine.Ajax.requests.mostRecent().respondWith({
         "status": 200,
         "responseText": 'in spec response'
       });
