@@ -336,6 +336,10 @@ The lambda allows you to configure other options that need to be configured at i
           <a class="pilcrow" href="#section-Custom_Formatters">&#182;</a>
         </div>
         <h2>Custom Formatters</h2>
+
+<p>By default the <code>jasmine:ci</code> rake task outputs <code>.</code>s, <code>F</code>s, and <code>*</code>s as the specs run and a summary at the end.
+If you want to change the output, or produce some other output, you&rsquo;ll want a custom formatter.
+For an example of how to add your custom formatter see the <a href="#section-Configuration">configuration section</a></p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -390,12 +394,13 @@ The parameter will be an array of <code>Jasmine::Result</code> objects</p>
         </div>
       </td>
     </tr>
-    <tr id="section-Custom_Runners">
+    <tr id="section-25">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-Custom_Runners">&#182;</a>
+          <a class="pilcrow" href="#section-25">&#182;</a>
         </div>
-        <h2>Custom Runners</h2>
+        <p>The jasmine team also maintains a custom formatter that produces junit style XML for use on a CI server that knows how to parse it.
+<a href="https://github.com/jasmine/jasmine_junitxml_formatter">Jasmine JUnit XML Formatter</a></p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -403,10 +408,27 @@ The parameter will be an array of <code>Jasmine::Result</code> objects</p>
         </div>
       </td>
     </tr>
-    <tr id="section-26">
+    <tr id="section-Custom_Runners">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-26">&#182;</a>
+          <a class="pilcrow" href="#section-Custom_Runners">&#182;</a>
+        </div>
+        <h2>Custom Runners</h2>
+
+<p>By default the <code>jasmine:ci</code> rake task uses phantomjs to load the jasmine spec runner page and run the tests.
+If you want to run your tests with a different browser, or change how phantom is used, you&rsquo;ll want a custom runner.
+For an example of how to add your custom runner see the <a href="#section-Configuration">configuration section</a></p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-27">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-27">&#182;</a>
         </div>
         <p>Once constructed, a runner only needs to implement a <code>run</code> method</p>
       </td>
@@ -417,10 +439,10 @@ The parameter will be an array of <code>Jasmine::Result</code> objects</p>
         </div>
       </td>
     </tr>
-    <tr id="section-27">
+    <tr id="section-28">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-27">&#182;</a>
+          <a class="pilcrow" href="#section-28">&#182;</a>
         </div>
         <p>The formatter passed in is responsible for making sure all configured formatters receive the same messages.</p>
       </td>
@@ -430,10 +452,10 @@ The parameter will be an array of <code>Jasmine::Result</code> objects</p>
         </div>
       </td>
     </tr>
-    <tr id="section-28">
+    <tr id="section-29">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-28">&#182;</a>
+          <a class="pilcrow" href="#section-29">&#182;</a>
         </div>
         <p>The <code>jasmine_server_url</code> is the full http://&lt;host&gt;:&lt;port&gt; url where the jasmine server was started</p>
       </td>
@@ -445,10 +467,10 @@ The parameter will be an array of <code>Jasmine::Result</code> objects</p>
         </div>
       </td>
     </tr>
-    <tr id="section-29">
+    <tr id="section-30">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-29">&#182;</a>
+          <a class="pilcrow" href="#section-30">&#182;</a>
         </div>
         <p><code>run</code> is responsible coordinating the test run.</p>
       </td>
@@ -458,10 +480,10 @@ The parameter will be an array of <code>Jasmine::Result</code> objects</p>
         </div>
       </td>
     </tr>
-    <tr id="section-30">
+    <tr id="section-31">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-30">&#182;</a>
+          <a class="pilcrow" href="#section-31">&#182;</a>
         </div>
         <p>Here we&rsquo;re using Phantom to load the page and run the specs</p>
       </td>
@@ -472,10 +494,10 @@ The parameter will be an array of <code>Jasmine::Result</code> objects</p>
         </div>
       </td>
     </tr>
-    <tr id="section-31">
+    <tr id="section-32">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-31">&#182;</a>
+          <a class="pilcrow" href="#section-32">&#182;</a>
         </div>
         <p>The <code>phantom_jasmine_run.js</code> script writes out batches of results as JSON</p>
       </td>
@@ -486,10 +508,10 @@ The parameter will be an array of <code>Jasmine::Result</code> objects</p>
         </div>
       </td>
     </tr>
-    <tr id="section-32">
+    <tr id="section-33">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-32">&#182;</a>
+          <a class="pilcrow" href="#section-33">&#182;</a>
         </div>
         <p>Formatters expect to get <code>Jasmine::Result</code> objects.
 It is the runner&rsquo;s job to convert the result objects from the page, and pass them to the <code>format</code> method of their formatter.</p>
@@ -503,10 +525,10 @@ It is the runner&rsquo;s job to convert the result objects from the page, and pa
         </div>
       </td>
     </tr>
-    <tr id="section-33">
+    <tr id="section-34">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-33">&#182;</a>
+          <a class="pilcrow" href="#section-34">&#182;</a>
         </div>
         <p>When the tests have finished, call <code>done</code> on the formatter to run any necessary completion logic.</p>
       </td>
@@ -517,13 +539,12 @@ It is the runner&rsquo;s job to convert the result objects from the page, and pa
         </div>
       </td>
     </tr>
-    <tr id="section-34">
+    <tr id="section-35">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-34">&#182;</a>
+          <a class="pilcrow" href="#section-35">&#182;</a>
         </div>
         <p>If the runner needs some javascript to be loaded into the page as part of the load, it returns the full path in <code>boot_js</code></p>
-
       </td>
       <td class="code">
         <div class="highlight">
@@ -531,6 +552,21 @@ It is the runner&rsquo;s job to convert the result objects from the page, and pa
     <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s1">&#39;runner_boot.js&#39;</span><span class="p">,</span> <span class="bp">__FILE__</span><span class="p">)</span>
   <span class="k">end</span>
 <span class="k">end</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-36">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-36">&#182;</a>
+        </div>
+        <p>The jasmine team also maintains a custom runner that uses selenium (and optionally SauceLabs) to run your specs with other browsers.
+<a href="https://github.com/jasmine/jasmine_selenium_runner">Jasmine Selenium Runner</a></p>
+
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre></pre>
         </div>
       </td>
     </tr>

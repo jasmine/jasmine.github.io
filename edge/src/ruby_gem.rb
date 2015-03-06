@@ -67,6 +67,9 @@ exports.configure = function(page) {
 };
 
 ### Custom Formatters
+# By default the `jasmine:ci` rake task outputs `.`s, `F`s, and `*`s as the specs run and a summary at the end.
+# If you want to change the output, or produce some other output, you'll want a custom formatter.
+# For an example of how to add your custom formatter see the [configuration section](#section-Configuration)
 
 # Your custom formatter must implement 2 methods, `format` and `done`
 class My::Custom::Formatter
@@ -84,7 +87,13 @@ class My::Custom::Formatter
   end
 end
 
+# The jasmine team also maintains a custom formatter that produces junit style XML for use on a CI server that knows how to parse it.
+# [Jasmine JUnit XML Formatter](https://github.com/jasmine/jasmine_junitxml_formatter)
+
 ### Custom Runners
+# By default the `jasmine:ci` rake task uses phantomjs to load the jasmine spec runner page and run the tests.
+# If you want to run your tests with a different browser, or change how phantom is used, you'll want a custom runner.
+# For an example of how to add your custom runner see the [configuration section](#section-Configuration)
 
 # Once constructed, a runner only needs to implement a `run` method
 class My::Custom::Runner
@@ -119,3 +128,6 @@ class My::Custom::Runner
     File.expand_path('runner_boot.js', __FILE__)
   end
 end
+
+# The jasmine team also maintains a custom runner that uses selenium (and optionally SauceLabs) to run your specs with other browsers.
+# [Jasmine Selenium Runner](https://github.com/jasmine/jasmine_selenium_runner)
