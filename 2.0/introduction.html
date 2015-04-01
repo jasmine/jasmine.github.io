@@ -284,6 +284,17 @@ There is also the ability to write <a href="custom_matcher.html">custom matchers
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toThrow</span><span class="p">();</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toThrow</span><span class="p">();</span>
   <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toThrowError&#39; matcher is for testing a specific thrown exception&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nx">TypeError</span><span class="p">(</span><span class="s2">&quot;foo bar baz&quot;</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toThrowError</span><span class="p">(</span><span class="s2">&quot;foo bar baz&quot;</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toThrowError</span><span class="p">(</span><span class="sr">/bar/</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toThrowError</span><span class="p">(</span><span class="nx">TypeError</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toThrowError</span><span class="p">(</span><span class="nx">TypeError</span><span class="p">,</span> <span class="s2">&quot;foo bar baz&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
 <span class="p">});</span></pre>
         </div>
       </td>
