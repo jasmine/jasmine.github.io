@@ -236,7 +236,7 @@ run as part of the spec to receive and invoke a <code>done</code> callback.</p>
         <div class="pilwrap">
           <a class="pilcrow" href="#section-11">&#182;</a>
         </div>
-        <p>By having a <code>beforeEach</code>, <code>afterEach</code>, or <code>it</code> receive a <code>done</code> callback, jasmine will wait until that function is invoked
+        <p>By having a <code>beforeEach</code>, <code>afterEach</code>, <code>beforeAll</code>, <code>afterAll</code>, or <code>it</code> receive a <code>done</code> callback, jasmine will wait until that function is invoked
 before moving to the next thing in the queue. This means if the asynchronous logic also takes a callback for when it is done,
 jasmines <code>done</code> can just be passed through and jasmine will wait appropriately.</p>
       </td>
