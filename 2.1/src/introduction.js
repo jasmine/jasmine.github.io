@@ -923,7 +923,7 @@ describe("Manually ticking the Jasmine Clock", function() {
 describe("Asynchronous specs", function() {
   var value;
   /**
-   Calls to `beforeEach`, `it`, and `afterEach` can take an optional single argument that should be called when the async work is complete.
+   Calls to `beforeAll`, `afterAll`, `beforeEach`, `afterEach`, and `it` can take an optional single argument that should be called when the async work is complete.
    */
   beforeEach(function(done) {
     setTimeout(function() {
