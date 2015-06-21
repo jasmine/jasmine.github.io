@@ -970,7 +970,7 @@ describe("Asynchronous specs", function() {
 
 // ## Downloads
 //
-// * The [Standalone Release](https://github.com/pivotal/jasmine/tree/master/dist) is for simple, browser page, or console projects
+// * The Standalone Release (available on the [releases page](https://github.com/pivotal/jasmine/releases)) is for simple, browser page, or console projects
 // * The [Jasmine Ruby Gem](http://github.com/pivotal/jasmine-gem) is for Rails, Ruby, or Ruby-friendly development
 // * [Other Environments](http://github.com/pivotal/jasmine/wiki) are supported as well
 //
