@@ -199,6 +199,25 @@ describe("Included matchers:", function() {
 });
 
 /**
+ ### Manually failing a spec with `fail`
+ The `fail` function causes a spec to fail. It can take a failure message or an Error object as a parameter.
+ */
+
+describe("A spec using the fail function", function() {
+  var foo = function(x, callBack) {
+    if (x) {
+      callBack();
+    }
+  };
+
+  it("should not call the callBack", function() {
+    foo(false, function() {
+      fail("Callback has been called");
+    });
+  });
+});
+
+/**
  ## Grouping Related Specs with `describe`
  The `describe` function is for grouping related specs. The string parameter is for naming the collection of specs, and will be concatenated with specs to make a spec's full name. This aids in finding specs in a large suite. If you name them well, your specs read as full sentences in traditional [BDD][bdd] style.
  [bdd]: http://en.wikipedia.org/wiki/Behavior-driven_development
@@ -1064,8 +1083,29 @@ describe("Asynchronous specs", function() {
       done();
     }, 1000);
   });
-});
 
+  /**
+   The `done.fail` function fails the spec and indicates that it has completed.
+   */
+  describe("A spec using done.fail", function() {
+    var foo = function(x, callBack1, callBack2) {
+      if (x) {
+        setTimeout(callBack1, 0);
+      } else {
+        setTimeout(callBack2, 0);
+      }
+    };
+
+    it("should not call the second callBack", function(done) {
+      foo(true,
+        done,
+        function() {
+          done.fail("Second callback has been called");
+        }
+      );
+    });
+  });
+});
 
 // ## Downloads
 //
