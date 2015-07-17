@@ -9,8 +9,6 @@
   <link rel="stylesheet" href="lib/jasmine.css"/>
   <script src="lib/jasmine.js"></script>
   <script src="lib/jasmine-html.js"></script>
-  <script src="lib/boot.js"></script>
-  <script src="src/support/mock-ajax.js"></script>
   <script src="src/introduction.js"></script>
   <link rel="icon" href="/images/jasmine.ico" sizes="16x16"/>
   <link rel="icon" href="/images/jasmine_32x32.ico" sizes="32x32"/>
@@ -154,8 +152,6 @@
         <h3>Included Matchers</h3>
 
 <p>Jasmine has a rich set of matchers included. Each is used here &ndash; all expectations and specs pass.</p>
-
-<p>There is also the ability to write <a href="https://github.com/pivotal/jasmine/wiki/Matchers">custom matchers</a> for when a project&rsquo;s domain calls for specific assertions that are not included below.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -276,6 +272,141 @@
 
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toThrow</span><span class="p">();</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toThrow</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Writing_a_custom_matcher">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Writing_a_custom_matcher">&#182;</a>
+        </div>
+        <h2>Writing a custom matcher</h2>
+
+<p>There is also the ability to write custom matchers for when a project&rsquo;s domain calls for specific assertions that are not included.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Adding a custom matcher&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">addMatchers</span><span class="p">({</span>
+      <span class="nx">toBeGoofy</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">expected</span><span class="p">)</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-9">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-9">&#182;</a>
+        </div>
+        <p><code>toBeGoofy</code> takes an optional <code>expected</code> argument, so define it here if not passed in.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>        <span class="k">if</span> <span class="p">(</span><span class="nx">expected</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">expected</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+        <span class="p">}</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-10">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-10">&#182;</a>
+        </div>
+        <p><code>toBeGoofy</code> tests for equality of the actual&rsquo;s <code>hyuk</code> property to see if it matches the expectation.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>        <span class="kd">var</span> <span class="nx">pass</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">actual</span><span class="p">.</span><span class="nx">hyuk</span> <span class="o">===</span> <span class="s2">&quot;gawrsh&quot;</span> <span class="o">+</span> <span class="nx">expected</span><span class="p">;</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Failure_Messages">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Failure_Messages">&#182;</a>
+        </div>
+        <h3>Failure Messages</h3>
+
+<p>If left <code>undefined</code>, the expectation will attempt to craft a failure message for the matcher. However, if the <code>message</code> property is set, it will be used for a failed expectation.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>        <span class="k">if</span> <span class="p">(</span><span class="nx">pass</span><span class="p">)</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-12">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-12">&#182;</a>
+        </div>
+        <p>The matcher succeeded, so the custom failure message should be present in the case of a negative expectation &ndash; when the expectation is used with <code>.not</code>.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>          <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s2">&quot;Expected &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">actual</span> <span class="o">+</span> <span class="s2">&quot; not to be quite so goofy&quot;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-13">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-13">&#182;</a>
+        </div>
+        <p>The matcher failed, so the custom failure message should be present in the case of a positive expectation</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>          <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s2">&quot;Expected &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">actual</span> <span class="o">+</span> <span class="s2">&quot; to be goofy, but it was not very goofy&quot;</span><span class="p">;</span>
+        <span class="p">}</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-14">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-14">&#182;</a>
+        </div>
+        <p>Return whether or not the comparison passed</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>        <span class="k">return</span> <span class="nx">pass</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-15">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-15">&#182;</a>
+        </div>
+        <p>Once a custom matcher is registered with Jasmine, it is available on any expectation.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is available on an expectation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">({</span>
+      <span class="nx">hyuk</span><span class="o">:</span> <span class="s1">&#39;gawrsh&#39;</span>
+    <span class="p">}).</span><span class="nx">toBeGoofy</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can take an &#39;expected&#39; parameter&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">({</span>
+      <span class="nx">hyuk</span><span class="o">:</span> <span class="s1">&#39;gawrsh is fun&#39;</span>
+    <span class="p">}).</span><span class="nx">toBeGoofy</span><span class="p">(</span><span class="s1">&#39; is fun&#39;</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can be negated&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">({</span>
+      <span class="nx">hyuk</span><span class="o">:</span> <span class="s1">&#39;this is fun&#39;</span>
+    <span class="p">}).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeGoofy</span><span class="p">();</span>
   <span class="p">});</span>
 <span class="p">});</span></pre>
         </div>
@@ -748,10 +879,10 @@
         </div>
       </td>
     </tr>
-    <tr id="section-20">
+    <tr id="section-28">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-20">&#182;</a>
+          <a class="pilcrow" href="#section-28">&#182;</a>
         </div>
         <p>It is installed with a call to <code>jasmine.Clock.useMock</code> in a spec or suite that needs to call the timer functions.</p>
       </td>
@@ -764,10 +895,10 @@
         </div>
       </td>
     </tr>
-    <tr id="section-21">
+    <tr id="section-29">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-21">&#182;</a>
+          <a class="pilcrow" href="#section-29">&#182;</a>
         </div>
         <p>Calls to any registered callback are triggered when the clock is ticked forward via the <code>jasmine.Clock.tick</code> function, which takes a number of milliseconds.</p>
       </td>
@@ -823,10 +954,10 @@
         </div>
       </td>
     </tr>
-    <tr id="section-23">
+    <tr id="section-31">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-23">&#182;</a>
+          <a class="pilcrow" href="#section-31">&#182;</a>
         </div>
         <p>Specs are written by defining a set of blocks with calls to <code>runs</code>, which usually finish with an asynchronous call.</p>
       </td>
@@ -843,10 +974,10 @@
         </div>
       </td>
     </tr>
-    <tr id="section-24">
+    <tr id="section-32">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-24">&#182;</a>
+          <a class="pilcrow" href="#section-32">&#182;</a>
         </div>
         <p>The <code>waitsFor</code> block takes a latch function, a failure message, and a timeout.</p>
 
@@ -861,10 +992,10 @@
         </div>
       </td>
     </tr>
-    <tr id="section-25">
+    <tr id="section-33">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-25">&#182;</a>
+          <a class="pilcrow" href="#section-33">&#182;</a>
         </div>
         <p>Once the asynchronous conditions have been met, another <code>runs</code> block defines final test behavior. This is usually expectations based on state after the asynch call returns.</p>
       </td>
@@ -901,10 +1032,10 @@
         </div>
       </td>
     </tr>
-    <tr id="section-27">
+    <tr id="section-35">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-27">&#182;</a>
+          <a class="pilcrow" href="#section-35">&#182;</a>
         </div>
         <p>Create the <code>HTMLReporter</code>, which Jasmine calls to provide results of each spec and each suite. The Reporter is responsible for presenting results to the user.</p>
       </td>
@@ -915,10 +1046,10 @@
         </div>
       </td>
     </tr>
-    <tr id="section-28">
+    <tr id="section-36">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-28">&#182;</a>
+          <a class="pilcrow" href="#section-36">&#182;</a>
         </div>
         <p>Delegate filtering of specs to the reporter. Allows for clicking on single suites or specs in the results to only run a subset of the suite.</p>
       </td>

@@ -9,11 +9,11 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    mustache (0.99.4)
-    phantomjs (1.9.2.1)
-    rake (10.1.0)
+    mustache (1.0.2)
+    phantomjs (1.9.8.0)
+    rake (10.4.2)
     redcarpet (1.17.2)
-    tilt (1.4.1)
+    tilt (2.0.1)
 
 PLATFORMS
   ruby
@@ -23,3 +23,6 @@ DEPENDENCIES
   rake
   rocco!
   tilt
+
+BUNDLED WITH
+   1.10.1

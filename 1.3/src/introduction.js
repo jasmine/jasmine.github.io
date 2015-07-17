@@ -66,8 +66,6 @@ describe("The 'toBe' matcher compares with ===", function() {
  ### Included Matchers
 
  Jasmine has a rich set of matchers included. Each is used here - all expectations and specs pass.
-
- There is also the ability to write [custom matchers](https://github.com/pivotal/jasmine/wiki/Matchers) for when a project's domain calls for specific assertions that are not included below.
  */
 
 describe("Included matchers:", function() {
@@ -187,6 +185,74 @@ describe("Included matchers:", function() {
 
     expect(foo).not.toThrow();
     expect(bar).toThrow();
+  });
+});
+
+/**
+ ## Writing a custom matcher
+
+ There is also the ability to write custom matchers for when a project's domain calls for specific assertions that are not included.
+ */
+describe("Adding a custom matcher", function() {
+  beforeEach(function() {
+    this.addMatchers({
+      toBeGoofy: function(expected) {
+        /**
+         * `toBeGoofy` takes an optional `expected` argument, so define it here if not passed in.
+         */
+        if (expected === undefined) {
+          expected = '';
+        }
+
+        /**
+         * `toBeGoofy` tests for equality of the actual's `hyuk` property to see if it matches the expectation.
+         */
+        var pass = this.actual.hyuk === "gawrsh" + expected;
+
+        /**
+         * ### Failure Messages
+         *
+         * If left `undefined`, the expectation will attempt to craft a failure message for the matcher. However, if the `message` property is set, it will be used for a failed expectation.
+         */
+        if (pass) {
+          /**
+           * The matcher succeeded, so the custom failure message should be present in the case of a negative expectation - when the expectation is used with `.not`.
+           */
+          this.message = "Expected " + this.actual + " not to be quite so goofy";
+        } else {
+          /**
+           * The matcher failed, so the custom failure message should be present in the case of a positive expectation
+           */
+          this.message = "Expected " + this.actual + " to be goofy, but it was not very goofy";
+        }
+
+        /**
+         * Return whether or not the comparison passed
+         */
+        return pass;
+      }
+    });
+  });
+
+  /**
+   * Once a custom matcher is registered with Jasmine, it is available on any expectation.
+   */
+  it("is available on an expectation", function() {
+    expect({
+      hyuk: 'gawrsh'
+    }).toBeGoofy();
+  });
+
+  it("can take an 'expected' parameter", function() {
+    expect({
+      hyuk: 'gawrsh is fun'
+    }).toBeGoofy(' is fun');
+  });
+
+  it("can be negated", function() {
+    expect({
+      hyuk: 'this is fun'
+    }).not.toBeGoofy();
   });
 });
 
