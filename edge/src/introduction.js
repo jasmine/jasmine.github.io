@@ -817,7 +817,7 @@ describe("jasmine.any", function() {
 });
 
 /**
- ## Matching existance with `jasmine.anything`
+ ## Matching existence with `jasmine.anything`
  `jasmine.anything` returns `true` if the actual value is not `null` or `undefined`.
  */
 
