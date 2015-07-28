@@ -135,6 +135,7 @@ describe("Upgrading to jasmine 2.0", function() {
       spy.and.callFake(function() {});
       spy.and.throwError('error');
       spy.and.returnValue(1);
+      spy.and.returnValues(11,22,33);
       /**
         Basic setup and check remains the same
         */
@@ -142,7 +143,6 @@ describe("Upgrading to jasmine 2.0", function() {
       spy('bar');
 
       expect(spy).toHaveBeenCalledWith('foo');
-      expect(spy).toHaveBeenCalledWith('bar');
 
       /**
        * Similarly to behaviors, more advanced call checks are on the `calls` attribute
