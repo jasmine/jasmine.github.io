@@ -1,5 +1,7 @@
 ---
+sudo: false
 language: ruby
+cache: bundler
 script: bundle exec rake phantom
 matrix:
   include:
@@ -7,5 +9,9 @@ matrix:
     - JASMINE_VERSION="2.0"
   - env:
     - JASMINE_VERSION="2.1"
+  - env:
+    - JASMINE_VERSION="2.2"
+  - env:
+    - JASMINE_VERSION="2.3"
   - env:
     - JASMINE_VERSION="edge"
