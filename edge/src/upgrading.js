@@ -142,7 +142,6 @@ describe("Upgrading to jasmine 2.0", function() {
       spy('bar');
 
       expect(spy).toHaveBeenCalledWith('foo');
-      expect(spy).toHaveBeenCalledWith('bar');
 
       /**
        * Similarly to behaviors, more advanced call checks are on the `calls` attribute
