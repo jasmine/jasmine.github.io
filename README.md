@@ -10,6 +10,7 @@ Contributing
 1. Create your feature branch (`git checkout -b my-new-docs`)
 1. Ensure ruby and bundler (`gem install bundler`) are installed
 1. Install ruby dependencies (`bundle`)
+1. Install pygments (pip install pygments) - would need python and pip (http://pygments.org/)
 1. Make your modifications
  1. Docs for new features go in `edge`
  1. Docs for existing release version go in that directory
