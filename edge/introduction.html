@@ -729,7 +729,7 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
   <span class="p">});</span>
 
-  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not effect other functions&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not affect the function it is spying on&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
   <span class="p">});</span>
 
@@ -774,7 +774,7 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
   <span class="p">});</span>
 
-  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not effect other functions&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not affect the function it is spying on&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
   <span class="p">});</span>
 
@@ -823,7 +823,7 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
   <span class="p">});</span>
 
-  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not effect other functions&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not affect the function it is spying on&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
   <span class="p">});</span>
 
