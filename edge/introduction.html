@@ -379,7 +379,7 @@ There is also the ability to write <a href="custom_matcher.html">custom matchers
         <div class="pilwrap">
           <a class="pilcrow" href="#section-10">&#182;</a>
         </div>
-        <p>As the name implies, the <code>beforeEach</code> function is called once before each spec in the <code>describe</code> is run, and the <code>afterEach</code> function is called once after each spec.</p>
+        <p>As the name implies, the <code>beforeEach</code> function is called once before each spec of the <code>describe</code> block in which it is called, and the <code>afterEach</code> function is called once after each spec of the <code>describe</code> block in which it is called.</p>
 
 <p>Here is the same set of specs written a little differently. The variable under test is defined at the top-level scope &mdash; the <code>describe</code> block &mdash;  and initialization code is moved into a <code>beforeEach</code> function. The <code>afterEach</code> function resets the variable before continuing.</p>
       </td>
