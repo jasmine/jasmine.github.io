@@ -244,7 +244,7 @@ describe("A spec", function() {
  To help a test suite DRY up any duplicated setup and teardown code, Jasmine provides the global `beforeEach`, `afterEach`, `beforeAll`, and `afterAll` functions.
  */
 
-/** As the name implies, the `beforeEach` function is called once before each spec in the `describe` is run, and the `afterEach` function is called once after each spec.
+/** As the name implies, the `beforeEach` function is called once before each spec in the `describe` in which it is called, and the `afterEach` function is called once after each spec.
  *
  *
  Here is the same set of specs written a little differently. The variable under test is defined at the top-level scope -- the `describe` block --  and initialization code is moved into a `beforeEach` function. The `afterEach` function resets the variable before continuing.
@@ -357,7 +357,7 @@ describe("A spec", function() {
 
 /**
  ## Disabling Suites
- Suites and specs can be disabled with the `xdescribe` and `xit` functions, respectively. These suites and any specs inside them are skipped when run and thus their results will not appear in the results.
+ Suites can be disabled with the `xdescribe` function. These suites and any specs inside them are skipped when run and thus their results will not appear in the results.
  */
 xdescribe("A spec", function() {
   var foo;
@@ -401,7 +401,7 @@ describe("Pending specs", function() {
 
 /**
  ## Spies
- Jasmine has test double functions called spies. A spy can stub any function and tracks calls to it and all arguments. A spy only exists in the `describe` or `it` block it is defined, and will be removed after each spec. There are special matchers for interacting with spies.
+ Jasmine has test double functions called spies. A spy can stub any function and tracks calls to it and all arguments. A spy only exists in the `describe` or `it` block in which it is defined, and will be removed after each spec. There are special matchers for interacting with spies.
  __This syntax has changed for Jasmine 2.0.__
  The `toHaveBeenCalled` matcher will return true if the spy was called. The `toHaveBeenCalledWith` matcher will return true if the argument list matches any of the recorded calls to the spy.
  */
@@ -463,7 +463,7 @@ describe("A spy, when configured to call through", function() {
     expect(foo.getBar).toHaveBeenCalled();
   });
 
-  it("should not effect other functions", function() {
+  it("should not affect other functions", function() {
     expect(bar).toEqual(123);
   });
 
@@ -499,7 +499,7 @@ describe("A spy, when configured to fake a return value", function() {
     expect(foo.getBar).toHaveBeenCalled();
   });
 
-  it("should not effect other functions", function() {
+  it("should not affect other functions", function() {
     expect(bar).toEqual(123);
   });
 
@@ -537,7 +537,7 @@ describe("A spy, when configured with an alternate implementation", function() {
     expect(foo.getBar).toHaveBeenCalled();
   });
 
-  it("should not effect other functions", function() {
+  it("should not affect other functions", function() {
     expect(bar).toEqual(123);
   });
 

@@ -379,7 +379,7 @@ There is also the ability to write <a href="custom_matcher.html">custom matchers
         <div class="pilwrap">
           <a class="pilcrow" href="#section-10">&#182;</a>
         </div>
-        <p>As the name implies, the <code>beforeEach</code> function is called once before each spec in the <code>describe</code> is run, and the <code>afterEach</code> function is called once after each spec.</p>
+        <p>As the name implies, the <code>beforeEach</code> function is called once before each spec in the <code>describe</code> in which it is called, and the <code>afterEach</code> function is called once after each spec.</p>
 
 <p>Here is the same set of specs written a little differently. The variable under test is defined at the top-level scope &mdash; the <code>describe</code> block &mdash;  and initialization code is moved into a <code>beforeEach</code> function. The <code>afterEach</code> function resets the variable before continuing.</p>
       </td>
@@ -525,7 +525,7 @@ There is also the ability to write <a href="custom_matcher.html">custom matchers
         </div>
         <h2>Disabling Suites</h2>
 
-<p>Suites and specs can be disabled with the <code>xdescribe</code> and <code>xit</code> functions, respectively. These suites and any specs inside them are skipped when run and thus their results will not appear in the results.</p>
+<p>Suites can be disabled with the <code>xdescribe</code> function. These suites and any specs inside them are skipped when run and thus their results will not appear in the results.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -612,7 +612,7 @@ A string passed to <code>pending</code> will be treated as a reason and displaye
         </div>
         <h2>Spies</h2>
 
-<p>Jasmine has test double functions called spies. A spy can stub any function and tracks calls to it and all arguments. A spy only exists in the <code>describe</code> or <code>it</code> block it is defined, and will be removed after each spec. There are special matchers for interacting with spies.
+<p>Jasmine has test double functions called spies. A spy can stub any function and tracks calls to it and all arguments. A spy only exists in the <code>describe</code> or <code>it</code> block in which it is defined, and will be removed after each spec. There are special matchers for interacting with spies.
 <strong>This syntax has changed for Jasmine 2.0.</strong>
 The <code>toHaveBeenCalled</code> matcher will return true if the spy was called. The <code>toHaveBeenCalledWith</code> matcher will return true if the argument list matches any of the recorded calls to the spy.</p>
       </td>
@@ -684,7 +684,7 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
   <span class="p">});</span>
 
-  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not effect other functions&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not affect other functions&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
   <span class="p">});</span>
 
@@ -729,7 +729,7 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
   <span class="p">});</span>
 
-  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not effect other functions&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not affect other functions&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
   <span class="p">});</span>
 
@@ -776,7 +776,7 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
   <span class="p">});</span>
 
-  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not effect other functions&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not affect other functions&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
   <span class="p">});</span>
 
