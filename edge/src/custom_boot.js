@@ -66,6 +66,10 @@
 
   /**
    * You can also customize how specs are filtered from the current run by changing the `env.specFilter` function
+   *
+   * Alternatley specs to be run may also be specified after the tests have been parsed by passing an array of suite
+   * or spec IDs to the execute function.  These IDs can be gleaned by traversing the tree of parsed tests accessible
+   * via env.topSuite().
    */
   var specFilter = new jasmine.HtmlSpecFilter({
     filterString: function() { return queryString.getParam("spec"); }
@@ -87,7 +91,7 @@
       currentWindowOnload();
     }
     htmlReporter.initialize();
-    env.execute();
+    env.execute(env.topSuite().id);
   };
 
   function extend(destination, source) {
