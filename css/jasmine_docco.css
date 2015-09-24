@@ -24,8 +24,8 @@ h1, h2, h3, h4, h5, h6 {
   left: 40px;
   width: 273px;
   height: 75px;
-  background-image: url(/images/jasmine-horizontal.png);
-  background-image: url(/images/jasmine-horizontal.svg), none;
+  background-image: url(../images/jasmine-horizontal.png);
+  background-image: url(../images/jasmine-horizontal.svg), none;
   background-repeat: no-repeat no-repeat;
   background-size: 100%;
 }
@@ -39,8 +39,8 @@ h1, h2, h3, h4, h5, h6 {
 .title-banner .pivotal-logo {
   width: 150px;
   height: 54px;
-  background-image: url(/images/pivotal_logo.png);
-  background-image: url(/images/pivotal_logo.svg), none;
+  background-image: url(../images/pivotal_logo.png);
+  background-image: url(../images/pivotal_logo.svg), none;
   background-repeat: no-repeat no-repeat;
   background-size: 100%;
   float: left;
