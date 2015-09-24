@@ -1550,7 +1550,9 @@ Jasmine also has support for running specs that require testing asynchronous ope
           <a class="pilcrow" href="#section-52">&#182;</a>
         </div>
         <p>By default jasmine will wait for 5 seconds for an asynchronous spec to finish before causing a timeout failure.
-If specific specs should fail faster or need more time this can be adjusted by passing a timeout value to <code>it</code>, etc.</p>
+If the timeout expires before <code>done</code> is called, the current spec will be marked as failed and suite execution will continue as if <code>done</code> was called.</p>
+
+<p>If specific specs should fail faster or need more time this can be adjusted by passing a timeout value to <code>it</code>, etc.</p>
 
 <p>If the entire suite should have a different timeout, <code>jasmine.DEFAULT_TIMEOUT_INTERVAL</code> can be set globally, outside of any given <code>describe</code>.</p>
       </td>
