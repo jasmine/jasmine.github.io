@@ -163,7 +163,11 @@
         <div class="pilwrap">
           <a class="pilcrow" href="#section-7">&#182;</a>
         </div>
-        <p>You can also customize how specs are filtered from the current run by changing the <code>env.specFilter</code> function</p>
+        <p>You can also customize how specs are filtered from the current run by changing the <code>env.specFilter</code> function.</p>
+
+<p>Alternately, specs to be run may also be specified after the tests have been parsed by passing an array of suite
+or spec IDs to the execute function.  These IDs can be cleaned by traversing the tree of parsed tests accessible
+via env.topSuite().</p>
 
       </td>
       <td class="code">
@@ -188,7 +192,7 @@
       <span class="nx">currentWindowOnload</span><span class="p">();</span>
     <span class="p">}</span>
     <span class="nx">htmlReporter</span><span class="p">.</span><span class="nx">initialize</span><span class="p">();</span>
-    <span class="nx">env</span><span class="p">.</span><span class="nx">execute</span><span class="p">();</span>
+    <span class="nx">env</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="nx">env</span><span class="p">.</span><span class="nx">topSuite</span><span class="p">().</span><span class="nx">id</span><span class="p">);</span>
   <span class="p">};</span>
 
   <span class="kd">function</span> <span class="nx">extend</span><span class="p">(</span><span class="nx">destination</span><span class="p">,</span> <span class="nx">source</span><span class="p">)</span> <span class="p">{</span>
