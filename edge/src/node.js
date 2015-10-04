@@ -87,8 +87,8 @@ jasmine spec/appSpec.js
  * `----filter=`
  * Only runs specs that match the given string
  *
- * `----stop-on-failure`
- * Stops execution of a spec after the first expectation failure
+ * `----stop-on-failure=[true|false]`
+ * Stops execution of a spec after the first expectation failure when set to `true`
  */
 
 JASMINE_CONFIG_PATH=spec/config/jasmine.json jasmine
@@ -99,7 +99,7 @@ jasmine --no-color
 
 jasmine --filter="a spec name"
 
-jasmine --stop-on-failure
+jasmine --stop-on-failure=true
 
 /**
  * ### Using the library
