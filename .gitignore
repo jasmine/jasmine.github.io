@@ -1,3 +1,5 @@
 .idea
 tmp/
+.bundle/
+vendor/
 */lib/specRunner*.html
