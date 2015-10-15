@@ -7,11 +7,13 @@
   <link rel="stylesheet" href="/css/docco.css"/>
   <link rel="stylesheet" href="/css/jasmine_docco.css"/>
   <link rel="stylesheet" href="lib/jasmine.css"/>
+
   <script src="lib/jasmine.js"></script>
   <script src="lib/jasmine-html.js"></script>
   <script src="lib/boot.js"></script>
   <script src="src/support/mock-ajax.js"></script>
   <script src="src/custom_matcher.js"></script>
+
   <link rel="icon" href="/images/jasmine.ico" sizes="16x16"/>
   <link rel="icon" href="/images/jasmine_32x32.ico" sizes="32x32"/>
 </head>
@@ -55,9 +57,13 @@
         <div class="pilwrap">
           <a class="pilcrow" href="#section-1">&#182;</a>
         </div>
-        <p>Often a project will want to encapsulate custom matching code for use across multiple specs. Here is how to create a Jasmine-compatible custom matcher.</p>
+        <p>Often a project will want to encapsulate custom matching code for use across multiple specs. Here is how to create a Jasmine-compatible
+custom matcher.</p>
 
-<p>A custom matcher at its root is a comparison function that takes an <code>actual</code> value and <code>expected</code> value. This factory is passed to Jasmine, ideally in a call to <code>beforeEach</code> and will be in scope and available for all of the specs inside a given call to <code>describe</code>. Custom matchers are torn down between specs. The name of the factory will be the name of the matcher exposed on the return value of the call to <code>expect</code>.</p>
+<p>A custom matcher at its root is a comparison function that takes an <code>actual</code> value and <code>expected</code> value. This factory is passed to
+Jasmine, ideally in a call to <code>beforeEach</code> and will be in scope and available for all of the specs inside a given call to <code>describe</code>.
+Custom matchers are torn down between specs. The name of the factory will be the name of the matcher exposed on the return value of the
+call to <code>expect</code>.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -85,7 +91,9 @@
         </div>
         <h2>Matcher Factories</h2>
 
-<p>Custom matcher factories are passed two parameters: <code>util</code>, which has a set of utility functions for matchers to use (see: <a href="https://github.com/pivotal/jasmine/blob/master/src/core/matchers/matchersUtil.js"><code>matchersUtil.js</code></a> for the current list) and <code>customEqualityTesters</code> which needs to be passed in if <code>util.equals</code> is ever called. These parameters are available for use when then matcher is called.</p>
+<p>Custom matcher factories are passed two parameters: <code>util</code>, which has a set of utility functions for matchers to use (see:
+<a href="https://github.com/pivotal/jasmine/blob/master/src/core/matchers/matchersUtil.js"><code>matchersUtil.js</code></a> for the current list) and <code>customEqualityTesters</code> which needs to be passed in if <code>util.equals</code> is ever
+called. These parameters are available for use when then matcher is called.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -113,7 +121,8 @@
         </div>
         <h2>A Function to <code>compare</code></h2>
 
-<p>The compare function receives the value passed to <code>expect()</code> as the first argument &ndash; the actual &ndash; and the value (if any) passed to the matcher itself as second argument.</p>
+<p>The compare function receives the value passed to <code>expect()</code> as the first argument &ndash; the actual &ndash; and the value (if any) passed to
+the matcher itself as second argument.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -143,7 +152,9 @@
         </div>
         <h3>Result</h3>
 
-<p>The <code>compare</code> function must return a result object with a <code>pass</code> property that is a boolean result of the matcher. The <code>pass</code> property tells the expectation whether the matcher was successful (<code>true</code>) or unsuccessful (<code>false</code>). If the expectation is called/chained with <code>.not</code>, the expectation will negate this to determine whether the expectation is met.</p>
+<p>The <code>compare</code> function must return a result object with a <code>pass</code> property that is a boolean result of the matcher. The <code>pass</code>
+property tells the expectation whether the matcher was successful (<code>true</code>) or unsuccessful (<code>false</code>). If the expectation is
+called/chained with <code>.not</code>, the expectation will negate this to determine whether the expectation is met.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -171,7 +182,8 @@
         </div>
         <h3>Failure Messages</h3>
 
-<p>If left <code>undefined</code>, the expectation will attempt to craft a failure message for the matcher. However, if the return value has a <code>message</code> property it will be used for a  failed expectation.</p>
+<p>If left <code>undefined</code>, the expectation will attempt to craft a failure message for the matcher. However, if the return value has a
+<code>message</code> property it will be used for a  failed expectation.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -184,7 +196,8 @@
         <div class="pilwrap">
           <a class="pilcrow" href="#section-10">&#182;</a>
         </div>
-        <p>The matcher succeeded, so the custom failure message should be present in the case of a negative expectation &ndash; when the expectation is used with <code>.not</code>.</p>
+        <p>The matcher succeeded, so the custom failure message should be present in the case of a negative expectation &ndash; when the
+expectation is used with <code>.not</code>.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -231,11 +244,280 @@
         </div>
         <h3>Custom negative comparators</h3>
 
-<p>If you need more control over the negative comparison (the <code>not</code> case) than the simple boolean inversion above, you can also have your matcher factory include another key, <code>negativeCompare</code> alongside <code>compare</code>, for which the value is a function to invoke when <code>.not</code> is used. This function/key is optional.</p>
+<p>If you need more control over the negative comparison (the <code>not</code> case) than the simple boolean inversion above, you can also have your
+matcher factory include another key, <code>negativeCompare</code> alongside <code>compare</code>, for which the value is a function to invoke when <code>.not</code> is
+used. This function/key is optional.</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre></pre>
+          <pre><span class="nx">customMatchers</span><span class="p">.</span><span class="nx">toBeEquallyOdd</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">util</span><span class="p">,</span> <span class="nx">customEqualityTesters</span><span class="p">)</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-14">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-14">&#182;</a>
+        </div>
+        <p>Add a <code>compare</code> and custom <code>negativeCompare</code> function</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="k">return</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-A_function_to_&lt;code&gt;compare&lt;/code&gt;">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-A_function_to_&lt;code&gt;compare&lt;/code&gt;">&#182;</a>
+        </div>
+        <h2>A function to <code>compare</code></h2>
+
+<p>Verifies that the values are equal and odd numbers</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">compare</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">actual</span><span class="p">,</span> <span class="nx">expected</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{};</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-16">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-16">&#182;</a>
+        </div>
+        <p>Verifies that the expected value is defined.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>      <span class="k">if</span> <span class="p">(</span><span class="nx">expected</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">pass</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s2">&quot;expected must be defined&quot;</span><span class="p">;</span>
+      <span class="p">}</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-17">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-17">&#182;</a>
+        </div>
+        <p>Verifies that the actual is a number.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>      <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">util</span><span class="p">.</span><span class="nx">isNumber_</span><span class="p">(</span><span class="nx">actual</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">pass</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">actual</span> <span class="o">+</span> <span class="s2">&quot; must be a number.&quot;</span><span class="p">;</span>
+      <span class="p">}</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-18">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-18">&#182;</a>
+        </div>
+        <p>Verifies that the expected is a number.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>      <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">util</span><span class="p">.</span><span class="nx">isNumber_</span><span class="p">(</span><span class="nx">expected</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">pass</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">expected</span> <span class="o">+</span> <span class="s2">&quot; must be a number.&quot;</span><span class="p">;</span>
+      <span class="p">}</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-19">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-19">&#182;</a>
+        </div>
+        <p>Then verifies that the values are equal and odd.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>      <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">pass</span> <span class="o">=</span> <span class="nx">util</span><span class="p">.</span><span class="nx">equals</span><span class="p">(</span><span class="nx">actual</span><span class="p">,</span> <span class="nx">expected</span><span class="p">,</span> <span class="nx">customEqualityTesters</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">expected</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">===</span> <span class="mi">1</span><span class="p">);</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Failure_Messages">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Failure_Messages">&#182;</a>
+        </div>
+        <h3>Failure Messages</h3>
+
+<p>If left <code>undefined</code>, the expectation will attempt to craft a failure message for the matcher. However, if the return value has a
+<code>message</code> property it will be used for a  failed expectation.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">pass</span><span class="p">)</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-21">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-21">&#182;</a>
+        </div>
+        <p>The matcher succeeded, so the custom failure message should be present in the case of a negative expectation &ndash; when the
+expectation is used with <code>.not</code>.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>          <span class="nx">result</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s2">&quot;Expected &quot;</span> <span class="o">+</span> <span class="nx">actual</span> <span class="o">+</span> <span class="s2">&quot; to not equal &quot;</span> <span class="o">+</span> <span class="nx">actual</span> <span class="o">+</span> <span class="s2">&quot; or to not be an odd number&quot;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-22">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-22">&#182;</a>
+        </div>
+        <p>The matcher failed, so the custom failure message should be present in the case of a positive expectation</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>          <span class="nx">result</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s2">&quot;Expected &quot;</span> <span class="o">+</span> <span class="nx">actual</span> <span class="o">+</span> <span class="s2">&quot; to equal &quot;</span> <span class="o">+</span> <span class="nx">actual</span> <span class="o">+</span> <span class="s2">&quot; and to be an odd number, but it wasn&#39;t&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+    <span class="p">},</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-The_negative_compare_function">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-The_negative_compare_function">&#182;</a>
+        </div>
+        <h2>The negative compare function</h2>
+
+<p>Instead of just negating the compare, here it would just verify that the values are still equal, but not odd values.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">negativeCompare</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">actual</span><span class="p">,</span> <span class="nx">expected</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{};</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-24">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-24">&#182;</a>
+        </div>
+        <p>Verifies that the expected value is defined.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>      <span class="k">if</span> <span class="p">(</span><span class="nx">expected</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">pass</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s2">&quot;expected must be defined&quot;</span><span class="p">;</span>
+      <span class="p">}</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-25">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-25">&#182;</a>
+        </div>
+        <p>Verifies that the actual is a number.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>      <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">util</span><span class="p">.</span><span class="nx">isNumber_</span><span class="p">(</span><span class="nx">actual</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">pass</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">actual</span> <span class="o">+</span> <span class="s2">&quot; must be a number.&quot;</span><span class="p">;</span>
+      <span class="p">}</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-26">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-26">&#182;</a>
+        </div>
+        <p>Verifies that the expected is a number.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>      <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">util</span><span class="p">.</span><span class="nx">isNumber_</span><span class="p">(</span><span class="nx">expected</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">pass</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">expected</span> <span class="o">+</span> <span class="s2">&quot; must be a number.&quot;</span><span class="p">;</span>
+      <span class="p">}</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-27">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-27">&#182;</a>
+        </div>
+        <p>Then verifies that the values are equal and odd.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>      <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">pass</span> <span class="o">=</span> <span class="nx">util</span><span class="p">.</span><span class="nx">equals</span><span class="p">(</span><span class="nx">actual</span><span class="p">,</span> <span class="nx">expected</span><span class="p">,</span> <span class="nx">customEqualityTesters</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">expected</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">===</span> <span class="mi">0</span><span class="p">);</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Failure_Messages">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Failure_Messages">&#182;</a>
+        </div>
+        <h3>Failure Messages</h3>
+
+<p>If left <code>undefined</code>, the expectation will attempt to craft a failure message for the matcher. However, if the return value has a
+<code>message</code> property it will be used for a  failed expectation.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">pass</span><span class="p">)</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-29">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-29">&#182;</a>
+        </div>
+        <p>The matcher succeeded, so the custom failure message should be present in the case of a negative expectation &ndash; when the
+expectation is used with <code>.not</code>.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>          <span class="nx">result</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s2">&quot;Expected &quot;</span> <span class="o">+</span> <span class="nx">actual</span> <span class="o">+</span> <span class="s2">&quot; to not equal &quot;</span> <span class="o">+</span> <span class="nx">actual</span> <span class="o">+</span> <span class="s2">&quot; or to not be an even number&quot;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-30">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-30">&#182;</a>
+        </div>
+        <p>The matcher failed, so the custom failure message should be present in the case of a positive expectation</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>          <span class="nx">result</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s2">&quot;Expected &quot;</span> <span class="o">+</span> <span class="nx">actual</span> <span class="o">+</span> <span class="s2">&quot; to equal &quot;</span> <span class="o">+</span> <span class="nx">actual</span> <span class="o">+</span> <span class="s2">&quot; and to be an even number, but it wasn&#39;t&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span></pre>
         </div>
       </td>
     </tr>
@@ -248,16 +530,17 @@
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Custom matcher: &#39;toBeGoofy&#39;&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre>
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Custom matcher: &#39;toBeGoofy&#39; and &#39;toBeEquallyOdd&#39; &quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre>
         </div>
       </td>
     </tr>
-    <tr id="section-15">
+    <tr id="section-32">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-15">&#182;</a>
+          <a class="pilcrow" href="#section-32">&#182;</a>
         </div>
-        <p>Register the custom matchers with Jasmine. All properties on the object passed in will be available as custom matchers (e.g., in this case <code>toBeGoofy</code>).</p>
+        <p>Register the custom matchers with Jasmine. All properties on the object passed in will be available as custom matchers (e.g., in this
+case <code>toBeGoofy</code>).</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -267,13 +550,12 @@
         </div>
       </td>
     </tr>
-    <tr id="section-16">
+    <tr id="section-33">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-16">&#182;</a>
+          <a class="pilcrow" href="#section-33">&#182;</a>
         </div>
         <p>Once a custom matcher is registered with Jasmine, it is available on any expectation.</p>
-
       </td>
       <td class="code">
         <div class="highlight">
@@ -293,6 +575,33 @@
     <span class="nx">expect</span><span class="p">({</span>
       <span class="nx">hyuk</span><span class="o">:</span> <span class="s1">&#39;this is fun&#39;</span>
     <span class="p">}).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeGoofy</span><span class="p">();</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-34">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-34">&#182;</a>
+        </div>
+        <p>Now for the negative compare example</p>
+
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return true on equally odd numbers&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">actual</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="nx">expected</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">x</span> <span class="o">/</span> <span class="mi">5</span><span class="p">;</span> <span class="p">};</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">actual</span><span class="p">).</span><span class="nx">toBeEquallyOdd</span><span class="p">(</span><span class="nx">expected</span><span class="p">(</span><span class="mi">25</span><span class="p">));</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;but the negation should still verify equality&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">actual</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="nx">expected</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">x</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="p">};</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">actual</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeEquallyOdd</span><span class="p">(</span><span class="nx">expected</span><span class="p">(</span><span class="mi">20</span><span class="p">));</span> <span class="c1">// pass</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeEquallyOdd</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span> <span class="c1">//fail</span>
   <span class="p">});</span>
 <span class="p">});</span></pre>
         </div>
