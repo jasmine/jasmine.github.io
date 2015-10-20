@@ -2,7 +2,7 @@
   display: inline-block;
   width: 100%;
   text-align: left;
-  margin-top: 18px;
+  margin: 30px 0;
   font-weight: bold;
 }
 
@@ -14,7 +14,7 @@
   display: inline-block;
   width: 100%;
   text-align: left;
-    margin-top: 18px;
+  margin: 30px 0;
   font-weight: bold;
 }
 
@@ -29,12 +29,20 @@
 }
 
 .jasmine-environments {
-  margin-left: 7%;
-  margin-top: 4%;
-
+  margin: 5% 10%;
 }
 
 .community-environments {
-   margin-left: 7%;
-   margin-top: 4%;
+  margin: 5% 10%;
 }
+
+.description {
+  font-size: 14px;
+  font-weight: normal;
+  text-align: left;
+  margin: 30px 0;
+  width: 100%;
+  display: inline-block;
+}
+
+
