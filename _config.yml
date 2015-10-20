@@ -1,1 +1,2 @@
-baseurl: "http://Vindicarian.github.io/jasmine.github.io"
+baseurl: http://Vindicarian.github.io/jasmine.github.io
+exclude: [vendor]

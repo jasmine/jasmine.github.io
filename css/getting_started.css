@@ -1,0 +1,72 @@
+.options {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.option {
+  display: inline-block;
+  width: 35%;
+  vertical-align: top;
+  margin: 0 5em;
+}
+.option-title {
+  font-size: 2em;
+  border: 1px solid black;
+  padding: 1em 2em;
+ }
+
+.option-steps {
+  padding: 1em 3em;
+}
+
+ ol {
+  text-align: left;
+ }
+
+ li {
+   font-size: 1.5em;
+   margin-top: 5%;
+ }
+li span {
+  position: relative;
+  left: 30px;
+}
+
+h1 {
+  margin: 3em 0;
+}
+
+h2 {
+  margin: 2em 0;
+  color: #8A4182;
+}
+
+.divider {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.divider-left, .divider-right {
+  width: 35%;
+  display: inline-block;
+  border-top: 1px dotted black;
+}
+
+.or {
+  display: inline-block;
+  width: 10%;
+  font-style: bold;
+  font-size: 18pt;
+}
+
+.environments {
+  margin-left: 10%;
+  margin-bottom: 5em;
+  width: 80%;
+}
+
+.environment {
+  display: inline-block;
+  margin: 0 10em;
+}
+

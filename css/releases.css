@@ -1,0 +1,40 @@
+.jasmine-environments > span{
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  margin-top: 18px;
+  font-weight: bold;
+}
+
+.jasmine-environments > .getting-started-link {
+  text-align: center;
+}
+
+.community-environments > span {
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+    margin-top: 18px;
+  font-weight: bold;
+}
+
+.getting-started-link {
+  text-align: center;
+  color: #8A4182;
+}
+
+.getting-started-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.jasmine-environments {
+  margin-left: 7%;
+  margin-top: 4%;
+
+}
+
+.community-environments {
+   margin-left: 7%;
+   margin-top: 4%;
+}
