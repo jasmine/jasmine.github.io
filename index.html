@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel = "styleSheet" href = "css/reset.css" type = "text/css" />
 <link rel = "styleSheet" href = "css/pages.css" type = "text/css" />
-<!-- <link rel = "styleSheet" href = "css/reset.css" type = "text/css" /> -->
+<link rel = "styleSheet" href = "css/index.css" type = "text/css" />
 </head>
 <body>
 <div class = "header">
-  <img src="images/jasmine-horizontal.png" />
-  <!-- <img src="http://media4.popsugar-assets.com/files/2010/05/20/4/192/1922153/Princess-Jasmine/i/Princess-Jasmine.jpg" height="100"/> -->
+  <div class = "header-title">
+    <img src="images/Jasmine-Horizontal-Large-White.png" />
+    <span class = "header-title-text">Behavior-Driven Javascript</span>
+  </div>
+  <img class="header-logo" src="images/Jasmine-Circle-Med-White.png" />
 </div>
 <div class = "menu">
-  <div>
-    <div class = "menu-icon">
+  <div class = "menu-icon">
+    <a href = "index.html">
       <img src="images/jasmine-horizontal-small.png"/>
-    </div>
-    <div class = "menu-options">
-      <a href = "pages/getting_started.html">Getting Started</a>
-      <a href = "pages/index.old.html">Docs</a>
-      <a href = "pages/support.html">Support</a>
-      <a href = "pages/releases.html">Releases</a>
-      <a href = "pages/github.html">Github</a>
-    </div>
+    </a>
+  </div>
+  <div class = "menu-options">
+    <a href = "pages/getting_started.html">Getting Started</a>
+    <a href = "pages/index.old.html">Docs</a>
+    <a href = "pages/support.html">Support</a>
+    <a href = "https://github.com/jasmine/jasmine/releases">Releases</a>
+    <a href = "https://github.com/jasmine/jasmine">Github</a>
   </div>
 </div>
 <div class = "main-content">
   <div class = "reasons">
     <p class="reason">
-    <span class="title">FAST</span> <br /> <br />
+    <span class="reason-title">FAST</span> <br /> <br />
     Chris Sun is Awesome. Chris Sun is Awesome. Chris Sun is Awesome.
     </p>
     <p class="reason">
-    <span class="title">DEPENDABLE</span> <br /> <br />
+    <span class="reason-title">DEPENDABLE</span> <br /> <br />
     Chris Sun is Awesome. Chris Sun is Awesome. Chris Sun is Awesome.
     </p>
 
     <p class="reason">
-    <span class="title">SUPPORTIVE</span> <br /> <br />
+    <span class="reason-title">SUPPORTIVE</span> <br /> <br />
     Chris Sun is Awesome. Chris Sun is Awesome. Chris Sun is Awesome.
     </p>
   </div>
@@ -64,15 +68,16 @@
   <hr />
 </div>
 <div class = "footer">
-  <div class = "footer-icon left">
+  <div class = "footer-icon-jasmine">
     <img src="images/jasmine-horizontal-small.png"/>
   </div>
   <div class = "footer-links">
-    <span class = "link">OPEN SOURCE</span>
-    <span class = "link">BLOG</span>
+    <a class = "footer-link" href = "http://pivotal.io/labs/tools">OPEN SOURCE</a>
   </div>
-  <div class = "footer-icon right">
-    <img src="images/pivotal_logo.png"/>
+  <div class = "footer-icon-pivotal">
+    <a href = "http://pivotal.io/labs">
+      <img src="images/pivotal_logo.png"/>
+    </a>
   </div>
 </div>
 </body>

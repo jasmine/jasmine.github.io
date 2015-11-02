@@ -1,13 +1,18 @@
+---
+---
+
+@import 'mixins';
+@import 'constants';
+
 .options {
+  @include display-flex(row);
   width: 80%;
   margin-left: 10%;
 }
 
 .option {
-  display: inline-block;
   width: 35%;
-  vertical-align: top;
-  margin: 0 5em;
+  margin: 0 8em;
 }
 .option-title {
   font-size: 2em;
@@ -38,7 +43,7 @@ h1 {
 
 h2 {
   margin: 2em 0;
-  color: #8A4182;
+  color: $jasmine-color;
 }
 
 .divider {
@@ -60,13 +65,12 @@ h2 {
 }
 
 .environments {
-  margin-left: 10%;
-  margin-bottom: 5em;
+  @include display-flex(row);
+  margin: 3% 0 5% 10%;
   width: 80%;
 }
 
 .environment {
-  display: inline-block;
   margin: 0 10em;
 }
 

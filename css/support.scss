@@ -1,3 +1,9 @@
+---
+---
+
+@import 'mixins';
+@import 'constants';
+
 .title {
   display: flex;
 }
@@ -10,6 +16,7 @@
 .support-content {
   width: 50%;
   border: 1px solid black;
+  border-top: none;
 }
 
 .support-title {
@@ -19,6 +26,7 @@
 .support-twitter {
   width: 50%;
   border: 1px solid black;
+  border-top: none;
 }
 
 table {
