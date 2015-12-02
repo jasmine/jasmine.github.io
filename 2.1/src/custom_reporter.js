@@ -51,7 +51,7 @@ var myReporter = {
    */
   specDone: function(result) {
     /**
-     * The result here is the same object as in `specStarted` but with the addition of a status and a list of failedExpectations.
+     * The result here is the same object as in `specStarted` but with the addition of a status and lists of failed and passed expectations.
      */
     console.log('Spec: ' + result.description + ' was ' + result.status);
     for(var i = 0; i < result.failedExpectations.length; i++) {
@@ -61,6 +61,11 @@ var myReporter = {
       console.log('Failure: ' + result.failedExpectations[i].message);
       console.log(result.failedExpectations[i].stack);
     }
+
+    /**
+     * The `passedExpectations` are provided mostly for aggregate information.
+     */
+    console.log(result.passedExpectations.length);
   },
   /**
    * ### suiteDone
