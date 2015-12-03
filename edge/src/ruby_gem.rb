@@ -24,6 +24,11 @@ jasmine examples
 rake jasmine
 # For use on your CI server
 rake jasmine:ci
+# You can also override randomization settings from `jasmine.yml` for an individual jasmine:ci run for debugging purposes.
+rake jasmine:ci[true]
+# A seed can also be specified
+rake jasmine:ci[true,4321]
+
 
 ### Configuration
 # Primary configuration is done in `jasmine.yml`, which is in `spec/javascripts/support` by default.

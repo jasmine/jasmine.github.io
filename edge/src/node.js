@@ -48,15 +48,20 @@ jasmine examples
  */
 
 {
-    "spec_dir": "spec",
-    "spec_files": [
-        "appSpec.js",
-        "requests/**/*[sS]pec.js",
-        "utils/**/*[sS]pec.js"
-    ],
-    "helpers": [
-        "helpers/**/*.js"
-    ]
+  // Spec directory path. Your spec_files must be relative to this path
+  "spec_dir": "spec",
+  // Array of filepaths (and globs) relative to spec_dir to include
+  "spec_files": [
+    "**/*[sS]pec.js"
+  ],
+  // Array of filepaths (and globs) relative spec_dir to include before jasmine specs
+  "helpers": [
+    "helpers/**/*.js"
+  ],
+  // Stop execution of a spec after the first expectation failure in it
+  stopSpecOnExpectationFailure: false,
+  // Run specs in semi-random order
+  random: false
 }
 
 /**
@@ -80,26 +85,41 @@ jasmine spec/appSpec.js
 /**
  * `JASMINE_CONFIG_PATH=`
  * Specify a relative or absolute path to your configuration file. Can be used as an option or set as an environment variable.
- *
- * `----no-color`
- * Turns off color in spec output
- *
- * `----filter=`
- * Only runs specs that match the given string
- *
- * `----stop-on-failure=[true|false]`
- * Stops execution of a spec after the first expectation failure when set to `true`
  */
 
 JASMINE_CONFIG_PATH=spec/config/jasmine.json jasmine
 
 jasmine JASMINE_CONFIG_PATH=spec/config/jasmine.json
 
+/**
+ * `----no-color`
+ * Turns off color in spec output
+ */
 jasmine --no-color
 
+/**
+ * `----filter=`
+ * Only runs specs that match the given string
+ */
 jasmine --filter="a spec name"
 
+/**
+ * `----stop-on-failure=[true|false]`
+ * Stops execution of a spec after the first expectation failure when set to `true`
+ */
 jasmine --stop-on-failure=true
+
+/**
+ * `----random=[true|false]`
+ * Tells jasmine to run specs in semi random order or not for this run, overriding `jasmine.json`
+ */
+jasmine --random=true
+
+/**
+ * `----seed=`
+ * Sets the randomization seed if randomization is turned on
+ */
+jasmine --seed=4321
 
 /**
  * ### Using the library

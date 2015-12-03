@@ -166,16 +166,76 @@ Helpers are executed before specs.</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="p">{</span>
-    <span class="s2">&quot;spec_dir&quot;</span><span class="o">:</span> <span class="s2">&quot;spec&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;spec_files&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="s2">&quot;appSpec.js&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;requests/**/*[sS]pec.js&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;utils/**/*[sS]pec.js&quot;</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;helpers&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="s2">&quot;helpers/**/*.js&quot;</span>
-    <span class="p">]</span>
+          <pre><span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-10">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-10">&#182;</a>
+        </div>
+        <p>Spec directory path. Your spec_files must be relative to this path</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="s2">&quot;spec_dir&quot;</span><span class="o">:</span> <span class="s2">&quot;spec&quot;</span><span class="p">,</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-11">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-11">&#182;</a>
+        </div>
+        <p>Array of filepaths (and globs) relative to spec_dir to include</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="s2">&quot;spec_files&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="s2">&quot;**/*[sS]pec.js&quot;</span>
+  <span class="p">],</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-12">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-12">&#182;</a>
+        </div>
+        <p>Array of filepaths (and globs) relative spec_dir to include before jasmine specs</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="s2">&quot;helpers&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="s2">&quot;helpers/**/*.js&quot;</span>
+  <span class="p">],</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-13">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-13">&#182;</a>
+        </div>
+        <p>Stop execution of a spec after the first expectation failure in it</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">stopSpecOnExpectationFailure</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-14">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-14">&#182;</a>
+        </div>
+        <p>Run specs in semi-random order</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">random</span><span class="o">:</span> <span class="kc">false</span>
 <span class="p">}</span></pre>
         </div>
       </td>
@@ -193,10 +253,10 @@ Helpers are executed before specs.</p>
         </div>
       </td>
     </tr>
-    <tr id="section-11">
+    <tr id="section-16">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-11">&#182;</a>
+          <a class="pilcrow" href="#section-16">&#182;</a>
         </div>
         <p>Once you have set up your <code>jasmine.json</code>, you can start Jasmine by running <code>jasmine</code> from the root of your project.</p>
 
@@ -223,34 +283,89 @@ Helpers are executed before specs.</p>
         </div>
       </td>
     </tr>
-    <tr id="section-13">
+    <tr id="section-18">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-13">&#182;</a>
+          <a class="pilcrow" href="#section-18">&#182;</a>
         </div>
         <p><code>JASMINE_CONFIG_PATH=</code>
 Specify a relative or absolute path to your configuration file. Can be used as an option or set as an environment variable.</p>
-
-<p><code>&mdash;&mdash;no-color</code>
-Turns off color in spec output</p>
-
-<p><code>&mdash;&mdash;filter=</code>
-Only runs specs that match the given string</p>
-
-<p><code>&mdash;&mdash;stop-on-failure=[true|false]</code>
-Stops execution of a spec after the first expectation failure when set to <code>true</code></p>
       </td>
       <td class="code">
         <div class="highlight">
           <pre><span class="nx">JASMINE_CONFIG_PATH</span><span class="o">=</span><span class="nx">spec</span><span class="o">/</span><span class="nx">config</span><span class="o">/</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">json</span> <span class="nx">jasmine</span>
 
-<span class="nx">jasmine</span> <span class="nx">JASMINE_CONFIG_PATH</span><span class="o">=</span><span class="nx">spec</span><span class="o">/</span><span class="nx">config</span><span class="o">/</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">json</span>
-
-<span class="nx">jasmine</span> <span class="o">--</span><span class="nx">no</span><span class="o">-</span><span class="nx">color</span>
-
-<span class="nx">jasmine</span> <span class="o">--</span><span class="nx">filter</span><span class="o">=</span><span class="s2">&quot;a spec name&quot;</span>
-
-<span class="nx">jasmine</span> <span class="o">--</span><span class="nx">stop</span><span class="o">-</span><span class="nx">on</span><span class="o">-</span><span class="nx">failure</span><span class="o">=</span><span class="kc">true</span></pre>
+<span class="nx">jasmine</span> <span class="nx">JASMINE_CONFIG_PATH</span><span class="o">=</span><span class="nx">spec</span><span class="o">/</span><span class="nx">config</span><span class="o">/</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">json</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-19">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-19">&#182;</a>
+        </div>
+        <p><code>&mdash;&mdash;no-color</code>
+Turns off color in spec output</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">jasmine</span> <span class="o">--</span><span class="nx">no</span><span class="o">-</span><span class="nx">color</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-20">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-20">&#182;</a>
+        </div>
+        <p><code>&mdash;&mdash;filter=</code>
+Only runs specs that match the given string</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">jasmine</span> <span class="o">--</span><span class="nx">filter</span><span class="o">=</span><span class="s2">&quot;a spec name&quot;</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-21">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-21">&#182;</a>
+        </div>
+        <p><code>&mdash;&mdash;stop-on-failure=[true|false]</code>
+Stops execution of a spec after the first expectation failure when set to <code>true</code></p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">jasmine</span> <span class="o">--</span><span class="nx">stop</span><span class="o">-</span><span class="nx">on</span><span class="o">-</span><span class="nx">failure</span><span class="o">=</span><span class="kc">true</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-22">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-22">&#182;</a>
+        </div>
+        <p><code>&mdash;&mdash;random=[true|false]</code>
+Tells jasmine to run specs in semi random order or not for this run, overriding <code>jasmine.json</code></p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">jasmine</span> <span class="o">--</span><span class="nx">random</span><span class="o">=</span><span class="kc">true</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-23">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-23">&#182;</a>
+        </div>
+        <p><code>&mdash;&mdash;seed=</code>
+Sets the randomization seed if randomization is turned on</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">jasmine</span> <span class="o">--</span><span class="nx">seed</span><span class="o">=</span><span class="mi">4321</span></pre>
         </div>
       </td>
     </tr>
@@ -267,10 +382,10 @@ Stops execution of a spec after the first expectation failure when set to <code>
         </div>
       </td>
     </tr>
-    <tr id="section-15">
+    <tr id="section-25">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-15">&#182;</a>
+          <a class="pilcrow" href="#section-25">&#182;</a>
         </div>
         <p>Jasmine can also be used as a library in your project.</p>
       </td>
@@ -319,10 +434,10 @@ Stops execution of a spec after the first expectation failure when set to <code>
         </div>
       </td>
     </tr>
-    <tr id="section-18">
+    <tr id="section-28">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-18">&#182;</a>
+          <a class="pilcrow" href="#section-28">&#182;</a>
         </div>
         <p>Optionally specify a custom <code>onComplete</code> callback. The callback is given a boolean of whether all of the specs passed or not. This is often used to message a status to task runners like grunt.</p>
       </td>
@@ -352,10 +467,10 @@ Stops execution of a spec after the first expectation failure when set to <code>
         </div>
       </td>
     </tr>
-    <tr id="section-20">
+    <tr id="section-30">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-20">&#182;</a>
+          <a class="pilcrow" href="#section-30">&#182;</a>
         </div>
         <p>A ConsoleReporter is included if no other reporters are added. You can configure the default reporter with <code>configureDefaultReporter</code>. The default values are shown in the example.</p>
       </td>
@@ -372,10 +487,10 @@ Stops execution of a spec after the first expectation failure when set to <code>
         </div>
       </td>
     </tr>
-    <tr id="section-21">
+    <tr id="section-31">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-21">&#182;</a>
+          <a class="pilcrow" href="#section-31">&#182;</a>
         </div>
         <p>You can add a custom reporter with <code>addReporter</code>. If you add a reporter through <code>addReporter</code>, the default ConsoleReporter will not be added.
 Multiple reporters can be added.</p>
@@ -402,10 +517,10 @@ Multiple reporters can be added.</p>
         </div>
       </td>
     </tr>
-    <tr id="section-23">
+    <tr id="section-33">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-23">&#182;</a>
+          <a class="pilcrow" href="#section-33">&#182;</a>
         </div>
         <p>Calling <code>execute</code> will run the specs.</p>
       </td>
@@ -415,10 +530,10 @@ Multiple reporters can be added.</p>
         </div>
       </td>
     </tr>
-    <tr id="section-24">
+    <tr id="section-34">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-24">&#182;</a>
+          <a class="pilcrow" href="#section-34">&#182;</a>
         </div>
         <p><code>execute</code> can optionally be called with a list of spec file paths to execute relative to your project root and a string to filter by spec name.</p>
       </td>

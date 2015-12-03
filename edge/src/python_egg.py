@@ -38,3 +38,6 @@ jasmine-ci
 # or by setting the `----browser` flag.
 
 jasmine-ci --browser firefox
+
+# You can also specify a randomization seed for an individual jasmine:ci run for debugging purposes.
+jasmine-ci --seed 4321
