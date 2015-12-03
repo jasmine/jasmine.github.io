@@ -15,4 +15,6 @@ matrix:
   - env:
     - JASMINE_VERSION="2.3"
   - env:
+    - JASMINE_VERSION="2.4"
+  - env:
     - JASMINE_VERSION="edge"
