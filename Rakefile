@@ -2,6 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'fileutils'
 require 'tilt'
+require 'yaml'
 
 def get_version
   ENV['JASMINE_VERSION'] || 'edge'
@@ -99,4 +100,21 @@ task :update_edge_jasmine do
   `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/jasmine.css' > edge/lib/jasmine.css`
   `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/boot.js' > edge/lib/boot.js`
   `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/console/console.js' > edge/lib/console.js`
+end
+
+desc "make section of docs for a newly released version of jasmine"
+task :release, [:version] do |t, args|
+  FileUtils.cp_r('edge', args.version)
+
+  travis_config = YAML.load_file('.travis.yml')
+  travis_config['matrix']['include'] << { 'env' => ["JASMINE_VERSION=\"#{args.version}\""] }
+  File.open('.travis.yml', 'w') do |f|
+    f.write(YAML.dump(travis_config))
+  end
+
+  index_html = File.read('index.html')
+  index_html.sub!('<!-- NEW VERSIONS HERE -->', %Q{<h2><a href="#{args.version}/introduction.html">#{args.version}</a></h2>\n<!-- NEW VERSIONS HERE -->})
+  File.open('index.html', 'w') do |f|
+    f.write(index_html)
+  end
 end
