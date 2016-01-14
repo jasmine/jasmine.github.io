@@ -402,8 +402,10 @@ describe("Pending specs", function() {
 /**
  ## Spies
  Jasmine has test double functions called spies. A spy can stub any function and tracks calls to it and all arguments. A spy only exists in the `describe` or `it` block in which it is defined, and will be removed after each spec. There are special matchers for interacting with spies.
- __This syntax has changed for Jasmine 2.0.__
+ __This syntax has changed as of Jasmine 2.0 from Jasmine 1.x.__
  The `toHaveBeenCalled` matcher will return true if the spy was called. The `toHaveBeenCalledWith` matcher will return true if the argument list matches any of the recorded calls to the spy.
+ The <code>toHaveBeenCalledTimes</code> matcher added in Jasmine 2.4 allows the assertion that a spy was only called the specified times. Pre 2.4, <code>expect(spy.calls.count()).toBe(x)</code> was required. Now <code>expect(spy).toHaveBeenCalledTimes(x)</code> can be called.
+
  */
 
 describe("A spy", function() {
@@ -424,6 +426,14 @@ describe("A spy", function() {
 
   it("tracks that the spy was called", function() {
     expect(foo.setBar).toHaveBeenCalled();
+  });
+  
+  it("tracks that the spy was called x times", function() {
+   // x can be 0, 1 or more
+   // 0 is equivalent to expect(foo.setBar).not.toHaveBeenCalled();
+   // toHaveBeenCalledTimes makes asserts more precise for expectations than toHaveBeenCalled();
+   // replaces expect(foo.setBar.calls.count()).toBe(x);
+   expect(foo.setBar).toHaveBeenCalledTimes(1);
   });
 
   it("tracks all the arguments of its calls", function() {
