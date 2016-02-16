@@ -613,8 +613,7 @@ A string passed to <code>pending</code> will be treated as a reason and displaye
         <h2>Spies</h2>
 
 <p>Jasmine has test double functions called spies. A spy can stub any function and tracks calls to it and all arguments. A spy only exists in the <code>describe</code> or <code>it</code> block in which it is defined, and will be removed after each spec. There are special matchers for interacting with spies.
-<strong>This syntax has changed for Jasmine 2.0.</strong>
-The <code>toHaveBeenCalled</code> matcher will return true if the spy was called. The <code>toHaveBeenCalledWith</code> matcher will return true if the argument list matches any of the recorded calls to the spy.</p>
+<strong>This syntax has changed for Jasmine 2.0.</strong></p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -632,13 +631,50 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
 
     <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
     <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">456</span><span class="p">,</span> <span class="s1">&#39;another param&#39;</span><span class="p">);</span>
-  <span class="p">});</span>
-
-  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks that the spy was called&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-20">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-20">&#182;</a>
+        </div>
+        <p>The <code>toHaveBeenCalled</code> matcher will return true if the spy was called.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks that the spy was called&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
-  <span class="p">});</span>
-
-  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks all the arguments of its calls&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-21">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-21">&#182;</a>
+        </div>
+        <p>The <code>toHaveBeenCalledTimes</code> matcher will pass if the spy was called the specified number of times.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks that the spy was called x times&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-22">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-22">&#182;</a>
+        </div>
+        <p>The <code>toHaveBeenCalledWith</code> matcher will return true if the argument list matches any of the recorded calls to the spy.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks all the arguments of its calls&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="mi">456</span><span class="p">,</span> <span class="s1">&#39;another param&#39;</span><span class="p">);</span>
   <span class="p">});</span>
@@ -931,10 +967,10 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-27">
+    <tr id="section-30">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-27">&#182;</a>
+          <a class="pilcrow" href="#section-30">&#182;</a>
         </div>
         <p><code>.calls.any()</code>: returns <code>false</code> if the spy has not been called at all, and then <code>true</code> once at least one call happens.</p>
       </td>
@@ -950,10 +986,10 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-28">
+    <tr id="section-31">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-28">&#182;</a>
+          <a class="pilcrow" href="#section-31">&#182;</a>
         </div>
         <p><code>.calls.count()</code>: returns the number of times the spy was called</p>
       </td>
@@ -970,10 +1006,10 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-29">
+    <tr id="section-32">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-29">&#182;</a>
+          <a class="pilcrow" href="#section-32">&#182;</a>
         </div>
         <p><code>.calls.argsFor(index)</code>: returns the arguments passed to call number <code>index</code></p>
       </td>
@@ -989,10 +1025,10 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-30">
+    <tr id="section-33">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-30">&#182;</a>
+          <a class="pilcrow" href="#section-33">&#182;</a>
         </div>
         <p><code>.calls.allArgs()</code>: returns the arguments to all calls</p>
       </td>
@@ -1007,10 +1043,10 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-31">
+    <tr id="section-34">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-31">&#182;</a>
+          <a class="pilcrow" href="#section-34">&#182;</a>
         </div>
         <p><code>.calls.all()</code>: returns the context (the <code>this</code>) and arguments passed all calls</p>
       </td>
@@ -1024,10 +1060,10 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-32">
+    <tr id="section-35">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-32">&#182;</a>
+          <a class="pilcrow" href="#section-35">&#182;</a>
         </div>
         <p><code>.calls.mostRecent()</code>: returns the context (the <code>this</code>) and arguments for the most recent call</p>
       </td>
@@ -1042,10 +1078,10 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-33">
+    <tr id="section-36">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-33">&#182;</a>
+          <a class="pilcrow" href="#section-36">&#182;</a>
         </div>
         <p><code>.calls.first()</code>: returns the context (the <code>this</code>) and arguments for the first call</p>
       </td>
@@ -1060,10 +1096,10 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-34">
+    <tr id="section-37">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-34">&#182;</a>
+          <a class="pilcrow" href="#section-37">&#182;</a>
         </div>
         <p>When inspecting the return from <code>all()</code>, <code>mostRecent()</code> and <code>first()</code>, the <code>object</code> property is set to the value of <code>this</code> when the spy was called.</p>
       </td>
@@ -1086,10 +1122,10 @@ The <code>toHaveBeenCalled</code> matcher will return true if the spy was called
         </div>
       </td>
     </tr>
-    <tr id="section-35">
+    <tr id="section-38">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-35">&#182;</a>
+          <a class="pilcrow" href="#section-38">&#182;</a>
         </div>
         <p><code>.calls.reset()</code>: clears all tracking for a spy</p>
       </td>
@@ -1428,10 +1464,10 @@ The Jasmine Clock is available for testing time dependent code.</p>
         </div>
       </td>
     </tr>
-    <tr id="section-45">
+    <tr id="section-48">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-45">&#182;</a>
+          <a class="pilcrow" href="#section-48">&#182;</a>
         </div>
         <p>It is installed with a call to <code>jasmine.clock().install</code> in a spec or suite that needs to manipulate time.</p>
       </td>
@@ -1444,10 +1480,10 @@ The Jasmine Clock is available for testing time dependent code.</p>
         </div>
       </td>
     </tr>
-    <tr id="section-46">
+    <tr id="section-49">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-46">&#182;</a>
+          <a class="pilcrow" href="#section-49">&#182;</a>
         </div>
         <p>Be sure to uninstall the clock after you are done to restore the original functions.</p>
       </td>
@@ -1520,10 +1556,10 @@ The Jasmine Clock is available for testing time dependent code.</p>
         </div>
       </td>
     </tr>
-    <tr id="section-49">
+    <tr id="section-52">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-49">&#182;</a>
+          <a class="pilcrow" href="#section-52">&#182;</a>
         </div>
         <p>If you do not provide a base time to <code>mockDate</code> it will use the current date.</p>
       </td>
@@ -1556,10 +1592,10 @@ Jasmine also has support for running specs that require testing asynchronous ope
         </div>
       </td>
     </tr>
-    <tr id="section-51">
+    <tr id="section-54">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-51">&#182;</a>
+          <a class="pilcrow" href="#section-54">&#182;</a>
         </div>
         <p>Calls to <code>beforeAll</code>, <code>afterAll</code>, <code>beforeEach</code>, <code>afterEach</code>, and <code>it</code> can take an optional single argument that should be called when the async work is complete.</p>
       </td>
@@ -1574,10 +1610,10 @@ Jasmine also has support for running specs that require testing asynchronous ope
         </div>
       </td>
     </tr>
-    <tr id="section-52">
+    <tr id="section-55">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-52">&#182;</a>
+          <a class="pilcrow" href="#section-55">&#182;</a>
         </div>
         <p>This spec will not start until the <code>done</code> function is called in the call to <code>beforeEach</code> above. And this spec will not complete until its <code>done</code> is called.</p>
       </td>
@@ -1591,10 +1627,10 @@ Jasmine also has support for running specs that require testing asynchronous ope
         </div>
       </td>
     </tr>
-    <tr id="section-53">
+    <tr id="section-56">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-53">&#182;</a>
+          <a class="pilcrow" href="#section-56">&#182;</a>
         </div>
         <p>By default jasmine will wait for 5 seconds for an asynchronous spec to finish before causing a timeout failure.
 If the timeout expires before <code>done</code> is called, the current spec will be marked as failed and suite execution will continue as if <code>done</code> was called.</p>
@@ -1623,10 +1659,10 @@ If the timeout expires before <code>done</code> is called, the current spec will
         </div>
       </td>
     </tr>
-    <tr id="section-54">
+    <tr id="section-57">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-54">&#182;</a>
+          <a class="pilcrow" href="#section-57">&#182;</a>
         </div>
         <p>The <code>done.fail</code> function fails the spec and indicates that it has completed.</p>
       </td>
