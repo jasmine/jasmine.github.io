@@ -506,7 +506,10 @@ describe("A spy, when configured with an alternate implementation", function() {
       }
     };
 
-    spyOn(foo, "getBar").and.callFake(function() {
+    /**
+     * If the function being spied on receives arguments that the fake needs, you can get those as well
+     */
+    spyOn(foo, "getBar").and.callFake(function(arguments, can, be, received) {
       return 1001;
     });
 
