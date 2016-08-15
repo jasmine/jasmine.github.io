@@ -86,9 +86,11 @@ task :phantom => :spec_runner do
   require 'phantomjs'
   version = get_version
 
+  phantom_path = ENV['TRAVIS'] ? 'phantomjs' : Phantomjs.path
+
   puts "Running specs for documentation of jasmine version #{version}"
   Dir.glob(File.join(version, 'lib', 'specRunner*.html')).each do |runner|
-    system "#{Phantomjs.path} src/phantom_runner.js #{File.expand_path(runner)} --no-color"
+    system "#{phantom_path} src/phantom_runner.js #{File.expand_path(runner)} --no-color"
   end
 end
 
