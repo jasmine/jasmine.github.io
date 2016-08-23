@@ -147,11 +147,20 @@ describe("Included matchers:", function() {
     expect(foo).not.toBeFalsy();
   });
 
-  it("The 'toContain' matcher is for finding an item in an Array", function() {
-    var a = ['foo', 'bar', 'baz'];
+  describe("The 'toContain' matcher", function() {
+    it("works for finding an item in an Array", function() {
+      var a = ["foo", "bar", "baz"];
 
-    expect(a).toContain('bar');
-    expect(a).not.toContain('quux');
+      expect(a).toContain("bar");
+      expect(a).not.toContain("quux");
+    });
+
+    it("also works for finding a substring", function() {
+      var a = "foo bar baz";
+
+      expect(a).toContain("bar");
+      expect(a).not.toContain("quux");
+    });
   });
 
   it("The 'toBeLessThan' matcher is for mathematical comparisons", function() {
