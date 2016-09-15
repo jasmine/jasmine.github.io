@@ -1093,20 +1093,17 @@ describe("Asynchronous specs", function() {
    Calls to `beforeAll`, `afterAll`, `beforeEach`, `afterEach`, and `it` can take an optional single argument that should be called when the async work is complete.
    */
   beforeEach(function(done) {
-    setTimeout(function() {
-      value = 0;
-      done();
-    }, 1);
-  });
+    value = 0;
+    done();
+  }, 1);
 
   /**
    This spec will not start until the `done` function is called in the call to `beforeEach` above. And this spec will not complete until its `done` is called.
    */
 
-  it("should support async execution of test preparation and expectations", function(done) {
+  it("should support async execution of test preparation and expectations", function() {
     value++;
     expect(value).toBeGreaterThan(0);
-    done();
   });
 
   /**
