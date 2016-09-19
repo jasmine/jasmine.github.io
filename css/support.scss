@@ -1,0 +1,58 @@
+---
+---
+
+@import 'mixins';
+@import 'constants';
+
+.title {
+  display: flex;
+}
+
+.support {
+  display: flex;
+  height: 60em;
+}
+
+.support-content {
+  width: 50%;
+  border: 1px solid black;
+  border-top: none;
+}
+
+.support-title {
+  font-weight: bold;
+}
+
+.support-twitter {
+  width: 50%;
+  border: 1px solid black;
+  border-top: none;
+}
+
+table {
+  text-align: left;
+  margin-left: 18%;
+}
+tr td {
+  padding-top: 10%;
+  padding-left: 8%;
+}
+
+.table-title {
+  font-size: 30px;
+  font-weight:bold;
+}
+
+.twitter-contents {
+  height: 40em;
+  border: 1px solid black;
+  margin: 5em 5em;
+  position: relative;
+}
+
+.twitter {
+  position: absolute;
+  top: 50%;
+  font-size: 30px;
+  left: 30%;
+}

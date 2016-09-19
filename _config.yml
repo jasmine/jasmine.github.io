@@ -1,0 +1,6 @@
+baseurl: http://Vindicarian.github.io/jasmine.github.io
+exclude: [vendor]
+
+sass:
+  sass_dir: css/_scss
+  style: compressed

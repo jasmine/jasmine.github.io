@@ -1,0 +1,126 @@
+---
+---
+
+@import 'mixins';
+@import 'constants';
+
+body {
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, FreeSerif, serif;
+}
+
+.header {
+  background-color: $jasmine-color;
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+}
+.header-logo {
+  opacity: 0.25;
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  height: 600px;
+  width: 600px;
+}
+.header-title {
+  margin-top: 2%;
+  margin-left: 12.5%;
+}
+.header-title-text {
+  margin-top: 0.25%;
+  margin-left: 8%;
+  color: white;
+  font-size: 34px;
+  display: block;
+}
+
+.main-content, .footer {
+  text-align: center;
+}
+h1 {
+  font-size: 32px;
+}
+hr {
+  width: 80%
+}
+.menu {
+  text-align: right;
+  width: 100%;
+  border-style: solid;
+  border-color: black;
+  border-right: none;
+  border-left: none;
+  border-width: 3px;
+  padding: 5px 0;
+}
+
+.menu-options {
+  line-height: 3em;
+  margin-right: 5em;
+
+  a {
+    text-decoration: none;
+    color: $jasmine-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.menu-icon {
+  margin-left: 5em;
+  float: left;
+
+  img:hover {
+    opacity: 0.75;
+  }
+}
+
+.reason-title {
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.menu a {
+    margin-right: 40px;
+}
+
+.footer {
+  @include display-flex(row);
+  padding: 4% 5% 2%;
+
+  .footer-icon-jasmine {
+    @include flex-grow(1);
+    text-align: left;
+  }
+
+  .footer-links {
+    @include flex-grow(2);
+
+    .footer-link {
+      color: $jasmine-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .footer-icon-pivotal {
+    @include flex-grow(1);
+    text-align: right;
+
+    a {
+      img:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+}
+
+.link {
+  margin: 0 2em;
+}
