@@ -4,10 +4,7 @@ title: Jasmine documentation home
 ---
 
 <div class="main-content">
-  <h1><a href="../1.3/introduction.html">1.3</a></h1>
-  <h1><a href="../2.0/introduction.html">2.0</a></h1>
-  <h1><a href="../2.1/introduction.html">2.1</a></h1>
-  <h1><a href="../2.2/introduction.html">2.2</a></h1>
-  <h1><a href="../2.3/introduction.html">2.3</a></h1>
-  <h1><a href="../edge/introduction.html">Edge</a></h1>
+  {% for version in site.versions %}
+  <h1><a href="{{ version.url }}">{{ version.url | remove_first: "/" | remove: "/introduction" | capitalize }}</a></h1>
+  {% endfor %}
 </div>

@@ -1,5 +1,10 @@
-baseurl: http://Vindicarian.github.io/jasmine.github.io
+baseurl: http://jasmine.github.io
 exclude: [vendor]
+
+collections:
+  versions:
+    output: true
+    permalink: :path
 
 sass:
   sass_dir: css/_scss
