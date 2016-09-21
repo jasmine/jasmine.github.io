@@ -1,84 +1,44 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel = "styleSheet" href = "css/reset.css" type = "text/css" />
-<link rel = "styleSheet" href = "css/pages.css" type = "text/css" />
-<link rel = "styleSheet" href = "css/index.css" type = "text/css" />
-</head>
-<body>
-<div class = "header">
-  <div class = "header-title">
-    <img src="images/Jasmine-Horizontal-Large-White.png" />
-    <span class = "header-title-text">Behavior-Driven Javascript</span>
-  </div>
-  <img class="header-logo" src="images/Jasmine-Circle-Med-White.png" />
-</div>
-<div class = "menu">
-  <div class = "menu-icon">
-    <a href = "index.html">
-      <img src="images/jasmine-horizontal-small.png"/>
-    </a>
-  </div>
-  <div class = "menu-options">
-    <a href = "pages/getting_started.html">Getting Started</a>
-    <a href = "pages/index.old.html">Docs</a>
-    <a href = "pages/support.html">Support</a>
-    <a href = "https://github.com/jasmine/jasmine/releases">Releases</a>
-    <a href = "https://github.com/jasmine/jasmine">Github</a>
-  </div>
-</div>
-<div class = "main-content">
-  <div class = "reasons">
-    <p class="reason">
-    <span class="reason-title">FAST</span> <br /> <br />
-    Chris Sun is Awesome. Chris Sun is Awesome. Chris Sun is Awesome.
-    </p>
-    <p class="reason">
-    <span class="reason-title">DEPENDABLE</span> <br /> <br />
-    Chris Sun is Awesome. Chris Sun is Awesome. Chris Sun is Awesome.
-    </p>
+---
+layout: default
+title: Jasmine Documentation
+---
 
-    <p class="reason">
-    <span class="reason-title">SUPPORTIVE</span> <br /> <br />
-    Chris Sun is Awesome. Chris Sun is Awesome. Chris Sun is Awesome.
-    </p>
+<div class="main-content reasons">
+  <div class="reason">
+    <h5 class="reason-title">FAST</h5>
+    Low overhead, no external dependencies.
   </div>
-  <div class = "example">
-    <div class = "example-code">
-    </div>
-    <div class = "example-text">
-      <div class = "example-text-label">Sample Code</div>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis elit quis urna rutrum accumsan. Etiam sed lectus accumsan, dapibus metus a, aliquet justo. Ut maximus ac dui nec condimentum. Duis tempor ipsum in est feugiat gravida. Nullam sollicitudin quis ligula eu mollis. Nam tempus arcu lacus, ut tincidunt neque feugiat in. Phasellus eleifend lectus eget felis laoreet ultricies. Ut in lacinia eros, non venenatis ex. Aenean velit quam, egestas vel dolor lobortis, convallis sodales dolor. Aliquam varius lorem non tortor sagittis, nec condimentum augue porta. Vivamus lectus odio, hendrerit at urna ut, mattis congue urna. Sed gravida arcu quis mauris pharetra mattis.
-      <div class = "example-text-links">
-        <a href = "pages/getting_started.html">Get Started</a>
-      </div>
-    </div>
+  <div class="reason">
+    <h5 class="reason-title">BATTERIES INCLUDED</h5>
+    Comes out of the box with everything you need to test your code.
   </div>
-  <hr />
-  <div class = "sponsors">
-    <div class = "sponsors-label">Who Uses Jasmine</div>
-    <div class = "sponsors-logos">
-      <div class = "logo">LOGO</div>
-      <div class = "logo">LOGO</div>
-      <div class = "logo">LOGO</div>
-      <div class = "logo">LOGO</div>
-      <div class = "logo">LOGO</div>
-    </div>
-  </div>
-  <hr />
-</div>
-<div class = "footer">
-  <div class = "footer-icon-jasmine">
-    <img src="images/jasmine-horizontal-small.png"/>
-  </div>
-  <div class = "footer-links">
-    <a class = "footer-link" href = "http://pivotal.io/labs/tools">OPEN SOURCE</a>
-  </div>
-  <div class = "footer-icon-pivotal">
-    <a href = "http://pivotal.io/labs">
-      <img src="images/pivotal_logo.png"/>
-    </a>
+  <div class="reason">
+    <h5 class="reason-title">NODE AND BROWSER</h5>
+    Run your browser tests and node tests with the same framework.
   </div>
 </div>
-</body>
-</html>
+<div class="main-content">
+  <div class="example-code">
+    {% highlight javascript %}
+describe("A suite is just a function", function() {
+  var a;
+
+  it("and so is a spec", function() {
+    a = true;
+
+    expect(a).toBe(true);
+  });
+});
+    {% endhighlight %}
+  </div>
+  <div class="example-text">
+    <div class="example-text-label">Sample Code</div>
+    Jasmine is a behavior-driven development framework for testing JavaScript code.
+    It does not depend on any other JavaScript frameworks.
+    It does not require a DOM.
+    And it has a clean, obvious syntax so that you can easily write tests.
+    <div class="example-text-links">
+      <a class="button" href="pages/getting_started.html">Get Started</a>
+    </div>
+  </div>
+</div>

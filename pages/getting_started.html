@@ -1,90 +1,64 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel=styleSheet href="../css/reset.css" type="text/css" />
-<link rel=styleSheet href="../css/pages.css" type="text/css" />
-<link rel=styleSheet href="../css/getting_started.css" type="text/css" />
-</head>
-<body>
-<div class = "header">
-  <div class = "header-title">
-    <img src="../images/Jasmine-Horizontal-Large-White.png" />
-    <span class = "header-title-text">Behavior-Driven Javascript</span>
-  </div>
-  <img class="header-logo" src="../images/Jasmine-Circle-Med-White.png" />
-</div>
-<div class = "menu">
-  <div>
-    <div class = "menu-icon">
-      <a href = "../index.html">
-        <img src="../images/jasmine-horizontal-small.png"/>
-      </a>
-    </div>
-    <div class = "menu-options">
-      <a href = "getting_started.html">Getting Started</a>
-      <a href = "index.old.html">Docs</a>
-      <a href = "support.html">Support</a>
-      <a href = "https://github.com/jasmine/jasmine/releases">Releases</a>
-      <a href = "https://github.com/jasmine/jasmine">Github</a>
-    </div>
-  </div>
-</div>
-<div class = "main-content">
+---
+layout: default
+title: Getting Started
+---
+
+<div class="main-content">
   <h1>GETTING STARTED</h1>
-  <div class = "options">
-    <div class="option">
-      <div class="option-title">JASMINE STANDALONE</div>
-      <div class = "option-steps">
-        <ol>
-          <li><span>Included is a sample app and sample tests. Open SpecRunner.html and run the included specs. Both the source files and their respective specs are linked in the &lt;head&gt; of the SpecRunner.html.</span></li>
-          <li><span>To start using Jasmine, resplace the source/spec files with your own.</span></li>
-          <li><span>Sweet candy canes gummi bears. Icing tiramisu oat cake sesame snaps muffin cupcake sweet.</span></li>
-        </ol>
-      </div>
-    </div>
-    <div class="option">
-      <div class="option-title">JASMINE FOR RAILS</div>
-      <div class = "option-steps">
-        <ol>
-          <li><span>Sweet candy canes gummi bears. Icing tiramisu oat cake sesame snaps muffin cupcake sweet</span></li>
-          <li><span>Sweet candy canes gummi bears. Icing tiramisu oat cake sesame snaps muffin cupcake sweet</span></li>
-          <li><span>Sweet candy canes gummi bears. Icing tiramisu oat cake sesame snaps muffin cupcake sweet</span></li>
-        </ol>
-      </div>
-    </div>
+  <div class="option">
+    <h2>Jasmine Standalone</h2>
+    <p>
+      Included is a sample app and sample tests.
+      Open SpecRunner.html and run the included specs.
+      Both the source files and their respective specs are linked in the &lt;head&gt; of the SpecRunner.html.
+    </p>
+    <p>To start using Jasmine, replace the source/spec files with your own.</p>
+    <p>Load the SpecRunner.html in your favorite browser</p>
+    <p><a class="button" href="https://github.com/jasmine/jasmine#installation">More Information</a>
   </div>
 
-  <div class = "divider">
-    <div class = "divider-left"></div>
-    <span class = "or">or</span>
-    <div class = "divider-right"></div>
+  <div class="option">
+    <h2>Jasmine for Ruby</h2>
+    <p>Add the Jasmine gem to your gemfile:</p>
+    <pre>gem 'jasmine'</pre>
+    <p>Initialize Jasmine in your project</p>
+    With Rails: <pre>rails generate jasmine:install</pre>
+    Without Rails: <pre>jasmine init</pre>
+    <p>Run your tests</p>
+    Start a server: <pre>rake jasmine</pre>
+    Run tests in browser: <pre>rake jasmine:ci</pre>
+    <p><a class="button" href="https://github.com/jasmine/jasmine-gem">More Information</a>
   </div>
 
-  <div class = "environments">
-    <div class = "environment">
-      <h2>Jasmine-Supported Environments</h2>
-      <div class = "environment-info">Sweet candy canes gummi bears. Icing tiramisu oat cake sesame snaps muffin cupcake sweet</div>
-    </div>
-    <div class = "environment">
-      <h2>Community-Supported Environments</h2>
-      <div class = "environment-info">Sweet candy canes gummi bears. Icing tiramisu oat cake sesame snaps muffin cupcake sweet</div>
-    </div>
+  <div class="option">
+    <h2>Jasmine for Python</h2>
+    <p>Add Jasmine to your requirements.txt</p>
+    <p>Initialize Jasmine in your project</p>
+    <pre>jasmine-install</pre>
+    <p>Run your tests</p>
+    Start a server: <pre>jasmine</pre>
+    Run tests in browser: <pre>jasmine-ci</pre>
+    <p><a class="button" href="https://github.com/jasmine/jasmine-py">More Information</a>
+  </div>
+
+  <div class="option">
+    <h2>Jasmine for Node</h2>
+    <p>Add Jasmine to your package.json</p>
+    <pre>npm install --save-dev jasmine</pre>
+    <p>Initialize Jasmine in your project</p>
+    <pre>jasmine init</pre>
+    <p>Run your tests</p>
+    <pre>jasmine</pre>
+    <p><a class="button" href="https://github.com/jasmine/jasmine-npm">More Information</a>
+  </div>
+
+  <div class="option">
+    <h2>Gulp Jasmine Browser</h2>
+    <p><a href="https://github.com/jasmine/gulp-jasmine-browser">View README</a></p>
+  </div>
+
+  <div class="option">
+    <h2>Community Supported</h2>
+    <p><a href="https://github.com/gruntjs/grunt-contrib-jasmine">Grunt Contrib Jasmine</a>
   </div>
 </div>
-
-<hr />
-<div class = "footer">
-  <div class = "footer-icon-jasmine">
-    <img src="../images/jasmine-horizontal-small.png"/>
-  </div>
-  <div class = "footer-links">
-    <a class = "footer-link" href = "http://pivotal.io/labs/tools">OPEN SOURCE</a>
-  </div>
-  <div class = "footer-icon-pivotal">
-    <a href = "http://pivotal.io/labs">
-      <img src="../images/pivotal_logo.png"/>
-    </a>
-  </div>
-</div>
-</body>
-</html>

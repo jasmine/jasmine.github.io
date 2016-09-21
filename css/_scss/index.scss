@@ -1,0 +1,50 @@
+@import 'mixins';
+@import 'constants';
+
+.reasons {
+  background-color: #f5f5f5;
+  color: #4d4d4d;
+  height: 100px;
+
+  .reason {
+    width: 25%;
+    margin: 0 20px;
+    text-align: left;
+
+    h5 {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+  }
+}
+
+.example-code {
+  background-color: #073642;
+  font-family: Monaco, Consolas, "Lucida Console", monospace;
+  font-size: 12px;
+  line-height: 1.8;
+  color: white;
+  width: 55%;
+  @include flex-grow(0);
+  @include flex-shrink(0);
+  padding: 10px;
+}
+
+.example-text {
+  text-align: left;
+  @include flex-grow(0);
+  @include flex-shrink(0);
+  width: 35%;
+  padding: 10px;
+}
+
+.example-text-links {
+  margin-top: 5em;
+}
+
+.example-text-label {
+  font-size: 32px;
+  margin-bottom: .5em;
+  text-align: center;
+}
+

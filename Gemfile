@@ -4,4 +4,4 @@ gem 'rocco'
 gem 'tilt'
 gem 'rake'
 gem 'phantomjs'
-gem 'github-pages'
+gem 'github-pages', group: :jekyll_plugins

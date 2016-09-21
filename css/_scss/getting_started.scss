@@ -1,0 +1,27 @@
+@import 'mixins';
+@import 'constants';
+
+.option {
+  width: 45%;
+  margin-bottom: 20px;
+
+  h2 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: $jasmine-color;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  pre {
+    font-family: Monaco, Consolas, "Lucida Console", monospace;
+    font-size: 12px;
+    background-color: #073642;
+    color: #93a1a1;
+    padding: 10px;
+    margin-bottom: 1rem;
+  }
+}
