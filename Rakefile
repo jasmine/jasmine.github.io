@@ -23,14 +23,14 @@ def build_html(version, options = {})
     end
   end
 
-  system("bundle exec rocco -l #{options[:language] || 'js'} -t tmp/#{layout} -o tmp/#{prefix} #{Dir.glob(File.join(version, 'src', '*.{js,rb,py}')).map(&:inspect).join(' ')}")
+  system("bundle exec rocco -l #{options[:language] || 'js'} -t tmp/#{layout} -o tmp/#{prefix} #{Dir.glob(File.join('_versions', version, 'src', '*.{js,rb,py}')).map(&:inspect).join(' ')}")
 
   puts "Copying HTML"
   if files_to_copy.nil?
-    `mv tmp/#{prefix}/#{version}/src/*.html ./#{version}`
+    `mv tmp/#{prefix}/_versions/#{version}/src/*.html ./_versions/#{version}`
   elsif files_to_copy.size > 0
     files_glob = files_to_copy.size == 1 ? files_to_copy[0] : "{" + files_to_copy.join(',') + "}"
-    `mv tmp/#{prefix}/#{version}/src/#{files_glob}.html ./#{version}`
+    `mv tmp/#{prefix}/_versions/#{version}/src/#{files_glob}.html ./_versions/#{version}`
   end
 end
 

@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +52,7 @@
         <div class="pilwrap">
           <a class="pilcrow" href="#section-1">&#182;</a>
         </div>
-        <p>Starting with version 2.0, this file &ldquo;boots&rdquo; Jasmine, performing all of the necessary initialization before executing the loaded environment and all of a project&rsquo;s specs. This file should be loaded after <code>jasmine.js</code> and <code>jasmine_html.js</code>, but before any project source files or spec files are loaded. Thus this file can also be used to customize Jasmine for a project.</p>
+        <p>Starting with version 2.0, this file &quot;boots&quot; Jasmine, performing all of the necessary initialization before executing the loaded environment and all of a project&#39;s specs. This file should be loaded after <code>jasmine.js</code> and <code>jasmine_html.js</code>, but before any project source files or spec files are loaded. Thus this file can also be used to customize Jasmine for a project.</p>
 
 <p>If a project is using Jasmine via the standalone distribution, this file can be <a href="custom_boot.html">customized</a> directly. If a project is using Jasmine via the <a href="http://github.com/pivotal/jasmine-gem">Ruby gem</a>, this file can be copied into the support directory via <code>jasmine copy_boot_js</code>. Other environments (e.g., Python) will have different mechanisms.</p>
 
@@ -69,7 +71,7 @@
         </div>
         <h2>Require &amp; Instantiate</h2>
 
-<p>Require Jasmine&rsquo;s core files. Specifically, this requires and attaches all of Jasmine&rsquo;s code to the <code>jasmine</code> reference.</p>
+<p>Require Jasmine&#39;s core files. Specifically, this requires and attaches all of Jasmine&#39;s code to the <code>jasmine</code> reference.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -142,7 +144,7 @@
         </div>
         <h2>Runner Parameters</h2>
 
-<p>More browser specific code &ndash; wrap the query string in an object and to allow for getting/setting parameters from the runner user interface.</p>
+<p>More browser specific code - wrap the query string in an object and to allow for getting/setting parameters from the runner user interface.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -162,7 +164,7 @@
         </div>
         <h2>Reporters</h2>
 
-<p>The <code>HtmlReporter</code> builds all of the HTML UI for the runner page. This reporter paints the dots, stars, and x&rsquo;s for specs, as well as all spec names and all failures (if any).</p>
+<p>The <code>HtmlReporter</code> builds all of the HTML UI for the runner page. This reporter paints the dots, stars, and x&#39;s for specs, as well as all spec names and all failures (if any).</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -233,7 +235,7 @@
         </div>
         <h2>Execution</h2>
 
-<p>Replace the browser window&rsquo;s <code>onload</code>, ensure it&rsquo;s called, and then run all of the loaded specs. This includes initializing the <code>HtmlReporter</code> instance and then executing the loaded Jasmine environment. All of this will happen after all of the specs are loaded.</p>
+<p>Replace the browser window&#39;s <code>onload</code>, ensure it&#39;s called, and then run all of the loaded specs. This includes initializing the <code>HtmlReporter</code> instance and then executing the loaded Jasmine environment. All of this will happen after all of the specs are loaded.</p>
       </td>
       <td class="code">
         <div class="highlight">
