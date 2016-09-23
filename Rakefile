@@ -39,8 +39,6 @@ task :pages do
   FileUtils.rmtree '_tmp' if File.exist? '_tmp'
   FileUtils.mkdir '_tmp'
 
-  layout_template = Tilt.new('src/layout.erb')
-
   version = get_version
   files_without_specs = %w(boot custom_boot node)
   ruby_files = %w(ruby_gem)

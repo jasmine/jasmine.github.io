@@ -1,5 +1,7 @@
 baseurl: http://jasmine.github.io
-exclude: [vendor]
+exclude:
+  - _tmp
+  - src
 
 collections:
   versions:
