@@ -1,5 +1,7 @@
 .idea
-tmp/
+_tmp/
 .bundle/
 vendor/
-*/lib/specRunner*.html
+**/lib/specRunner*.html
+_site/
+.sass-cache

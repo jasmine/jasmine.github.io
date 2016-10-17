@@ -1,0 +1,13 @@
+baseurl: http://jasmine.github.io
+exclude:
+  - _tmp
+  - src
+
+collections:
+  versions:
+    output: true
+    permalink: :path
+
+sass:
+  sass_dir: css/_scss
+  style: compressed

@@ -17,29 +17,27 @@ def build_html(version, options = {})
     jasmine_version: version
   ))
   layout = "#{prefix}_layout_#{version}.mustache"
-  Dir.chdir 'tmp' do
+  Dir.chdir '_tmp' do
     File.open(layout, 'w+') do |f|
       f << layout_template.render(with_context)
     end
   end
 
-  system("bundle exec rocco -l #{options[:language] || 'js'} -t tmp/#{layout} -o tmp/#{prefix} #{Dir.glob(File.join(version, 'src', '*.{js,rb,py}')).map(&:inspect).join(' ')}")
+  system("bundle exec rocco -l #{options[:language] || 'js'} -t _tmp/#{layout} -o _tmp/#{prefix} #{Dir.glob(File.join('_versions', version, 'src', '*.{js,rb,py}')).map(&:inspect).join(' ')}")
 
   puts "Copying HTML"
   if files_to_copy.nil?
-    `mv tmp/#{prefix}/#{version}/src/*.html ./#{version}`
+    `mv _tmp/#{prefix}/_versions/#{version}/src/*.html ./_versions/#{version}`
   elsif files_to_copy.size > 0
     files_glob = files_to_copy.size == 1 ? files_to_copy[0] : "{" + files_to_copy.join(',') + "}"
-    `mv tmp/#{prefix}/#{version}/src/#{files_glob}.html ./#{version}`
+    `mv _tmp/#{prefix}/_versions/#{version}/src/#{files_glob}.html ./_versions/#{version}`
   end
 end
 
 desc "build all files for $JASMINE_VERSION"
 task :pages do
-  FileUtils.rmtree 'tmp' if File.exist? 'tmp'
-  FileUtils.mkdir 'tmp'
-
-  layout_template = Tilt.new('src/layout.erb')
+  FileUtils.rmtree '_tmp' if File.exist? '_tmp'
+  FileUtils.mkdir '_tmp'
 
   version = get_version
   files_without_specs = %w(boot custom_boot node)

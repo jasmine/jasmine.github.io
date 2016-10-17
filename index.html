@@ -1,68 +1,44 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
-    <title>Jasmine: Behavior-Driven JavaScript</title>
-    <link rel="icon" href="/images/jasmine.ico" sizes="16x16"/>
-    <link rel="icon" href="/images/jasmine_32x32.ico" sizes="32x32"/>
-    <link href='http://fonts.googleapis.com/css?family=Lora|Istok+Web:700' rel='stylesheet' type='text/css'/>
-    <style type="text/css">
-        body {
-            background: #eee;
-            margin: 0;
-            padding: 20px 0;
-            display: -webkit-box;
-            display: -ms-box;
-            display: box;
-            -webkit-box-orient: vertical;
-            -ms-box-orient: vertical;
-            box-orient: vertical;
-            -webkit-box-align: center;
-            -ms-box-align: center;
-            box-align: center;
-            -webkit-box-pack: start;
-            -ms-box-pack: start;
-            box-pack: start;
-            text-align: center;
-            width: 100%;
-        }
-        h1, h2 {
-            font-family: 'Istok Web', sans-serif;
-            font-weight: 700;
-            margin: 0;
-        }
-        a, a:active{
-          font-family: 'Lora', serif;
-          color: #261a3b;
-        }
-        a:hover {
-          color: #772a70;
-        }
-        .logo {
-          width: 480px;
-          height: 480px;
-          background-image: url(images/jasmine_vertical.png);
-          background-image: url(images/jasmine_vertical.svg), none;
-          background-repeat: no-repeat no-repeat;
-          background-size: 100%;
-          margin: 0 auto;
-        }
-    </style>
-</head>
-<body>
-<div class="logo"></div>
-<h1>Behavior-Driven JavaScript</h1>
-<h2>Documentation:</h2>
-<h2><a href="1.3/introduction.html">1.3</a></h2>
-<h2><a href="2.0/introduction.html">2.0</a></h2>
-<h2><a href="2.1/introduction.html">2.1</a></h2>
-<h2><a href="2.2/introduction.html">2.2</a></h2>
-<h2><a href="2.3/introduction.html">2.3</a></h2>
-<h2><a href="2.4/introduction.html">2.4</a></h2>
-<h2><a href="2.5/introduction.html">2.5</a></h2>
-<!-- NEW VERSIONS HERE -->
-<h2><a href="edge/introduction.html">Edge</a></h2>
-<br/>
-<a href="https://github.com/jasmine/jasmine">Jasmine on GitHub</a>
-</body>
-</html>
+---
+layout: default
+title: Jasmine Documentation
+---
+
+<div class="main-content reasons">
+  <div class="reason">
+    <h5 class="reason-title">FAST</h5>
+    Low overhead, no external dependencies.
+  </div>
+  <div class="reason">
+    <h5 class="reason-title">BATTERIES INCLUDED</h5>
+    Comes out of the box with everything you need to test your code.
+  </div>
+  <div class="reason">
+    <h5 class="reason-title">NODE AND BROWSER</h5>
+    Run your browser tests and node tests with the same framework.
+  </div>
+</div>
+<div class="main-content">
+  <div class="example-code">
+    {% highlight javascript %}
+describe("A suite is just a function", function() {
+  var a;
+
+  it("and so is a spec", function() {
+    a = true;
+
+    expect(a).toBe(true);
+  });
+});
+    {% endhighlight %}
+  </div>
+  <div class="example-text">
+    <div class="example-text-label">Sample Code</div>
+    Jasmine is a behavior-driven development framework for testing JavaScript code.
+    It does not depend on any other JavaScript frameworks.
+    It does not require a DOM.
+    And it has a clean, obvious syntax so that you can easily write tests.
+    <div class="example-text-links">
+      <a class="button" href="{{ site.github.url }}/pages/getting_started.html">Get Started</a>
+    </div>
+  </div>
+</div>

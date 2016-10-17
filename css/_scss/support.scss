@@ -1,0 +1,15 @@
+@import 'mixins';
+@import 'constants';
+
+.support-channels {
+  max-width: 40%;
+
+  a {
+    display: block;
+    margin: 15px 0;
+  }
+}
+
+.twitter {
+  width: 400px;
+}
