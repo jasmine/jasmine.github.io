@@ -238,11 +238,20 @@
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeFalsy</span><span class="p">();</span>
   <span class="p">});</span>
 
-  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toContain&#39; matcher is for finding an item in an Array&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">];</span>
+  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;The &#39;toContain&#39; matcher&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;works for finding an item in an Array&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="p">];</span>
 
-    <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">toContain</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">);</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toContain</span><span class="p">(</span><span class="s1">&#39;quux&#39;</span><span class="p">);</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">toContain</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toContain</span><span class="p">(</span><span class="s2">&quot;quux&quot;</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;also works for finding a substring&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="s2">&quot;foo bar baz&quot;</span><span class="p">;</span>
+
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">toContain</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toContain</span><span class="p">(</span><span class="s2">&quot;quux&quot;</span><span class="p">);</span>
+    <span class="p">});</span>
   <span class="p">});</span>
 
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toBeLessThan&#39; matcher is for mathematical comparisons&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
