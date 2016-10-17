@@ -17,6 +17,7 @@ Contributing
  1. Docs for existing release version go in that directory
  1. Modify the .js, .rb, or .py file in the `src` directory for the version being updated.
  1. Run `bundle exec rake pages` to rebuild the html pages for edge. If you're editing a different version you can set the `JASMINE_VERSION` environment variable.
+1. Preview your changes (`jekyll serve --baseurl ''`)
 1. Commit your changes (git commit -am 'Add some docs')
 1. Push to the branch (git push origin my-new-docs)
 1. Create new Pull Request
