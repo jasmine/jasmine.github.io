@@ -19,7 +19,7 @@
       }
   </script>
 
-  <% Dir.glob(File.join(version, 'src', 'support', '*.js')).each do |file| %>
+  <% Dir.glob(File.join(version_path, 'src', 'support', '*.js')).each do |file| %>
     <script src="../src/support/<%= File.basename(file) %>"></script>
   <% end %>
 

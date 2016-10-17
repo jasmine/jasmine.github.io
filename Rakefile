@@ -8,6 +8,10 @@ def get_version
   ENV['JASMINE_VERSION'] || 'edge'
 end
 
+def version_path
+  File.join('_versions', get_version)
+end
+
 def build_html(version, options = {})
   layout_template = Tilt.new('src/layout.erb')
   files_to_copy = options[:files]
@@ -60,20 +64,19 @@ end
 
 desc "build spec runner for $JASMINE_VERSION"
 task :spec_runner do
-  version = get_version
   template = Tilt.new('src/specRunner.html.erb')
-  spec_files = Dir.glob(File.join(version, 'src', '*.js'))
+  spec_files = Dir.glob(File.join(version_path, 'src', '*.js'))
   spec_files.reject! { |filename| filename =~ /boot\.js\z/ }
-  context = OpenStruct.new({ version: version, spec_files: spec_files })
+  context = OpenStruct.new({ version_path: version_path, spec_files: spec_files })
 
-  File.open(File.join(version, 'lib', 'specRunner.html'), 'w+') do |f|
+  File.open(File.join(version_path, 'lib', 'specRunner.html'), 'w+') do |f|
     f << template.render(context)
   end
 
   if spec_files.any? { |filename| filename =~ /focused_specs\.js\z/ }
     spec_files.reject! { |filename| filename =~ /focused_specs\.js\z/ }
 
-    File.open(File.join(version, 'lib', 'specRunner2.html'), 'w+') do |f|
+    File.open(File.join(version_path, 'lib', 'specRunner2.html'), 'w+') do |f|
       f << template.render(context)
     end
   end
@@ -87,7 +90,7 @@ task :phantom => :spec_runner do
   phantom_path = ENV['TRAVIS'] ? 'phantomjs' : Phantomjs.path
 
   puts "Running specs for documentation of jasmine version #{version}"
-  Dir.glob(File.join(version, 'lib', 'specRunner*.html')).each do |runner|
+  Dir.glob(File.join(version_path, 'lib', 'specRunner*.html')).each do |runner|
     system "#{phantom_path} src/phantom_runner.js #{File.expand_path(runner)} --no-color"
   end
 end
@@ -110,11 +113,5 @@ task :release, [:version] do |t, args|
   travis_config['matrix']['include'] << { 'env' => ["JASMINE_VERSION=\"#{args.version}\""] }
   File.open('.travis.yml', 'w') do |f|
     f.write(YAML.dump(travis_config))
-  end
-
-  index_html = File.read('index.html')
-  index_html.sub!('<!-- NEW VERSIONS HERE -->', %Q{<h2><a href="#{args.version}/introduction.html">#{args.version}</a></h2>\n<!-- NEW VERSIONS HERE -->})
-  File.open('index.html', 'w') do |f|
-    f.write(index_html)
   end
 end
