@@ -95,11 +95,11 @@ end
 desc "update jasmine library for edge docs"
 task :update_edge_jasmine do
   FileUtils.mkdir_p('edge/lib')
-  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/jasmine.js' > edge/lib/jasmine.js`
-  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/jasmine-html.js' > edge/lib/jasmine-html.js`
-  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/jasmine.css' > edge/lib/jasmine.css`
-  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/boot.js' > edge/lib/boot.js`
-  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/console/console.js' > edge/lib/console.js`
+  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/jasmine.js' > _versions/edge/lib/jasmine.js`
+  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/jasmine-html.js' > _versions/edge/lib/jasmine-html.js`
+  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/jasmine.css' > _versions/edge/lib/jasmine.css`
+  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/boot.js' > _versions/edge/lib/boot.js`
+  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/console/console.js' > _versions/edge/lib/console.js`
 end
 
 desc "make section of docs for a newly released version of jasmine"
