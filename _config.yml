@@ -1,4 +1,4 @@
-baseurl: http://jasmine.github.io
+baseurl: https://jasmine.github.io
 exclude:
   - _tmp
   - src
