@@ -370,7 +370,7 @@ describe("A spec", function() {
 
 /**
  ## Disabling Suites
- Suites can be disabled with the `xdescribe` function. These suites and any specs inside them are skipped when run and thus their results will not appear in the results.
+ Suites can be disabled with the `xdescribe` function. These suites and any specs inside them are skipped when run and thus their results will show as pending.
  */
 xdescribe("A spec", function() {
   var foo;
