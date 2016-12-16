@@ -190,9 +190,13 @@ describe("Included matchers:", function() {
     var bar = function() {
       return a + 1;
     };
+    var baz = function() {
+      throw 'what';
+    };
 
     expect(foo).not.toThrow();
     expect(bar).toThrow();
+    expect(baz).toThrow('what');
   });
 
   it("The 'toThrowError' matcher is for testing a specific thrown exception", function() {
