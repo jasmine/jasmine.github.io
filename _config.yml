@@ -2,11 +2,20 @@ baseurl: //jasmine.github.io
 exclude:
   - _tmp
   - src
+  - node_modules
+  - Rakefile
+  - LICENSE
+  - README.md
+  - Gemfile*
+  - "*.json"
 
 collections:
   versions:
     output: true
     permalink: :path
+  api:
+    output: true
+    permalink: api/:path
 
 sass:
   sass_dir: css/_scss

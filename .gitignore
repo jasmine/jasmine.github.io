@@ -5,3 +5,5 @@ vendor/
 **/lib/specRunner*.html
 _site/
 .sass-cache
+node_modules
+_api/edge/fonts/

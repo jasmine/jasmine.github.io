@@ -128,6 +128,13 @@ a.button {
   }
 }
 
+a.github {
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: bottom;
+  float: right;
+}
+
 @media (min-width: 1000px) {
   body {
     @include align-items(center);
