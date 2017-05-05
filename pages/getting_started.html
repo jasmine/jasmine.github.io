@@ -54,13 +54,15 @@ title: Getting Started
   </div>
 
   <div class="option">
-    <h2>Jasmine for Node</h2>
+    <h2>Jasmine for Node.js</h2>
     <p>Add Jasmine to your package.json</p>
     <pre>npm install --save-dev jasmine</pre>
     <p>Initialize Jasmine in your project</p>
-    <pre>jasmine init</pre>
+    <pre>./node_modules/.bin/jasmine init</pre>
+    <p>Set jasmine as your test script in your package.json</p>
+    <pre>"scripts": { "test": "jasmine" }</pre>
     <p>Run your tests</p>
-    <pre>jasmine</pre>
+    <pre>npm test</pre>
     <p>
       <a class="button" href="{{ site.github.url }}/edge/node.html">More Information</a>
       <a class="github" href="https://github.com/jasmine/jasmine-npm">
