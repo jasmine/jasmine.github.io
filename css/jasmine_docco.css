@@ -76,7 +76,7 @@ th {
 }
 
 td.code, th.code {
-  background-color: #073642;
+  background-color: #031317;
 }
 
 .jasmine_reporter {
@@ -86,7 +86,7 @@ td.code, th.code {
 
 /* Solarized Dark for Pygments */
 .highlight {
-  background-color: #073642;
+  background-color: #031317;
   color: #93a1a1
 }
 
@@ -117,7 +117,7 @@ td.code, th.code {
 }
 
 .highlight .err {
-  color: #dc322f !important;
+  color: #e1403e !important;
   background: none !important
 }
 
@@ -341,7 +341,7 @@ td.code, th.code {
 }
 
 .highlight .se {
-  color: #dc322f !important
+  color: #e1403e !important
 }
 
 .highlight .sh {
@@ -357,7 +357,7 @@ td.code, th.code {
 }
 
 .highlight .sr {
-  color: #dc322f !important
+  color: #e1403e !important
 }
 
 .highlight .s1 {
