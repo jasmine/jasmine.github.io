@@ -133,6 +133,7 @@ describe("Included matchers:", function() {
     var a, foo = "foo";
 
     expect(foo).toBeTruthy();
+    expect(foo).toBeTruey(); // it's also aliased as 'toBeTruey' if you like that
     expect(a).not.toBeTruthy();
   });
 
@@ -140,6 +141,7 @@ describe("Included matchers:", function() {
     var a, foo = "foo";
 
     expect(a).toBeFalsy();
+    expect(a).toBeFalsey(); // it's also aliased as 'toBeFalsey' if you like that
     expect(foo).not.toBeFalsy();
   });
 
