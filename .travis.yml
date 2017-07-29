@@ -7,16 +7,14 @@ rvm: 2.0.0
 matrix:
   include:
   - env:
+    - JASMINE_VERSION="edge"
+  - env:
     - JASMINE_VERSION="2.0"
-  - env:
-    - JASMINE_VERSION="2.1"
-  - env:
-    - JASMINE_VERSION="2.2"
-  - env:
-    - JASMINE_VERSION="2.3"
   - env:
     - JASMINE_VERSION="2.4"
   - env:
-    - JASMINE_VERSION="edge"
-  - env:
     - JASMINE_VERSION="2.5"
+  - env:
+    - JASMINE_VERSION="2.6"
+  - env:
+    - JASMINE_VERSION="2.7"
