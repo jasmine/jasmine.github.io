@@ -92,6 +92,27 @@ h1 {
   margin-bottom: 20px;
 }
 
+h2 {
+  font-size: 24px;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 20px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 18px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
 .footer-wrapper {
   background-color: white;
   @include flex-shrink(0);
