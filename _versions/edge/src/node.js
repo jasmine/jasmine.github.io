@@ -126,7 +126,8 @@ jasmine --seed=4321
  */
 
 /**
- * Jasmine can also be used as a library in your project.
+ * If you want more granular control over the configuration, Jasmine can also be used as a library in your project.
+ * This allows you to load multiple config files or control your configuration in different ways.
  */
 
 var Jasmine = require('jasmine');
@@ -172,16 +173,20 @@ jasmine.onComplete(function(passed) {
  */
 
 /**
- * A ConsoleReporter is included if no other reporters are added. You can configure the default reporter with `configureDefaultReporter`. The default values are shown in the example.
+ * A ConsoleReporter is included if no other reporters are added.
+ * You can configure the default reporter with `configureDefaultReporter`.
+ * The default values are shown in the example.
  */
 
 jasmine.configureDefaultReporter({
-    timer: new this.jasmine.Timer(),
+    /** The `timer` passed to the reporter will determine the mechanism for seeing how long the suite takes to run. */
+    timer: new jasmine.jasmine.Timer(),
+    /** The `print` function passed the reporter will be called to print its results. */
     print: function() {
-        process.stdout.write(util.format.apply(this, arguments));
+        process.stdout.write(arguments);
     },
-    showColors: true,
-    jasmineCorePath: this.jasmineCorePath
+    /** `showColors` determines whether or not the reporter should use ANSI color codes. */
+    showColors: true
 });
 
 /**

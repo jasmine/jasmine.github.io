@@ -389,7 +389,8 @@ Sets the randomization seed if randomization is turned on</p>
         <div class="pilwrap">
           <a class="pilcrow" href="#section-25">&#182;</a>
         </div>
-        <p>Jasmine can also be used as a library in your project.</p>
+        <p>If you want more granular control over the configuration, Jasmine can also be used as a library in your project.
+This allows you to load multiple config files or control your configuration in different ways.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -474,18 +475,13 @@ Sets the randomization seed if randomization is turned on</p>
         <div class="pilwrap">
           <a class="pilcrow" href="#section-30">&#182;</a>
         </div>
-        <p>A ConsoleReporter is included if no other reporters are added. You can configure the default reporter with <code>configureDefaultReporter</code>. The default values are shown in the example.</p>
+        <p>A ConsoleReporter is included if no other reporters are added.
+You can configure the default reporter with <code>configureDefaultReporter</code>.
+The default values are shown in the example.</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="nx">jasmine</span><span class="p">.</span><span class="nx">configureDefaultReporter</span><span class="p">({</span>
-    <span class="nx">timer</span><span class="o">:</span> <span class="k">new</span> <span class="k">this</span><span class="p">.</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">Timer</span><span class="p">(),</span>
-    <span class="nx">print</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">util</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">));</span>
-    <span class="p">},</span>
-    <span class="nx">showColors</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nx">jasmineCorePath</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">jasmineCorePath</span>
-<span class="p">});</span></pre>
+          <pre><span class="nx">jasmine</span><span class="p">.</span><span class="nx">configureDefaultReporter</span><span class="p">({</span></pre>
         </div>
       </td>
     </tr>
@@ -493,6 +489,48 @@ Sets the randomization seed if randomization is turned on</p>
       <td class="docs">
         <div class="pilwrap">
           <a class="pilcrow" href="#section-31">&#182;</a>
+        </div>
+        <p>The <code>timer</code> passed to the reporter will determine the mechanism for seeing how long the suite takes to run.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">timer</span><span class="o">:</span> <span class="k">new</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">Timer</span><span class="p">(),</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-32">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-32">&#182;</a>
+        </div>
+        <p>The <code>print</code> function passed the reporter will be called to print its results.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">print</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+    <span class="p">},</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-33">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-33">&#182;</a>
+        </div>
+        <p><code>showColors</code> determines whether or not the reporter should use ANSI color codes.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">showColors</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-34">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-34">&#182;</a>
         </div>
         <p>You can add a custom reporter with <code>addReporter</code>. If you add a reporter through <code>addReporter</code>, the default ConsoleReporter will not be added.
 Multiple reporters can be added.</p>
@@ -519,10 +557,10 @@ Multiple reporters can be added.</p>
         </div>
       </td>
     </tr>
-    <tr id="section-33">
+    <tr id="section-36">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-33">&#182;</a>
+          <a class="pilcrow" href="#section-36">&#182;</a>
         </div>
         <p>Calling <code>execute</code> will run the specs.</p>
       </td>
@@ -532,10 +570,10 @@ Multiple reporters can be added.</p>
         </div>
       </td>
     </tr>
-    <tr id="section-34">
+    <tr id="section-37">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-34">&#182;</a>
+          <a class="pilcrow" href="#section-37">&#182;</a>
         </div>
         <p><code>execute</code> can optionally be called with a list of spec file paths to execute relative to your project root and a string to filter by spec name.</p>
       </td>
