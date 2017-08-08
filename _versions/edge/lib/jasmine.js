@@ -63,6 +63,7 @@ var getJasmineRequireObj = (function (jasmineGlobal) {
     j$.matchersUtil = jRequire.matchersUtil(j$);
     j$.ObjectContaining = jRequire.ObjectContaining(j$);
     j$.ArrayContaining = jRequire.ArrayContaining(j$);
+    j$.ArrayWithExactContents = jRequire.ArrayWithExactContents(j$);
     j$.pp = jRequire.pp(j$);
     j$.QueueRunner = jRequire.QueueRunner(j$);
     j$.ReportDispatcher = jRequire.ReportDispatcher();
@@ -191,6 +192,18 @@ getJasmineRequireObj().base = function(j$, jasmineGlobal) {
     return j$.isA_('AsyncFunction', value);
   };
 
+  j$.isTypedArray_ = function(value) {
+    return j$.isA_('Float32Array', value) ||
+      j$.isA_('Float64Array', value) ||
+      j$.isA_('Int16Array', value) ||
+      j$.isA_('Int32Array', value) ||
+      j$.isA_('Int8Array', value) ||
+      j$.isA_('Uint16Array', value) ||
+      j$.isA_('Uint32Array', value) ||
+      j$.isA_('Uint8Array', value) ||
+      j$.isA_('Uint8ClampedArray', value);
+  };
+
   j$.isA_ = function(typeName, value) {
     return j$.getType_(value) === '[object ' + typeName + ']';
   };
@@ -208,7 +221,9 @@ getJasmineRequireObj().base = function(j$, jasmineGlobal) {
       return func.name;
     }
 
-    var matches = func.toString().match(/^\s*function\s*(\w*)\s*\(/);
+    var matches = func.toString().match(/^\s*function\s*(\w*)\s*\(/) ||
+      func.toString().match(/^\s*\[object\s*(\w*)Constructor\]/);
+
     return matches ? matches[1] : '<anonymous>';
   };
 
@@ -264,6 +279,17 @@ getJasmineRequireObj().base = function(j$, jasmineGlobal) {
    */
   j$.arrayContaining = function(sample) {
     return new j$.ArrayContaining(sample);
+  };
+
+  /**
+   * Get a matcher, usable in any {@link matchers|matcher} that uses Jasmine's equality (e.g. {@link matchers#toEqual|toEqual}, {@link matchers#toContain|toContain}, or {@link matchers#toHaveBeenCalledWith|toHaveBeenCalledWith}),
+   * that will succeed if the actual value is an `Array` that contains all of the elements in the sample in any order.
+   * @name jasmine.arrayWithExactContents
+   * @function
+   * @param {Array} sample
+   */
+  j$.arrayWithExactContents = function(sample) {
+    return new j$.ArrayWithExactContents(sample);
   };
 
   /**
@@ -1403,8 +1429,9 @@ getJasmineRequireObj().ArrayContaining = function(j$) {
   }
 
   ArrayContaining.prototype.asymmetricMatch = function(other, customTesters) {
-    var className = Object.prototype.toString.call(this.sample);
-    if (className !== '[object Array]') { throw new Error('You must provide an array to arrayContaining, not \'' + this.sample + '\'.'); }
+    if (!j$.isArray_(this.sample)) {
+      throw new Error('You must provide an array to arrayContaining, not ' + j$.pp(this.sample) + '.');
+    }
 
     for (var i = 0; i < this.sample.length; i++) {
       var item = this.sample[i];
@@ -1421,6 +1448,38 @@ getJasmineRequireObj().ArrayContaining = function(j$) {
   };
 
   return ArrayContaining;
+};
+
+getJasmineRequireObj().ArrayWithExactContents = function(j$) {
+
+  function ArrayWithExactContents(sample) {
+    this.sample = sample;
+  }
+
+  ArrayWithExactContents.prototype.asymmetricMatch = function(other, customTesters) {
+    if (!j$.isArray_(this.sample)) {
+      throw new Error('You must provide an array to arrayWithExactContents, not ' + j$.pp(this.sample) + '.');
+    }
+
+    if (this.sample.length !== other.length) {
+      return false;
+    }
+
+    for (var i = 0; i < this.sample.length; i++) {
+      var item = this.sample[i];
+      if (!j$.matchersUtil.contains(other, item, customTesters)) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  ArrayWithExactContents.prototype.jasmineToString = function() {
+    return '<jasmine.arrayWithExactContents ' + j$.pp(this.sample) + '>';
+  };
+
+  return ArrayWithExactContents;
 };
 
 getJasmineRequireObj().ObjectContaining = function(j$) {
@@ -1507,10 +1566,13 @@ getJasmineRequireObj().CallTracker = function(j$) {
       var clonedArgs = [];
       var argsAsArray = j$.util.argsToArray(context.args);
       for(var i = 0; i < argsAsArray.length; i++) {
-        if(Object.prototype.toString.apply(argsAsArray[i]).match(/^\[object/)) {
-          clonedArgs.push(j$.util.clone(argsAsArray[i]));
-        } else {
+        var str = Object.prototype.toString.apply(argsAsArray[i]),
+          primitives = /^\[object (Boolean|String|RegExp|Number)/;
+
+        if (argsAsArray[i] == null || str.match(primitives)) {
           clonedArgs.push(argsAsArray[i]);
+        } else {
+          clonedArgs.push(j$.util.clone(argsAsArray[i]));
         }
       }
       context.args = clonedArgs;
@@ -2374,13 +2436,17 @@ getJasmineRequireObj().matchersUtil = function(j$) {
 
     if (asymmetricA) {
       result = a.asymmetricMatch(b, customTesters);
-      diffBuilder.record(a, b);
+      if (!result) {
+        diffBuilder.record(a, b);
+      }
       return result;
     }
 
     if (asymmetricB) {
       result = b.asymmetricMatch(a, customTesters);
-      diffBuilder.record(a, b);
+      if (!result) {
+        diffBuilder.record(a, b);
+      }
       return result;
     }
   }
@@ -2547,21 +2613,66 @@ getJasmineRequireObj().matchersUtil = function(j$) {
       if (!result) {
         return false;
       }
-    } else if (className == '[object Set]' || className == '[object Map]') {
+    } else if (className == '[object Map]') {
       if (a.size != b.size) {
         diffBuilder.record(a, b);
         return false;
       }
-      var iterA = a.entries(), iterB = b.entries();
-      var valA, valB;
-      do {
-        valA = iterA.next();
-        valB = iterB.next();
-        if (!eq(valA.value, valB.value, aStack, bStack, customTesters, j$.NullDiffBuilder())) {
-          diffBuilder.record(a, b);
-          return false;
+
+      // For both sets of keys, check they map to equal values in both maps
+      var mapKeys = [a.keys(), b.keys()];
+      var mapIter, mapKeyIt, mapKey;
+      for (i = 0; result && i < mapKeys.length; i++) {
+        mapIter = mapKeys[i];
+        mapKeyIt = mapIter.next();
+        while (result && !mapKeyIt.done) {
+          mapKey = mapKeyIt.value;
+          result = eq(a.get(mapKey), b.get(mapKey), aStack, bStack, customTesters, j$.NullDiffBuilder());
+          mapKeyIt = mapIter.next();
         }
-      } while (!valA.done && !valB.done);
+      }
+
+      if (!result) {
+        diffBuilder.record(a, b);
+        return false;
+      }
+    } else if (className == '[object Set]') {
+      if (a.size != b.size) {
+        diffBuilder.record(a, b);
+        return false;
+      }
+
+      // For both sets, check they are all contained in the other set
+      var setPairs = [[a, b], [b, a]];
+      var baseIter, baseValueIt, baseValue;
+      var otherSet, otherIter, otherValueIt, otherValue, found;
+      for (i = 0; result && i < setPairs.length; i++) {
+        baseIter = setPairs[i][0].values();
+        otherSet = setPairs[i][1];
+        // For each value in the base set...
+        baseValueIt = baseIter.next();
+        while (result && !baseValueIt.done) {
+          baseValue = baseValueIt.value;
+          // ... test that it is present in the other set
+          otherIter = otherSet.values();
+          otherValueIt = otherIter.next();
+          // Optimisation: start looking for value by object identity
+          found = otherSet.has(baseValue);
+          // If not found, compare by value equality
+          while (!found && !otherValueIt.done) {
+            otherValue = otherValueIt.value;
+            found = eq(baseValue, otherValue, aStack, bStack, customTesters, j$.NullDiffBuilder());
+            otherValueIt = otherIter.next();
+          }
+          result = result && found;
+          baseValueIt = baseIter.next();
+        }
+      }
+
+      if (!result) {
+        diffBuilder.record(a, b);
+        return false;
+      }
     } else {
 
       // Objects with different constructors are not equivalent, but `Object`s
@@ -3716,6 +3827,8 @@ getJasmineRequireObj().pp = function(j$) {
         this.emitSet(value);
       } else if (j$.getType_(value) == '[object Map]') {
         this.emitMap(value);
+      } else if (j$.isTypedArray_(value)) {
+        this.emitTypedArray(value);
       } else if (value.toString && typeof value === 'object' && !j$.isArray_(value) && hasCustomToString(value)) {
         this.emitScalar(value.toString());
       } else if (j$.util.arrayContains(this.seen, value)) {
@@ -3884,6 +3997,18 @@ getJasmineRequireObj().pp = function(j$) {
     if (truncated) { this.append(', ...'); }
 
     this.append(' })');
+  };
+
+  StringPrettyPrinter.prototype.emitTypedArray = function(arr) {
+    var constructorName = j$.fnNameFor(arr.constructor),
+      limitedArray = Array.prototype.slice.call(arr, 0, j$.MAX_PRETTY_PRINT_ARRAY_LENGTH),
+      itemsString = Array.prototype.join.call(limitedArray, ', ');
+
+    if (limitedArray.length !== arr.length) {
+      itemsString += ', ...';
+    }
+
+    this.append(constructorName + ' [ ' + itemsString + ' ]');
   };
 
   StringPrettyPrinter.prototype.formatProperty = function(obj, property, isGetter) {
