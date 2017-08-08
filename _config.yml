@@ -16,6 +16,8 @@ collections:
   api:
     output: true
     permalink: api/:path
+  faq:
+    output: false
 
 sass:
   sass_dir: css/_scss
