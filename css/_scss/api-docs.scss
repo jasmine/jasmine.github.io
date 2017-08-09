@@ -135,10 +135,14 @@
     border: 1px solid #ddd;
     margin: 0;
     text-align: left;
-    vertical-align: top;
+    vertical-align: baseline;
     padding: 4px 6px;
     display: table-cell;
     background-color: transparent;
+
+    code {
+      font-size: 14px;
+    }
   }
 
   th {
