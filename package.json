@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "jsdoc": "jsdoc -c jsdoc-conf.json"
+    "jsdoc": "jsdoc -c jsdoc-conf.json --verbose"
   },
   "dependencies": {
-    "jsdoc": "^3.4.3"
+    "jsdoc": "^3.5.4"
   }
 }
