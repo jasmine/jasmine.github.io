@@ -20,23 +20,32 @@
     margin: 0 0 10px 0;
   }
 
+  h3.subsection-title {
+    margin: 2em 0.5em;
+  }
+
   h4 {
     font-size: 18px;
     font-weight: 700;
-    margin: 0 0 10px 0;
+    margin: 2em 0 0.5em;
   }
 
   h5 {
     font-size: 16px;
     font-weight: 700;
-    margin: 0 0 10px 0;
+    margin: 0.5em 0;
   }
 
   em {
     font-style: italic;
   }
 
-  code, tt, kdb, samp, .name, .signature {
+  code,
+  tt,
+  kdb,
+  samp,
+  .name,
+  .signature {
     font-family: Consolas, Monaco, monospace;
   }
 
@@ -47,7 +56,7 @@
   }
 
   .description {
-    margin: 1em 0;
+    margin: 0.75em 0;
   }
 
   .type-signature {
@@ -76,7 +85,7 @@
     margin-bottom: 40px;
 
     &:after {
-      content: '';
+      content: "";
       display: block;
       clear: both;
     }
@@ -93,7 +102,7 @@
 
   .details {
     margin-top: 14px;
-    border-left: 2px solid #DDD;
+    border-left: 2px solid #ddd;
 
     dt {
       padding-left: 10px;
@@ -126,12 +135,12 @@
     margin: 10px 0;
   }
 
-
   thead tr {
     background-color: #ddd;
   }
 
-  td, th {
+  td,
+  th {
     border: 1px solid #ddd;
     margin: 0;
     text-align: left;
