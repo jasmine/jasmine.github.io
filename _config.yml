@@ -3,6 +3,7 @@ exclude:
   - _tmp
   - src
   - node_modules
+  - vendor
   - Rakefile
   - LICENSE
   - README.md
