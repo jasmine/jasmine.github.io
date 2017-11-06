@@ -77,7 +77,7 @@ An expectation in Jasmine is an assertion that is either true or false. A spec w
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A suite&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <pre><span></span><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A suite&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;contains spec with an expectation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
   <span class="p">});</span>
@@ -1608,8 +1608,7 @@ The Jasmine Clock is available for testing time dependent code.</p>
         </div>
         <h2>Asynchronous Support</h2>
 
-<p><strong>This syntax has changed for Jasmine 2.0.</strong>
-Jasmine also has support for running specs that require testing asynchronous operations.</p>
+<p>Jasmine also has support for running specs that require testing asynchronous operations. The functions that you pass to <code>beforeAll</code>, <code>afterAll</code>, <code>beforeEach</code>, <code>afterEach</code>, and <code>it</code> can be asynchronous. There are three different ways to indicate that a function is asynchronous: by taking an optional callback parameter, by returning a promise, or by using the <code>async</code> keyword in environments that support it.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -1618,21 +1617,16 @@ Jasmine also has support for running specs that require testing asynchronous ope
         </div>
       </td>
     </tr>
-    <tr id="section-55">
+    <tr id="section-Using_callbacks">
       <td class="docs">
         <div class="pilwrap">
-          <a class="pilcrow" href="#section-55">&#182;</a>
+          <a class="pilcrow" href="#section-Using_callbacks">&#182;</a>
         </div>
-        <p>Calls to <code>beforeAll</code>, <code>afterAll</code>, <code>beforeEach</code>, <code>afterEach</code>, and <code>it</code> can take an optional single argument that should be called when the async work is complete.</p>
+        <h3>Using callbacks</h3>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre>  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nx">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-      <span class="nx">done</span><span class="p">();</span>
-    <span class="p">},</span> <span class="mi">1</span><span class="p">);</span>
-  <span class="p">});</span></pre>
+          <pre>  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Using callbacks&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre>
         </div>
       </td>
     </tr>
@@ -1641,15 +1635,17 @@ Jasmine also has support for running specs that require testing asynchronous ope
         <div class="pilwrap">
           <a class="pilcrow" href="#section-56">&#182;</a>
         </div>
-        <p>This spec will not start until the <code>done</code> function is called in the call to <code>beforeEach</code> above. And this spec will not complete until its <code>done</code> is called.</p>
+        <p>Calls to <code>beforeAll</code>, <code>afterAll</code>, <code>beforeEach</code>, <code>afterEach</code>, and <code>it</code> can take an optional single argument that should be called when the async work is complete.</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should support async execution of test preparation and expectations&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">value</span><span class="o">++</span><span class="p">;</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBeGreaterThan</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-    <span class="nx">done</span><span class="p">();</span>
-  <span class="p">});</span></pre>
+          <pre>    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="nx">done</span><span class="p">();</span>
+      <span class="p">},</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">});</span>
+  </pre>
         </div>
       </td>
     </tr>
@@ -1657,6 +1653,159 @@ Jasmine also has support for running specs that require testing asynchronous ope
       <td class="docs">
         <div class="pilwrap">
           <a class="pilcrow" href="#section-57">&#182;</a>
+        </div>
+        <p>This spec will not start until the <code>done</code> function is called in the call to <code>beforeEach</code> above. And this spec will not complete until its <code>done</code> is called.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should support async execution of test preparation and expectations&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">value</span><span class="o">++</span><span class="p">;</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBeGreaterThan</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+      <span class="nx">done</span><span class="p">();</span>
+    <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-58">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-58">&#182;</a>
+        </div>
+        <p>The <code>done.fail</code> function fails the spec and indicates that it has completed.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spec using done.fail&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">callBack1</span><span class="p">,</span> <span class="nx">callBack2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">callBack1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">callBack2</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">};</span>
+  
+      <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not call the second callBack&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">foo</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span>
+          <span class="nx">done</span><span class="p">,</span>
+          <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">done</span><span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="s2">&quot;Second callback has been called&quot;</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Using_promises">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Using_promises">&#182;</a>
+        </div>
+        <h3>Using promises</h3>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Using promises&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">browserHasPromises</span><span class="p">())</span> <span class="p">{</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-60">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-60">&#182;</a>
+        </div>
+        <p>Functions passed to <code>beforeAll</code>, <code>afterAll</code>, <code>beforeEach</code>, <code>afterEach</code>, and <code>it</code> can return a promise that should be resolved when the async work is complete. If the promise is rejected, all specs in the enclosing <code>describe</code> fill fail.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">soon</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  </pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-61">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-61">&#182;</a>
+        </div>
+        <p>This spec will not start until the promise returned from the call to <code>beforeEach</code> above is settled. And this spec will not complete until the promise that it returns is settled. If the promise is rejected, the spec will fail.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should support async execution of test preparation and expectations&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">soon</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">value</span><span class="o">++</span><span class="p">;</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBeGreaterThan</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Using_async/await">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Using_async/await">&#182;</a>
+        </div>
+        <h3>Using async/await</h3>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Using async/await&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">browserHasAsyncAwaitSupport</span><span class="p">())</span> <span class="p">{</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-63">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-63">&#182;</a>
+        </div>
+        <p>Functions passed to <code>beforeAll</code>, <code>afterAll</code>, <code>beforeEach</code>, <code>afterEach</code>, and <code>it</code> can be declared <code>async</code> in environments that support <code>async</code>/<code>await</code>.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">async</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">await</span> <span class="nx">soon</span><span class="p">();</span>
+      <span class="nx">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">});</span>
+  </pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-64">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-64">&#182;</a>
+        </div>
+        <p>This spec will not start until the promise returned from the call to <code>beforeEach</code> above is settled. And this spec will not complete until the promise that it returns is settled.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should support async execution of test preparation and expectations&quot;</span><span class="p">,</span> <span class="nx">async</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">await</span> <span class="nx">soon</span><span class="p">();</span>
+      <span class="nx">value</span><span class="o">++</span><span class="p">;</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBeGreaterThan</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-65">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-65">&#182;</a>
         </div>
         <p>By default jasmine will wait for 5 seconds for an asynchronous spec to finish before causing a timeout failure.
 If the timeout expires before <code>done</code> is called, the current spec will be marked as failed and suite execution will continue as if <code>done</code> was called.</p>
@@ -1681,37 +1830,33 @@ If the timeout expires before <code>done</code> is called, the current spec will
     <span class="nx">afterEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">done</span><span class="p">();</span>
     <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
-  <span class="p">});</span></pre>
-        </div>
-      </td>
-    </tr>
-    <tr id="section-58">
-      <td class="docs">
-        <div class="pilwrap">
-          <a class="pilcrow" href="#section-58">&#182;</a>
-        </div>
-        <p>The <code>done.fail</code> function fails the spec and indicates that it has completed.</p>
-      </td>
-      <td class="code">
-        <div class="highlight">
-          <pre>  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spec using done.fail&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">callBack1</span><span class="p">,</span> <span class="nx">callBack2</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">callBack1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">callBack2</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-      <span class="p">}</span>
-    <span class="p">};</span>
-
-    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not call the second callBack&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">foo</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span>
-        <span class="nx">done</span><span class="p">,</span>
-        <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-          <span class="nx">done</span><span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="s2">&quot;Second callback has been called&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-      <span class="p">);</span>
-    <span class="p">});</span>
   <span class="p">});</span>
+
+  <span class="kd">function</span> <span class="nx">soon</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">resolve</span><span class="p">();</span>
+      <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">browserHasPromises</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">typeof</span> <span class="nb">Promise</span> <span class="o">!==</span> <span class="s1">&#39;undefined&#39;</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">getAsyncCtor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="nb">eval</span><span class="p">(</span><span class="s2">&quot;var func = async function(){};&quot;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span><span class="nx">func</span><span class="p">).</span><span class="nx">constructor</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">browserHasAsyncAwaitSupport</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">getAsyncCtor</span><span class="p">()</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
 <span class="p">});</span></pre>
         </div>
       </td>

@@ -1097,30 +1097,112 @@ describe("Manually ticking the Jasmine Clock", function() {
 
 /**
  ## Asynchronous Support
- __This syntax has changed for Jasmine 2.0.__
- Jasmine also has support for running specs that require testing asynchronous operations.
+ Jasmine also has support for running specs that require testing asynchronous operations. The functions that you pass to `beforeAll`, `afterAll`, `beforeEach`, `afterEach`, and `it` can be asynchronous. There are three different ways to indicate that a function is asynchronous: by taking an optional callback parameter, by returning a promise, or by using the `async` keyword in environments that support it.
  */
 describe("Asynchronous specs", function() {
   var value;
+
   /**
-   Calls to `beforeAll`, `afterAll`, `beforeEach`, `afterEach`, and `it` can take an optional single argument that should be called when the async work is complete.
+   ### Using callbacks
    */
-  beforeEach(function(done) {
-    setTimeout(function() {
-      value = 0;
+  describe("Using callbacks", function() {
+    /**
+     Calls to `beforeAll`, `afterAll`, `beforeEach`, `afterEach`, and `it` can take an optional single argument that should be called when the async work is complete.
+     */
+    beforeEach(function(done) {
+      setTimeout(function() {
+        value = 0;
+        done();
+      }, 1);
+    });
+  
+    /**
+     This spec will not start until the `done` function is called in the call to `beforeEach` above. And this spec will not complete until its `done` is called.
+     */
+  
+    it("should support async execution of test preparation and expectations", function(done) {
+      value++;
+      expect(value).toBeGreaterThan(0);
       done();
-    }, 1);
+    });
+
+    /**
+     The `done.fail` function fails the spec and indicates that it has completed.
+     */
+    describe("A spec using done.fail", function() {
+      var foo = function(x, callBack1, callBack2) {
+        if (x) {
+          setTimeout(callBack1, 0);
+        } else {
+          setTimeout(callBack2, 0);
+        }
+      };
+  
+      it("should not call the second callBack", function(done) {
+        foo(true,
+          done,
+          function() {
+            done.fail("Second callback has been called");
+          }
+        );
+      });
+    });
   });
 
   /**
-   This spec will not start until the `done` function is called in the call to `beforeEach` above. And this spec will not complete until its `done` is called.
+   ### Using promises
    */
+  describe("Using promises", function() {
+    if (!browserHasPromises()) {
+      return;
+    }
 
-  it("should support async execution of test preparation and expectations", function(done) {
-    value++;
-    expect(value).toBeGreaterThan(0);
-    done();
+    /**
+     Functions passed to `beforeAll`, `afterAll`, `beforeEach`, `afterEach`, and `it` can return a promise that should be resolved when the async work is complete. If the promise is rejected, all specs in the enclosing `describe` fill fail.
+     */
+    beforeEach(function() {
+      return soon().then(function() {
+        value = 0;
+      });
+    });
+  
+    /**
+     This spec will not start until the promise returned from the call to `beforeEach` above is settled. And this spec will not complete until the promise that it returns is settled. If the promise is rejected, the spec will fail.
+     */
+    it("should support async execution of test preparation and expectations", function() {
+      return soon().then(function() {
+        value++;
+        expect(value).toBeGreaterThan(0);
+      });
+    });
   });
+
+  /**
+   ### Using async/await
+   */
+  describe("Using async/await", function() {
+    if (!browserHasAsyncAwaitSupport()) {
+      return;
+    }
+
+    /**
+     Functions passed to `beforeAll`, `afterAll`, `beforeEach`, `afterEach`, and `it` can be declared `async` in environments that support `async`/`await`.
+     */
+    beforeEach(async function() {
+      await soon();
+      value = 0;
+    });
+  
+    /**
+     This spec will not start until the promise returned from the call to `beforeEach` above is settled. And this spec will not complete until the promise that it returns is settled.
+     */
+    it("should support async execution of test preparation and expectations", async function() {
+      await soon();
+      value++;
+      expect(value).toBeGreaterThan(0);
+    });
+  });
+
 
   /**
    By default jasmine will wait for 5 seconds for an asynchronous spec to finish before causing a timeout failure.
@@ -1146,27 +1228,31 @@ describe("Asynchronous specs", function() {
     }, 1000);
   });
 
-  /**
-   The `done.fail` function fails the spec and indicates that it has completed.
-   */
-  describe("A spec using done.fail", function() {
-    var foo = function(x, callBack1, callBack2) {
-      if (x) {
-        setTimeout(callBack1, 0);
-      } else {
-        setTimeout(callBack2, 0);
-      }
-    };
-
-    it("should not call the second callBack", function(done) {
-      foo(true,
-        done,
-        function() {
-          done.fail("Second callback has been called");
-        }
-      );
+  function soon() {
+    return new Promise(function(resolve, reject) {
+      setTimeout(function() {
+        resolve();
+      }, 1);
     });
-  });
+  }
+
+  function browserHasPromises() {
+    return typeof Promise !== 'undefined';
+  }
+
+  function getAsyncCtor() {
+    try {
+      eval("var func = async function(){};");
+    } catch (e) {
+      return null;
+    }
+
+    return Object.getPrototypeOf(func).constructor;
+  }
+
+  function browserHasAsyncAwaitSupport() {
+    return getAsyncCtor() !== null;
+  }
 });
 
 // ## Downloads
