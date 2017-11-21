@@ -1115,11 +1115,11 @@ describe("Asynchronous specs", function() {
         done();
       }, 1);
     });
-  
+
     /**
      This spec will not start until the `done` function is called in the call to `beforeEach` above. And this spec will not complete until its `done` is called.
      */
-  
+
     it("should support async execution of test preparation and expectations", function(done) {
       value++;
       expect(value).toBeGreaterThan(0);
@@ -1137,7 +1137,7 @@ describe("Asynchronous specs", function() {
           setTimeout(callBack2, 0);
         }
       };
-  
+
       it("should not call the second callBack", function(done) {
         foo(true,
           done,
@@ -1158,14 +1158,14 @@ describe("Asynchronous specs", function() {
     }
 
     /**
-     Functions passed to `beforeAll`, `afterAll`, `beforeEach`, `afterEach`, and `it` can return a promise that should be resolved when the async work is complete. If the promise is rejected, all specs in the enclosing `describe` fill fail.
+     Functions passed to `beforeAll`, `afterAll`, `beforeEach`, `afterEach`, and `it` can return a promise that should be resolved when the async work is complete. If the promise is rejected, all specs in the enclosing `describe` will fail.
      */
     beforeEach(function() {
       return soon().then(function() {
         value = 0;
       });
     });
-  
+
     /**
      This spec will not start until the promise returned from the call to `beforeEach` above is settled. And this spec will not complete until the promise that it returns is settled. If the promise is rejected, the spec will fail.
      */
@@ -1192,7 +1192,7 @@ describe("Asynchronous specs", function() {
       await soon();
       value = 0;
     });
-  
+
     /**
      This spec will not start until the promise returned from the call to `beforeEach` above is settled. And this spec will not complete until the promise that it returns is settled.
      */

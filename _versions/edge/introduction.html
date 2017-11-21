@@ -77,7 +77,7 @@ An expectation in Jasmine is an assertion that is either true or false. A spec w
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span></span><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A suite&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A suite&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;contains spec with an expectation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
   <span class="p">});</span>
@@ -1644,8 +1644,7 @@ The Jasmine Clock is available for testing time dependent code.</p>
         <span class="nx">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
         <span class="nx">done</span><span class="p">();</span>
       <span class="p">},</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="p">});</span>
-  </pre>
+    <span class="p">});</span></pre>
         </div>
       </td>
     </tr>
@@ -1658,8 +1657,7 @@ The Jasmine Clock is available for testing time dependent code.</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre>  
-    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should support async execution of test preparation and expectations&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+          <pre>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should support async execution of test preparation and expectations&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">value</span><span class="o">++</span><span class="p">;</span>
       <span class="nx">expect</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBeGreaterThan</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
       <span class="nx">done</span><span class="p">();</span>
@@ -1684,7 +1682,7 @@ The Jasmine Clock is available for testing time dependent code.</p>
           <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">callBack2</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
         <span class="p">}</span>
       <span class="p">};</span>
-  
+
       <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not call the second callBack&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">foo</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span>
           <span class="nx">done</span><span class="p">,</span>
@@ -1719,7 +1717,7 @@ The Jasmine Clock is available for testing time dependent code.</p>
         <div class="pilwrap">
           <a class="pilcrow" href="#section-60">&#182;</a>
         </div>
-        <p>Functions passed to <code>beforeAll</code>, <code>afterAll</code>, <code>beforeEach</code>, <code>afterEach</code>, and <code>it</code> can return a promise that should be resolved when the async work is complete. If the promise is rejected, all specs in the enclosing <code>describe</code> fill fail.</p>
+        <p>Functions passed to <code>beforeAll</code>, <code>afterAll</code>, <code>beforeEach</code>, <code>afterEach</code>, and <code>it</code> can return a promise that should be resolved when the async work is complete. If the promise is rejected, all specs in the enclosing <code>describe</code> will fail.</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -1727,8 +1725,7 @@ The Jasmine Clock is available for testing time dependent code.</p>
       <span class="k">return</span> <span class="nx">soon</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
       <span class="p">});</span>
-    <span class="p">});</span>
-  </pre>
+    <span class="p">});</span></pre>
         </div>
       </td>
     </tr>
@@ -1779,8 +1776,7 @@ The Jasmine Clock is available for testing time dependent code.</p>
           <pre>    <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">async</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
       <span class="nx">await</span> <span class="nx">soon</span><span class="p">();</span>
       <span class="nx">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="p">});</span>
-  </pre>
+    <span class="p">});</span></pre>
         </div>
       </td>
     </tr>
@@ -1833,7 +1829,7 @@ If the timeout expires before <code>done</code> is called, the current spec will
   <span class="p">});</span>
 
   <span class="kd">function</span> <span class="nx">soon</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">resolve</span><span class="p">();</span>
       <span class="p">},</span> <span class="mi">1</span><span class="p">);</span>
@@ -1841,7 +1837,7 @@ If the timeout expires before <code>done</code> is called, the current spec will
   <span class="p">}</span>
 
   <span class="kd">function</span> <span class="nx">browserHasPromises</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">typeof</span> <span class="nb">Promise</span> <span class="o">!==</span> <span class="s1">&#39;undefined&#39;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="k">typeof</span> <span class="nx">Promise</span> <span class="o">!==</span> <span class="s1">&#39;undefined&#39;</span><span class="p">;</span>
   <span class="p">}</span>
 
   <span class="kd">function</span> <span class="nx">getAsyncCtor</span><span class="p">()</span> <span class="p">{</span>

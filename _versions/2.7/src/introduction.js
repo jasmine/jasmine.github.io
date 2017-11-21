@@ -1158,7 +1158,7 @@ describe("Asynchronous specs", function() {
     }
 
     /**
-     Functions passed to `beforeAll`, `afterAll`, `beforeEach`, `afterEach`, and `it` can return a promise that should be resolved when the async work is complete. If the promise is rejected, all specs in the enclosing `describe` fill fail.
+     Functions passed to `beforeAll`, `afterAll`, `beforeEach`, `afterEach`, and `it` can return a promise that should be resolved when the async work is complete. If the promise is rejected, all specs in the enclosing `describe` will fail.
      */
     beforeEach(function() {
       return soon().then(function() {
