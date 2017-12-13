@@ -45,7 +45,7 @@ var getJasmineRequireObj = (function (jasmineGlobal) {
     var j$ = {};
 
     jRequire.base(j$, jasmineGlobal);
-    j$.util = jRequire.util();
+    j$.util = jRequire.util(j$);
     j$.errors = jRequire.errors();
     j$.formatErrorMsg = jRequire.formatErrorMsg();
     j$.Any = jRequire.Any(j$);
@@ -66,7 +66,7 @@ var getJasmineRequireObj = (function (jasmineGlobal) {
     j$.ArrayWithExactContents = jRequire.ArrayWithExactContents(j$);
     j$.pp = jRequire.pp(j$);
     j$.QueueRunner = jRequire.QueueRunner(j$);
-    j$.ReportDispatcher = jRequire.ReportDispatcher();
+    j$.ReportDispatcher = jRequire.ReportDispatcher(j$);
     j$.Spec = jRequire.Spec(j$);
     j$.Spy = jRequire.Spy(j$);
     j$.SpyRegistry = jRequire.SpyRegistry(j$);
@@ -138,14 +138,20 @@ getJasmineRequireObj().base = function(j$, jasmineGlobal) {
    * Set this to a lower value to speed up pretty printing if you have large objects.
    * @name jasmine.MAX_PRETTY_PRINT_DEPTH
    */
-  j$.MAX_PRETTY_PRINT_DEPTH = 40;
+  j$.MAX_PRETTY_PRINT_DEPTH = 8;
   /**
    * Maximum number of array elements to display when pretty printing objects.
    * This will also limit the number of keys and values displayed for an object.
    * Elements past this number will be ellipised.
    * @name jasmine.MAX_PRETTY_PRINT_ARRAY_LENGTH
    */
-  j$.MAX_PRETTY_PRINT_ARRAY_LENGTH = 100;
+  j$.MAX_PRETTY_PRINT_ARRAY_LENGTH = 50;
+  /**
+   * Maximum number of charasters to display when pretty printing objects.
+   * Characters past this number will be ellipised.
+   * @name jasmine.MAX_PRETTY_PRINT_CHARS
+   */
+  j$.MAX_PRETTY_PRINT_CHARS = 1000;
   /**
    * Default number of milliseconds Jasmine will wait for an asynchronous spec to complete.
    * @name jasmine.DEFAULT_TIMEOUT_INTERVAL
@@ -215,6 +221,10 @@ getJasmineRequireObj().base = function(j$, jasmineGlobal) {
 
   j$.isDomNode = function(obj) {
     return obj.nodeType > 0;
+  };
+
+  j$.isPromise = function(obj) {
+    return typeof jasmineGlobal.Promise !== 'undefined' && obj.constructor === jasmineGlobal.Promise;
   };
 
   j$.fnNameFor = function(func) {
@@ -355,7 +365,7 @@ getJasmineRequireObj().base = function(j$, jasmineGlobal) {
   };
 };
 
-getJasmineRequireObj().util = function() {
+getJasmineRequireObj().util = function(j$) {
 
   var util = {};
 
@@ -410,6 +420,23 @@ getJasmineRequireObj().util = function() {
     }
 
     return cloned;
+  };
+
+  util.cloneArgs = function(args) {
+    var clonedArgs = [];
+    var argsAsArray = j$.util.argsToArray(args);
+    for(var i = 0; i < argsAsArray.length; i++) {
+      var str = Object.prototype.toString.apply(argsAsArray[i]),
+        primitives = /^\[object (Boolean|String|RegExp|Number)/;
+
+      // All falsey values are either primitives, `null`, or `undefined.
+      if (!argsAsArray[i] || str.match(primitives)) {
+        clonedArgs.push(argsAsArray[i]);
+      } else {
+        clonedArgs.push(j$.util.clone(argsAsArray[i]));
+      }
+    }
+    return clonedArgs;
   };
 
   util.getPropertyDescriptor = function(obj, methodName) {
@@ -1048,6 +1075,13 @@ getJasmineRequireObj().Env = function(j$) {
       }
     };
 
+    function ensureIsNotNested(method) {
+      var runnable = currentRunnable();
+      if (runnable !== null && runnable !== undefined) {
+        throw new Error('\'' + method + '\' should only be used in \'describe\' function');
+      }
+    }
+
     var suiteFactory = function(description) {
       var suite = new j$.Suite({
         env: self,
@@ -1063,6 +1097,7 @@ getJasmineRequireObj().Env = function(j$) {
     };
 
     this.describe = function(description, specDefinitions) {
+      ensureIsNotNested('describe');
       ensureIsFunction(specDefinitions, 'describe');
       var suite = suiteFactory(description);
       if (specDefinitions.length > 0) {
@@ -1076,6 +1111,7 @@ getJasmineRequireObj().Env = function(j$) {
     };
 
     this.xdescribe = function(description, specDefinitions) {
+      ensureIsNotNested('xdescribe');
       ensureIsFunction(specDefinitions, 'xdescribe');
       var suite = suiteFactory(description);
       suite.pend();
@@ -1086,6 +1122,7 @@ getJasmineRequireObj().Env = function(j$) {
     var focusedRunnables = [];
 
     this.fdescribe = function(description, specDefinitions) {
+      ensureIsNotNested('fdescribe');
       ensureIsFunction(specDefinitions, 'fdescribe');
       var suite = suiteFactory(description);
       suite.isFocused = true;
@@ -1183,6 +1220,7 @@ getJasmineRequireObj().Env = function(j$) {
     };
 
     this.it = function(description, fn, timeout) {
+      ensureIsNotNested('it');
       // it() sometimes doesn't have a fn argument, so only check the type if
       // it's given.
       if (arguments.length > 1 && typeof fn !== 'undefined') {
@@ -1197,6 +1235,7 @@ getJasmineRequireObj().Env = function(j$) {
     };
 
     this.xit = function(description, fn, timeout) {
+      ensureIsNotNested('xit');
       // xit(), like it(), doesn't always have a fn argument, so only check the
       // type when needed.
       if (arguments.length > 1 && typeof fn !== 'undefined') {
@@ -1208,6 +1247,7 @@ getJasmineRequireObj().Env = function(j$) {
     };
 
     this.fit = function(description, fn, timeout){
+      ensureIsNotNested('fit');
       ensureIsFunctionOrAsync(fn, 'fit');
       var spec = specFactory(description, fn, currentDeclarationSuite, timeout);
       currentDeclarationSuite.addChild(spec);
@@ -1225,6 +1265,7 @@ getJasmineRequireObj().Env = function(j$) {
     };
 
     this.beforeEach = function(beforeEachFunction, timeout) {
+      ensureIsNotNested('beforeEach');
       ensureIsFunctionOrAsync(beforeEachFunction, 'beforeEach');
       currentDeclarationSuite.beforeEach({
         fn: beforeEachFunction,
@@ -1233,6 +1274,7 @@ getJasmineRequireObj().Env = function(j$) {
     };
 
     this.beforeAll = function(beforeAllFunction, timeout) {
+      ensureIsNotNested('beforeAll');
       ensureIsFunctionOrAsync(beforeAllFunction, 'beforeAll');
       currentDeclarationSuite.beforeAll({
         fn: beforeAllFunction,
@@ -1241,6 +1283,7 @@ getJasmineRequireObj().Env = function(j$) {
     };
 
     this.afterEach = function(afterEachFunction, timeout) {
+      ensureIsNotNested('afterEach');
       ensureIsFunctionOrAsync(afterEachFunction, 'afterEach');
       afterEachFunction.isCleanup = true;
       currentDeclarationSuite.afterEach({
@@ -1250,6 +1293,7 @@ getJasmineRequireObj().Env = function(j$) {
     };
 
     this.afterAll = function(afterAllFunction, timeout) {
+      ensureIsNotNested('afterAll');
       ensureIsFunctionOrAsync(afterAllFunction, 'afterAll');
       currentDeclarationSuite.afterAll({
         fn: afterAllFunction,
@@ -1465,6 +1509,12 @@ getJasmineRequireObj().Any = function(j$) {
       return typeof other == 'boolean';
     }
 
+    /* jshint -W122 */
+    if (typeof Symbol != 'undefined' && this.expectedObject == Symbol) {
+      return typeof other == 'symbol';
+    }
+    /* jshint +W122 */
+
     return other instanceof this.expectedObject;
   };
 
@@ -1629,25 +1679,9 @@ getJasmineRequireObj().CallTracker = function(j$) {
     var calls = [];
     var opts = {};
 
-    function argCloner(context) {
-      var clonedArgs = [];
-      var argsAsArray = j$.util.argsToArray(context.args);
-      for(var i = 0; i < argsAsArray.length; i++) {
-        var str = Object.prototype.toString.apply(argsAsArray[i]),
-          primitives = /^\[object (Boolean|String|RegExp|Number)/;
-
-        if (argsAsArray[i] == null || str.match(primitives)) {
-          clonedArgs.push(argsAsArray[i]);
-        } else {
-          clonedArgs.push(j$.util.clone(argsAsArray[i]));
-        }
-      }
-      context.args = clonedArgs;
-    }
-
     this.track = function(context) {
       if(opts.cloneArgs) {
-        argCloner(context);
+        context.args = j$.util.cloneArgs(context.args);
       }
       calls.push(context);
     };
@@ -2659,6 +2693,12 @@ getJasmineRequireObj().matchersUtil = function(j$) {
       diffBuilder.record(a, b);
       return false;
     }
+    
+    var aIsPromise = j$.isPromise(a);
+    var bIsPromise = j$.isPromise(b);
+    if (aIsPromise && bIsPromise) {
+      return a === b;
+    }
 
     // Assume equality for cyclic structures. The algorithm for detecting cyclic
     // structures is adapted from ES 5.1 section 15.12.3, abstract operation `JO`.
@@ -2699,16 +2739,34 @@ getJasmineRequireObj().matchersUtil = function(j$) {
         return false;
       }
 
-      // For both sets of keys, check they map to equal values in both maps
+      // For both sets of keys, check they map to equal values in both maps.
+      // Keep track of corresponding keys (in insertion order) in order to handle asymmetric obj keys.
       var mapKeys = [a.keys(), b.keys()];
-      var mapIter, mapKeyIt, mapKey;
+      var cmpKeys = [b.keys(), a.keys()];
+      var mapIter, mapKeyIt, mapKey, mapValueA, mapValueB;
+      var cmpIter, cmpKeyIt, cmpKey;
       for (i = 0; result && i < mapKeys.length; i++) {
         mapIter = mapKeys[i];
+        cmpIter = cmpKeys[i];
         mapKeyIt = mapIter.next();
+        cmpKeyIt = cmpIter.next();
         while (result && !mapKeyIt.done) {
           mapKey = mapKeyIt.value;
-          result = eq(a.get(mapKey), b.get(mapKey), aStack, bStack, customTesters, j$.NullDiffBuilder());
+          cmpKey = cmpKeyIt.value;
+          mapValueA = a.get(mapKey);
+
+          // Only use the cmpKey when one of the keys is asymmetric and the corresponding key matches,
+          // otherwise explicitly look up the mapKey in the other Map since we want keys with unique
+          // obj identity (that are otherwise equal) to not match.
+          if (isAsymmetric(mapKey) || isAsymmetric(cmpKey) &&
+              eq(mapKey, cmpKey, aStack, bStack, customTesters, j$.NullDiffBuilder())) {
+            mapValueB = b.get(cmpKey);
+          } else {
+            mapValueB = b.get(mapKey);
+          }
+          result = eq(mapValueA, mapValueB, aStack, bStack, customTesters, j$.NullDiffBuilder());
           mapKeyIt = mapIter.next();
+          cmpKeyIt = cmpIter.next();
         }
       }
 
@@ -2724,24 +2782,36 @@ getJasmineRequireObj().matchersUtil = function(j$) {
 
       // For both sets, check they are all contained in the other set
       var setPairs = [[a, b], [b, a]];
-      var baseIter, baseValueIt, baseValue;
-      var otherSet, otherIter, otherValueIt, otherValue, found;
+      var stackPairs = [[aStack, bStack], [bStack, aStack]];
+      var baseIter, baseValueIt, baseValue, baseStack;
+      var otherSet, otherIter, otherValueIt, otherValue, otherStack;
+      var found;
+      var prevStackSize;
       for (i = 0; result && i < setPairs.length; i++) {
         baseIter = setPairs[i][0].values();
         otherSet = setPairs[i][1];
+        baseStack = stackPairs[i][0];
+        otherStack = stackPairs[i][1];
         // For each value in the base set...
         baseValueIt = baseIter.next();
         while (result && !baseValueIt.done) {
           baseValue = baseValueIt.value;
           // ... test that it is present in the other set
-          otherIter = otherSet.values();
-          otherValueIt = otherIter.next();
           // Optimisation: start looking for value by object identity
           found = otherSet.has(baseValue);
+          if (!found) {
+            otherIter = otherSet.values();
+            otherValueIt = otherIter.next();
+          }
           // If not found, compare by value equality
           while (!found && !otherValueIt.done) {
             otherValue = otherValueIt.value;
-            found = eq(baseValue, otherValue, aStack, bStack, customTesters, j$.NullDiffBuilder());
+            prevStackSize = baseStack.length;
+            found = eq(baseValue, otherValue, baseStack, otherStack, customTesters, j$.NullDiffBuilder());
+            if (!found && prevStackSize !== baseStack.length) {
+              baseStack.splice(prevStackSize);
+              otherStack.splice(prevStackSize);
+            }
             otherValueIt = otherIter.next();
           }
           result = result && found;
@@ -3980,6 +4050,7 @@ getJasmineRequireObj().pp = function(j$) {
   function StringPrettyPrinter() {
     PrettyPrinter.call(this);
 
+    this.length = 0;
     this.stringParts = [];
   }
 
@@ -4123,8 +4194,21 @@ getJasmineRequireObj().pp = function(j$) {
   };
 
   StringPrettyPrinter.prototype.append = function(value) {
-    this.stringParts.push(value);
+    if (this.length < j$.MAX_PRETTY_PRINT_CHARS) {
+      value = truncate(value, j$.MAX_PRETTY_PRINT_CHARS - this.length);
+      this.length += value.length;
+      this.stringParts.push(value);
+    }
   };
+
+  function truncate(s, maxlen) {
+    if (s.length <= maxlen) {
+      return s;
+    }
+
+    s = s.substring(0, maxlen - 4);
+    return s +  ' ...';
+  }
 
   function keys(obj, isArray) {
     var allKeys = Object.keys ? Object.keys(obj) :
@@ -4289,7 +4373,7 @@ getJasmineRequireObj().QueueRunner = function(j$) {
           var maybeThenable = queueableFn.fn.call(self.userContext);
 
           if (maybeThenable && j$.isFunction_(maybeThenable.then)) {
-            maybeThenable.then(next, next.fail);
+            maybeThenable.then(next, onPromiseRejection);
             completedSynchronously = false;
             return { completedSynchronously: false };
           }
@@ -4311,6 +4395,11 @@ getJasmineRequireObj().QueueRunner = function(j$) {
         errored = true;
       }
 
+      function onPromiseRejection(e) {
+        onException(e);
+        next();
+      }
+
       function handleException(e, queueableFn) {
         onException(e);
         if (!self.catchException(e)) {
@@ -4325,7 +4414,7 @@ getJasmineRequireObj().QueueRunner = function(j$) {
   return QueueRunner;
 };
 
-getJasmineRequireObj().ReportDispatcher = function() {
+getJasmineRequireObj().ReportDispatcher = function(j$) {
   function ReportDispatcher(methods) {
 
     var dispatchedMethods = methods || [];
@@ -4363,7 +4452,7 @@ getJasmineRequireObj().ReportDispatcher = function() {
       for (var i = 0; i < reporters.length; i++) {
         var reporter = reporters[i];
         if (reporter[method]) {
-          reporter[method].apply(reporter, args);
+          reporter[method].apply(reporter, j$.util.cloneArgs(args));
         }
       }
     }
@@ -4946,7 +5035,7 @@ getJasmineRequireObj().SpyStrategy = function(j$) {
      * @param {Function} fn The function to invoke with the passed parameters.
      */
     this.callFake = function(fn) {
-      if(!j$.isFunction_(fn)) {
+      if(!(j$.isFunction_(fn) || j$.isAsyncFunction_(fn))) {
         throw new Error('Argument passed to callFake should be a function, got ' + fn);
       }
       plan = fn;
