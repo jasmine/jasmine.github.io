@@ -1,29 +1,7 @@
-/*
-Copyright (c) 2008-2018 Pivotal Labs
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
 /**
  Starting with version 2.0, this file "boots" Jasmine, performing all of the necessary initialization before executing the loaded environment and all of a project's specs. This file should be loaded after `jasmine.js` and `jasmine_html.js`, but before any project source files or spec files are loaded. Thus this file can also be used to customize Jasmine for a project.
 
- If a project is using Jasmine via the standalone distribution, this file can be customized directly. If a project is using Jasmine via the [Ruby gem][jasmine-gem], this file can be copied into the support directory via `jasmine copy_boot_js`. Other environments (e.g., Python) will have different mechanisms.
+ If a project is using Jasmine via the standalone distribution, this file can be [customized](custom_boot.html) directly. If a project is using Jasmine via the [Ruby gem][jasmine-gem], this file can be copied into the support directory via `jasmine copy_boot_js`. Other environments (e.g., Python) will have different mechanisms.
 
  The location of `boot.js` can be specified and/or overridden in `jasmine.yml`.
 
@@ -52,14 +30,18 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   /**
    * ## The Global Interface
    *
-   * Build up the functions that will be exposed as the Jasmine public interface. A project can customize, rename or alias any of these functions as desired, provided the implementation remains unchanged.
+   * Build up the functions that will be exposed as the Jasmine public interface. A project can [customize](custom_boot.html), rename or alias any of these functions as desired, provided the implementation remains unchanged.
    */
   var jasmineInterface = jasmineRequire.interface(jasmine, env);
 
   /**
-   * Add all of the Jasmine global/public interface to the global scope, so a project can use the public interface directly. For example, calling `describe` in specs instead of `jasmine.getEnv().describe`.
+   * Add all of the Jasmine global/public interface to the proper global, so a project can use the public interface directly. For example, calling `describe` in specs instead of `jasmine.getEnv().describe`.
    */
-  extend(window, jasmineInterface);
+  if (typeof window == "undefined" && typeof exports == "object") {
+    extend(exports, jasmineInterface);
+  } else {
+    extend(window, jasmineInterface);
+  }
 
   /**
    * ## Runner Parameters
@@ -71,21 +53,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     getWindowLocation: function() { return window.location; }
   });
 
-  var filterSpecs = !!queryString.getParam("spec");
-
   var catchingExceptions = queryString.getParam("catch");
   env.catchExceptions(typeof catchingExceptions === "undefined" ? true : catchingExceptions);
-
-  var throwingExpectationFailures = queryString.getParam("throwFailures");
-  env.throwOnExpectationFailure(throwingExpectationFailures);
-
-  var random = queryString.getParam("random");
-  env.randomizeTests(random);
-
-  var seed = queryString.getParam("seed");
-  if (seed) {
-    env.seed(seed);
-  }
 
   /**
    * ## Reporters
@@ -93,15 +62,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    */
   var htmlReporter = new jasmine.HtmlReporter({
     env: env,
-    onRaiseExceptionsClick: function() { queryString.navigateWithNewParam("catch", !env.catchingExceptions()); },
-    onThrowExpectationsClick: function() { queryString.navigateWithNewParam("throwFailures", !env.throwingExpectationFailures()); },
-    onRandomClick: function() { queryString.navigateWithNewParam("random", !env.randomTests()); },
-    addToExistingQueryString: function(key, value) { return queryString.fullStringWithNewParam(key, value); },
+    onRaiseExceptionsClick: function() { queryString.setParam("catch", !env.catchingExceptions()); },
     getContainer: function() { return document.body; },
     createElement: function() { return document.createElement.apply(document, arguments); },
     createTextNode: function() { return document.createTextNode.apply(document, arguments); },
-    timer: new jasmine.Timer(),
-    filterSpecs: filterSpecs
+    timer: new jasmine.Timer()
   });
 
   /**
