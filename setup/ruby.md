@@ -84,9 +84,12 @@ Jasmine.configure do |config|
   # You can add [custom formatters](#section-Custom_Formatters)
   config.formatters << My::Custom::Formatter
   # You can use a [custom runner](#section-Custom_Runners)
-  # The `runner` option on config should be a lambda or Proc that receives a formatter and server url and returns a constructed runner object.
-  # The lambda allows you to configure other options that need to be configured at initialization time.
-  config.runner = lambda { |formatter, server_url| My::Custom::Runner.new(formatter, server_url, 100) }
+  # The `runner` option on config should be a lambda or Proc that receives a formatter
+  # and server url and returns a constructed runner object. The lambda allows you to
+  # configure other options that need to be configured at initialization time.
+  config.runner = lambda do |formatter, server_url|
+    My::Custom::Runner.new(formatter, server_url, 100)
+  end
 end
 ```
 
@@ -151,9 +154,11 @@ Once constructed, a runner only needs to implement a `run` method
 ```ruby
 class My::Custom::Runner
   def initialize(formatter, jasmine_server_url, result_batch_size)
-    # The formatter passed in is responsible for making sure all configured formatters receive the same messages.
+    # The formatter passed in is responsible for making sure all configured
+    # formatters receive the same messages.
     @formatter = formatter
-    # The `jasmine_server_url` is the full http://&lt;host&gt;:&lt;port&gt; url where the jasmine server was started
+    # The `jasmine_server_url` is the full http://<host>:<port> url where
+    # the jasmine server was started
     @jasmine_server_url = jasmine_server_url
     @result_batch_size = result_batch_size
   end
@@ -161,22 +166,25 @@ class My::Custom::Runner
   # `run` is responsible coordinating the test run.
   def run
     # Here we're using Phantom to load the page and run the specs
-    command = "#{Phantomjs.path} 'phantom_jasmine_run.js' #{@jasmine_server_url} #{@result_batch_size}"
+    command = "#{Phantomjs.path} 'phantom_run.js' #{@jasmine_server_url} #{@result_batch_size}"
     IO.popen(command) do |output|
       # The `phantom_jasmine_run.js` script writes out batches of results as JSON
       output.each do |line|
         raw_results = JSON.parse(line, :max_nesting => false)
         # Formatters expect to get `Jasmine::Result` objects.
-        # It is the runner's job to convert the result objects from the page, and pass them to the `format` method of their formatter.
+        # It is the runner's job to convert the result objects from the page,
+        # and pass them to the `format` method of their formatter.
         results = raw_results.map { |r| Result.new(r) }
         @formatter.format(results)
       end
     end
-    # When the tests have finished, call `done` on the formatter to run any necessary completion logic.
+    # When the tests have finished, call `done` on the formatter to run any
+    # necessary completion logic.
     @formatter.done
   end
 
-  # If the runner needs some javascript to be loaded into the page as part of the load, it returns the full path in `boot_js`
+  # If the runner needs some javascript to be loaded into the page as part of the load,
+  # it returns the full path in `boot_js`
   def boot_js
     File.expand_path('runner_boot.js', __FILE__)
   end
