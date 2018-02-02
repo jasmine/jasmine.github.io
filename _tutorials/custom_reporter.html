@@ -11,6 +11,8 @@ file_name: custom_reporter.js
         <a class="pilcrow" href="#section-1">&#182;</a>
       </div>
       <p>If you don&#39;t like the way the built-in jasmine reporters look, you can always write your own.</p>
+
+<p>More details on the <a href="/api/edge/Reporter.html">Reporter interface</a> can be found in the API docs0</p>
     </td>
     <td class="code">
       <div class="highlight">
@@ -200,7 +202,7 @@ None of the functions here are required when creating a custom reporter, any tha
 
 <p><code>suiteDone</code> is invoked when all of the child specs and suites for a given suite have been run</p>
 
-<p>While jasmine doesn&#39;t require any specific functions, not defining a <code>suiteDone</code> will make it impossible for a reporter to know when a suite has failures in an <code>afterAll</code>.</p>
+<p>While jasmine doesn&#39;t require any specific functions, not defining a <code>suiteDone</code> will make it impossible for a reporter to know when a suite has failures.</p>
     </td>
     <td class="code">
       <div class="highlight">
@@ -230,12 +232,11 @@ None of the functions here are required when creating a custom reporter, any tha
       <div class="pilwrap">
         <a class="pilcrow" href="#section-15">&#182;</a>
       </div>
-      <p>Any <code>failedExpectation</code>s on the suite itself are the result of a failure in an <code>afterAll</code>.
-Each <code>failedExpectation</code> has a message that describes the failure and a stack trace.</p>
+      <p>Each <code>failedExpectation</code> has a message that describes the failure and a stack trace.</p>
     </td>
     <td class="code">
       <div class="highlight">
-        <pre>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;AfterAll &#39;</span>
+        <pre>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Suite &#39;</span>
         <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">failedExpectations</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">message</span><span class="p">);</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">failedExpectations</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">stack</span><span class="p">);</span>
     <span class="p">}</span>
@@ -251,13 +252,15 @@ Each <code>failedExpectation</code> has a message that describes the failure and
       <h3>jasmineDone</h3>
 
 <p>When the entire suite has finished execution <code>jasmineDone</code> is called</p>
+
+<p>While jasmine doesn&#39;t require any specific functions, not defining a <code>jasmineDone</code> will make it impossible for a reporter to know when there are global failures.</p>
     </td>
     <td class="code">
       <div class="highlight">
-        <pre>  <span class="nx">jasmineDone</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Finished suite&#39;</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">};</span></pre>
+        <pre>  <span class="nx">jasmineDone</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Finished suite: &#39;</span>
+      <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">overallStatus</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">failedExpectations</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span></pre>
       </div>
     </td>
   </tr>
@@ -265,6 +268,24 @@ Each <code>failedExpectation</code> has a message that describes the failure and
     <td class="docs">
       <div class="pilwrap">
         <a class="pilcrow" href="#section-17">&#182;</a>
+      </div>
+      <p>Each <code>failedExpectation</code> has a message that describes the failure and a stack trace.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Global &#39;</span>
+        <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">failedExpectations</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">message</span><span class="p">);</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">failedExpectations</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">stack</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">};</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-18">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-18">&#182;</a>
       </div>
       <p>Register the reporter with jasmine</p>
     </td>
@@ -274,27 +295,26 @@ Each <code>failedExpectation</code> has a message that describes the failure and
       </div>
     </td>
   </tr>
-  <tr id="section-18">
+  <tr id="section-19">
     <td class="docs">
       <div class="pilwrap">
-        <a class="pilcrow" href="#section-18">&#182;</a>
+        <a class="pilcrow" href="#section-19">&#182;</a>
       </div>
-      <p>If you look at the console output for this page, you should see the output from this reporter</p>
+      <p>If you write a custom reporter, you should make sure it handles all of the failure modes Jasmine can report on.
+<strong>Note</strong>: The way some of the failures are reported has changed in Jasmine 3.0</p>
+
+<p>To help with this, we have a few example Jasmine suites that you can check your reporter against.
+ R</p>
+
+<ul>
+<li><a href="%7B%7B%20site.github_url%20%7D%7D/examples/jasmine_failure_types.js">Failure types</a> should have global failures that are reported to <code>jasmineDone</code>, suite level failures at <code>suiteDone</code> and spec level failures at <code>specDone</code>. Your reporter should display a total of 5 errors to the user.</li>
+<li><a href="%7B%7B%20site.github_url%20%7D%7D/examples/jasmine_exclusions.js">Exclusions</a> should report the non-<code>fdescribed</code> specs as having not been run. The reporter terminology for this has changed in Jasmine 3.0 and is now called <code>excluded</code> to more accurately represent the state of the suite.</li>
+</ul>
 
     </td>
     <td class="code">
       <div class="highlight">
-        <pre><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Top Level suite&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;spec&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-  <span class="p">});</span>
-
-  <span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Nested suite&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;nested spec&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-    <span class="p">});</span>
-  <span class="p">});</span>
-<span class="p">});</span></pre>
+        <pre></pre>
       </div>
     </td>
   </tr>

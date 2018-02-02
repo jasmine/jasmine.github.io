@@ -2,6 +2,7 @@
  *
  * If you don't like the way the built-in jasmine reporters look, you can always write your own.
  *
+ * More details on the [Reporter interface](/api/edge/Reporter.html) can be found in the API docs0
  */
 
 /**
@@ -84,7 +85,7 @@ var myReporter = {
    *
    * `suiteDone` is invoked when all of the child specs and suites for a given suite have been run
    *
-   * While jasmine doesn't require any specific functions, not defining a `suiteDone` will make it impossible for a reporter to know when a suite has failures in an `afterAll`.
+   * While jasmine doesn't require any specific functions, not defining a `suiteDone` will make it impossible for a reporter to know when a suite has failures.
    */
   suiteDone: function(result) {
     /**
@@ -96,10 +97,9 @@ var myReporter = {
       + result.status);
     for(var i = 0; i < result.failedExpectations.length; i++) {
       /**
-       * Any `failedExpectation`s on the suite itself are the result of a failure in an `afterAll`.
        * Each `failedExpectation` has a message that describes the failure and a stack trace.
        */
-      console.log('AfterAll '
+      console.log('Suite '
         + result.failedExpectations[i].message);
       console.log(result.failedExpectations[i].stack);
     }
@@ -108,9 +108,20 @@ var myReporter = {
    * ### jasmineDone
    *
    * When the entire suite has finished execution `jasmineDone` is called
+   *
+   * While jasmine doesn't require any specific functions, not defining a `jasmineDone` will make it impossible for a reporter to know when there are global failures.
    */
-  jasmineDone: function() {
-    console.log('Finished suite');
+  jasmineDone: function(result) {
+    console.log('Finished suite: '
+      + result.overallStatus);
+    for(var i = 0; i < result.failedExpectations.length; i++) {
+      /**
+       * Each `failedExpectation` has a message that describes the failure and a stack trace.
+       */
+      console.log('Global '
+        + result.failedExpectations[i].message);
+      console.log(result.failedExpectations[i].stack);
+    }
   }
 };
 
@@ -120,16 +131,12 @@ var myReporter = {
 jasmine.getEnv().addReporter(myReporter);
 
 /**
- * If you look at the console output for this page, you should see the output from this reporter
+ * If you write a custom reporter, you should make sure it handles all of the failure modes Jasmine can report on.
+ * __Note__: The way some of the failures are reported has changed in Jasmine 3.0
+ *
+ * To help with this, we have a few example Jasmine suites that you can check your reporter against.
+ R
+ *
+ * * [Failure types]({{ site.github_url }}/examples/jasmine_failure_types.js) should have global failures that are reported to `jasmineDone`, suite level failures at `suiteDone` and spec level failures at `specDone`. Your reporter should display a total of 5 errors to the user.
+ * * [Exclusions]({{ site.github_url }}/examples/jasmine_exclusions.js) should report the non-`fdescribed` specs as having not been run. The reporter terminology for this has changed in Jasmine 3.0 and is now called `excluded` to more accurately represent the state of the suite.
  */
-describe('Top Level suite', function() {
-  it('spec', function() {
-    expect(1).toBe(1);
-  });
-
-  describe('Nested suite', function() {
-    it('nested spec', function() {
-      expect(true).toBe(true);
-    });
-  });
-});
