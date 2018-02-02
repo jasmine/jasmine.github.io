@@ -376,3 +376,16 @@ td.code, th.code {
   display: inline-block;
   width: 100%
 }
+
+.main-content th.docs, .main-content td.docs {
+  max-width: 40%;
+  min-width: 40%;
+  width: 40%;
+  padding-left: 0;
+}
+
+.main-content th.code, .main-content td.code {
+  max-width: 60%;
+  min-width: 60%;
+  width: 60%;
+}

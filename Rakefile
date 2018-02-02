@@ -27,7 +27,7 @@ def build_html(version, options = {})
     end
   end
 
-  system("bundle exec rocco -l #{options[:language] || 'js'} -t _tmp/#{layout} -o _tmp/#{prefix} #{Dir.glob(File.join('_versions', version, 'src', '*.{js,rb,py}')).map(&:inspect).join(' ')}")
+  system("bundle exec rocco -l js -t _tmp/#{layout} -o _tmp/#{prefix} #{Dir.glob(File.join('_versions', version, 'src', '*.{js,rb,py}')).map(&:inspect).join(' ')}")
 
   puts "Copying HTML"
   if files_to_copy.nil?
@@ -38,28 +38,27 @@ def build_html(version, options = {})
   end
 end
 
+desc "generate html versions of tutorials"
+task :tutorials do
+  FileUtils.rm Dir.glob('_tutorials/*.html')
+  Dir.chdir('_tutorials/src') do
+    system("bundle exec rocco -l js -t ../../_layouts/tutorial_docco.html -o ../../_tutorials/ #{Dir.glob('*.js').map(&:inspect).join(' ')}")
+  end
+end
+
 desc "build all files for $JASMINE_VERSION"
 task :pages do
   FileUtils.rmtree '_tmp' if File.exist? '_tmp'
   FileUtils.mkdir '_tmp'
 
   version = get_version
-  files_without_specs = %w(boot custom_boot node)
-  ruby_files = %w(ruby_gem)
-  python_files = %w(python_egg)
+  files_without_specs = %w(boot)
 
   puts "Building files with tests"
   build_html(version)
 
   puts "Building files without tests"
   build_html(version, files: files_without_specs, prefix: 'no_tests', layout_options: { no_tests: true })
-
-  puts "Building ruby files"
-  build_html(version, files: ruby_files, prefix: 'ruby', language: 'rb', layout_options: { no_tests: true })
-
-  puts "Building python file"
-  build_html(version, files: python_files, prefix: 'python', language: 'py', layout_options: { no_tests: true })
-
 end
 
 desc "build spec runner for $JASMINE_VERSION"

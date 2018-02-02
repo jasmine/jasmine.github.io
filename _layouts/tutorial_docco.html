@@ -1,0 +1,23 @@
+---
+layout: tutorial
+file_name: {{ title }}
+---
+<table cellspacing="0" cellpadding="0">
+  <tbody>
+  {{#sections}}
+  <tr id="section-{{ section_id }}">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-{{ section_id }}">&#182;</a>
+      </div>
+      {{{ docs }}}
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>{{{ code }}}</pre>
+      </div>
+    </td>
+  </tr>
+  {{/sections}}
+  </tbody>
+</table>

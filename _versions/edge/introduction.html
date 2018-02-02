@@ -29,18 +29,9 @@
   </div>
   <ul class="jump_to">
 	<li> Jump To: </li>
-    <li><a class="source" href="ajax.html">ajax.js</a></li>
     <li><a class="source" href="boot.html">boot.js</a></li>
-    <li><a class="source" href="custom_boot.html">custom_boot.js</a></li>
-    <li><a class="source" href="custom_equality.html">custom_equality.js</a></li>
-    <li><a class="source" href="custom_matcher.html">custom_matcher.js</a></li>
-    <li><a class="source" href="custom_reporter.html">custom_reporter.js</a></li>
     <li><a class="source" href="focused_specs.html">focused_specs.js</a></li>
     <li><a class="source" href="introduction.html">introduction.js</a></li>
-    <li><a class="source" href="node.html">node.js</a></li>
-    <li><a class="source" href="python_egg.html">python_egg.py</a></li>
-    <li><a class="source" href="ruby_gem.html">ruby_gem.rb</a></li>
-    <li><a class="source" href="upgrading.html">upgrading.js</a></li>
   </ul>
   <table cellspacing="0" cellpadding="0">
     <thead>
@@ -77,7 +68,7 @@ An expectation in Jasmine is an assertion that is either true or false. A spec w
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A suite&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <pre><span></span><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A suite&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;contains spec with an expectation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
   <span class="p">});</span>
@@ -1829,7 +1820,7 @@ If the timeout expires before <code>done</code> is called, the current spec will
   <span class="p">});</span>
 
   <span class="kd">function</span> <span class="nx">soon</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">resolve</span><span class="p">();</span>
       <span class="p">},</span> <span class="mi">1</span><span class="p">);</span>
@@ -1837,7 +1828,7 @@ If the timeout expires before <code>done</code> is called, the current spec will
   <span class="p">}</span>
 
   <span class="kd">function</span> <span class="nx">browserHasPromises</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">typeof</span> <span class="nx">Promise</span> <span class="o">!==</span> <span class="s1">&#39;undefined&#39;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="k">typeof</span> <span class="nb">Promise</span> <span class="o">!==</span> <span class="s1">&#39;undefined&#39;</span><span class="p">;</span>
   <span class="p">}</span>
 
   <span class="kd">function</span> <span class="nx">getAsyncCtor</span><span class="p">()</span> <span class="p">{</span>

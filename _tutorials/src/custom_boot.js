@@ -1,5 +1,5 @@
 /**
- If you want to customize your jasmine environment you can customize your [boot.js](boot.html) file.
+ If you want to customize your jasmine environment you can customize your boot.js file.
 
  The core of `boot.js` should stay the same, but you can add new things to the interface or configure things by changing this file.
  */
@@ -38,30 +38,12 @@
     extend(window, jasmineInterface);
   }
 
-  var queryString = new jasmine.QueryString({
-    getWindowLocation: function() { return window.location; }
-  });
-
-  var catchingExceptions = queryString.getParam("catch");
-  env.catchExceptions(typeof catchingExceptions === "undefined" ? true : catchingExceptions);
-
-  var htmlReporter = new jasmine.HtmlReporter({
-    env: env,
-    onRaiseExceptionsClick: function() { queryString.setParam("catch", !env.catchingExceptions()); },
-    getContainer: function() { return document.body; },
-    createElement: function() { return document.createElement.apply(document, arguments); },
-    createTextNode: function() { return document.createTextNode.apply(document, arguments); },
-    timer: new jasmine.Timer()
-  });
-
-
   /**
    * ## Adding a custom reporter
    *
    * You can also add your own reporter either in addition to or in place of the `jsApiReporter` and `htmlReporter`
    */
   env.addReporter(jasmineInterface.jsApiReporter);
-  env.addReporter(htmlReporter);
 
 
   /**
@@ -84,16 +66,22 @@
   window.clearTimeout = window.clearTimeout;
   window.clearInterval = window.clearInterval;
 
+  /**
+   * By default, Jasmine will begin execution when the `onload` event is triggered in the browser.
+   * Replace this portion, if you want to wait for something else before calling `execute`
+   */
   var currentWindowOnload = window.onload;
 
   window.onload = function() {
     if (currentWindowOnload) {
       currentWindowOnload();
     }
-    htmlReporter.initialize();
     env.execute(env.topSuite().id);
   };
 
+  /**
+   * Helper function to add the Jasmine public interface to the correct object.
+   */
   function extend(destination, source) {
     for (var property in source) destination[property] = source[property];
     return destination;

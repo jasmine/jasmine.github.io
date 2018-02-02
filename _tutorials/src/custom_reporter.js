@@ -18,7 +18,8 @@ var myReporter = {
     /**
      * suiteInfo contains a property that tells how many specs have been defined
      */
-    console.log('Running suite with ' + suiteInfo.totalSpecsDefined);
+    console.log('Running suite with '
+      + suiteInfo.totalSpecsDefined);
   },
   /**
    * ### suiteStarted
@@ -29,7 +30,10 @@ var myReporter = {
     /**
      * the result contains some meta data about the suite itself.
      */
-    console.log('Suite started: ' + result.description + ' whose full description is: ' + result.fullName);
+    console.log('Suite started: '
+      + result.description
+      + ' whose full description is: '
+      + result.fullName);
   },
   /**
    * ### specStarted
@@ -40,7 +44,10 @@ var myReporter = {
     /**
      * the result contains some meta data about the spec itself.
      */
-    console.log('Spec started: ' + result.description + ' whose full description is: ' + result.fullName);
+    console.log('Spec started: '
+      + result.description
+      + ' whose full description is: '
+      + result.fullName);
   },
   /**
    * ### specDone
@@ -53,12 +60,17 @@ var myReporter = {
     /**
      * The result here is the same object as in `specStarted` but with the addition of a status and lists of failed and passed expectations.
      */
-    console.log('Spec: ' + result.description + ' was ' + result.status);
+    console.log('Spec: '
+      + result.description
+      + ' was '
+      + result.status);
+
     for(var i = 0; i < result.failedExpectations.length; i++) {
       /**
        * Each `failedExpectation` has a message that describes the failure and a stack trace.
        */
-      console.log('Failure: ' + result.failedExpectations[i].message);
+      console.log('Failure: '
+        + result.failedExpectations[i].message);
       console.log(result.failedExpectations[i].stack);
     }
 
@@ -78,13 +90,17 @@ var myReporter = {
     /**
      * The result here is the same object as in `suiteStarted` but with the addition of a status and a list of failedExpectations.
      */
-    console.log('Suite: ' + result.description + ' was ' + result.status);
+    console.log('Suite: '
+      + result.description
+      + ' was '
+      + result.status);
     for(var i = 0; i < result.failedExpectations.length; i++) {
       /**
        * Any `failedExpectation`s on the suite itself are the result of a failure in an `afterAll`.
        * Each `failedExpectation` has a message that describes the failure and a stack trace.
        */
-      console.log('AfterAll ' + result.failedExpectations[i].message);
+      console.log('AfterAll '
+        + result.failedExpectations[i].message);
       console.log(result.failedExpectations[i].stack);
     }
   },

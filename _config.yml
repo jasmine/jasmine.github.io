@@ -17,6 +17,9 @@ collections:
   api:
     output: true
     permalink: api/:path
+  tutorials:
+    output: true
+    permalink: tutorials/:path
   faq:
     output: false
 

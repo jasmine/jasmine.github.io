@@ -84,6 +84,14 @@ body {
   @include justify-content(space-between);
   @include flex-wrap(wrap);
   padding: 30px;
+
+  a {
+    color: $jasmine-color;
+
+    &:visited {
+      color: $jasmine-color;
+    }
+  }
 }
 
 h1 {

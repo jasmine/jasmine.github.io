@@ -1,0 +1,110 @@
+---
+layout: tutorial
+file_name: custom_equality.js
+---
+<table cellspacing="0" cellpadding="0">
+  <tbody>
+  <tr id="section-Custom_Equality_Testers">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-Custom_Equality_Testers">&#182;</a>
+      </div>
+      <h2>Custom Equality Testers</h2>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre><span></span><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;custom equality&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-2">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-2">&#182;</a>
+      </div>
+      <p>You can customize how jasmine determines if two objects are equal by defining your own custom equality testers.
+A custom equality tester is a function that takes two arguments.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="kd">var</span> <span class="nx">myCustomEquality</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">first</span><span class="p">,</span> <span class="nx">second</span><span class="p">)</span> <span class="p">{</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-3">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-3">&#182;</a>
+      </div>
+      <p>If the custom equality tester knows how to compare the two items, it should return either true or false</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">first</span> <span class="o">==</span> <span class="s2">&quot;string&quot;</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">second</span> <span class="o">==</span> <span class="s2">&quot;string&quot;</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">first</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="nx">second</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="p">}</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-4">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-4">&#182;</a>
+      </div>
+      <p>Otherwise, it should return undefined, to tell jasmine&#39;s equality tester that it can&#39;t compare the items</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="p">};</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-5">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-5">&#182;</a>
+      </div>
+      <p>Then you register your tester in a <code>beforeEach</code> so jasmine knows about it.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">addCustomEqualityTester</span><span class="p">(</span><span class="nx">myCustomEquality</span><span class="p">);</span>
+  <span class="p">});</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-6">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-6">&#182;</a>
+      </div>
+      <p>Then when you do comparisons in a spec, custom equality testers will be checked first before the default equality logic.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should be custom equal&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s2">&quot;aaa&quot;</span><span class="p">);</span>
+  <span class="p">});</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-7">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-7">&#182;</a>
+      </div>
+      <p>If your custom tester returns false, no other equality checking will be done.</p>
+
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should be custom not equal&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toEqual</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
