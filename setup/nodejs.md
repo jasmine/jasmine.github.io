@@ -1,6 +1,7 @@
 ---
 layout: article
 title: Node.js Setup
+redirect_from: /edge/node.html
 ---
 
 # Using Jasmine with node

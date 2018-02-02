@@ -26,3 +26,6 @@ collections:
 sass:
   sass_dir: css/_scss
   style: compressed
+
+plugins:
+  - jekyll-redirect-from

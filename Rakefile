@@ -40,9 +40,27 @@ end
 
 desc "generate html versions of tutorials"
 task :tutorials do
+  # manually load up Rocco so we can monkey patch the layout
+  require 'rocco'
+  class Rocco::Layout
+    def filename_without_ext
+      File.basename(@doc.file, '.*')
+    end
+  end
+
   FileUtils.rm Dir.glob('_tutorials/*.html')
-  Dir.chdir('_tutorials/src') do
-    system("bundle exec rocco -l js -t ../../_layouts/tutorial_docco.html -o ../../_tutorials/ #{Dir.glob('*.js').map(&:inspect).join(' ')}")
+  options = {
+    language: 'js',
+    template_file: '_layouts/tutorial_docco.html'
+  }
+
+  sources = Dir.glob('_tutorials/src/*.js')
+  sources.each do |f|
+    basename = File.basename(f)
+    rocco = Rocco.new(f, sources, options)
+    dest = File.join('_tutorials', basename.sub(/\.js$/, '.html'))
+    puts "Rocco: #{f} -> #{dest}"
+    File.open(dest, 'wb') { |fd| fd.write(rocco.to_html) }
   end
 end
 

@@ -1,6 +1,7 @@
 ---
 layout: article
 title: Python Setup
+redirect_from: /edge/python.html
 ---
 
 # Using Jasmine with Python

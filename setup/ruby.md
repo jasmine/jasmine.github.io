@@ -1,6 +1,7 @@
 ---
 layout: article
 title: Ruby Setup
+redirect_from: /edge/ruby.html
 ---
 
 # Using jasmine with ruby
