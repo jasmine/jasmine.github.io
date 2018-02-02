@@ -61,7 +61,7 @@ describe("The 'toBe' matcher compares with ===", function() {
 /**
  ### Included Matchers
  Jasmine has a rich set of matchers included. Each is used here - all expectations and specs pass.
- There is also the ability to write [custom matchers](custom_matcher.html) for when a project's domain calls for specific assertions that are not included below.
+ There is also the ability to write [custom matchers](/tutorials/custom_matcher.html) for when a project's domain calls for specific assertions that are not included below.
  */
 
 describe("Included matchers:", function() {
