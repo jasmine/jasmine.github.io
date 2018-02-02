@@ -155,6 +155,10 @@ a.button {
   &:hover {
     text-decoration: none;
   }
+
+  &:visited {
+    color: white;
+  }
 }
 
 a.github {

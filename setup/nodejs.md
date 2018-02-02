@@ -32,6 +32,9 @@ Generate example spec and source files
 ```sh
 jasmine examples
 ```
+
+At this point you should be able to [write your first suite](/tutorials/your_first_suite.html)
+
 ## Configuration
 
 Customize `spec/support/jasmine.json` to enumerate the source files and spec files you would like the

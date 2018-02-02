@@ -62,6 +62,7 @@ A seed can also be specified
 rake jasmine:ci[true,4321]
 ```
 
+At this point you should be able to [write your first suite](/tutorials/your_first_suite.html)
 
 ## Configuration
 Primary configuration is done in `jasmine.yml`, which is in `spec/javascripts/support` by default.

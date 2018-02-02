@@ -22,6 +22,8 @@ Initailize a project for Jasmine by creating a spec directory and configuration 
 jasmine-install
 ```
 
+At this point you should be able to [write your first suite](/tutorials/your_first_suite.html)
+
 ## Configuration
 Customize `spec/javascripts/support/jasmine.yml` to enumerate the source files, stylesheets, and spec files you would like the
 Jasmine runner to include. You may use dir glob strings.
