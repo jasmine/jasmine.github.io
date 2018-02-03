@@ -137,6 +137,6 @@ jasmine.getEnv().addReporter(myReporter);
  * To help with this, we have a few example Jasmine suites that you can check your reporter against.
  R
  *
- * * [Failure types]({{ site.github_url }}/examples/jasmine_failure_types.js) should have global failures that are reported to `jasmineDone`, suite level failures at `suiteDone` and spec level failures at `specDone`. Your reporter should display a total of 5 errors to the user.
- * * [Exclusions]({{ site.github_url }}/examples/jasmine_exclusions.js) should report the non-`fdescribed` specs as having not been run. The reporter terminology for this has changed in Jasmine 3.0 and is now called `excluded` to more accurately represent the state of the suite.
+ * * [Failure types](/examples/jasmine_failure_types.js) should have global failures that are reported to `jasmineDone`, suite level failures at `suiteDone` and spec level failures at `specDone`. Your reporter should display a total of 5 errors to the user.
+ * * [Exclusions](/examples/jasmine_exclusions.js) should report the non-`fdescribed` specs as having not been run. The reporter terminology for this has changed in Jasmine 3.0 and is now called `excluded` to more accurately represent the state of the suite.
  */
