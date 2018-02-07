@@ -119,7 +119,6 @@ task :update_edge_jasmine do
   `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/jasmine-html.js' > _versions/edge/lib/jasmine-html.js`
   `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/jasmine.css' > _versions/edge/lib/jasmine.css`
   `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/boot.js' > _versions/edge/lib/boot.js`
-  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/console/console.js' > _versions/edge/lib/console.js`
 end
 
 desc "make section of docs for a newly released version of jasmine"

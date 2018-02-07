@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Class: Clock"
+title: "Interface: SpyStrategy"
 prettify: true
 ---
 
@@ -10,7 +10,7 @@ prettify: true
   </nav>
 
   <div class="docs">
-    <h1 class="page-title">Class: Clock</h1>
+    <h1 class="page-title">Interface: SpyStrategy</h1>
 
     
 
@@ -21,9 +21,7 @@ prettify: true
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Clock<span class="signature">()</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description"><p>Jasmine's mock clock is used when testing time dependent code.</p></div>
+        <h2>SpyStrategy</h2>
         
     
 </header>
@@ -33,32 +31,7 @@ prettify: true
     
         
 
-    
-    <h2>Constructor</h2>
-    
-
-    
-    <h4 class="name" id="Clock"><span class="type-signature"></span>new Clock<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p><em>Note:</em> Do not construct this directly, Jasmine will make one during booting. You can get the current clock with <a href="jasmine.html#.clock"><code>jasmine.clock</code></a>.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
+        
 
 
 <dl class="details">
@@ -97,22 +70,7 @@ prettify: true
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
     
     </div>
 
@@ -129,6 +87,77 @@ prettify: true
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="identity"><span class="type-signature"></span>identity<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    <p>Get the identifying information for the spy.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">String</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -139,7 +168,7 @@ prettify: true
     
 
     
-    <h4 class="name" id="install"><span class="type-signature"></span>install<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Clock.html">Clock</a>}</span></h4>
+    <h4 class="name" id="callFake"><span class="type-signature"></span>callFake<span class="signature">(fn)</span><span class="type-signature"></span></h4>
     
 
     
@@ -147,7 +176,137 @@ prettify: true
 
 
 <div class="description">
-    <p>Install the mock clock over the built-in methods.</p>
+    <p>Tell the spy to call a fake implementation when invoked.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The function to invoke with the passed parameters.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="callThrough"><span class="type-signature"></span>callThrough<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Tell the spy to call through to the real implementation when invoked.</p>
 </div>
 
 
@@ -209,24 +368,6 @@ prettify: true
 
 
 
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="Clock.html">Clock</a></span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -238,7 +379,7 @@ prettify: true
     
 
     
-    <h4 class="name" id="mockDate"><span class="type-signature"></span>mockDate<span class="signature">(initialDate<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="exec"><span class="type-signature"></span>exec<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -246,7 +387,218 @@ prettify: true
 
 
 <div class="description">
-    <p>Instruct the installed Clock to also mock the date returned by <code>new Date()</code></p>
+    <p>Execute the current spy strategy.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="returnValue"><span class="type-signature"></span>returnValue<span class="signature">(value)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Tell the spy to return the value when invoked.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The value to return.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="returnValues"><span class="type-signature"></span>returnValues<span class="signature">(&hellip;values)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Tell the spy to return one of the specified values (sequentially) each time the spy is invoked.</p>
 </div>
 
 
@@ -274,8 +626,6 @@ prettify: true
         
 
         
-        <th>Default</th>
-        
 
         <th class="last">Description</th>
     </tr>
@@ -286,13 +636,13 @@ prettify: true
 
         <tr>
             
-                <td class="name"><code>initialDate</code></td>
+                <td class="name"><code>values</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Date</span>
+<span class="param-type">*</span>
 
 
             
@@ -301,24 +651,18 @@ prettify: true
             
                 <td class="attributes">
                 
-                    &lt;optional><br>
-                
 
                 
 
+                
+                    &lt;repeatable><br>
                 
                 </td>
             
 
             
-                <td class="default">
-                
-                    now
-                
-                </td>
-            
 
-            <td class="description last"><p>The <code>Date</code> to provide.</p></td>
+            <td class="description last"><p>Values to be returned on subsequent calls to the spy.</p></td>
         </tr>
 
     
@@ -388,7 +732,7 @@ prettify: true
     
 
     
-    <h4 class="name" id="tick"><span class="type-signature"></span>tick<span class="signature">(millis)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="stub"><span class="type-signature"></span>stub<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -396,137 +740,7 @@ prettify: true
 
 
 <div class="description">
-    <p>Tick the Clock forward, running any enqueued timeouts along the way</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>millis</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The number of milliseconds to tick.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="uninstall"><span class="type-signature"></span>uninstall<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Uninstall the mock clock, returning the built-in methods to their places.</p>
+    <p>Tell the spy to do nothing when invoked. This is the default.</p>
 </div>
 
 
@@ -599,7 +813,7 @@ prettify: true
     
 
     
-    <h4 class="name" id="withMock"><span class="type-signature"></span>withMock<span class="signature">(Function)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="throwError"><span class="type-signature"></span>throwError<span class="signature">(something)</span><span class="type-signature"></span></h4>
     
 
     
@@ -607,8 +821,7 @@ prettify: true
 
 
 <div class="description">
-    <p>Execute a function with a mocked Clock</p>
-<p>The clock will be <a href="Clock.html#install"><code>install</code></a>ed before the function is called and <a href="Clock.html#uninstall"><code>uninstall</code></a>ed in a <code>finally</code> after the function completes.</p>
+    <p>Tell the spy to throw an error when invoked.</p>
 </div>
 
 
@@ -644,13 +857,16 @@ prettify: true
 
         <tr>
             
-                <td class="name"><code>Function</code></td>
+                <td class="name"><code>something</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">closure</span>
+<span class="param-type">Error</span>
+|
+
+<span class="param-type">String</span>
 
 
             
@@ -660,7 +876,7 @@ prettify: true
 
             
 
-            <td class="description last"><p>The function to be called.</p></td>
+            <td class="description last"><p>Thing to throw</p></td>
         </tr>
 
     
@@ -740,6 +956,6 @@ prettify: true
   </div>
 
   <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Feb 07 2018 10:36:54 GMT-0800 (PST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Feb 07 2018 10:24:03 GMT-0800 (PST)
   </footer>
 </div>
