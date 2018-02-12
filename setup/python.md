@@ -20,7 +20,7 @@ pip install jasmine
 Initailize a project for Jasmine by creating a spec directory and configuration yaml for you.
 
 ```sh
-jasmine-install
+jasmine init
 ```
 
 At this point you should be able to [write your first suite](/tutorials/your_first_suite.html)
@@ -33,7 +33,7 @@ Jasmine runner to include. You may use dir glob strings.
 Once you have set up your `jasmine.yml`, you can start the Jasmine server by running `jasmine`.
 
 ```sh
-jasmine
+jasmine server
 ```
 
 Point your browser to `localhost:8888`. The suite will run every time the page is re-loaded.
@@ -41,14 +41,14 @@ Point your browser to `localhost:8888`. The suite will run every time the page i
 Start Jasmine on a different port by passing the `-p` flag.
 
 ```sh
-jasmine -p 1337
+jasmine server -p 1337
 ```
 
 ### Continuous Integration
-For Continuous Integration environments, run `jasmine-ci` in the project build steps:
+For Continuous Integration environments, run `jasmine ci` in the project build steps:
 
 ```sh
-jasmine-ci
+jasmine ci
 ```
 
 
@@ -56,18 +56,18 @@ The browser used by selenium can be changed by exporting `JASMINE_BROWSER`
 
 ```sh
 export JASMINE_BROWSER=chrome
-jasmine-ci
+jasmine ci
 ```
 
 or by setting the `----browser` flag.
 
 ```sh
-jasmine-ci --browser firefox
+jasmine ci --browser firefox
 ```
 
 You can also specify a randomization seed for an individual jasmine:ci run for debugging purposes.
 
 ```sh
-jasmine-ci --seed 4321
+jasmine ci --seed 4321
 ```
 
