@@ -12,7 +12,7 @@ file_name: custom_reporter.js
       </div>
       <p>If you don&#39;t like the way the built-in jasmine reporters look, you can always write your own.</p>
 
-<p>More details on the <a href="/api/edge/Reporter.html">Reporter interface</a> can be found in the API docs0</p>
+<p>More details on the <a href="/api/edge/Reporter.html">Reporter interface</a> can be found in the API docs</p>
     </td>
     <td class="code">
       <div class="highlight">
@@ -27,6 +27,9 @@ file_name: custom_reporter.js
       </div>
       <p>A jasmine reporter is just an object with the right functions available.
 None of the functions here are required when creating a custom reporter, any that are not specified on your reporter will just be ignored.</p>
+
+<p>Additionally, in Jasmine 3.0, these functions can all be asynchronous in the same way as the callbacks in your suite.
+Either by receiving a <code>done</code> callback, returning a <code>Promise</code>, or using the <code>async</code> keyword</p>
     </td>
     <td class="code">
       <div class="highlight">

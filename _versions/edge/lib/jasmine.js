@@ -116,6 +116,7 @@ getJasmineRequireObj().requireMatchers = function(jRequire, j$) {
       'toHaveBeenCalledBefore',
       'toHaveBeenCalledTimes',
       'toHaveBeenCalledWith',
+      'toHaveClass',
       'toMatch',
       'toThrow',
       'toThrowError',
@@ -254,8 +255,8 @@ getJasmineRequireObj().base = function(j$, jasmineGlobal) {
       return func.name;
     }
 
-    var matches = func.toString().match(/^\s*function\s*(\w*)\s*\(/) ||
-      func.toString().match(/^\s*\[object\s*(\w*)Constructor\]/);
+    var matches = func.toString().match(/^\s*function\s*(\w+)\s*\(/) ||
+      func.toString().match(/^\s*\[object\s*(\w+)Constructor\]/);
 
     return matches ? matches[1] : '<anonymous>';
   };
@@ -641,8 +642,11 @@ getJasmineRequireObj().Spec = function(j$) {
     return this.getSpecName(this);
   };
 
-  Spec.prototype.addDeprecationWarning = function(msg) {
-    this.result.deprecationWarnings.push(this.expectationResultFactory({ message: msg }));
+  Spec.prototype.addDeprecationWarning = function(deprecation) {
+    if (typeof deprecation === 'string') {
+      deprecation = { message: deprecation };
+    }
+    this.result.deprecationWarnings.push(this.expectationResultFactory(deprecation));
   };
 
   var extractCustomPendingMessage = function(e) {
@@ -915,11 +919,11 @@ getJasmineRequireObj().Env = function(j$) {
       handlingLoadErrors = false;
     };
 
-    this.deprecated = function(msg) {
+    this.deprecated = function(deprecation) {
       var runnable = currentRunnable() || topSuite;
-      runnable.addDeprecationWarning(msg);
-      if(typeof console !== 'undefined' && typeof console.warn !== 'undefined') {
-        console.error('DEPRECATION: ' + msg);
+      runnable.addDeprecationWarning(deprecation);
+      if(typeof console !== 'undefined' && typeof console.error === 'function') {
+        console.error('DEPRECATION:', deprecation);
       }
     };
 
@@ -967,6 +971,8 @@ getJasmineRequireObj().Env = function(j$) {
        * @function
        * @name Reporter#jasmineStarted
        * @param {JasmineStartedInfo} suiteInfo Information about the full Jasmine suite that is being run
+       * @param {Function} [done] Used to specify to Jasmine that this callback is asynchronous and Jasmine should wait until it has been called before moving on.
+       * @returns {} Optionally return a Promise instead of using `done` to cause Jasmine to wait for completion.
        */
       'jasmineStarted',
       /**
@@ -974,6 +980,8 @@ getJasmineRequireObj().Env = function(j$) {
        * @function
        * @name Reporter#jasmineDone
        * @param {JasmineDoneInfo} suiteInfo Information about the full Jasmine suite that just finished running.
+       * @param {Function} [done] Used to specify to Jasmine that this callback is asynchronous and Jasmine should wait until it has been called before moving on.
+       * @returns {} Optionally return a Promise instead of using `done` to cause Jasmine to wait for completion.
        */
       'jasmineDone',
       /**
@@ -981,6 +989,8 @@ getJasmineRequireObj().Env = function(j$) {
        * @function
        * @name Reporter#suiteStarted
        * @param {SuiteResult} result Information about the individual {@link describe} being run
+       * @param {Function} [done] Used to specify to Jasmine that this callback is asynchronous and Jasmine should wait until it has been called before moving on.
+       * @returns {} Optionally return a Promise instead of using `done` to cause Jasmine to wait for completion.
        */
       'suiteStarted',
       /**
@@ -990,6 +1000,8 @@ getJasmineRequireObj().Env = function(j$) {
        * @function
        * @name Reporter#suiteDone
        * @param {SuiteResult} result
+       * @param {Function} [done] Used to specify to Jasmine that this callback is asynchronous and Jasmine should wait until it has been called before moving on.
+       * @returns {} Optionally return a Promise instead of using `done` to cause Jasmine to wait for completion.
        */
       'suiteDone',
       /**
@@ -997,6 +1009,8 @@ getJasmineRequireObj().Env = function(j$) {
        * @function
        * @name Reporter#specStarted
        * @param {SpecResult} result Information about the individual {@link it} being run
+       * @param {Function} [done] Used to specify to Jasmine that this callback is asynchronous and Jasmine should wait until it has been called before moving on.
+       * @returns {} Optionally return a Promise instead of using `done` to cause Jasmine to wait for completion.
        */
       'specStarted',
       /**
@@ -1006,6 +1020,8 @@ getJasmineRequireObj().Env = function(j$) {
        * @function
        * @name Reporter#specDone
        * @param {SpecResult} result
+       * @param {Function} [done] Used to specify to Jasmine that this callback is asynchronous and Jasmine should wait until it has been called before moving on.
+       * @returns {} Optionally return a Promise instead of using `done` to cause Jasmine to wait for completion.
        */
       'specDone'
     ], queueRunnerFactory);
@@ -2530,10 +2546,14 @@ getJasmineRequireObj().buildExpectationResult = function() {
 
       var error = options.error;
       if (!error) {
-        try {
-          throw new Error(message());
-        } catch (e) {
-          error = e;
+        if (options.stack) {
+          error = options;
+        } else {
+          try {
+            throw new Error(message());
+          } catch (e) {
+            error = e;
+          }
         }
       }
       return stackFormatter(error);
@@ -3764,6 +3784,40 @@ getJasmineRequireObj().toHaveBeenCalledWith = function(j$) {
   }
 
   return toHaveBeenCalledWith;
+};
+
+getJasmineRequireObj().toHaveClass = function(j$) {
+  /**
+   * {@link expect} the actual value to be a DOM element that has the expected class
+   * @function
+   * @name matchers#toHaveClass
+   * @param {Object} expected - The class name to test for
+   * @example
+   * var el = document.createElement('div');
+   * el.className = 'foo bar baz';
+   * expect(el).toHaveClass('bar');
+   */
+  function toHaveClass(util, customEqualityTesters) {
+    return {
+      compare: function(actual, expected) {
+        if (!isElement(actual)) {
+          throw new Error(j$.pp(actual) + ' is not a DOM element');
+        }
+
+        return {
+          pass: actual.classList.contains(expected)
+        };
+      }
+    };
+  }
+
+  function isElement(maybeEl) {
+    return maybeEl &&
+      maybeEl.classList &&
+      j$.isFunction_(maybeEl.classList.contains);
+  }
+
+  return toHaveClass;
 };
 
 getJasmineRequireObj().toMatch = function(j$) {
@@ -5749,8 +5803,11 @@ getJasmineRequireObj().Suite = function(j$) {
     }
   };
 
-  Suite.prototype.addDeprecationWarning = function(msg) {
-    this.result.deprecationWarnings.push(this.expectationResultFactory({ message: msg }));
+  Suite.prototype.addDeprecationWarning = function(deprecation) {
+    if (typeof deprecation === 'string') {
+      deprecation = { message: deprecation };
+    }
+    this.result.deprecationWarnings.push(this.expectationResultFactory(deprecation));
   };
 
   function isFailure(args) {

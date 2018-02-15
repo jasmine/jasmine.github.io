@@ -2,12 +2,15 @@
  *
  * If you don't like the way the built-in jasmine reporters look, you can always write your own.
  *
- * More details on the [Reporter interface](/api/edge/Reporter.html) can be found in the API docs0
+ * More details on the [Reporter interface](/api/edge/Reporter.html) can be found in the API docs
  */
 
 /**
  * A jasmine reporter is just an object with the right functions available.
  * None of the functions here are required when creating a custom reporter, any that are not specified on your reporter will just be ignored.
+ *
+ * Additionally, in Jasmine 3.0, these functions can all be asynchronous in the same way as the callbacks in your suite.
+ * Either by receiving a `done` callback, returning a `Promise`, or using the `async` keyword
  */
 var myReporter = {
   /**
