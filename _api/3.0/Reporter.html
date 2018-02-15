@@ -99,7 +99,7 @@ prettify: true
     
 
     
-    <h4 class="name" id="jasmineDone"><span class="type-signature"></span>jasmineDone<span class="signature">(suiteInfo)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="jasmineDone"><span class="type-signature"></span>jasmineDone<span class="signature">(suiteInfo, done<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
     
 
     
@@ -131,6 +131,8 @@ prettify: true
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -156,10 +158,51 @@ prettify: true
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
             <td class="description last"><p>Information about the full Jasmine suite that just finished running.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>done</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Used to specify to Jasmine that this callback is asynchronous and Jasmine should wait until it has been called before moving on.</p></td>
         </tr>
 
     
@@ -218,6 +261,16 @@ prettify: true
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Optionally return a Promise instead of using <code>done</code> to cause Jasmine to wait for completion.</p>
+</div>
+
+
+
+    
 
 
 
@@ -229,7 +282,7 @@ prettify: true
     
 
     
-    <h4 class="name" id="jasmineStarted"><span class="type-signature"></span>jasmineStarted<span class="signature">(suiteInfo)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="jasmineStarted"><span class="type-signature"></span>jasmineStarted<span class="signature">(suiteInfo, done<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
     
 
     
@@ -261,6 +314,8 @@ prettify: true
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -286,10 +341,51 @@ prettify: true
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
             <td class="description last"><p>Information about the full Jasmine suite that is being run</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>done</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Used to specify to Jasmine that this callback is asynchronous and Jasmine should wait until it has been called before moving on.</p></td>
         </tr>
 
     
@@ -348,6 +444,16 @@ prettify: true
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Optionally return a Promise instead of using <code>done</code> to cause Jasmine to wait for completion.</p>
+</div>
+
+
+
+    
 
 
 
@@ -359,7 +465,7 @@ prettify: true
     
 
     
-    <h4 class="name" id="specDone"><span class="type-signature"></span>specDone<span class="signature">(result)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="specDone"><span class="type-signature"></span>specDone<span class="signature">(result, done<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
     
 
     
@@ -392,6 +498,8 @@ prettify: true
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -417,10 +525,51 @@ prettify: true
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
             <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>done</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Used to specify to Jasmine that this callback is asynchronous and Jasmine should wait until it has been called before moving on.</p></td>
         </tr>
 
     
@@ -479,6 +628,16 @@ prettify: true
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Optionally return a Promise instead of using <code>done</code> to cause Jasmine to wait for completion.</p>
+</div>
+
+
+
+    
 
 
 
@@ -490,7 +649,7 @@ prettify: true
     
 
     
-    <h4 class="name" id="specStarted"><span class="type-signature"></span>specStarted<span class="signature">(result)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="specStarted"><span class="type-signature"></span>specStarted<span class="signature">(result, done<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
     
 
     
@@ -522,6 +681,8 @@ prettify: true
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -547,10 +708,51 @@ prettify: true
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
             <td class="description last"><p>Information about the individual <a href="global.html#it"><code>it</code></a> being run</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>done</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Used to specify to Jasmine that this callback is asynchronous and Jasmine should wait until it has been called before moving on.</p></td>
         </tr>
 
     
@@ -609,6 +811,16 @@ prettify: true
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Optionally return a Promise instead of using <code>done</code> to cause Jasmine to wait for completion.</p>
+</div>
+
+
+
+    
 
 
 
@@ -620,7 +832,7 @@ prettify: true
     
 
     
-    <h4 class="name" id="suiteDone"><span class="type-signature"></span>suiteDone<span class="signature">(result)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="suiteDone"><span class="type-signature"></span>suiteDone<span class="signature">(result, done<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
     
 
     
@@ -653,6 +865,8 @@ prettify: true
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -678,10 +892,51 @@ prettify: true
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
             <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>done</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Used to specify to Jasmine that this callback is asynchronous and Jasmine should wait until it has been called before moving on.</p></td>
         </tr>
 
     
@@ -740,6 +995,16 @@ prettify: true
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Optionally return a Promise instead of using <code>done</code> to cause Jasmine to wait for completion.</p>
+</div>
+
+
+
+    
 
 
 
@@ -751,7 +1016,7 @@ prettify: true
     
 
     
-    <h4 class="name" id="suiteStarted"><span class="type-signature"></span>suiteStarted<span class="signature">(result)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="suiteStarted"><span class="type-signature"></span>suiteStarted<span class="signature">(result, done<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
     
 
     
@@ -783,6 +1048,8 @@ prettify: true
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -808,10 +1075,51 @@ prettify: true
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
             <td class="description last"><p>Information about the individual <a href="global.html#describe"><code>describe</code></a> being run</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>done</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Used to specify to Jasmine that this callback is asynchronous and Jasmine should wait until it has been called before moving on.</p></td>
         </tr>
 
     
@@ -870,6 +1178,16 @@ prettify: true
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Optionally return a Promise instead of using <code>done</code> to cause Jasmine to wait for completion.</p>
+</div>
+
+
+
+    
 
 
 
@@ -891,6 +1209,6 @@ prettify: true
   </div>
 
   <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Feb 07 2018 10:24:03 GMT-0800 (PST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Feb 15 2018 14:37:21 GMT-0800 (PST)
   </footer>
 </div>
