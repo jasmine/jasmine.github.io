@@ -42,7 +42,7 @@ Customize `spec/support/jasmine.json` to enumerate the source files and spec fil
 Jasmine runner to include. You may use dir glob strings.
 
 `spec_dir` is used as a prefix for all `spec_files` and `helpers`.
-Helpers are executed before specs.
+Helpers are executed before specs. For any example of some helpers see the [react tutorial](/tutorials/react_with_npm)
 
 ```javascript
 {
