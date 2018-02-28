@@ -12,6 +12,7 @@
 <![endif]-->
 <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
 {% endif %}
+<script src="{{ site.github.url }}/scripts/site.js"></script>
 <title>{{ page.title }}</title>
 </head>
 <body>
@@ -21,5 +22,6 @@
 {% if page.prettify == true %}
 <script>prettyPrint();</script>
 {% endif %}
+<script>JasmineDocs.init();</script>
 </body>
 </html>

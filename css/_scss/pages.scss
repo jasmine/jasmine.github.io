@@ -13,9 +13,11 @@ body {
 
 .header {
   background-color: $jasmine-color;
-  position: relative;
-  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
   height: 300px;
+  overflow: hidden;
   @include flex-shrink(0);
   @include align-self(stretch);
 
@@ -29,9 +31,18 @@ body {
   }
 
   .header-title {
-    margin-top: 70px;
     margin-left: $smallScreen-margin;
     position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .large-logo {
+    display: inline-block;
+  }
+
+  .small-logo {
+    display: none;
   }
 
   .header-title-text {
@@ -41,9 +52,30 @@ body {
     font-size: 30px;
     display: block;
   }
+
+  &.small {
+    height: 50px;
+
+    .header-logo {
+      display: none;
+    }
+
+    .large-logo {
+      display: none;
+    }
+
+    .small-logo {
+      display: inline-block;
+    }
+
+    .header-title-text {
+      display: none;
+    }
+  }
 }
 
 .menu {
+  margin-top: 300px;
   border-bottom: 3px solid $jasmine-color;
   background: white;
   padding: 0 $smallScreen-margin;
@@ -72,6 +104,15 @@ body {
       opacity: 0.75;
     }
   }
+}
+
+.header.small + .menu {
+  position: fixed;
+  margin-top: 50px;
+}
+
+.header.small + .menu + .content-push {
+  margin-top: 360px;
 }
 
 .main-content {
