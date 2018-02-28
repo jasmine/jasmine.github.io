@@ -46,18 +46,22 @@ Helpers are executed before specs.
 
 ```javascript
 {
-  // Spec directory path. Your spec_files must be relative to this path
+  // Spec directory path relative to the current working dir when jasmine is executed.
   "spec_dir": "spec",
+
   // Array of filepaths (and globs) relative to spec_dir to include
   "spec_files": [
     "**/*[sS]pec.js"
   ],
+
   // Array of filepaths (and globs) relative spec_dir to include before jasmine specs
   "helpers": [
     "helpers/**/*.js"
   ],
+
   // Stop execution of a spec after the first expectation failure in it
   stopSpecOnExpectationFailure: false,
+
   // Run specs in semi-random order
   random: false
 }
