@@ -20,8 +20,9 @@ title: Jasmine documentation home
   </div>
   <div>
     <h2>Tutorials</h2>
-    {% for tut in site.tutorials %}
-      <h3><a href="{{site.github.url}}{{tut.url}}">{{ tut.url  | remove_first: "/tutorials/" | capitalize }}</a></h3>
+    {% assign sorted_tutorials = site.tutorials | sort:"order", "last" %}
+    {% for tut in sorted_tutorials %}
+      <h3><a href="{{site.github.url}}{{tut.url}}">{{ tut.url  | remove_first: "/tutorials/" | replace: "_", " " | capitalize }}</a></h3>
     {% endfor %}
   </div>
   <div>
