@@ -5,12 +5,12 @@
       if (typeof header.classList === 'undefined') { return; }
 
       document.addEventListener('scroll', function() {
-        if (window.scrollY >= 250) {
-          header.classList.add('small');
-          header.style.height = null;
-        } else {
-          header.classList.remove('small');
-          header.style.height = (300 - window.scrollY) + 'px';
+        header.classList.remove('shrinking');
+
+        var height = Math.max(50, 300 - window.scrollY);
+        header.style.height = height + 'px';
+        if (height <= 150) {
+          header.classList.add('shrinking');
         }
       });
     },

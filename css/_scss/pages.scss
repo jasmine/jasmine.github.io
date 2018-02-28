@@ -37,14 +37,6 @@ body {
     transform: translateY(-50%);
   }
 
-  .large-logo {
-    display: inline-block;
-  }
-
-  .small-logo {
-    display: none;
-  }
-
   .header-title-text {
     margin-top: -20px;
     margin-left: 200px;
@@ -53,21 +45,18 @@ body {
     display: block;
   }
 
-  &.small {
-    height: 50px;
+  &.shrinking {
+    .header-title {
+      height: 95%;
+
+      img {
+        height: 100%;
+      }
+    }
 
     .header-logo {
       display: none;
     }
-
-    .large-logo {
-      display: none;
-    }
-
-    .small-logo {
-      display: inline-block;
-    }
-
     .header-title-text {
       display: none;
     }
