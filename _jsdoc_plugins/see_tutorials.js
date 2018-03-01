@@ -1,7 +1,7 @@
 var fs = require('fs');
 
 function tutorialExists(text) {
-  return fs.existsSync("_versions/edge/" + text + ".html");
+  return fs.existsSync("_tutorials/" + text + ".html") || fs.existsSync("_tutorials/" + text + ".md");
 }
 
 exports.handlers = {
@@ -10,7 +10,7 @@ exports.handlers = {
     if (doclet.see) {
       doclet.see = doclet.see.map(function(see) {
         if (tutorialExists(see)) {
-          return '<a href="/edge/' + see + '.html">' + see + '</a>';
+          return '<a href="/tutorials/' + see + '">' + see.replace('_', ' ') + '</a>';
         } else {
           return see;
         }

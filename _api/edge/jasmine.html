@@ -440,7 +440,7 @@ Set this to a lower value to speed up pretty printing if you have large objects.
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
         <ul>
-            <li>custom_equality</li>
+            <li><a href="/tutorials/custom_equality">custom equality</a></li>
         </ul>
     </dd>
     
@@ -578,7 +578,7 @@ Set this to a lower value to speed up pretty printing if you have large objects.
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
         <ul>
-            <li>custom_matcher</li>
+            <li><a href="/tutorials/custom_matcher">custom matcher</a></li>
         </ul>
     </dd>
     
@@ -1724,6 +1724,170 @@ that will succeed if the actual value is an <code>Array</code> that contains all
     
 
     
+    <h4 class="name" id=".empty"><span class="type-signature">(static) </span>empty<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Get a matcher, usable in any <a href="matchers.html"><code>matcher</code></a> that uses Jasmine's equality (e.g. <a href="matchers.html#toEqual"><code>toEqual</code></a>, <a href="matchers.html#toContain"><code>toContain</code></a>, or <a href="matchers.html#toHaveBeenCalledWith"><code>toHaveBeenCalledWith</code></a>),
+that will succeed if the actual value being compared is empty.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".falsy"><span class="type-signature">(static) </span>falsy<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Get a matcher, usable in any <a href="matchers.html"><code>matcher</code></a> that uses Jasmine's equality (e.g. <a href="matchers.html#toEqual"><code>toEqual</code></a>, <a href="matchers.html#toContain"><code>toContain</code></a>, or <a href="matchers.html#toHaveBeenCalledWith"><code>toHaveBeenCalledWith</code></a>),
+that will succeed if the actual value being compared is  <code>null</code>, <code>undefined</code>, <code>0</code>, <code>false</code> or anything falsey.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id=".getEnv"><span class="type-signature">(static) </span>getEnv<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Env.html">Env</a>}</span></h4>
     
 
@@ -1812,6 +1976,88 @@ that will succeed if the actual value is an <code>Array</code> that contains all
 </dl>
 
     
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".notEmpty"><span class="type-signature">(static) </span>notEmpty<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Get a matcher, usable in any <a href="matchers.html"><code>matcher</code></a> that uses Jasmine's equality (e.g. <a href="matchers.html#toEqual"><code>toEqual</code></a>, <a href="matchers.html#toContain"><code>toContain</code></a>, or <a href="matchers.html#toHaveBeenCalledWith"><code>toHaveBeenCalledWith</code></a>),
+that will succeed if the actual value being compared is not empty.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2083,6 +2329,88 @@ that will succeed if the actual value is a <code>String</code> that matches the 
 
 
         
+            
+
+    
+
+    
+    <h4 class="name" id=".truthy"><span class="type-signature">(static) </span>truthy<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Get a matcher, usable in any <a href="matchers.html"><code>matcher</code></a> that uses Jasmine's equality (e.g. <a href="matchers.html#toEqual"><code>toEqual</code></a>, <a href="matchers.html#toContain"><code>toContain</code></a>, or <a href="matchers.html#toHaveBeenCalledWith"><code>toHaveBeenCalledWith</code></a>),
+that will succeed if the actual value being compared is <code>true</code> or anything truthy.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     
 
     
@@ -2098,6 +2426,6 @@ that will succeed if the actual value is a <code>String</code> that matches the 
   </div>
 
   <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Feb 15 2018 14:37:21 GMT-0800 (PST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Mar 01 2018 10:50:25 GMT-0800 (PST)
   </footer>
 </div>
