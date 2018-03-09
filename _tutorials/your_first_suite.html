@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 redirect_from: "/edge/your_first_suite.html"
+redirect_from: "/edge/introduction.html"
 file_name: your_first_suite
 order: 0
 ---
@@ -28,7 +29,7 @@ A spec with all true expectations is a passing spec. A spec with one or more fal
     </td>
     <td class="code">
       <div class="highlight">
-        <pre><span></span><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A suite&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A suite&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;contains spec with an expectation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
   <span class="p">});</span>
@@ -1156,7 +1157,7 @@ If the timeout expires before <code>done</code> is called, the current spec will
   <span class="p">});</span>
 
   <span class="kd">function</span> <span class="nx">soon</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">resolve</span><span class="p">();</span>
       <span class="p">},</span> <span class="mi">1</span><span class="p">);</span>
@@ -1164,7 +1165,7 @@ If the timeout expires before <code>done</code> is called, the current spec will
   <span class="p">}</span>
 
   <span class="kd">function</span> <span class="nx">browserHasPromises</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">typeof</span> <span class="nb">Promise</span> <span class="o">!==</span> <span class="s1">&#39;undefined&#39;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="k">typeof</span> <span class="nx">Promise</span> <span class="o">!==</span> <span class="s1">&#39;undefined&#39;</span><span class="p">;</span>
   <span class="p">}</span>
 
   <span class="kd">function</span> <span class="nx">getAsyncCtor</span><span class="p">()</span> <span class="p">{</span>

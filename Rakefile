@@ -24,6 +24,14 @@ task :tutorials do
       end
       @order
     end
+
+    def redirects
+      base = [ { page: title } ]
+      if title == 'your_first_suite'
+        base << { page: 'introduction' }
+      end
+      base
+    end
   end
 
   FileUtils.rm Dir.glob('_tutorials/*.html')

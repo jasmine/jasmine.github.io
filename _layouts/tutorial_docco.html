@@ -1,6 +1,8 @@
 ---
 layout: tutorial
-redirect_from: "/edge/{{ title }}.html"
+{{#redirects}}
+redirect_from: "/edge/{{ page }}.html"
+{{/redirects}}
 file_name: {{ title }}
 order: {{ order }}
 ---
