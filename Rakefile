@@ -50,13 +50,19 @@ task :tutorials do
   end
 end
 
+file '.current_version' do
+  FileUtils.mkdir_p('.current_version')
+end
+
+def download_current_file(file_name)
+  `curl -L 'https://raw.github.com/jasmine/jasmine/master/lib/jasmine-core/#{file_name}' > .current_version/#{file_name}`
+end
+
 desc "update jasmine library for edge docs"
-task :update_edge_jasmine do
-  FileUtils.mkdir_p('edge/lib')
-  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/jasmine.js' > _versions/edge/lib/jasmine.js`
-  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/jasmine-html.js' > _versions/edge/lib/jasmine-html.js`
-  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/jasmine.css' > _versions/edge/lib/jasmine.css`
-  `curl -L 'https://raw.github.com/pivotal/jasmine/master/lib/jasmine-core/boot.js' > _versions/edge/lib/boot.js`
+task :update_edge_jasmine => ['.current_version'] do
+  download_current_file('jasmine.js')
+  download_current_file('jasmine-html.js')
+  download_current_file('boot.js')
 end
 
 desc "make section of docs for a newly released version of jasmine"

@@ -1,6 +1,6 @@
 {
   "source": {
-    "include": [ "_versions/edge/lib/" ],
+    "include": [ ".current_version/" ],
     "includePattern": ".+\\.js$"
   },
   "tags": {

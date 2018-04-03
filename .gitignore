@@ -8,3 +8,4 @@ _site/
 node_modules
 _api/edge/fonts/
 *.sw?
+.current_version
