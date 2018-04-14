@@ -26,6 +26,12 @@ Initialize a project for Jasmine by creating a spec directory and configuration 
 jasmine init
 ```
 
+Note that if you installed Jasmine locally you could still use the command line like this:
+
+```sh
+node node_modules/jasmine/bin/jasmine init
+```
+
 ## Generate examples
 
 Generate example spec and source files
@@ -77,7 +83,15 @@ Pass a relative path to a spec file to the jasmine command to only execute specs
 jasmine
 
 jasmine spec/appSpec.js
+
 ```
+
+Or pass a [glob](https://github.com/isaacs/node-glob) to filter by spec file name. Remember to quote your globs in the command line:
+
+``sh
+jasmine "****/model/****/critical/**/*Spec.js"
+
+`` 
 
 ### CLI Options
 
@@ -124,6 +138,16 @@ Sets the randomization seed if randomization is turned on
 ```sh
 jasmine --seed=4321
 ```
+
+#### `----reporter=`
+
+Sets the reporter default reporter implementation. Must be a valid node.js module name and needs installed in your project. If Jasmine-npm cannot load it it will use the default one. 
+
+```sh
+npm i --save-dev jasmine-ts-console-reporter
+jasmine --reporter jasmine-ts-console-reporter
+```
+
 
 ## Using the library
 
