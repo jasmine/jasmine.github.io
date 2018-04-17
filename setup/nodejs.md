@@ -75,23 +75,15 @@ Helpers are executed before specs. For any example of some helpers see the [reac
 
 ## Running tests
 
-Once you have set up your `jasmine.json`, you can start Jasmine by running `jasmine` from the root of your project.
+Once you have set up your `jasmine.json`, you can execute all your specs by running `jasmine` from the root of your project (or `node node_modules/jasmine/bin/jasmine.js` if you had installed it locally).
 
-Pass a relative path to a spec file to the jasmine command to only execute specs in a single file.
+If you want to just run one spec or only those whom file names match a certain [glob](https://github.com/isaacs/node-glob) pattern you can do it like this: 
 
 ```sh
-jasmine
-
 jasmine spec/appSpec.js
-
+jasmine "****/model/****/critical/**/*Spec.js"
 ```
 
-Or pass a [glob](https://github.com/isaacs/node-glob) to filter by spec file name. Remember to quote your globs in the command line:
-
-``sh
-jasmine "****/model/****/critical/**/*Spec.js"
-
-`` 
 
 ### CLI Options
 
