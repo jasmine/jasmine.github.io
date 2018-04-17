@@ -81,7 +81,7 @@ If you want to just run one spec or only those whom file names match a certain [
 
 ```sh
 jasmine spec/appSpec.js
-jasmine "****/model/****/critical/**/*Spec.js"
+jasmine "**/model/**/critical/**/*Spec.js"
 ```
 
 
@@ -93,45 +93,45 @@ Specify a relative or absolute path to your configuration file. Can be used as a
 ```sh
 JASMINE_CONFIG_PATH=spec/config/jasmine.json jasmine
 
-jasmine JASMINE_CONFIG_PATH=spec/config/jasmine.json
+jasmine --config=spec/config/jasmine.json
 ```
 
-#### `----no-color`
+#### `--no-color`
 Turns off color in spec output
 
 ```sh
 jasmine --no-color
 ```
 
-#### `----filter=`
+#### `--filter=`
 Only runs specs that match the given string
 
 ```sh
 jasmine --filter="a spec name"
 ```
 
-#### `----stop-on-failure=[true|false]`
+#### `--stop-on-failure=[true|false]`
  Stops execution of a spec after the first expectation failure when set to `true`
 
 ```sh
 jasmine --stop-on-failure=true
 ```
 
-#### `----random=[true|false]`
+#### `--random=[true|false]`
 Tells jasmine to run specs in semi random order or not for this run, overriding `jasmine.json`
 
 ```sh
 jasmine --random=true
 ```
 
-#### `----seed=`
+#### `--seed=`
 Sets the randomization seed if randomization is turned on
 
 ```sh
 jasmine --seed=4321
 ```
 
-#### `----reporter=`
+#### `--reporter=`
 
 Sets the reporter default reporter implementation. Must be a valid node.js module name and needs installed in your project. If Jasmine-npm cannot load it it will use the default one. 
 
