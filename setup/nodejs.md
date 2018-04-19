@@ -26,6 +26,12 @@ Initialize a project for Jasmine by creating a spec directory and configuration 
 jasmine init
 ```
 
+Note that if you installed Jasmine locally you could still use the command line like this:
+
+```sh
+node node_modules/jasmine/bin/jasmine init
+```
+
 ## Generate examples
 
 Generate example spec and source files
@@ -69,15 +75,15 @@ Helpers are executed before specs. For any example of some helpers see the [reac
 
 ## Running tests
 
-Once you have set up your `jasmine.json`, you can start Jasmine by running `jasmine` from the root of your project.
+Once you have set up your `jasmine.json`, you can execute all your specs by running `jasmine` from the root of your project (or `node node_modules/jasmine/bin/jasmine.js` if you had installed it locally).
 
-Pass a relative path to a spec file to the jasmine command to only execute specs in a single file.
+If you want to just run one spec or only those whom file names match a certain [glob](https://github.com/isaacs/node-glob) pattern you can do it like this: 
 
 ```sh
-jasmine
-
 jasmine spec/appSpec.js
+jasmine "**/model/**/critical/**/*Spec.js"
 ```
+
 
 ### CLI Options
 
@@ -87,43 +93,53 @@ Specify a relative or absolute path to your configuration file. Can be used as a
 ```sh
 JASMINE_CONFIG_PATH=spec/config/jasmine.json jasmine
 
-jasmine JASMINE_CONFIG_PATH=spec/config/jasmine.json
+jasmine --config=spec/config/jasmine.json
 ```
 
-#### `----no-color`
+#### `--no-color`
 Turns off color in spec output
 
 ```sh
 jasmine --no-color
 ```
 
-#### `----filter=`
+#### `--filter=`
 Only runs specs that match the given string
 
 ```sh
 jasmine --filter="a spec name"
 ```
 
-#### `----stop-on-failure=[true|false]`
+#### `--stop-on-failure=[true|false]`
  Stops execution of a spec after the first expectation failure when set to `true`
 
 ```sh
 jasmine --stop-on-failure=true
 ```
 
-#### `----random=[true|false]`
+#### `--random=[true|false]`
 Tells jasmine to run specs in semi random order or not for this run, overriding `jasmine.json`
 
 ```sh
 jasmine --random=true
 ```
 
-#### `----seed=`
+#### `--seed=`
 Sets the randomization seed if randomization is turned on
 
 ```sh
 jasmine --seed=4321
 ```
+
+#### `--reporter=`
+
+Sets the reporter default reporter implementation. Must be a valid node.js module name and needs installed in your project. If Jasmine-npm cannot load it it will use the default one. 
+
+```sh
+npm i --save-dev jasmine-ts-console-reporter
+jasmine --reporter jasmine-ts-console-reporter
+```
+
 
 ## Using the library
 
