@@ -12,6 +12,8 @@ Install these packages if you haven't already:
 ```
 npm install --save-dev babel
 npm install --save-dev enzyme
+npm install --save-dev enzyme-adapter-react-16
+npm install --save-dev jasmine-enzyme
 npm install --save-dev jsdom
 ```
 
@@ -26,7 +28,7 @@ Then we'll want to make sure that we have enzyme loaded up, so make another file
 ```javascript
 import jasmineEnzyme from 'jasmine-enzyme';
 import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-15';
+import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 
