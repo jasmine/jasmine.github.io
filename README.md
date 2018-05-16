@@ -1,6 +1,3 @@
-jasmine.github.io [![Build Status](https://travis-ci.org/jasmine/jasmine.github.io.svg?branch=master)](https://travis-ci.org/jasmine/jasmine.github.io)
-=================
-
 [Jasmine doc site](https://jasmine.github.io/)
 
 Contributing
