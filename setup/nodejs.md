@@ -60,7 +60,7 @@ Helpers are executed before specs. For any example of some helpers see the [reac
     "**/*[sS]pec.js"
   ],
 
-  // Array of filepaths (and globs) relative spec_dir to include before jasmine specs
+  // Array of filepaths (and globs) relative to spec_dir to include before jasmine specs
   "helpers": [
     "helpers/**/*.js"
   ],
