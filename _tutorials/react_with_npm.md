@@ -62,16 +62,13 @@ In order to ensure these files are loaded first, we'll edit the `jasmine.json`. 
 It's common for React code to import CSS or image files. Normally those imports are resolved at build time but they'll produce errors when the tests are run in Node. To fix that, we add one more package:
 
 ```
-npm install --save-dev require-hacker
+npm install --save-dev ignore-styles
 ```
 
 And put the following code in `spec/helpers/exclude.js`.
 
 ```javascript
-import requireHacker from 'require-hacker'
-requireHacker.hook('css', () => 'module.exports = ""');
-requireHacker.hook('svg', () => 'module.exports = ""');
-requireHacker.hook('png', () => 'module.exports = ""');
+import 'ignore-styles';
 ```
 
 
