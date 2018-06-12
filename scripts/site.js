@@ -20,8 +20,18 @@
       });
     },
 
+    initSearch: function initSearch() {
+      SimpleJekyllSearch({
+        searchInput: document.querySelector('input[name="search"]'),
+        resultsContainer: document.querySelector('.searchResults'),
+        json: window.searchConfig,
+        searchResultTemplate: '<li><a href="{url}">{title}</a></li>'
+      });
+    },
+
     init: function init() {
       window.JasmineDocs.initHeader();
+      window.JasmineDocs.initSearch();
     }
   };
 })();
