@@ -11,13 +11,15 @@ Install these packages if you haven't already:
 
 ```
 npm install --save-dev babel
+npm install --save-dev babel-preset-react-app
 npm install --save-dev enzyme
 npm install --save-dev enzyme-adapter-react-16
 npm install --save-dev jasmine-enzyme
 npm install --save-dev jsdom
+npm install --save-dev jasmine
 ```
 
-The first thing we'll do is make a helper to register babel into the `require` chain. Make a new file in the `spec/helpers` directory, we'll call it `babel.js`:
+The first thing we'll do is make a helper to register babel into the `require` chain. Run `jasmine init` if you haven't already done so. Then make a new file in the `spec/helpers` directory, we'll call it `babel.js`:
 
 ```javascript
 require('babel-core/register');
@@ -42,10 +44,10 @@ And finally, `jsdom.js` in `spec/helpers`:
 ```javascript
 import {JSDOM} from 'jsdom';
 
-const dom = new JSDOM('<html><body></body></html>')
-global.document = dom.window.document
-global.window = dom.window
-global.navigator = dom.window.navigator
+const dom = new JSDOM('<html><body></body></html>');
+global.document = dom.window.document;
+global.window = dom.window;
+global.navigator = dom.window.navigator;
 ```
 
 In order to ensure these files are loaded first, we'll edit the `jasmine.json`. The default location is in `spec/support`. We want these new helpers to be loaded before any other helpers, so we modify it like so:
@@ -69,6 +71,16 @@ And put the following code in `spec/helpers/exclude.js`.
 
 ```javascript
 import 'ignore-styles';
+```
+
+Finally, we need to tell Babel what flavor of Javascript we want by adding the following to `package.json`:
+
+```json
+  "babel": {
+    "presets": [
+     "react-app"
+    ]
+  }
 ```
 
 
