@@ -10,12 +10,10 @@ The Jasmine node package contains helper code for developing and running Jasmine
 
 ## Install
 
-You can install Jasmine using npm, locally in your project and globally to use the CLI tool.
+You can install Jasmine using yarn, locally in your project and to use the CLI tool.
 
 ```sh
-npm install jasmine
-
-npm install -g jasmine
+yarn add -D jasmine
 ```
 
 ## Init a Project
@@ -23,13 +21,7 @@ npm install -g jasmine
 Initialize a project for Jasmine by creating a spec directory and configuration json for you.
 
 ```sh
-jasmine init
-```
-
-Note that if you installed Jasmine locally you could still use the command line like this:
-
-```sh
-node node_modules/jasmine/bin/jasmine init
+yarn jasmine init
 ```
 
 ## Generate examples
@@ -37,7 +29,7 @@ node node_modules/jasmine/bin/jasmine init
 Generate example spec and source files
 
 ```sh
-jasmine examples
+yarn jasmine examples
 ```
 
 At this point you should be able to [write your first suite](/tutorials/your_first_suite.html)
@@ -75,13 +67,13 @@ Helpers are executed before specs. For any example of some helpers see the [reac
 
 ## Running tests
 
-Once you have set up your `jasmine.json`, you can execute all your specs by running `jasmine` from the root of your project (or `node node_modules/jasmine/bin/jasmine.js` if you had installed it locally).
+Once you have set up your `jasmine.json`, you can execute all your specs by running `yarn jasmine` from the root of your project.
 
 If you want to just run one spec or only those whom file names match a certain [glob](https://github.com/isaacs/node-glob) pattern you can do it like this: 
 
 ```sh
-jasmine spec/appSpec.js
-jasmine "**/model/**/critical/**/*Spec.js"
+yarn jasmine spec/appSpec.js
+yarn jasmine "**/model/**/critical/**/*Spec.js"
 ```
 
 
@@ -93,42 +85,42 @@ Specify a relative or absolute path to your configuration file. Can be used as a
 ```sh
 JASMINE_CONFIG_PATH=spec/config/jasmine.json jasmine
 
-jasmine --config=spec/config/jasmine.json
+yarn jasmine --config=spec/config/jasmine.json
 ```
 
 #### `--no-color`
 Turns off color in spec output
 
 ```sh
-jasmine --no-color
+yarn jasmine --no-color
 ```
 
 #### `--filter=`
 Only runs specs that match the given string
 
 ```sh
-jasmine --filter="a spec name"
+yarn jasmine --filter="a spec name"
 ```
 
 #### `--stop-on-failure=[true|false]`
  Stops execution of a spec after the first expectation failure when set to `true`
 
 ```sh
-jasmine --stop-on-failure=true
+yarn jasmine --stop-on-failure=true
 ```
 
 #### `--random=[true|false]`
 Tells jasmine to run specs in semi random order or not for this run, overriding `jasmine.json`
 
 ```sh
-jasmine --random=true
+yarn jasmine --random=true
 ```
 
 #### `--seed=`
 Sets the randomization seed if randomization is turned on
 
 ```sh
-jasmine --seed=4321
+yarn jasmine --seed=4321
 ```
 
 #### `--reporter=`
@@ -136,8 +128,8 @@ jasmine --seed=4321
 Sets the reporter default reporter implementation. Must be a valid node.js module name and needs installed in your project. If Jasmine-npm cannot load it it will use the default one. 
 
 ```sh
-npm i --save-dev jasmine-ts-console-reporter
-jasmine --reporter jasmine-ts-console-reporter
+yarn add -D  jasmine-ts-console-reporter
+yarn jasmine --reporter jasmine-ts-console-reporter
 ```
 
 
