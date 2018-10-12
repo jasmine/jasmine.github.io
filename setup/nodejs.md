@@ -47,6 +47,8 @@ At this point you should be able to [write your first suite](/tutorials/your_fir
 Customize `spec/support/jasmine.json` to enumerate the source files and spec files you would like the
 Jasmine runner to include. You may use dir glob strings.
 
+Paths starting with `!` are excluded, for example `!**/*nospec.js`.
+
 `spec_dir` is used as a prefix for all `spec_files` and `helpers`.
 Helpers are executed before specs. For any example of some helpers see the [react tutorial](/tutorials/react_with_npm)
 
@@ -55,9 +57,10 @@ Helpers are executed before specs. For any example of some helpers see the [reac
   // Spec directory path relative to the current working dir when jasmine is executed.
   "spec_dir": "spec",
 
-  // Array of filepaths (and globs) relative to spec_dir to include
+  // Array of filepaths (and globs) relative to spec_dir to include and exclude
   "spec_files": [
-    "**/*[sS]pec.js"
+    "**/*[sS]pec.js",
+    "!**/*nospec.js"
   ],
 
   // Array of filepaths (and globs) relative to spec_dir to include before jasmine specs
@@ -77,7 +80,7 @@ Helpers are executed before specs. For any example of some helpers see the [reac
 
 Once you have set up your `jasmine.json`, you can execute all your specs by running `jasmine` from the root of your project (or `node node_modules/jasmine/bin/jasmine.js` if you had installed it locally).
 
-If you want to just run one spec or only those whom file names match a certain [glob](https://github.com/isaacs/node-glob) pattern you can do it like this: 
+If you want to just run one spec or only those whom file names match a certain [glob](https://github.com/isaacs/node-glob) pattern you can do it like this:
 
 ```sh
 jasmine spec/appSpec.js
@@ -133,7 +136,7 @@ jasmine --seed=4321
 
 #### `--reporter=`
 
-Sets the reporter default reporter implementation. Must be a valid node.js module name and needs installed in your project. If Jasmine-npm cannot load it it will use the default one. 
+Sets the reporter default reporter implementation. Must be a valid node.js module name and needs installed in your project. If Jasmine-npm cannot load it it will use the default one.
 
 ```sh
 npm i --save-dev jasmine-ts-console-reporter
