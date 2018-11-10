@@ -140,7 +140,7 @@ Sets the reporter default reporter implementation. Must be a valid node.js modul
 
 ```sh
 npm i --save-dev jasmine-ts-console-reporter
-jasmine --reporter jasmine-ts-console-reporter
+jasmine --reporter=jasmine-ts-console-reporter
 ```
 
 
