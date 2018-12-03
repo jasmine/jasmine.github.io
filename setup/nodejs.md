@@ -54,6 +54,14 @@ Helpers are executed before specs. For any example of some helpers see the [reac
 
 ```javascript
 {
+  "configure": {
+    // Stop execution of a spec after the first expectation failure in it
+    "oneFailurePerSpec": true,
+
+    // Run specs in semi-random order
+    "random": true
+  },
+
   // Spec directory path relative to the current working dir when jasmine is executed.
   "spec_dir": "spec",
 
@@ -66,13 +74,7 @@ Helpers are executed before specs. For any example of some helpers see the [reac
   // Array of filepaths (and globs) relative to spec_dir to include before jasmine specs
   "helpers": [
     "helpers/**/*.js"
-  ],
-
-  // Stop execution of a spec after the first expectation failure in it
-  stopSpecOnExpectationFailure: false,
-
-  // Run specs in semi-random order
-  random: false
+  ]
 }
 ```
 
