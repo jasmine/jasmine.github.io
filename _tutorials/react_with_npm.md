@@ -26,6 +26,16 @@ The first thing we'll do is make a helper to register babel into the `require` c
 require('@babel/register');
 ```
 
+Or, if using TypeScript:
+
+```
+require('@babel/register')({
+    "extensions": [".js", ".jsx", ".ts", ".tsx"]
+});
+
+```
+
+
 Then we'll want to make sure that we have enzyme loaded up, so make another file in `spec/helpers`, we'll call this one `enzyme.js`:
 
 ```javascript
