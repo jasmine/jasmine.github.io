@@ -69,10 +69,10 @@ Helpers are executed before specs. For any example of some helpers see the [reac
   ],
 
   // Stop execution of a spec after the first expectation failure in it
-  stopSpecOnExpectationFailure: false,
+  "stopSpecOnExpectationFailure": false,
 
   // Run specs in semi-random order
-  random: false
+  "random": false
 }
 ```
 
