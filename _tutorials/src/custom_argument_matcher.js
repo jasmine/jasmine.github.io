@@ -28,6 +28,6 @@ function myChecker(someState) {
 /**
  * You can then use it in an expectation
  */
-expect(mySpy).toHaveBeenCalledWith(myChecker('stuff');
+expect(mySpy).toHaveBeenCalledWith(myChecker('stuff'));
 expect({myState: 'things'}).toEqual(myChecker('things'));
 
