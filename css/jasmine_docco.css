@@ -389,3 +389,11 @@ td.code, th.code {
   min-width: 60%;
   width: 60%;
 }
+
+.warning {
+  margin: 0 50px;
+  padding: 10px 30px;
+  border: 2px solid #d21515;
+  background: #f3d3d3;
+  line-height: 1.4;
+}
