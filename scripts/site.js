@@ -36,10 +36,10 @@
       //
       // There are various tricks for doing this using CSS ::before selectors,
       // but as of June 2019, none of them work in Chrome.
-      var html = document.getElementsByTagName('html')[0];
       var target = document.querySelector(':target');
       if (target) {
-        html.scrollTo(0, target.offsetTop - 64);
+        document.querySelector('body').scrollTo(0, target.offsetTop - 64);
+        document.querySelector('html').scrollTo(0, target.offsetTop - 64);
       }
     },
 
