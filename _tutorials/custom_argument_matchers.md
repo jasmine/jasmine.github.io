@@ -35,15 +35,20 @@ function multipleOf(number) {
 After defining your custom asymmetric matcher, you can use it in your tests.
 
 ```js
-expect(10).toEqual(multipleOf(5));
-expect(7).not.toEqual(multipleOf(3));
+spyOn(Buffer, 'alloc').and.callThrough();
+
+Buffer.alloc(2048);
+
+expect(Buffer.alloc).toHaveBeenCalledWith(multipleOf(1024));
 ```
 
 Just like Jasmine's built-in asymmetric matchers, your custom asymmetric matcher can be nested
-inside a larger comparison and will work correctly.
+inside an array or object and will work correctly.
 
 ```js
-mySpy('/tmp/tmpfile', { size: 2048 });
+spyOn(request, 'post');
 
-expect(mySpy).toHaveBeenCalledWith('/tmp/tmpfile', { size: multipleOf(1024) });
+request.post({ name: 'Jan Jansen', age: 40 });
+
+expect(request.post).toHaveBeenCalledWith({ name: jasmine.any(String), age: multipleOf(10) });
 ```
