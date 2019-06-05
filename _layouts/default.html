@@ -15,6 +15,7 @@
 <script src="{{ site.github.url }}/scripts/simple-jekyll-search.min.js"></script>
 <script src="{{ site.github.url }}/scripts/search.js"></script>
 <script src="{{ site.github.url }}/scripts/site.js"></script>
+<script src="{{ site.github.url }}/scripts/anchor.min.js"></script>
 <title>{{ page.title }}</title>
 </head>
 <body>
@@ -26,5 +27,6 @@
 <script>prettyPrint();</script>
 {% endif %}
 <script>JasmineDocs.init();</script>
+<script>anchors.add('.article h1, .article h2, .article h3, .article h4');</script>
 </body>
 </html>
