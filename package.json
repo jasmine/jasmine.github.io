@@ -3,7 +3,6 @@
     "jsdoc": "jsdoc -c jsdoc-conf.json --verbose"
   },
   "dependencies": {
-    "jsdoc": "^3.5.4",
-    "npm": "^5.10.0"
+    "jsdoc": "^3.6.2"
   }
 }
