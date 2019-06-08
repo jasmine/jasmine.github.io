@@ -52,3 +52,12 @@ request.post({ name: 'Jan Jansen', age: 40 });
 
 expect(request.post).toHaveBeenCalledWith({ name: jasmine.any(String), age: multipleOf(10) });
 ```
+
+Just like Jasmine's built-in asymmetric matchers, your custom asymmetric matcher can be used
+anywhere Jasmine does an equality check.
+
+```js
+expect(10).toEqual(multipleOf(5));
+
+expect({ x: 3, y: 9 }).toEqual({ x: multipleOf(3), y: multipleOf(3) });
+```
