@@ -1,0 +1,17 @@
+{% if page.version -%}
+<div class="supported-versions">
+  <h2>Version</h2>
+  {% if page.version.added -%}
+  <p>Added in Jasmine <a href="https://github.com/jasmine/jasmine/releases/tag/v{{page.version.added}}">v{{page.version.added}}</a>
+  {% endif -%}
+  {% if page.version.updated -%}
+  <p>Updated in Jasmine <a href="https://github.com/jasmine/jasmine/releases/tag/v{{page.version.updated}}">v{{page.version.updated}}</a>
+  {% endif -%}
+  {% if page.version.deprecated -%}
+  <p>Deprecated in Jasmine <a href="https://github.com/jasmine/jasmine/releases/tag/v{{page.version.deprecated}}">v{{page.version.deprecated}}</a>
+  {% endif -%}
+  {% if page.version.removed -%}
+  <p>Removed in Jasmine <a href="https://github.com/jasmine/jasmine/releases/tag/v{{page.version.removed}}">v{{page.version.removed}}</a>
+  {% endif -%}
+</div>
+{% endif -%}
