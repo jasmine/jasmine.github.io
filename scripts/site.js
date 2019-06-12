@@ -48,6 +48,7 @@
       window.JasmineDocs.initSearch();
       window.addEventListener('load', window.JasmineDocs.scrollTargetLink);
       window.addEventListener('hashchange', window.JasmineDocs.scrollTargetLink);
+      anchors.add('.article h1:not(.no_toc),.article h2:not(.no_toc),.article h3:not(.no_toc),.article h4:not(.no_toc)');
     }
   };
 })();
