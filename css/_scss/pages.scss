@@ -222,3 +222,18 @@ a.github {
     color: $jasmine-color;
   }
 }
+
+/*
+ * anchorjs styling
+ */
+
+.anchorjs-link {
+  color: $jasmine-color;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .anchorjs-link {
+    display: none;
+  }
+}
