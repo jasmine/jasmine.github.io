@@ -10,14 +10,14 @@ The [Jasmine NPM](/setup/nodejs.html) package was originally designed just to ru
 Install these packages if you haven't already:
 
 ```
-npm install --save-dev babel
-npm install --save-dev @babel/register
-npm install --save-dev babel-preset-react-app
-npm install --save-dev enzyme
-npm install --save-dev enzyme-adapter-react-16
-npm install --save-dev jasmine-enzyme
-npm install --save-dev jsdom
-npm install --save-dev jasmine
+npm install --save-dev babel-cli \
+                       @babel/register \
+                       babel-preset-react-app \
+                       enzyme \
+                       enzyme-adapter-react-16 \
+                       jasmine-enzyme \
+                       jsdom \
+                       jasmine
 ```
 
 The first thing we'll do is make a helper to register babel into the `require` chain. Run `jasmine init` if you haven't already done so. Then make a new file in the `spec/helpers` directory, we'll call it `babel.js`:
