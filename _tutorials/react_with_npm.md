@@ -97,7 +97,7 @@ And put the following code in `spec/helpers/exclude.js`.
 import 'ignore-styles';
 ```
 
-Finally, we need to tell Babel what flavor of Javascript we want by adding the following to `package.json`:
+We need to tell Babel what flavor of Javascript we want by adding the following to `package.json`:
 
 ```json
   "babel": {
@@ -107,5 +107,31 @@ Finally, we need to tell Babel what flavor of Javascript we want by adding the f
   }
 ```
 
+You also might want to change the way that Jasmine looks for spec files. Jasmine traditionally looks for files in the `spec` directory with names ending in `.spec.js`, but a common convention in React projects is to put spec files in the same directories as the code they test and give them names ending in `.test.js`. If you want to follow that convention, change the `spec_dir`, `spec_files`, and `helpers` setting in `spec/support/jasmine.json` accordingly:
+
+```json
+  "spec_dir": "src",
+  "spec_files": [
+    "**/*.test.*"
+  ],
+  "helpers": [
+    "../spec/helpers/babel.js",
+    "../spec/helpers/**/*.js"
+  ],
+
+```
+
+Or, for TypeScript:
+```json
+  "spec_dir": "src",
+  "spec_files": [
+    "**/*.test.*"
+  ],
+  "helpers": [
+    "../spec/helpers/babel.js",
+    "../spec/helpers/**/*.{js,ts}"
+  ],
+
+```
 
 You're all set. [Write your specs](/tutorials/your_first_suite.html) and run them with the `jasmine` command.
