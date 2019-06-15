@@ -9,15 +9,15 @@ The [Jasmine NPM](/setup/nodejs.html) package was originally designed just to ru
 
 Install these packages if you haven't already:
 
-```
-npm install --save-dev babel-cli \
-                       @babel/register \
-                       babel-preset-react-app \
-                       enzyme \
-                       enzyme-adapter-react-16 \
-                       jasmine-enzyme \
-                       jsdom \
-                       jasmine
+```shell
+$ npm install --save-dev babel-cli \
+                          @babel/register \
+                          babel-preset-react-app \
+                          enzyme \
+                          enzyme-adapter-react-16 \
+                          jasmine-enzyme \
+                          jsdom \
+                          jasmine
 ```
 
 The first thing we'll do is make a helper to register babel into the `require` chain. Run `jasmine init` if you haven't already done so. Then make a new file in the `spec/helpers` directory, we'll call it `babel.js`:
@@ -28,7 +28,7 @@ require('@babel/register');
 
 Or, if using TypeScript:
 
-```
+```javascript
 require('@babel/register')({
     "extensions": [".js", ".jsx", ".ts", ".tsx"]
 });
@@ -61,9 +61,9 @@ global.window = dom.window;
 global.navigator = dom.window.navigator;
 ```
 
-In order to ensure these files are loaded first, we'll edit the `jasmine.json`. The default location is in `spec/support`. We want these new helpers to be loaded before any other helpers, so we modify it like so:
+In order to ensure these files are loaded first, we'll edit the `jasmine.json` file. The default location is in `spec/support`. We want these new helpers to be loaded before any other helpers, so we modify it like so:
 
-```javascript
+```json
 "helpers": [
   "helpers/babel.js",
   "helpers/**/*.js"
@@ -72,7 +72,7 @@ In order to ensure these files are loaded first, we'll edit the `jasmine.json`. 
 
 Or, if using Typescript:
 
-```javascript
+```json
 "helpers": [
   "helpers/babel.js",
   "helpers/**/*.{js,ts}"
@@ -81,8 +81,8 @@ Or, if using Typescript:
 
 It's common for React code to import CSS or image files. Normally those imports are resolved at build time but they'll produce errors when the tests are run in Node. To fix that, we add one more package:
 
-```
-npm install --save-dev ignore-styles
+```shell
+$ npm install --save-dev ignore-styles
 ```
 
 And put the following code in `spec/helpers/exclude.js`.
