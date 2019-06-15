@@ -36,7 +36,7 @@ require('@babel/register')({
 ```
 
 
-Then we'll want to make sure that we have enzyme loaded up, so make another file in `spec/helpers`, we'll call this one `enzyme.js`:
+Then we'll want to make sure that we have enzyme loaded up, so make another file in `spec/helpers`, we'll call this one `enzyme.js` for Javascript or `enzyme.ts` for TypeScript. (The file extension is important. While most of the helpers can be `.js` regardless of whether we're using Javascript or TypeScript, this one has to be `.ts` in a TypeScript project. Otherwise the type definitions for `jasmine-enzyme` won't be imported and spec files that use those matchers will fail to type check.)
 
 ```javascript
 import jasmineEnzyme from 'jasmine-enzyme';
@@ -66,9 +66,16 @@ In order to ensure these files are loaded first, we'll edit the `jasmine.json`. 
 ```javascript
 "helpers": [
   "helpers/babel.js",
-  "helpers/enzyme.js",
-  "helpers/jsdom.js",
   "helpers/**/*.js"
+],
+```
+
+Or, if using Typescript:
+
+```javascript
+"helpers": [
+  "helpers/babel.js",
+  "helpers/**/*.{js,ts}"
 ],
 ```
 
