@@ -20,7 +20,13 @@ $ npm install --save-dev babel-cli \
                           jasmine
 ```
 
-The first thing we'll do is make a helper to register babel into the `require` chain. Run `jasmine init` if you haven't already done so. Then make a new file in the `spec/helpers` directory, we'll call it `babel.js`:
+Then initialize Jasmine:
+
+```shell
+$ node node_modules/.bin/jasmine init
+```
+
+With Jasmine initialized, the first thing we'll do is make a helper to register babel into the `require` chain. This will cause TypeScript files to be compiled to Javascript on the fly when they're loaded. Make a new file called `babel.js` in the `spec/helpers` directory:
 
 ```javascript
 require('@babel/register');
