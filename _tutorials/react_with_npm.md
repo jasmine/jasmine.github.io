@@ -67,7 +67,7 @@ global.window = dom.window;
 global.navigator = dom.window.navigator;
 ```
 
-In order to ensure these files are loaded first, we'll edit the `jasmine.json` file. The default location is in `spec/support`. We want these new helpers to be loaded before any other helpers, so we modify it like so:
+In order to ensure these files are loaded first, we'll edit `spec/support/jasmine.json`. We need the Babel helper to be loaded before any other helpers, so we modify it like so:
 
 ```json
 "helpers": [
