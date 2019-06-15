@@ -10,20 +10,20 @@ The [Jasmine NPM](/setup/nodejs.html) package was originally designed just to ru
 Install these packages if you haven't already:
 
 ```shell
-$ npm install --save-dev babel-cli \
-                          @babel/register \
-                          babel-preset-react-app \
-                          enzyme \
-                          enzyme-adapter-react-16 \
-                          jasmine-enzyme \
-                          jsdom \
-                          jasmine
+$ yarn add --dev babel-cli \
+                 @babel/register \
+                 babel-preset-react-app \
+                 enzyme \
+                 enzyme-adapter-react-16 \
+                 jasmine-enzyme \
+                 jsdom \
+                 jasmine
 ```
 
 Then initialize Jasmine:
 
 ```shell
-$ node node_modules/.bin/jasmine init
+$ yarn run jasmine init
 ```
 
 With Jasmine initialized, the first thing we'll do is make a helper to register babel into the `require` chain. This will cause TypeScript files to be compiled to Javascript on the fly when they're loaded. Make a new file called `babel.js` in the `spec/helpers` directory:
@@ -88,7 +88,7 @@ Or, if using Typescript:
 It's common for React code to import CSS or image files. Normally those imports are resolved at build time but they'll produce errors when the tests are run in Node. To fix that, we add one more package:
 
 ```shell
-$ npm install --save-dev ignore-styles
+$ yarn add --dev ignore-styles
 ```
 
 And put the following code in `spec/helpers/exclude.js`.
@@ -134,4 +134,8 @@ Or, for TypeScript:
 
 ```
 
-You're all set. [Write your specs](/tutorials/your_first_suite.html) and run them with the `jasmine` command.
+You're all set. [Write your specs](/tutorials/your_first_suite.html) and run them with the `jasmine` command:
+
+```
+$ NODE_ENV=test yarn run jasmine
+```
