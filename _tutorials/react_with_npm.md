@@ -13,6 +13,7 @@ Install these packages if you haven't already:
 $ yarn add --dev babel-cli \
                  @babel/register \
                  babel-preset-react-app \
+                 cross-env \
                  enzyme \
                  enzyme-adapter-react-16 \
                  jasmine-enzyme \
@@ -134,8 +135,15 @@ Or, for TypeScript:
 
 ```
 
-You're all set. [Write your specs](/tutorials/your_first_suite.html) and run them with the `jasmine` command:
+Finally, set up the `test` script in `package.json` to run Jasmine:
 
+```json
+  "scripts": {
+    "test": "cross-env NODE_ENV=test jasmine",
 ```
-$ NODE_ENV=test yarn run jasmine
+
+You're all set. [Write your specs](/tutorials/your_first_suite.html) and run them:
+
+```shell
+$ yarn test
 ```
