@@ -72,8 +72,8 @@ In order to ensure these files are loaded first, we'll edit `spec/support/jasmin
 
 ```json
 "helpers": [
-  "helpers/babel.js",
-  "helpers/**/*.js"
+  "../spec/helpers/babel.js",
+  "../spec/helpers/**/*.js"
 ],
 ```
 
@@ -81,8 +81,8 @@ Or, if using Typescript:
 
 ```json
 "helpers": [
-  "helpers/babel.js",
-  "helpers/**/*.{js,ts}"
+  "../spec/helpers/babel.js",
+  "../spec/helpers/**/*.{js,ts}"
 ],
 ```
 
