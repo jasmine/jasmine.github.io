@@ -5,6 +5,6 @@
   },
   "dependencies": {
     "anchor-js": "^4.2.0",
-    "jsdoc": "^3.6.2"
+    "jsdoc": "^3.6.3"
   }
 }
