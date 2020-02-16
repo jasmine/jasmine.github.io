@@ -29,7 +29,7 @@ jasmine init
 Note that if you installed Jasmine locally you could still use the command line like this:
 
 ```sh
-node node_modules/jasmine/bin/jasmine init
+npx jasmine init
 ```
 
 ## Generate examples
@@ -78,7 +78,7 @@ Helpers are executed before specs. For an example of some helpers see the [react
 
 ## Running tests
 
-Once you have set up your `jasmine.json`, you can execute all your specs by running `jasmine` from the root of your project (or `node node_modules/jasmine/bin/jasmine.js` if you had installed it locally).
+Once you have set up your `jasmine.json`, you can execute all your specs by running `jasmine` from the root of your project (or `npx jasmine` if you had installed it locally).
 
 If you want to just run one spec or only those whom file names match a certain [glob](https://github.com/isaacs/node-glob) pattern you can do it like this:
 
