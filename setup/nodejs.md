@@ -10,11 +10,17 @@ The Jasmine node package contains helper code for developing and running Jasmine
 
 ## Install
 
-You can install Jasmine using npm, locally in your project and globally to use the CLI tool.
+You can install Jasmine using npm locally in your project:
 
 ```sh
-npm install jasmine
+npm install --save-dev jasmine
+```
 
+With the above local installation you can invoke the CLI tool using `npx jasmine ...` commands.
+
+Optionally you can also install jasmine globally so that you can invoke the CLI tool using `jasmine ...` commands.
+
+```sh
 npm install -g jasmine
 ```
 
@@ -26,7 +32,7 @@ Initialize a project for Jasmine by creating a spec directory and configuration 
 jasmine init
 ```
 
-Note that if you installed Jasmine locally you could still use the command line like this:
+Note that if you installed Jasmine locally use `npx jasmine` instead of `jasmine` in any of these examples, like so:
 
 ```sh
 npx jasmine init
