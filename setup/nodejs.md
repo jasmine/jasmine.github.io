@@ -10,11 +10,17 @@ The Jasmine node package contains helper code for developing and running Jasmine
 
 ## Install
 
-You can install Jasmine using npm, locally in your project and globally to use the CLI tool.
+You can install Jasmine using npm locally in your project:
 
 ```sh
-npm install jasmine
+npm install --save-dev jasmine
+```
 
+With the above local installation you can invoke the CLI tool using `npx jasmine ...` commands.
+
+Optionally you can also install jasmine globally so that you can invoke the CLI tool using `jasmine ...` commands.
+
+```sh
 npm install -g jasmine
 ```
 
@@ -26,10 +32,10 @@ Initialize a project for Jasmine by creating a spec directory and configuration 
 jasmine init
 ```
 
-Note that if you installed Jasmine locally you could still use the command line like this:
+Note that if you installed Jasmine locally use `npx jasmine` instead of `jasmine` in any of these examples, like so:
 
 ```sh
-node node_modules/jasmine/bin/jasmine init
+npx jasmine init
 ```
 
 ## Generate examples
@@ -78,7 +84,7 @@ Helpers are executed before specs. For an example of some helpers see the [react
 
 ## Running tests
 
-Once you have set up your `jasmine.json`, you can execute all your specs by running `jasmine` from the root of your project (or `node node_modules/jasmine/bin/jasmine.js` if you had installed it locally).
+Once you have set up your `jasmine.json`, you can execute all your specs by running `jasmine` from the root of your project (or `npx jasmine` if you had installed it locally).
 
 If you want to just run one spec or only those whom file names match a certain [glob](https://github.com/isaacs/node-glob) pattern you can do it like this:
 
