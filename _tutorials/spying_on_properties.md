@@ -53,7 +53,7 @@ it("creates a spy object with properties", function() {
   let obj = createSpyObj("myObject", {}, { x: 3, y: 4 });
   expect(obj.x).toEqual(3);
 
-  Object.getOwnPropertyDescriptor(obj, "x", "get").and.returnValue(7);
+  Object.getOwnPropertyDescriptor(obj, "x").get.and.returnValue(7);
   expect(obj.x).toEqual(7);
 });
 ```
