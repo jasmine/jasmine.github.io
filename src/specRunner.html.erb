@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="text/html;charset=UTF-8" http-equiv="Content-Type"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Jasmine suite</title>
+
+  <link rel="shortcut icon" type="image/png" href="/__images__/jasmine_favicon.png"/>
+  <link rel="stylesheet" href="jasmine.css" type="text/css" media="screen"/>
+
+  <script src="jasmine.js" type="text/javascript"></script>
+  <script src="jasmine-html.js" type="text/javascript"></script>
+  <script src="boot.js" type="text/javascript"></script>
+
+  <script type="text/javascript" src="console.js"></script>
+  <script type="text/javascript">
+      if (typeof window.callPhantom === "function") {
+          window.callPhantom("parse time");
+      }
+  </script>
+
+  <% Dir.glob(File.join(version_path, 'src', 'support', '*.js')).each do |file| %>
+    <script src="../src/support/<%= File.basename(file) %>"></script>
+  <% end %>
+
+  <% spec_files.each do |file| %>
+    <script src="../src/<%= File.basename(file) %>"></script>
+  <% end %>
+</head>
+<!-- TODO: turbolinks breaks spec filter links -->
+<body data-no-turbolink>
+</body>
+</html>

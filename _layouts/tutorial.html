@@ -1,0 +1,8 @@
+---
+layout: default
+---
+
+<div class="main-content">
+  <h1>{{ page.file_name | remove: ".js" | replace: "_", " " | capitalize }}</h1>
+  {{content}}
+</div>

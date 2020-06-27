@@ -1,0 +1,12 @@
+.idea
+_tmp/
+.bundle/
+vendor/
+**/lib/specRunner*.html
+_site/
+.sass-cache
+node_modules
+_api/edge/fonts/
+*.sw?
+.current_version
+.jekyll-cache

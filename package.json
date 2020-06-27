@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "jsdoc": "jsdoc -c jsdoc-conf.json --verbose",
+    "install": "cp node_modules/anchor-js/anchor.min.js scripts/anchor.min.js"
+  },
+  "dependencies": {
+    "anchor-js": "^4.2.0",
+    "jsdoc": "^3.6.3"
+  }
+}

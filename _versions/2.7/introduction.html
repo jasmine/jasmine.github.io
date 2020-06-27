@@ -1,0 +1,1905 @@
+---
+---
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+  <title>introduction.js</title>
+  <link href='//fonts.googleapis.com/css?family=Lora|Istok+Web:700' rel='stylesheet' type='text/css'/>
+  <link rel="stylesheet" href="{{ site.github.url }}/css/docco.css"/>
+  <link rel="stylesheet" href="{{ site.github.url }}/css/jasmine_docco.css"/>
+  <link rel="stylesheet" href="lib/jasmine.css"/>
+  <script src="lib/jasmine.js"></script>
+  <script src="lib/jasmine-html.js"></script>
+  <script src="lib/boot.js"></script>
+  <script src="src/support/mock-ajax.js"></script>
+  <script src="src/introduction.js"></script>
+  <link rel="icon" href="{{ site.github.url }}/images/jasmine.ico" sizes="16x16"/>
+  <link rel="icon" href="{{ site.github.url }}/images/jasmine_32x32.ico" sizes="32x32"/>
+</head>
+<body>
+<div id="container">
+  <div id="background"></div>
+  <div class="title-banner">
+    <a class='jasmine-logo' href="http://github.com/pivotal/jasmine"></a>
+    <div class='powered-container'>
+      <span class='powered'>Powered by</span>
+      <a href="http://pivotallabs.com/" target="_blank" class="pivotal-logo"></a>
+    </div>
+  </div>
+  {% include newVersionLink.html %}
+  <ul class="jump_to">
+	<li> Jump To: </li>
+    <li><a class="source" href="ajax.html">ajax.js</a></li>
+    <li><a class="source" href="boot.html">boot.js</a></li>
+    <li><a class="source" href="custom_boot.html">custom_boot.js</a></li>
+    <li><a class="source" href="custom_equality.html">custom_equality.js</a></li>
+    <li><a class="source" href="custom_matcher.html">custom_matcher.js</a></li>
+    <li><a class="source" href="custom_reporter.html">custom_reporter.js</a></li>
+    <li><a class="source" href="focused_specs.html">focused_specs.js</a></li>
+    <li><a class="source" href="introduction.html">introduction.js</a></li>
+    <li><a class="source" href="node.html">node.js</a></li>
+    <li><a class="source" href="python_egg.html">python_egg.py</a></li>
+    <li><a class="source" href="ruby_gem.html">ruby_gem.rb</a></li>
+    <li><a class="source" href="upgrading.html">upgrading.js</a></li>
+  </ul>
+  <table cellspacing="0" cellpadding="0">
+    <thead>
+    <tr>
+      <th class="docs">
+        <h1>introduction.js</h1>
+      </th>
+      <th class="code"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr id="section-Standalone_Distribution">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Standalone_Distribution">&#182;</a>
+        </div>
+        <p>Jasmine is a behavior-driven development framework for testing JavaScript code. It does not depend on any other JavaScript frameworks. It does not require a DOM. And it has a clean, obvious syntax so that you can easily write tests.
+This guide is running against Jasmine version <span class="version">FILLED IN AT RUNTIME</span>.</p>
+
+<h2>Standalone Distribution</h2>
+
+<p>The <a href="https://github.com/pivotal/jasmine/releases">releases page</a> has links to download the standalone distribution, which contains everything you need to start running Jasmine.
+After downloading a particular version and unzipping, opening <code>SpecRunner.html</code> will run the included specs.  You&#39;ll note that both the source files and their respective specs are linked in the <code>&lt;head&gt;</code> of the <code>SpecRunner.html</code>.
+To start using Jasmine, replace the source/spec files with your own.</p>
+
+<h2>Suites: <code>describe</code> Your Tests</h2>
+
+<p>A test suite begins with a call to the global Jasmine function <code>describe</code> with two parameters: a string and a function. The string is a name or title for a spec suite - usually what is being tested.  The function is a block of code that implements the suite.</p>
+
+<h2>Specs</h2>
+
+<p>Specs are defined by calling the global Jasmine function <code>it</code>, which, like <code>describe</code> takes a string and a function. The string is the title of the spec and the function is the spec, or test. A spec contains one or more expectations that test the state of the code.
+An expectation in Jasmine is an assertion that is either true or false. A spec with all true expectations is a passing spec. A spec with one or more false expectations is a failing spec.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A suite&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;contains spec with an expectation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-It&amp;#39;s_Just_Functions">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-It&amp;#39;s_Just_Functions">&#182;</a>
+        </div>
+        <h3>It&#39;s Just Functions</h3>
+
+<p>Since <code>describe</code> and <code>it</code> blocks are functions, they can contain any executable code necessary to implement the test. JavaScript scoping rules apply, so variables declared in a <code>describe</code> are available to any <code>it</code> block inside the suite.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A suite is just a function&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">a</span><span class="p">;</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;and so is a spec&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Expectations">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Expectations">&#182;</a>
+        </div>
+        <h2>Expectations</h2>
+
+<p>Expectations are built with the function <code>expect</code> which takes a value, called the actual. It is chained with a Matcher function, which takes the expected value.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;The &#39;toBe&#39; matcher compares with ===&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Matchers">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Matchers">&#182;</a>
+        </div>
+        <h3>Matchers</h3>
+
+<p>Each matcher implements a boolean comparison between the actual value and the expected value. It is responsible for reporting to Jasmine if the expectation is true or false. Jasmine will then pass or fail the spec.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;and has a positive case&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-5">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-5">&#182;</a>
+        </div>
+        <p>Any matcher can evaluate to a negative assertion by chaining the call to <code>expect</code> with a <code>not</code> before calling the matcher.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;and can have a negative case&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="kc">false</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Included_Matchers">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Included_Matchers">&#182;</a>
+        </div>
+        <h3>Included Matchers</h3>
+
+<p>Jasmine has a rich set of matchers included. Each is used here - all expectations and specs pass.
+There is also the ability to write <a href="custom_matcher.html">custom matchers</a> for when a project&#39;s domain calls for specific assertions that are not included below.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Included matchers:&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toBe&#39; matcher compares with ===&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">;</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;The &#39;toEqual&#39; matcher&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;works for simple literals and variables&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should work for objects&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">a</span><span class="o">:</span> <span class="mi">12</span><span class="p">,</span>
+        <span class="nx">b</span><span class="o">:</span> <span class="mi">34</span>
+      <span class="p">};</span>
+      <span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">a</span><span class="o">:</span> <span class="mi">12</span><span class="p">,</span>
+        <span class="nx">b</span><span class="o">:</span> <span class="mi">34</span>
+      <span class="p">};</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">bar</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toMatch&#39; matcher is for regular expressions&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="s2">&quot;foo bar baz&quot;</span><span class="p">;</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">message</span><span class="p">).</span><span class="nx">toMatch</span><span class="p">(</span><span class="sr">/bar/</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">message</span><span class="p">).</span><span class="nx">toMatch</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">message</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toMatch</span><span class="p">(</span><span class="sr">/quux/</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toBeDefined&#39; matcher compares against `undefined`&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">foo</span><span class="o">:</span> <span class="s2">&quot;foo&quot;</span>
+    <span class="p">};</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">();</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">bar</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeDefined</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The `toBeUndefined` matcher compares against `undefined`&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">foo</span><span class="o">:</span> <span class="s2">&quot;foo&quot;</span>
+    <span class="p">};</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">foo</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeUndefined</span><span class="p">();</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toBeUndefined</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toBeNull&#39; matcher compares against null&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="kc">null</span><span class="p">).</span><span class="nx">toBeNull</span><span class="p">();</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">toBeNull</span><span class="p">();</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeNull</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toBeTruthy&#39; matcher is for boolean casting testing&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">foo</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toBeFalsy&#39; matcher is for boolean casting testing&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">foo</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">toBeFalsy</span><span class="p">();</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeFalsy</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;The &#39;toContain&#39; matcher&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;works for finding an item in an Array&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="p">];</span>
+
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">toContain</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toContain</span><span class="p">(</span><span class="s2">&quot;quux&quot;</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;also works for finding a substring&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="s2">&quot;foo bar baz&quot;</span><span class="p">;</span>
+
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">toContain</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toContain</span><span class="p">(</span><span class="s2">&quot;quux&quot;</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toBeLessThan&#39; matcher is for mathematical comparisons&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">pi</span> <span class="o">=</span> <span class="mf">3.1415926</span><span class="p">,</span>
+      <span class="nx">e</span> <span class="o">=</span> <span class="mf">2.78</span><span class="p">;</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">e</span><span class="p">).</span><span class="nx">toBeLessThan</span><span class="p">(</span><span class="nx">pi</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">pi</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeLessThan</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toBeGreaterThan&#39; matcher is for mathematical comparisons&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">pi</span> <span class="o">=</span> <span class="mf">3.1415926</span><span class="p">,</span>
+      <span class="nx">e</span> <span class="o">=</span> <span class="mf">2.78</span><span class="p">;</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">pi</span><span class="p">).</span><span class="nx">toBeGreaterThan</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">e</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeGreaterThan</span><span class="p">(</span><span class="nx">pi</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toBeCloseTo&#39; matcher is for precision math comparison&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">pi</span> <span class="o">=</span> <span class="mf">3.1415926</span><span class="p">,</span>
+      <span class="nx">e</span> <span class="o">=</span> <span class="mf">2.78</span><span class="p">;</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">pi</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeCloseTo</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">pi</span><span class="p">).</span><span class="nx">toBeCloseTo</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toThrow&#39; matcher is for testing if a function throws an exception&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="kd">var</span> <span class="nx">baz</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="s1">&#39;what&#39;</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toThrow</span><span class="p">();</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toThrow</span><span class="p">();</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">baz</span><span class="p">).</span><span class="nx">toThrow</span><span class="p">(</span><span class="s1">&#39;what&#39;</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toThrowError&#39; matcher is for testing a specific thrown exception&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nx">TypeError</span><span class="p">(</span><span class="s2">&quot;foo bar baz&quot;</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toThrowError</span><span class="p">(</span><span class="s2">&quot;foo bar baz&quot;</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toThrowError</span><span class="p">(</span><span class="sr">/bar/</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toThrowError</span><span class="p">(</span><span class="nx">TypeError</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toThrowError</span><span class="p">(</span><span class="nx">TypeError</span><span class="p">,</span> <span class="s2">&quot;foo bar baz&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Manually_failing_a_spec_with_&lt;code&gt;fail&lt;/code&gt;">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Manually_failing_a_spec_with_&lt;code&gt;fail&lt;/code&gt;">&#182;</a>
+        </div>
+        <h3>Manually failing a spec with <code>fail</code></h3>
+
+<p>The <code>fail</code> function causes a spec to fail. It can take a failure message or an Error object as a parameter.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spec using the fail function&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">callBack</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">callBack</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not call the callBack&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span><span class="p">(</span><span class="kc">false</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">fail</span><span class="p">(</span><span class="s2">&quot;Callback has been called&quot;</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Grouping_Related_Specs_with_&lt;code&gt;describe&lt;/code&gt;">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Grouping_Related_Specs_with_&lt;code&gt;describe&lt;/code&gt;">&#182;</a>
+        </div>
+        <h2>Grouping Related Specs with <code>describe</code></h2>
+
+<p>The <code>describe</code> function is for grouping related specs. The string parameter is for naming the collection of specs, and will be concatenated with specs to make a spec&#39;s full name. This aids in finding specs in a large suite. If you name them well, your specs read as full sentences in traditional <a href="http://en.wikipedia.org/wiki/Behavior-driven_development">BDD</a> style.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spec&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is just a function, so it can contain any code&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">foo</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can have more than one expectation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">foo</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Setup_and_Teardown">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Setup_and_Teardown">&#182;</a>
+        </div>
+        <h3>Setup and Teardown</h3>
+
+<p>To help a test suite DRY up any duplicated setup and teardown code, Jasmine provides the global <code>beforeEach</code>, <code>afterEach</code>, <code>beforeAll</code>, and <code>afterAll</code> functions.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-10">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-10">&#182;</a>
+        </div>
+        <p>As the name implies, the <code>beforeEach</code> function is called once before each spec in the <code>describe</code> in which it is called, and the <code>afterEach</code> function is called once after each spec.</p>
+
+<p>Here is the same set of specs written a little differently. The variable under test is defined at the top-level scope -- the <code>describe</code> block --  and initialization code is moved into a <code>beforeEach</code> function. The <code>afterEach</code> function resets the variable before continuing.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spec using beforeEach and afterEach&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="nx">afterEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is just a function, so it can contain any code&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can have more than one expectation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-11">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-11">&#182;</a>
+        </div>
+        <p>The <code>beforeAll</code> function is called only once before all the specs in <code>describe</code> are run, and the <code>afterAll</code> function is called after all specs finish. These functions can be used to speed up test suites with expensive setup and teardown.</p>
+
+<p>However, be careful using <code>beforeAll</code> and <code>afterAll</code>! Since they are not reset between specs, it is easy to accidentally leak state between your specs so that they erroneously pass or fail.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spec using beforeAll and afterAll&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">foo</span><span class="p">;</span>
+
+  <span class="nx">beforeAll</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="nx">afterAll</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;sets the initial value of foo before specs run&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="nx">foo</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;does not reset foo between specs&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-The_&lt;code&gt;this&lt;/code&gt;_keyword">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-The_&lt;code&gt;this&lt;/code&gt;_keyword">&#182;</a>
+        </div>
+        <h3>The <code>this</code> keyword</h3>
+
+<p>Another way to share variables between a <code>beforeEach</code>, <code>it</code>, and <code>afterEach</code> is through the <code>this</code> keyword. Each spec&#39;s <code>beforeEach</code>/<code>it</code>/<code>afterEach</code> has the <code>this</code> as the same empty object that is set back to empty for the next spec&#39;s <code>beforeEach</code>/<code>it</code>/<code>afterEach</code>.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spec&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can use the `this` to share state&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">bar</span> <span class="o">=</span> <span class="s2">&quot;test pollution?&quot;</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;prevents test pollution by having an empty `this` created for the next spec&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Nesting_&lt;code&gt;describe&lt;/code&gt;_Blocks">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Nesting_&lt;code&gt;describe&lt;/code&gt;_Blocks">&#182;</a>
+        </div>
+        <h3>Nesting <code>describe</code> Blocks</h3>
+
+<p>Calls to <code>describe</code> can be nested, with specs defined at any level. This allows a suite to be composed as a tree of functions. Before a spec is executed, Jasmine walks down the tree executing each <code>beforeEach</code> function in order. After the spec is executed, Jasmine walks through the <code>afterEach</code> functions similarly.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spec&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">foo</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">foo</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="nx">afterEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is just a function, so it can contain any code&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can have more than one expectation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;nested inside a second describe&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">bar</span><span class="p">;</span>
+
+    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">bar</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">});</span>
+
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can reference both scopes as needed&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">bar</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Disabling_Suites">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Disabling_Suites">&#182;</a>
+        </div>
+        <h2>Disabling Suites</h2>
+
+<p>Suites can be disabled with the <code>xdescribe</code> function. These suites and any specs inside them are skipped when run and thus their results will show as pending.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">xdescribe</span><span class="p">(</span><span class="s2">&quot;A spec&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">foo</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">foo</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is just a function, so it can contain any code&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Pending_Specs">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Pending_Specs">&#182;</a>
+        </div>
+        <h2>Pending Specs</h2>
+
+<p>Pending specs do not run, but their names will show up in the results as <code>pending</code>.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Pending specs&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-16">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-16">&#182;</a>
+        </div>
+        <p>Any spec declared with <code>xit</code> is marked as pending.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">xit</span><span class="p">(</span><span class="s2">&quot;can be declared &#39;xit&#39;&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-17">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-17">&#182;</a>
+        </div>
+        <p>Any spec declared without a function body will also be marked pending in results.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can be declared with &#39;it&#39; but without a function&quot;</span><span class="p">);</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-18">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-18">&#182;</a>
+        </div>
+        <p>And if you call the function <code>pending</code> anywhere in the spec body, no matter the expectations, the spec will be marked pending.
+A string passed to <code>pending</code> will be treated as a reason and displayed when the suite finishes.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can be declared by calling &#39;pending&#39; in the spec body&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+    <span class="nx">pending</span><span class="p">(</span><span class="s1">&#39;this is why it is pending&#39;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Spies">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Spies">&#182;</a>
+        </div>
+        <h2>Spies</h2>
+
+<p>Jasmine has test double functions called spies. A spy can stub any function and tracks calls to it and all arguments. A spy only exists in the <code>describe</code> or <code>it</code> block in which it is defined, and will be removed after each spec. There are special matchers for interacting with spies.
+<strong>This syntax has changed for Jasmine 2.0.</strong></p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">setBar</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">bar</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="nx">spyOn</span><span class="p">(</span><span class="nx">foo</span><span class="p">,</span> <span class="s1">&#39;setBar&#39;</span><span class="p">);</span>
+
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">456</span><span class="p">,</span> <span class="s1">&#39;another param&#39;</span><span class="p">);</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-20">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-20">&#182;</a>
+        </div>
+        <p>The <code>toHaveBeenCalled</code> matcher will return true if the spy was called.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks that the spy was called&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-21">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-21">&#182;</a>
+        </div>
+        <p>The <code>toHaveBeenCalledTimes</code> matcher will pass if the spy was called the specified number of times.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks that the spy was called x times&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-22">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-22">&#182;</a>
+        </div>
+        <p>The <code>toHaveBeenCalledWith</code> matcher will return true if the argument list matches any of the recorded calls to the spy.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks all the arguments of its calls&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="mi">456</span><span class="p">,</span> <span class="s1">&#39;another param&#39;</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;stops all execution on a function&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toBeNull</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Spies:_&lt;code&gt;and.callThrough&lt;/code&gt;">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Spies:_&lt;code&gt;and.callThrough&lt;/code&gt;">&#182;</a>
+        </div>
+        <h3>Spies: <code>and.callThrough</code></h3>
+
+<p>By chaining the spy with <code>and.callThrough</code>, the spy will still track all calls to it but in addition it will delegate to the actual implementation.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy, when configured to call through&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">,</span> <span class="nx">fetchedBar</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">setBar</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">bar</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+      <span class="p">},</span>
+      <span class="nx">getBar</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">bar</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="nx">spyOn</span><span class="p">(</span><span class="nx">foo</span><span class="p">,</span> <span class="s1">&#39;getBar&#39;</span><span class="p">).</span><span class="nx">and</span><span class="p">.</span><span class="nx">callThrough</span><span class="p">();</span>
+
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+    <span class="nx">fetchedBar</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks that the spy was called&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not affect other functions&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;when called returns the requested value&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">fetchedBar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Spies:_&lt;code&gt;and.returnValue&lt;/code&gt;">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Spies:_&lt;code&gt;and.returnValue&lt;/code&gt;">&#182;</a>
+        </div>
+        <h3>Spies: <code>and.returnValue</code></h3>
+
+<p>By chaining the spy with <code>and.returnValue</code>, all calls to the function will return a specific value.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy, when configured to fake a return value&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">,</span> <span class="nx">fetchedBar</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">setBar</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">bar</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+      <span class="p">},</span>
+      <span class="nx">getBar</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">bar</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="nx">spyOn</span><span class="p">(</span><span class="nx">foo</span><span class="p">,</span> <span class="s2">&quot;getBar&quot;</span><span class="p">).</span><span class="nx">and</span><span class="p">.</span><span class="nx">returnValue</span><span class="p">(</span><span class="mi">745</span><span class="p">);</span>
+
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+    <span class="nx">fetchedBar</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks that the spy was called&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not affect other functions&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;when called returns the requested value&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">fetchedBar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">745</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Spies:_&lt;code&gt;and.returnValues&lt;/code&gt;">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Spies:_&lt;code&gt;and.returnValues&lt;/code&gt;">&#182;</a>
+        </div>
+        <h3>Spies: <code>and.returnValues</code></h3>
+
+<p>By chaining the spy with <code>and.returnValues</code>, all calls to the function will return specific values in order until it reaches the end of the return values list, at which point it will return undefined for all subsequent calls.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy, when configured to fake a series of return values&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">setBar</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">bar</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+      <span class="p">},</span>
+      <span class="nx">getBar</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">bar</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="nx">spyOn</span><span class="p">(</span><span class="nx">foo</span><span class="p">,</span> <span class="s2">&quot;getBar&quot;</span><span class="p">).</span><span class="nx">and</span><span class="p">.</span><span class="nx">returnValues</span><span class="p">(</span><span class="s2">&quot;fetched first&quot;</span><span class="p">,</span> <span class="s2">&quot;fetched second&quot;</span><span class="p">);</span>
+
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks that the spy was called&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not affect other functions&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;when called multiple times returns the requested values in order&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s2">&quot;fetched first&quot;</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s2">&quot;fetched second&quot;</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">()).</span><span class="nx">toBeUndefined</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Spies:_&lt;code&gt;and.callFake&lt;/code&gt;">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Spies:_&lt;code&gt;and.callFake&lt;/code&gt;">&#182;</a>
+        </div>
+        <h3>Spies: <code>and.callFake</code></h3>
+
+<p>By chaining the spy with <code>and.callFake</code>, all calls to the spy will delegate to the supplied function.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy, when configured with an alternate implementation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">,</span> <span class="nx">fetchedBar</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">setBar</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">bar</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+      <span class="p">},</span>
+      <span class="nx">getBar</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">bar</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">};</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-27">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-27">&#182;</a>
+        </div>
+        <p>If the function being spied on receives arguments that the fake needs, you can get those as well</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">spyOn</span><span class="p">(</span><span class="nx">foo</span><span class="p">,</span> <span class="s2">&quot;getBar&quot;</span><span class="p">).</span><span class="nx">and</span><span class="p">.</span><span class="nx">callFake</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="nx">can</span><span class="p">,</span> <span class="nx">be</span><span class="p">,</span> <span class="nx">received</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="mi">1001</span><span class="p">;</span>
+    <span class="p">});</span>
+
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+    <span class="nx">fetchedBar</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks that the spy was called&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not affect other functions&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;when called returns the requested value&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">fetchedBar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1001</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Spies:_&lt;code&gt;and.throwError&lt;/code&gt;">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Spies:_&lt;code&gt;and.throwError&lt;/code&gt;">&#182;</a>
+        </div>
+        <h3>Spies: <code>and.throwError</code></h3>
+
+<p>By chaining the spy with <code>and.throwError</code>, all calls to the spy will <code>throw</code> the specified value as an error.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy, when configured to throw an error&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">setBar</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">bar</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="nx">spyOn</span><span class="p">(</span><span class="nx">foo</span><span class="p">,</span> <span class="s2">&quot;setBar&quot;</span><span class="p">).</span><span class="nx">and</span><span class="p">.</span><span class="nx">throwError</span><span class="p">(</span><span class="s2">&quot;quux&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;throws the value&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+    <span class="p">}).</span><span class="nx">toThrowError</span><span class="p">(</span><span class="s2">&quot;quux&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Spies:_&lt;code&gt;and.stub&lt;/code&gt;">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Spies:_&lt;code&gt;and.stub&lt;/code&gt;">&#182;</a>
+        </div>
+        <h3>Spies: <code>and.stub</code></h3>
+
+<p>When a calling strategy is used for a spy, the original stubbing behavior can be returned at any time with <code>and.stub</code>.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">setBar</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">bar</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="nx">spyOn</span><span class="p">(</span><span class="nx">foo</span><span class="p">,</span> <span class="s1">&#39;setBar&#39;</span><span class="p">).</span><span class="nx">and</span><span class="p">.</span><span class="nx">callThrough</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can call through and then stub in the same spec&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">.</span><span class="nx">and</span><span class="p">.</span><span class="nx">stub</span><span class="p">();</span>
+    <span class="nx">bar</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Other_tracking_properties">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Other_tracking_properties">&#182;</a>
+        </div>
+        <h3>Other tracking properties</h3>
+
+<p>Every call to a spy is tracked and exposed on the <code>calls</code> property.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">setBar</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">bar</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="nx">spyOn</span><span class="p">(</span><span class="nx">foo</span><span class="p">,</span> <span class="s1">&#39;setBar&#39;</span><span class="p">);</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-31">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-31">&#182;</a>
+        </div>
+        <p><code>.calls.any()</code>: returns <code>false</code> if the spy has not been called at all, and then <code>true</code> once at least one call happens.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks if it was called at all&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">any</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">();</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">any</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-32">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-32">&#182;</a>
+        </div>
+        <p><code>.calls.count()</code>: returns the number of times the spy was called</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks the number of times it was called&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">count</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">();</span>
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">();</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">count</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-33">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-33">&#182;</a>
+        </div>
+        <p><code>.calls.argsFor(index)</code>: returns the arguments passed to call number <code>index</code></p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks the arguments of each call&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">456</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="p">);</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">argsFor</span><span class="p">(</span><span class="mi">0</span><span class="p">)).</span><span class="nx">toEqual</span><span class="p">([</span><span class="mi">123</span><span class="p">]);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">argsFor</span><span class="p">(</span><span class="mi">1</span><span class="p">)).</span><span class="nx">toEqual</span><span class="p">([</span><span class="mi">456</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="p">]);</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-34">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-34">&#182;</a>
+        </div>
+        <p><code>.calls.allArgs()</code>: returns the arguments to all calls</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks the arguments of all calls&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">456</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="p">);</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">allArgs</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">([[</span><span class="mi">123</span><span class="p">],[</span><span class="mi">456</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="p">]]);</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-35">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-35">&#182;</a>
+        </div>
+        <p><code>.calls.all()</code>: returns the context (the <code>this</code>) and arguments passed all calls</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can provide the context and arguments to all calls&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">all</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">([</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">objectContaining</span><span class="p">({</span><span class="nx">object</span><span class="o">:</span> <span class="nx">foo</span><span class="p">,</span> <span class="nx">args</span><span class="o">:</span> <span class="p">[</span><span class="mi">123</span><span class="p">],</span> <span class="nx">returnValue</span><span class="o">:</span> <span class="kc">undefined</span><span class="p">})]);</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-36">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-36">&#182;</a>
+        </div>
+        <p><code>.calls.mostRecent()</code>: returns the context (the <code>this</code>) and arguments for the most recent call</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;has a shortcut to the most recent call&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">456</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="p">);</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">mostRecent</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">objectContaining</span><span class="p">({</span><span class="nx">object</span><span class="o">:</span> <span class="nx">foo</span><span class="p">,</span> <span class="nx">args</span><span class="o">:</span> <span class="p">[</span><span class="mi">456</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="p">],</span> <span class="nx">returnValue</span><span class="o">:</span> <span class="kc">undefined</span><span class="p">}));</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-37">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-37">&#182;</a>
+        </div>
+        <p><code>.calls.first()</code>: returns the context (the <code>this</code>) and arguments for the first call</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;has a shortcut to the first call&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">456</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="p">);</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">first</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">objectContaining</span><span class="p">({</span><span class="nx">object</span><span class="o">:</span> <span class="nx">foo</span><span class="p">,</span> <span class="nx">args</span><span class="o">:</span> <span class="p">[</span><span class="mi">123</span><span class="p">],</span> <span class="nx">returnValue</span><span class="o">:</span> <span class="kc">undefined</span><span class="p">}));</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-38">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-38">&#182;</a>
+        </div>
+        <p>When inspecting the return from <code>all()</code>, <code>mostRecent()</code> and <code>first()</code>, the <code>object</code> property is set to the value of <code>this</code> when the spy was called.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks the context&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">spy</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s1">&#39;spy&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">baz</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">fn</span><span class="o">:</span> <span class="nx">spy</span>
+    <span class="p">};</span>
+    <span class="kd">var</span> <span class="nx">quux</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">fn</span><span class="o">:</span> <span class="nx">spy</span>
+    <span class="p">};</span>
+    <span class="nx">baz</span><span class="p">.</span><span class="nx">fn</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+    <span class="nx">quux</span><span class="p">.</span><span class="nx">fn</span><span class="p">(</span><span class="mi">456</span><span class="p">);</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">spy</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">first</span><span class="p">().</span><span class="nx">object</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">baz</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">spy</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">mostRecent</span><span class="p">().</span><span class="nx">object</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">quux</span><span class="p">);</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-39">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-39">&#182;</a>
+        </div>
+        <p><code>.calls.reset()</code>: clears all tracking for a spy</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can be reset&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">456</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="p">);</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">any</span><span class="p">()).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+    <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">reset</span><span class="p">();</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">any</span><span class="p">()).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Spies:_&lt;code&gt;createSpy&lt;/code&gt;">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Spies:_&lt;code&gt;createSpy&lt;/code&gt;">&#182;</a>
+        </div>
+        <h3>Spies: <code>createSpy</code></h3>
+
+<p>When there is not a function to spy on, <code>jasmine.createSpy</code> can create a &quot;bare&quot; spy. This spy acts as any other spy - tracking calls, arguments, etc. But there is no implementation behind it. Spies are JavaScript objects and can be used as such.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy, when created manually&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">whatAmI</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">whatAmI</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s1">&#39;whatAmI&#39;</span><span class="p">);</span>
+
+    <span class="nx">whatAmI</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;am&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;spy&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is named, which helps in error reporting&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">whatAmI</span><span class="p">.</span><span class="nx">and</span><span class="p">.</span><span class="nx">identity</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;whatAmI&#39;</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks that the spy was called&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">whatAmI</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks its number of calls&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">whatAmI</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">count</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks all the arguments of its calls&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">whatAmI</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;am&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;spy&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;allows access to the most recent call&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">whatAmI</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">mostRecent</span><span class="p">().</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Spies:_&lt;code&gt;createSpyObj&lt;/code&gt;">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Spies:_&lt;code&gt;createSpyObj&lt;/code&gt;">&#182;</a>
+        </div>
+        <h3>Spies: <code>createSpyObj</code></h3>
+
+<p>In order to create a mock with multiple spies, use <code>jasmine.createSpyObj</code> and pass an array of strings. It returns an object that has a property for each string that is a spy.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Multiple spies, when created manually&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">tape</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">tape</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpyObj</span><span class="p">(</span><span class="s1">&#39;tape&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;play&#39;</span><span class="p">,</span> <span class="s1">&#39;pause&#39;</span><span class="p">,</span> <span class="s1">&#39;stop&#39;</span><span class="p">,</span> <span class="s1">&#39;rewind&#39;</span><span class="p">]);</span>
+
+    <span class="nx">tape</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+    <span class="nx">tape</span><span class="p">.</span><span class="nx">pause</span><span class="p">();</span>
+    <span class="nx">tape</span><span class="p">.</span><span class="nx">rewind</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;creates spies for each requested function&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">tape</span><span class="p">.</span><span class="nx">play</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">();</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">tape</span><span class="p">.</span><span class="nx">pause</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">();</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">tape</span><span class="p">.</span><span class="nx">stop</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">();</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">tape</span><span class="p">.</span><span class="nx">rewind</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks that the spies were called&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">tape</span><span class="p">.</span><span class="nx">play</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">tape</span><span class="p">.</span><span class="nx">pause</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">tape</span><span class="p">.</span><span class="nx">rewind</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">tape</span><span class="p">.</span><span class="nx">stop</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks all the arguments of its calls&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">tape</span><span class="p">.</span><span class="nx">rewind</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Matching_Anything_with_&lt;code&gt;jasmine.any&lt;/code&gt;">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Matching_Anything_with_&lt;code&gt;jasmine.any&lt;/code&gt;">&#182;</a>
+        </div>
+        <h2>Matching Anything with <code>jasmine.any</code></h2>
+
+<p><code>jasmine.any</code> takes a constructor or &quot;class&quot; name as an expected value. It returns <code>true</code> if the constructor matches the constructor of the actual value.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;jasmine.any&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;matches any value&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">({}).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">any</span><span class="p">(</span><span class="nb">Object</span><span class="p">));</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="mi">12</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">any</span><span class="p">(</span><span class="nb">Number</span><span class="p">));</span>
+  <span class="p">});</span>
+
+  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;when used with a spy&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is useful for comparing arguments&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+      <span class="nx">foo</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="p">});</span>
+
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">any</span><span class="p">(</span><span class="nb">Number</span><span class="p">),</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">any</span><span class="p">(</span><span class="nb">Function</span><span class="p">));</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Matching_existence_with_&lt;code&gt;jasmine.anything&lt;/code&gt;">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Matching_existence_with_&lt;code&gt;jasmine.anything&lt;/code&gt;">&#182;</a>
+        </div>
+        <h2>Matching existence with <code>jasmine.anything</code></h2>
+
+<p><code>jasmine.anything</code> returns <code>true</code> if the actual value is not <code>null</code> or <code>undefined</code>.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;jasmine.anything&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;matches anything&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">anything</span><span class="p">());</span>
+  <span class="p">});</span>
+
+  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;when used with a spy&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is useful when the argument can be ignored&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+      <span class="nx">foo</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="p">});</span>
+
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">anything</span><span class="p">());</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Partial_Matching_with_&lt;code&gt;jasmine.objectContaining&lt;/code&gt;">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Partial_Matching_with_&lt;code&gt;jasmine.objectContaining&lt;/code&gt;">&#182;</a>
+        </div>
+        <h2>Partial Matching with <code>jasmine.objectContaining</code></h2>
+
+<p><code>jasmine.objectContaining</code> is for those times when an expectation only cares about certain key/value pairs in the actual.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;jasmine.objectContaining&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">foo</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">a</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nx">b</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="nx">bar</span><span class="o">:</span> <span class="s2">&quot;baz&quot;</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;matches objects with the expect key/value pairs&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">objectContaining</span><span class="p">({</span>
+      <span class="nx">bar</span><span class="o">:</span> <span class="s2">&quot;baz&quot;</span>
+    <span class="p">}));</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">objectContaining</span><span class="p">({</span>
+      <span class="nx">c</span><span class="o">:</span> <span class="mi">37</span>
+    <span class="p">}));</span>
+  <span class="p">});</span>
+
+  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;when used with a spy&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is useful for comparing arguments&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">callback</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s1">&#39;callback&#39;</span><span class="p">);</span>
+
+      <span class="nx">callback</span><span class="p">({</span>
+        <span class="nx">bar</span><span class="o">:</span> <span class="s2">&quot;baz&quot;</span>
+      <span class="p">});</span>
+
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">callback</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">objectContaining</span><span class="p">({</span>
+        <span class="nx">bar</span><span class="o">:</span> <span class="s2">&quot;baz&quot;</span>
+      <span class="p">}));</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">callback</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">objectContaining</span><span class="p">({</span>
+        <span class="nx">c</span><span class="o">:</span> <span class="mi">37</span>
+      <span class="p">}));</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Partial_Array_Matching_with_&lt;code&gt;jasmine.arrayContaining&lt;/code&gt;">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Partial_Array_Matching_with_&lt;code&gt;jasmine.arrayContaining&lt;/code&gt;">&#182;</a>
+        </div>
+        <h2>Partial Array Matching with <code>jasmine.arrayContaining</code></h2>
+
+<p><code>jasmine.arrayContaining</code> is for those times when an expectation only cares about some of the values in an array.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;jasmine.arrayContaining&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">foo</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;matches arrays with some of the values&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">arrayContaining</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]));</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">arrayContaining</span><span class="p">([</span><span class="mi">6</span><span class="p">]));</span>
+  <span class="p">});</span>
+
+  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;when used with a spy&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is useful when comparing arguments&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">callback</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s1">&#39;callback&#39;</span><span class="p">);</span>
+
+      <span class="nx">callback</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]);</span>
+
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">callback</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">arrayContaining</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]));</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">callback</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">arrayContaining</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]));</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-String_Matching_with_&lt;code&gt;jasmine.stringMatching&lt;/code&gt;">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-String_Matching_with_&lt;code&gt;jasmine.stringMatching&lt;/code&gt;">&#182;</a>
+        </div>
+        <h2>String Matching with <code>jasmine.stringMatching</code></h2>
+
+<p><code>jasmine.stringMatching</code> is for when you don&#39;t want to match a string in a larger object exactly, or match a portion of a string in a spy expectation.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;jasmine.stringMatching&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;matches as a regexp&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">({</span><span class="nx">foo</span><span class="o">:</span> <span class="s1">&#39;bar&#39;</span><span class="p">}).</span><span class="nx">toEqual</span><span class="p">({</span><span class="nx">foo</span><span class="o">:</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">stringMatching</span><span class="p">(</span><span class="sr">/^bar$/</span><span class="p">)});</span>
+    <span class="nx">expect</span><span class="p">({</span><span class="nx">foo</span><span class="o">:</span> <span class="s1">&#39;foobarbaz&#39;</span><span class="p">}).</span><span class="nx">toEqual</span><span class="p">({</span><span class="nx">foo</span><span class="o">:</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">stringMatching</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">)});</span>
+  <span class="p">});</span>
+
+  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;when used with a spy&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is useful for comparing arguments&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">callback</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s1">&#39;callback&#39;</span><span class="p">);</span>
+
+      <span class="nx">callback</span><span class="p">(</span><span class="s1">&#39;foobarbaz&#39;</span><span class="p">);</span>
+
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">callback</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">stringMatching</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">));</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">callback</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">stringMatching</span><span class="p">(</span><span class="sr">/^bar$/</span><span class="p">));</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Custom_asymmetric_equality_tester">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Custom_asymmetric_equality_tester">&#182;</a>
+        </div>
+        <h2>Custom asymmetric equality tester</h2>
+
+<p>When you need to check that something meets a certain criteria, without being strictly equal, you can also specify a custom asymmetric equality tester simply by providing an object that has an <code>asymmetricMatch</code> function.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;custom asymmetry&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">tester</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">asymmetricMatch</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">actual</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">secondValue</span> <span class="o">=</span> <span class="nx">actual</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">];</span>
+      <span class="k">return</span> <span class="nx">secondValue</span> <span class="o">===</span> <span class="s1">&#39;bar&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;dives in deep&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="s2">&quot;foo,bar,baz,quux&quot;</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">tester</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;when used with a spy&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is useful for comparing arguments&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">callback</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s1">&#39;callback&#39;</span><span class="p">);</span>
+
+      <span class="nx">callback</span><span class="p">(</span><span class="s1">&#39;foo,bar,baz&#39;</span><span class="p">);</span>
+
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">callback</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="nx">tester</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Jasmine_Clock">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Jasmine_Clock">&#182;</a>
+        </div>
+        <h2>Jasmine Clock</h2>
+
+<p><strong>This syntax has changed for Jasmine 2.0.</strong>
+The Jasmine Clock is available for testing time dependent code.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Manually ticking the Jasmine Clock&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">timerCallback</span><span class="p">;</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-49">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-49">&#182;</a>
+        </div>
+        <p>It is installed with a call to <code>jasmine.clock().install</code> in a spec or suite that needs to manipulate time.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">timerCallback</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s2">&quot;timerCallback&quot;</span><span class="p">);</span>
+    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">clock</span><span class="p">().</span><span class="nx">install</span><span class="p">();</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-50">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-50">&#182;</a>
+        </div>
+        <p>Be sure to uninstall the clock after you are done to restore the original functions.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">afterEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">clock</span><span class="p">().</span><span class="nx">uninstall</span><span class="p">();</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Mocking_the_JavaScript_Timeout_Functions">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Mocking_the_JavaScript_Timeout_Functions">&#182;</a>
+        </div>
+        <h3>Mocking the JavaScript Timeout Functions</h3>
+
+<p>You can make <code>setTimeout</code> or <code>setInterval</code> synchronous executing the registered functions only once the clock is ticked forward in time.</p>
+
+<p>To execute registered functions, move time forward via the <code>jasmine.clock().tick</code> function, which takes a number of milliseconds.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;causes a timeout to be called synchronously&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">timerCallback</span><span class="p">();</span>
+    <span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">timerCallback</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+
+    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">clock</span><span class="p">().</span><span class="nx">tick</span><span class="p">(</span><span class="mi">101</span><span class="p">);</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">timerCallback</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;causes an interval to be called synchronously&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">timerCallback</span><span class="p">();</span>
+    <span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">timerCallback</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+
+    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">clock</span><span class="p">().</span><span class="nx">tick</span><span class="p">(</span><span class="mi">101</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">timerCallback</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">count</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">clock</span><span class="p">().</span><span class="nx">tick</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">timerCallback</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">count</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">clock</span><span class="p">().</span><span class="nx">tick</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">timerCallback</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">count</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Mocking_the_Date">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Mocking_the_Date">&#182;</a>
+        </div>
+        <h3>Mocking the Date</h3>
+
+<p>The Jasmine Clock can also be used to mock the current date.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Mocking the Date object&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;mocks the Date object and sets it to a given time&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">baseTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">2013</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">23</span><span class="p">);</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-53">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-53">&#182;</a>
+        </div>
+        <p>If you do not provide a base time to <code>mockDate</code> it will use the current date.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">clock</span><span class="p">().</span><span class="nx">mockDate</span><span class="p">(</span><span class="nx">baseTime</span><span class="p">);</span>
+
+      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">clock</span><span class="p">().</span><span class="nx">tick</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">baseTime</span><span class="p">.</span><span class="nx">getTime</span><span class="p">()</span> <span class="o">+</span> <span class="mi">50</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Asynchronous_Support">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Asynchronous_Support">&#182;</a>
+        </div>
+        <h2>Asynchronous Support</h2>
+
+<p>Jasmine also has support for running specs that require testing asynchronous operations. The functions that you pass to <code>beforeAll</code>, <code>afterAll</code>, <code>beforeEach</code>, <code>afterEach</code>, and <code>it</code> can be asynchronous. There are three different ways to indicate that a function is asynchronous: by taking an optional callback parameter, by returning a promise, or by using the <code>async</code> keyword in environments that support it.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Asynchronous specs&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">value</span><span class="p">;</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Using_callbacks">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Using_callbacks">&#182;</a>
+        </div>
+        <h3>Using callbacks</h3>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Using callbacks&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-56">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-56">&#182;</a>
+        </div>
+        <p>Calls to <code>beforeAll</code>, <code>afterAll</code>, <code>beforeEach</code>, <code>afterEach</code>, and <code>it</code> can take an optional single argument that should be called when the async work is complete.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="nx">done</span><span class="p">();</span>
+      <span class="p">},</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">});</span>
+  </pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-57">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-57">&#182;</a>
+        </div>
+        <p>This spec will not start until the <code>done</code> function is called in the call to <code>beforeEach</code> above. And this spec will not complete until its <code>done</code> is called.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should support async execution of test preparation and expectations&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">value</span><span class="o">++</span><span class="p">;</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBeGreaterThan</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+      <span class="nx">done</span><span class="p">();</span>
+    <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-58">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-58">&#182;</a>
+        </div>
+        <p>The <code>done.fail</code> function fails the spec and indicates that it has completed.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spec using done.fail&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">callBack1</span><span class="p">,</span> <span class="nx">callBack2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">callBack1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">callBack2</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">};</span>
+  
+      <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not call the second callBack&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">foo</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span>
+          <span class="nx">done</span><span class="p">,</span>
+          <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">done</span><span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="s2">&quot;Second callback has been called&quot;</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Using_promises">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Using_promises">&#182;</a>
+        </div>
+        <h3>Using promises</h3>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Using promises&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">browserHasPromises</span><span class="p">())</span> <span class="p">{</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-60">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-60">&#182;</a>
+        </div>
+        <p>Functions passed to <code>beforeAll</code>, <code>afterAll</code>, <code>beforeEach</code>, <code>afterEach</code>, and <code>it</code> can return a promise that should be resolved when the async work is complete. If the promise is rejected, all specs in the enclosing <code>describe</code> will fail.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">soon</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  </pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-61">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-61">&#182;</a>
+        </div>
+        <p>This spec will not start until the promise returned from the call to <code>beforeEach</code> above is settled. And this spec will not complete until the promise that it returns is settled. If the promise is rejected, the spec will fail.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should support async execution of test preparation and expectations&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">soon</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">value</span><span class="o">++</span><span class="p">;</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBeGreaterThan</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Using_async/await">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Using_async/await">&#182;</a>
+        </div>
+        <h3>Using async/await</h3>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Using async/await&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">browserHasAsyncAwaitSupport</span><span class="p">())</span> <span class="p">{</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-63">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-63">&#182;</a>
+        </div>
+        <p>Functions passed to <code>beforeAll</code>, <code>afterAll</code>, <code>beforeEach</code>, <code>afterEach</code>, and <code>it</code> can be declared <code>async</code> in environments that support <code>async</code>/<code>await</code>.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">async</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">await</span> <span class="nx">soon</span><span class="p">();</span>
+      <span class="nx">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">});</span>
+  </pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-64">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-64">&#182;</a>
+        </div>
+        <p>This spec will not start until the promise returned from the call to <code>beforeEach</code> above is settled. And this spec will not complete until the promise that it returns is settled.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should support async execution of test preparation and expectations&quot;</span><span class="p">,</span> <span class="nx">async</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">await</span> <span class="nx">soon</span><span class="p">();</span>
+      <span class="nx">value</span><span class="o">++</span><span class="p">;</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBeGreaterThan</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-65">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-65">&#182;</a>
+        </div>
+        <p>By default jasmine will wait for 5 seconds for an asynchronous spec to finish before causing a timeout failure.
+If the timeout expires before <code>done</code> is called, the current spec will be marked as failed and suite execution will continue as if <code>done</code> was called.</p>
+
+<p>If specific specs should fail faster or need more time this can be adjusted by passing a timeout value to <code>it</code>, etc.</p>
+
+<p>If the entire suite should have a different timeout, <code>jasmine.DEFAULT_TIMEOUT_INTERVAL</code> can be set globally, outside of any given <code>describe</code>.</p>
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre>  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;long asynchronous specs&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">done</span><span class="p">();</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;takes a long time&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">done</span><span class="p">();</span>
+      <span class="p">},</span> <span class="mi">9000</span><span class="p">);</span>
+    <span class="p">},</span> <span class="mi">10000</span><span class="p">);</span>
+
+    <span class="nx">afterEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">done</span><span class="p">();</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="kd">function</span> <span class="nx">soon</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">resolve</span><span class="p">();</span>
+      <span class="p">},</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">browserHasPromises</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">typeof</span> <span class="nx">Promise</span> <span class="o">!==</span> <span class="s1">&#39;undefined&#39;</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">getAsyncCtor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="nb">eval</span><span class="p">(</span><span class="s2">&quot;var func = async function(){};&quot;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span><span class="nx">func</span><span class="p">).</span><span class="nx">constructor</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">browserHasAsyncAwaitSupport</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">getAsyncCtor</span><span class="p">()</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span></pre>
+        </div>
+      </td>
+    </tr>
+    <tr id="section-Downloads">
+      <td class="docs">
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Downloads">&#182;</a>
+        </div>
+        <h2>Downloads</h2>
+
+<ul>
+<li>The Standalone Release (available on the <a href="https://github.com/pivotal/jasmine/releases">releases page</a>) is for simple, browser page, or console projects</li>
+<li>The <a href="http://github.com/pivotal/jasmine-gem">Jasmine Ruby Gem</a> is for Rails, Ruby, or Ruby-friendly development</li>
+<li><a href="http://github.com/pivotal/jasmine/wiki">Other Environments</a> are supported as well</li>
+</ul>
+
+<h2>Support</h2>
+
+<ul>
+<li><a href="http://groups.google.com/group/jasmine-js">Mailing list</a> at Google Groups - a great first stop to ask questions, propose features, or discuss pull requests</li>
+<li><a href="http://github.com/pivotal/jasmine/issues">Report Issues</a> at Github</li>
+<li>The <a href="http://www.pivotaltracker.com/projects/10606">Backlog</a> lives at <a href="http://www.pivotaltracker.com/">Pivotal Tracker</a></li>
+<li>Follow <a href="http://twitter.com/jasminebdd">@JasmineBDD</a> on Twitter</li>
+</ul>
+
+<h2>Thanks</h2>
+
+<p><em>Running documentation inspired by <a href="http://twitter.com/mjackson">@mjackson</a> and the 2012 <a href="http://fluentconf.com">Fluent</a> Summit.</em></p>
+
+      </td>
+      <td class="code">
+        <div class="highlight">
+          <pre></pre>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script>
+  (document.querySelector(".version") || {}).innerHTML = (typeof jasmine !== "undefined") ? jasmine.version : "";
+</script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+---
+layout: tutorial
+redirect_from: "/edge/mocking_ajax.html"
+file_name: mocking_ajax
+order: 
+---
+<table cellspacing="0" cellpadding="0">
+  <tbody>
+  <tr id="section-Testing_ajax_calls">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-Testing_ajax_calls">&#182;</a>
+      </div>
+      <h2>Testing ajax calls</h2>
+
+<p>We have written a plugin called <a href="https://github.com/pivotal/jasmine-ajax">jasmine-ajax</a> that allows ajax calls to be mocked out in tests.
+To use it, you need to download the <code>mock-ajax.js</code> file and add it to your jasmine helpers so it gets loaded before any specs that use it.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;mocking ajax&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-Basic_Usage_Across_An_Entire_Suite">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-Basic_Usage_Across_An_Entire_Suite">&#182;</a>
+      </div>
+      <h3>Basic Usage Across An Entire Suite</h3>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;suite wide usage&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-3">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-3">&#182;</a>
+      </div>
+      <p>When you want to mock out all ajax calls across an entire suite, use <code>install()</code> in a <code>beforeEach</code>.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">install</span><span class="p">();</span>
+    <span class="p">});</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-4">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-4">&#182;</a>
+      </div>
+      <p>Because jasmine-ajax stubs out the global XMLHttpRequest for the page, you&#39;ll want to <code>uninstall()</code> in an <code>afterEach</code> so specs or setup that expect to make a real ajax request can.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>    <span class="nx">afterEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">uninstall</span><span class="p">();</span>
+    <span class="p">});</span>
+
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;specifying response when you need it&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">doneFn</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s2">&quot;success&quot;</span><span class="p">);</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-5">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-5">&#182;</a>
+      </div>
+      <p>Make your requests as normal.
+Jasmine-Ajax mocks out your request at the XMLHttpRequest object, so should be compatible with other libraries that do ajax requests.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>      <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+      <span class="nx">xhr</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">doneFn</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">};</span>
+
+      <span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/some/cool/url&quot;</span><span class="p">);</span>
+      <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-6">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-6">&#182;</a>
+      </div>
+      <p>At this point the ajax request won&#39;t have returned, so any assertions about intermediate states (like spinners) can be run here.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>      <span class="nx">expect</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">requests</span><span class="p">.</span><span class="nx">mostRecent</span><span class="p">().</span><span class="nx">url</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;/some/cool/url&#39;</span><span class="p">);</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">doneFn</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-7">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-7">&#182;</a>
+      </div>
+      <p>Now we tell the request what it&#39;s response should look like</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">requests</span><span class="p">.</span><span class="nx">mostRecent</span><span class="p">().</span><span class="nx">respondWith</span><span class="p">({</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-8">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-8">&#182;</a>
+      </div>
+      <p>HTTP response code</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-9">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-9">&#182;</a>
+      </div>
+      <p>You can also specify the content type of the response</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>        <span class="s2">&quot;contentType&quot;</span><span class="o">:</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">,</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-10">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-10">&#182;</a>
+      </div>
+      <p><code>responseText</code> to return, this should be a string.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>        <span class="s2">&quot;responseText&quot;</span><span class="o">:</span> <span class="s1">&#39;awesome response&#39;</span>
+      <span class="p">});</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-11">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-11">&#182;</a>
+      </div>
+      <p>Now that we&#39;ve told the request to respond, our callback gets called.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>      <span class="nx">expect</span><span class="p">(</span><span class="nx">doneFn</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="s1">&#39;awesome response&#39;</span><span class="p">);</span>
+    <span class="p">});</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-12">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-12">&#182;</a>
+      </div>
+      <p>You can also specify responses ahead of time and they will respond immediately when the request is made.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;allows responses to be setup ahead of time&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">doneFn</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s2">&quot;success&quot;</span><span class="p">);</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-13">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-13">&#182;</a>
+      </div>
+      <p>Call <code>stubRequest</code> with the url you want to return immediately.
+Then <code>andReturn</code> receives the same type of argument as <code>respondWith</code>.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">stubRequest</span><span class="p">(</span><span class="s1">&#39;/another/url&#39;</span><span class="p">).</span><span class="nx">andReturn</span><span class="p">({</span>
+        <span class="s2">&quot;responseText&quot;</span><span class="o">:</span> <span class="s1">&#39;immediate response&#39;</span>
+      <span class="p">});</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-14">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-14">&#182;</a>
+      </div>
+      <p>Make your requests as normal</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>      <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+      <span class="nx">xhr</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">doneFn</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">};</span>
+
+      <span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/another/url&quot;</span><span class="p">);</span>
+      <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">doneFn</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="s1">&#39;immediate response&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-15">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-15">&#182;</a>
+      </div>
+      <p>If you only want to use it in a single spec, you can use <code>withMock</code>.
+<code>withMock</code> takes a function that will be called after ajax has been mocked, and the mock will be uninstalled when the function completes.</p>
+
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;allows use in a single spec&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">doneFn</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s1">&#39;success&#39;</span><span class="p">);</span>
+    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">withMock</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+      <span class="nx">xhr</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">doneFn</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">};</span>
+
+      <span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/some/cool/url&quot;</span><span class="p">);</span>
+      <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">doneFn</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+
+      <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">requests</span><span class="p">.</span><span class="nx">mostRecent</span><span class="p">().</span><span class="nx">respondWith</span><span class="p">({</span>
+        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+        <span class="s2">&quot;responseText&quot;</span><span class="o">:</span> <span class="s1">&#39;in spec response&#39;</span>
+      <span class="p">});</span>
+
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">doneFn</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="s1">&#39;in spec response&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span></pre>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>

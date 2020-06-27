@@ -1,0 +1,194 @@
+.api-docs {
+  a {
+    color: $jasmine-color;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+  }
+
+  h3.subsection-title {
+    margin: 2em 0.5em;
+  }
+
+  h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 2em 0 0.5em;
+  }
+
+  h5 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0.5em 0;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  code,
+  tt,
+  kdb,
+  samp,
+  .name,
+  .signature {
+    font-family: Consolas, Monaco, monospace;
+  }
+
+  .class-description {
+    font-size: 120%;
+    line-height: 1.3;
+    margin: 1em 0;
+  }
+
+  .description {
+    margin: 0.75em 0;
+  }
+
+  .type-signature {
+    color: #aaa;
+  }
+
+  .signature-attributes {
+    font-size: 60%;
+    color: #aaa;
+    font-style: italic;
+    font-weight: lighter;
+  }
+
+  .prettyprint {
+    border: 1px solid #aaa;
+    overflow: auto;
+
+    code {
+      line-height: 1.1;
+      padding: 4px 12px;
+      display: block;
+    }
+  }
+
+  dl {
+    margin-bottom: 40px;
+
+    &:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+  }
+
+  dt {
+    width: 120px;
+    float: left;
+  }
+
+  dd {
+    margin-left: 40px;
+  }
+
+  .details {
+    margin-top: 14px;
+    border-left: 2px solid #ddd;
+
+    dt {
+      padding-left: 10px;
+      padding-top: 6px;
+    }
+
+    ul {
+      margin: 0;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      margin-left: 30px;
+      padding-top: 6px;
+    }
+
+    pre.prettyprint {
+      margin: 0;
+    }
+
+    .object-value {
+      padding-top: 0;
+    }
+  }
+
+  p {
+    margin: 10px 0;
+  }
+
+  thead tr {
+    background-color: #ddd;
+  }
+
+  td,
+  th {
+    border: 1px solid #ddd;
+    margin: 0;
+    text-align: left;
+    vertical-align: baseline;
+    padding: 4px 6px;
+    display: table-cell;
+    background-color: transparent;
+
+    code {
+      font-size: 14px;
+    }
+  }
+
+  th {
+    border-right: 1px solid #aaa;
+
+    &:last-child {
+      border-right-color: #ddd;
+    }
+  }
+
+  nav {
+    width: 15%;
+    line-height: 1.2;
+
+    h2 {
+      display: none;
+    }
+
+    ul {
+      margin-bottom: 10px;
+
+      a {
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        color: black;
+      }
+    }
+  }
+
+  .docs {
+    width: 85%;
+  }
+
+  footer {
+    width: 100%;
+    margin-top: 50px;
+    font-size: 12px;
+    font-style: italic;
+  }
+}
