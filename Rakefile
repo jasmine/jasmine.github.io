@@ -55,7 +55,7 @@ file '.current_version' do
 end
 
 def download_current_file(file_name)
-  `curl -L 'https://raw.github.com/jasmine/jasmine/master/lib/jasmine-core/#{file_name}' > .current_version/#{file_name}`
+  `curl -L 'https://raw.github.com/jasmine/jasmine/main/lib/jasmine-core/#{file_name}' > .current_version/#{file_name}`
 end
 
 desc "update jasmine library for edge docs"
