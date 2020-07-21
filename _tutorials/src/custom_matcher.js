@@ -14,11 +14,23 @@ var customMatchers = {
   /**
    * ## Matcher Factories
    *
-   * Custom matcher factories are passed two parameters: `util`, which has a set of utility functions for matchers to use (see: [`matchersUtil.js`][mu.js] for the current list) and `customEqualityTesters` which needs to be passed in if `util.equals` is ever called. These parameters are available for use when the matcher is called.
+   * Custom matcher factories are passed a `matchersUtil` parameter, which has a set
+   * of utility functions for matchers to use to perform tasks like determining
+   * whether two objects are equal
+   * (see: [`MatchersUtil`][MatchersUtil] for reference documentation). By using
+   * `MatchersUtil` where appropriate, custom matchers can work with
+   * [custom equality testers][CustomEqualityTesters] and
+   * [custom object formatters][CustomObjectFormatters] without any extra effort.
    *
-   * [mu.js]: https://github.com/pivotal/jasmine/blob/master/src/core/matchers/matchersUtil.js
+   * A second `customEqualityTesters` parameter is passed for compatibility with
+   * Jasmine 3.5 and earlier. Matchers written for Jasmine 3.6 and later should
+   * ignore it. It will no longer be provided in Jasmine 4.
+   *
+   * [MatchersUtil]: /api/edge/MatchersUtil.html
+   * [CustomEqualityTesters]: /tutorials/custom_equality
+   * [CustomObjectFormatters]: /tutorials/custom_object_formatters
    */
-  toBeGoofy: function(util, customEqualityTesters) {
+  toBeGoofy: function(matchersUtil) {
     /**
      * The factory method should return an object with a `compare` function that will be called to check the expectation.
      */
@@ -47,7 +59,7 @@ var customMatchers = {
         /**
          * `toBeGoofy` tests for equality of the actual's `hyuk` property to see if it matches the expectation.
          */
-        result.pass = util.equals(actual.hyuk, "gawrsh" + expected, customEqualityTesters);
+        result.pass = matchersUtil.equals(actual.hyuk, "gawrsh" + expected);
 
         /**
          * ### Failure Messages

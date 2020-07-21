@@ -1,12 +1,8 @@
 ---
 layout: article
 redirect_from: "/edge/custom_object_formatter.html"
-title: Custom Equality
+title: Custom Object Formatters
 ---
-
-<p class="warning">
-This page describes a feature that is available in master but has not yet been released as of 3.5.0.
-</p>
 
 # Custom Object Formatters
 

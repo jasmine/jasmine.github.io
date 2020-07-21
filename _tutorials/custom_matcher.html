@@ -17,7 +17,7 @@ order:
     </td>
     <td class="code">
       <div class="highlight">
-        <pre></pre>
+        <pre><span></span></pre>
       </div>
     </td>
   </tr>
@@ -41,11 +41,21 @@ order:
       </div>
       <h2>Matcher Factories</h2>
 
-<p>Custom matcher factories are passed two parameters: <code>util</code>, which has a set of utility functions for matchers to use (see: <a href="https://github.com/pivotal/jasmine/blob/master/src/core/matchers/matchersUtil.js"><code>matchersUtil.js</code></a> for the current list) and <code>customEqualityTesters</code> which needs to be passed in if <code>util.equals</code> is ever called. These parameters are available for use when the matcher is called.</p>
+<p>Custom matcher factories are passed a <code>matchersUtil</code> parameter, which has a set
+of utility functions for matchers to use to perform tasks like determining
+whether two objects are equal
+(see: <a href="/api/edge/MatchersUtil.html"><code>MatchersUtil</code></a> for reference documentation). By using
+<code>MatchersUtil</code> where appropriate, custom matchers can work with
+<a href="/tutorials/custom_equality">custom equality testers</a> and
+<a href="/tutorials/custom_object_formatters">custom object formatters</a> without any extra effort.</p>
+
+<p>A second <code>customEqualityTesters</code> parameter is passed for compatibility with
+Jasmine 3.5 and earlier. Matchers written for Jasmine 3.6 and later should
+ignore it. It will no longer be provided in Jasmine 4.</p>
     </td>
     <td class="code">
       <div class="highlight">
-        <pre>  <span class="nx">toBeGoofy</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">util</span><span class="p">,</span> <span class="nx">customEqualityTesters</span><span class="p">)</span> <span class="p">{</span></pre>
+        <pre>  <span class="nx">toBeGoofy</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">matchersUtil</span><span class="p">)</span> <span class="p">{</span></pre>
       </div>
     </td>
   </tr>
@@ -116,7 +126,7 @@ order:
     </td>
     <td class="code">
       <div class="highlight">
-        <pre>        <span class="nx">result</span><span class="p">.</span><span class="nx">pass</span> <span class="o">=</span> <span class="nx">util</span><span class="p">.</span><span class="nx">equals</span><span class="p">(</span><span class="nx">actual</span><span class="p">.</span><span class="nx">hyuk</span><span class="p">,</span> <span class="s2">&quot;gawrsh&quot;</span> <span class="o">+</span> <span class="nx">expected</span><span class="p">,</span> <span class="nx">customEqualityTesters</span><span class="p">);</span></pre>
+        <pre>        <span class="nx">result</span><span class="p">.</span><span class="nx">pass</span> <span class="o">=</span> <span class="nx">matchersUtil</span><span class="p">.</span><span class="nx">equals</span><span class="p">(</span><span class="nx">actual</span><span class="p">.</span><span class="nx">hyuk</span><span class="p">,</span> <span class="s2">&quot;gawrsh&quot;</span> <span class="o">+</span> <span class="nx">expected</span><span class="p">);</span></pre>
       </div>
     </td>
   </tr>
