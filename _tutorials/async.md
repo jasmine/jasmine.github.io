@@ -68,7 +68,7 @@ beforeEach(function(done) {
 
 
 it('does a thing', function(done) {
-  someAsyncFunction(result) {
+  someAsyncFunction(function(result) {
     expect(result).toEqual(someExpectedValue);
     done();
   });
