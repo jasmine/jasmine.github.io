@@ -6,12 +6,12 @@ title: Testing a React app with Jasmine npm
 # Testing a React app with Jasmine npm
 
 The [Jasmine NPM](/setup/nodejs.html) package was originally designed just to 
-run tests against your Node.js code, but with a couple of other packages, you 
-can get it to run your react specs as well. This tutorial assumes you're using 
+run specs against your Node.js code, but with a couple of other packages, you 
+can get it to run your React specs as well. This tutorial assumes you're using 
 [babel](https://www.npmjs.com/package/babel) to compile your code and 
 [enzyme](https://www.npmjs.com/package/enzyme) to test it. We'll also be using 
 [jsdom](https://www.npmjs.com/package/jsdom) to provide a fake HTML DOM for the 
-tests.
+specs.
 
 Install these packages if you haven't already:
 
@@ -104,7 +104,7 @@ Or, if using Typescript:
 ```
 
 It's common for React code to import CSS or image files. Normally those imports
-are resolved at build time but they'll produce errors when the tests are run in 
+are resolved at build time but they'll produce errors when the specs are run in 
 Node. To fix that, we add one more package:
 
 ```shell
