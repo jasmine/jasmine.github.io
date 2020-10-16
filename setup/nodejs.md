@@ -93,6 +93,15 @@ jasmine spec/appSpec.js
 jasmine "**/model/**/critical/**/*Spec.js"
 ```
 
+## Using ES modules
+
+If the name of a spec file or helper file ends in `.mjs`, Jasmine will load it
+as an [ES module](https://nodejs.org/docs/latest-v13.x/api/esm.html) rather 
+than a CommonJS module. This allows the spec file or helper to import other 
+ES modules. No extra configuration is required. Note that Jasmine does not 
+currently take advantage of the `type` field in `package.json`, so spec and 
+helper files ending in `.js` will be loaded as CommonJS modules even if 
+`"type": "module"` is set in `package.json`.
 
 ### CLI Options
 
