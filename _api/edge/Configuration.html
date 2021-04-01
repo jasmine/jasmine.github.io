@@ -6,7 +6,7 @@ prettify: true
 
 <div class="main-content api-docs">
   <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="async-matchers.html">async-matchers</a></li><li><a href="jasmine.html">jasmine</a></li><li><a href="matchers.html">matchers</a></li><li><a href="Spy_calls.html">Spy#calls</a></li></ul><h3>Classes</h3><ul><li><a href="Clock.html">Clock</a></li><li><a href="Env.html">Env</a></li><li><a href="jsApiReporter.html">jsApiReporter</a></li><li><a href="MatchersUtil.html">MatchersUtil</a></li><li><a href="Spy.html">Spy</a></li></ul><h3>Interfaces</h3><ul><li><a href="Configuration.html">Configuration</a></li><li><a href="Reporter.html">Reporter</a></li><li><a href="SpyStrategy.html">SpyStrategy</a></li></ul><h3>Global</h3><ul><li><a href="global.html#afterAll">afterAll</a></li><li><a href="global.html#afterEach">afterEach</a></li><li><a href="global.html#beforeAll">beforeAll</a></li><li><a href="global.html#beforeEach">beforeEach</a></li><li><a href="global.html#describe">describe</a></li><li><a href="global.html#expect">expect</a></li><li><a href="global.html#expectAsync">expectAsync</a></li><li><a href="global.html#fail">fail</a></li><li><a href="global.html#fdescribe">fdescribe</a></li><li><a href="global.html#fit">fit</a></li><li><a href="global.html#it">it</a></li><li><a href="global.html#pending">pending</a></li><li><a href="global.html#setSpecProperty">setSpecProperty</a></li><li><a href="global.html#setSuiteProperty">setSuiteProperty</a></li><li><a href="global.html#spyOn">spyOn</a></li><li><a href="global.html#spyOnAllFunctions">spyOnAllFunctions</a></li><li><a href="global.html#spyOnProperty">spyOnProperty</a></li><li><a href="global.html#xdescribe">xdescribe</a></li><li><a href="global.html#xit">xit</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="async-matchers.html">async-matchers</a></li><li><a href="jasmine.html">jasmine</a></li><li><a href="matchers.html">matchers</a></li><li><a href="Spy_calls.html">Spy#calls</a></li></ul><h3>Classes</h3><ul><li><a href="Clock.html">Clock</a></li><li><a href="Env.html">Env</a></li><li><a href="jsApiReporter.html">jsApiReporter</a></li><li><a href="MatchersUtil.html">MatchersUtil</a></li><li><a href="Spy.html">Spy</a></li></ul><h3>Interfaces</h3><ul><li><a href="Configuration.html">Configuration</a></li><li><a href="Reporter.html">Reporter</a></li><li><a href="Spec.html">Spec</a></li><li><a href="SpyStrategy.html">SpyStrategy</a></li></ul><h3>Global</h3><ul><li><a href="global.html#afterAll">afterAll</a></li><li><a href="global.html#afterEach">afterEach</a></li><li><a href="global.html#beforeAll">beforeAll</a></li><li><a href="global.html#beforeEach">beforeEach</a></li><li><a href="global.html#describe">describe</a></li><li><a href="global.html#expect">expect</a></li><li><a href="global.html#expectAsync">expectAsync</a></li><li><a href="global.html#fail">fail</a></li><li><a href="global.html#fdescribe">fdescribe</a></li><li><a href="global.html#fit">fit</a></li><li><a href="global.html#it">it</a></li><li><a href="global.html#pending">pending</a></li><li><a href="global.html#setSpecProperty">setSpecProperty</a></li><li><a href="global.html#setSuiteProperty">setSuiteProperty</a></li><li><a href="global.html#spyOn">spyOn</a></li><li><a href="global.html#spyOnAllFunctions">spyOnAllFunctions</a></li><li><a href="global.html#spyOnProperty">spyOnProperty</a></li><li><a href="global.html#xdescribe">xdescribe</a></li><li><a href="global.html#xit">xit</a></li></ul>
   </nav>
 
   <div class="docs">
@@ -552,7 +552,7 @@ library is available (if any).</p>
 
         
             
-<h4 class="name" id="seed"><span class="type-signature"></span>seed<span class="type-signature"> :function</span></h4>
+<h4 class="name" id="seed"><span class="type-signature"></span>seed<span class="type-signature"> :number|string</span></h4>
 
 
 
@@ -568,7 +568,10 @@ Null causes the seed to be determined randomly at the start of execution.</p>
     <ul>
         <li>
             
-<span class="param-type">function</span>
+<span class="param-type">number</span>
+|
+
+<span class="param-type">string</span>
 
 
         </li>
@@ -628,7 +631,7 @@ Null causes the seed to be determined randomly at the start of execution.</p>
 
         
             
-<h4 class="name" id="specFilter"><span class="type-signature"></span>specFilter<span class="type-signature"> :function</span></h4>
+<h4 class="name" id="specFilter"><span class="type-signature"></span>specFilter<span class="type-signature"> :<a href="global.html#SpecFilter">SpecFilter</a></span></h4>
 
 
 
@@ -643,7 +646,7 @@ Null causes the seed to be determined randomly at the start of execution.</p>
     <ul>
         <li>
             
-<span class="param-type">function</span>
+<span class="param-type"><a href="global.html#SpecFilter">SpecFilter</a></span>
 
 
         </li>
@@ -683,7 +686,7 @@ Null causes the seed to be determined randomly at the start of execution.</p>
     
     <dt class="tag-default">Default Value:</dt>
     <dd class="tag-default"><ul class="dummy">
-            <li>true</li>
+            <li>A function that always returns true.</li>
         </ul></dd>
     
 
@@ -719,6 +722,6 @@ Null causes the seed to be determined randomly at the start of execution.</p>
   </div>
 
   <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Wed Mar 17 2021 19:19:14 GMT-0700 (Pacific Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Wed Mar 31 2021 18:31:33 GMT-0700 (Pacific Daylight Time)
   </footer>
 </div>
