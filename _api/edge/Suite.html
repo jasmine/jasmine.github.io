@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Interface: Spec"
+title: "Interface: Suite"
 prettify: true
 ---
 
@@ -10,7 +10,7 @@ prettify: true
   </nav>
 
   <div class="docs">
-    <h1 class="page-title">Interface: Spec</h1>
+    <h1 class="page-title">Interface: Suite</h1>
 
     
 
@@ -21,7 +21,7 @@ prettify: true
 
 <header>
     
-        <h2>Spec</h2>
+        <h2>Suite</h2>
         
     
 </header>
@@ -68,7 +68,7 @@ prettify: true
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
         <ul>
-            <li><a href="Configuration.html#specFilter">Configuration#specFilter</a></li>
+            <li><a href="Env.html#topSuite">Env#topSuite</a></li>
         </ul>
     </dd>
     
@@ -98,13 +98,80 @@ prettify: true
 
         
             
+<h4 class="name" id="children"><span class="type-signature"></span>children<span class="type-signature"> :Array.&lt;(<a href="Spec.html">Spec</a>|<a href="Suite.html">Suite</a>)></span></h4>
+
+
+
+
+<div class="description">
+    <p>The suite's children.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;(<a href="Spec.html">Spec</a>|<a href="Suite.html">Suite</a>)></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
 <h4 class="name" id="description"><span class="type-signature">(readonly) </span>description<span class="type-signature"> :string</span></h4>
 
 
 
 
 <div class="description">
-    <p>The description passed to the <a href="global.html#it"><code>it</code></a> that created this spec.</p>
+    <p>The description passed to the <a href="global.html#describe"><code>describe</code></a> that created this suite.</p>
 </div>
 
 
@@ -114,6 +181,73 @@ prettify: true
         <li>
             
 <span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="parentSuite"><span class="type-signature">(readonly) </span>parentSuite<span class="type-signature"> :<a href="Suite.html">Suite</a></span></h4>
+
+
+
+
+<div class="description">
+    <p>The parent of this suite, or null if this is the top suite.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="Suite.html">Suite</a></span>
 
 
         </li>
@@ -183,7 +317,7 @@ prettify: true
 
 
 <div class="description">
-    <p>The full description including all ancestors of this spec.</p>
+    <p>The full description including all ancestors of this suite.</p>
 </div>
 
 
