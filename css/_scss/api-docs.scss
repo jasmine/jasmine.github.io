@@ -163,7 +163,7 @@
   }
 
   nav {
-    width: 15%;
+    margin-right: 2em;
     line-height: 1.2;
 
     h2 {
@@ -182,7 +182,7 @@
   }
 
   .docs {
-    width: 85%;
+    flex: 1;
   }
 
   footer {
