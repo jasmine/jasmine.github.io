@@ -6,7 +6,7 @@ redirect_from: /edge/node.html
 
 # Using Jasmine with node
 
-The Jasmine node package contains helper code for developing and running Jasmine tests for node-based projects. Jasmine 3.x supports Node versions 10, 12, and 14. (Odd-numbered Node versions aren't supported, but will probably work.)
+The Jasmine node package contains helper code for developing and running Jasmine tests for node-based projects. Jasmine 3.x supports Node versions 10, 12, 14, and 16. (Odd-numbered Node versions aren't supported, but will probably work.)
 
 ## Install
 
