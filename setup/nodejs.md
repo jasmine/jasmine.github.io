@@ -74,8 +74,14 @@ Helpers are executed before specs. For an example of some helpers see the [react
     "helpers/**/*.js"
   ],
 
+  // Whether to fail a spec that ran no expectations
+  "failSpecWithNoExpectations": false,
+
   // Stop execution of a spec after the first expectation failure in it
   "stopSpecOnExpectationFailure": false,
+
+  // Stop execution of the suite after the first spec failure  
+  "stopOnSpecFailure": false,
 
   // Run specs in semi-random order
   "random": false
@@ -169,7 +175,7 @@ var Jasmine = require('jasmine');
 var jasmine = new Jasmine();
 ```
 
-### Load configuration from a file or from an object.
+### Load configuration from a file or from an object
 
 ```javascript
 jasmine.loadConfigFile('spec/support/jasmine.json');
