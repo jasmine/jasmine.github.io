@@ -1,12 +1,15 @@
 ---
-title: Custom argument matchers
+title: Custom asymmetric equality testers
 layout: article
+redirect_from: /tutorials/custom_argument_matchers
 ---
-# Custom argument matchers
+# Custom asymmetric equality testers
 
-Jasmine provides a number of "argument matchers" (_asymmetric matchers_) out of the box. Asymmetric
-matchers are matchers like `jasmine.any()` and `jasmine.objectContaining()`.
-When it's helpful, you can create your own custom matchers to encapsulate testing logic.
+Jasmine provides a number of asymmetric equality testers out of the box, such
+as [`jasmine.any()`](/api/edge/jasmine.html#.any) and
+[`jasmine.objectContaining()`](/api/edge/jasmine.html#.objectContaining).
+When it's helpful, you can create your own custom asymmetric equality testers
+to encapsulate testing logic.
 
 To start, create a function that returns an object. The object must provide an `asymmetricMatch`
 function.
@@ -22,8 +25,8 @@ function multipleOf(number) {
     },
 
     /*
-     * The jasmineToString method is used in the Jasmine pretty printer, and will
-     * be seen by the user in the message when a test fails.
+     * The jasmineToString method is used in the Jasmine pretty printer. Its
+     * return value will be seen by the user in the message when a test fails.
      */
     jasmineToString: function() {
       return '<multipleOf: ' + number + '>';
@@ -32,7 +35,8 @@ function multipleOf(number) {
 }
 ```
 
-After defining your custom asymmetric matcher, you can use it in your tests.
+After defining your custom asymmetric equality tester, you can use it in your
+tests.
 
 ```js
 spyOn(Buffer, 'alloc').and.callThrough();
@@ -42,7 +46,7 @@ Buffer.alloc(2048);
 expect(Buffer.alloc).toHaveBeenCalledWith(multipleOf(1024));
 ```
 
-Just like Jasmine's built-in asymmetric matchers, your custom asymmetric matcher can be nested
+Just like Jasmine's built-in asymmetric equality testers, yours can be nested
 inside an array or object and will work correctly.
 
 ```js
@@ -53,7 +57,7 @@ request.post({ name: 'Jan Jansen', age: 40 });
 expect(request.post).toHaveBeenCalledWith({ name: jasmine.any(String), age: multipleOf(10) });
 ```
 
-Just like Jasmine's built-in asymmetric matchers, your custom asymmetric matcher can be used
+Just like Jasmine's built-in asymmetric equality testers, yours can be used
 anywhere Jasmine does an equality check.
 
 ```js
