@@ -4,6 +4,12 @@ title: Python Setup
 redirect_from: /edge/python.html
 ---
 
+<div class="warning">
+    Jasmine for Python is deprecated. We recommend using the
+    <a href="nodejs.html">jasmine</a> or
+    <a href="browser.html">jasmine-browser-runner</a> NPM packages instead.
+</div>
+
 # Using Jasmine with Python
 The Jasmine Python package contains helper code for developing Jasmine projects for Python-based web projects (Django, Flask, etc.)
 or for JavaScript projects where Python is a welcome partner. It serves up a project's Jasmine suite in a browser so you can focus on
