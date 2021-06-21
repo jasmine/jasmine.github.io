@@ -26,6 +26,25 @@ title: Getting Started
   </div>
 
   <div class="option">
+    <h2>Jasmine for Browsers</h2>
+    <p>Add Jasmine to your package.json</p>
+    <pre>npm install --save-dev jasmine-browser-runner</pre>
+    <p>Initialize Jasmine in your project</p>
+    <pre>npx jasmine-browser init</pre>
+    <p>Set jasmine as your test script in your package.json</p>
+    <pre>"scripts": { "test": "jasmine-browser-runner runSpecs" }</pre>
+    <p>Run your tests</p>
+    <pre>npm test</pre>
+    <p>
+      <a class="button" href="{{ site.github.url }}/setup/browser.html">More Information</a>
+      <a class="github" href="https://github.com/jasmine/jasmine-browser">
+        <img src="{{ site.github.url }}/images/github-logo.svg" width = '78' height = '32'/>
+        <img src="{{ site.github.url }}/images/github-mark.svg" width = '32' height = '32'/>
+      </a>
+    </p>
+  </div>
+
+  <div class="option">
     <h2>Jasmine Standalone</h2>
     <p>
       The standalone distribution provides a simple way to run your specs in a
@@ -78,11 +97,6 @@ title: Getting Started
         <img src="{{ site.github.url }}/images/github-mark.svg" width = '32' height = '32'/>
       </a>
     </p>
-  </div>
-
-  <div class="option">
-    <h2>Jasmine Browser Runner</h2>
-    <p><a href="https://github.com/jasmine/jasmine-browser">View README</a></p>
   </div>
 
   <div class="option">
