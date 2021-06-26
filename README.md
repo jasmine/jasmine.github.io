@@ -47,6 +47,13 @@ Now preview your changes locally:
 
 - `bundle exec jekyll serve --baseurl ''`
 
+## Archiving a version of the jasmine-core API docs
+
+To archive the API docs for an older version of jasmine-core, add `archived: true`
+to the YAML at the top of `_api/<version>/global.html`. This will remove the 
+version from the listing on the docs home page. It will still be published at the
+same URLs and can still be reached through the All versions link.
+
 ## Submit your changes
 
 - Commit your changes (`git commit -am 'Add some docs'`)

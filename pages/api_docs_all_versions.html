@@ -1,0 +1,30 @@
+---
+layout: default
+title: "API Docs: All Versions"
+---
+
+<div class="main-content">
+  <h2>API Docs: All Versions</h2>
+
+  <div>
+    <h3>jasmine-core</h3>
+    <ol class="api-docs-versions">
+      {% for version in site.api reversed %}
+      {% if version.url contains "/global" %}
+      <li><a href="{{ site.github.url }}{{ version.url }}">{{ version.url | remove_first: "/api/" | remove: "/global" | capitalize }}</a></li>
+      {% endif %}
+      {% endfor %}
+      <li><a href="api_docs_all_versions.html">All versions</a></li>
+    </ol>
+  </div>
+  <div>
+    <h3>jasmine-browser-runner</h3>
+    <ol class="api-docs-versions">
+      {% for version in site.browser-runner-api reversed %}
+      {% if version.title == "Home" %}
+      <li><a href="{{ site.github.url }}{{ version.url }}">{{ version.url | remove_first: "/api/browser-runner/" | remove: "/index" | capitalize }}</a></li>
+      {% endif %}
+      {% endfor %}
+    </ol>
+  </div>
+</div>
