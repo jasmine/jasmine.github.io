@@ -1,6 +1,6 @@
 {
   "source": {
-    "include": [ ".current_version/" ],
+    "include": [ ".current_version" ],
     "includePattern": ".+\\.js$"
   },
   "tags": {

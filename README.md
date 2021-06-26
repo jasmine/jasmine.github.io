@@ -35,7 +35,8 @@ changes you make to them will be lost the next time the documentation is generat
 
 First, update the jasmine API docs:
 
-- Update local copy of jasmine using `bundle exec rake update_edge_jasmine`
+- Update local copies of jasmine using `bundle exec rake update_edge_jasmine`
+  and `bundle exec rake update_edge_jasmine_browser`
 - Run `npm run jsdoc` to update the API documentation
 
 Then, regenerate the tutorials:

@@ -17,6 +17,9 @@ collections:
   api:
     output: true
     permalink: api/:path
+  browser-runner-api:
+    output: true
+    permalink: api/browser-runner/:path
   tutorials:
     output: true
     permalink: tutorials/:path

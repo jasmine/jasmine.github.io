@@ -9,4 +9,5 @@ node_modules
 _api/edge/fonts/
 *.sw?
 .current_version
+.current_browser_runner_version
 .jekyll-cache

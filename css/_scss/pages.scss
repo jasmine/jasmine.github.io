@@ -137,11 +137,15 @@ h2 {
   margin-bottom: 20px;
 }
 
-h3 {
+h3, .api-docs-versions li {
   font-size: 20px;
   width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.api-docs-versions {
+  margin-left: 15px;
 }
 
 h4 {

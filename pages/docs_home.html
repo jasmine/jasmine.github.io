@@ -6,11 +6,22 @@ title: Jasmine documentation home
 <div class="main-content">
   <div>
     <h2>API Docs</h2>
+    <h3>jasmine-core</h3>
+    <ol class="api-docs-versions">
     {% for version in site.api reversed %}
     {% if version.url contains "/global" %}
-    <h3><a href="{{ site.github.url }}{{ version.url }}">{{ version.url | remove_first: "/api/" | remove: "/global" | capitalize }}</a></h3>
+    <li><a href="{{ site.github.url }}{{ version.url }}">{{ version.url | remove_first: "/api/" | remove: "/global" | capitalize }}</a></li>
     {% endif %}
     {% endfor %}
+    </ol>
+    <h3>jasmine-browser-runner</h3>
+    <ol class="api-docs-versions">
+    {% for version in site.browser-runner-api reversed %}
+    {% if version.title == "Home" %}
+    <li><a href="{{ site.github.url }}{{ version.url }}">{{ version.url | | remove_first: "/api/browser-runner/" | remove: "/index" | capitalize }}</a></li>
+    {% endif %}
+    {% endfor %}
+    </ol>
   </div>
   <div>
     <h2>Getting Started</h2>

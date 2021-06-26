@@ -1,0 +1,1095 @@
+---
+layout: default
+title: "Interface: RunSpecsOptions"
+prettify: true
+---
+
+<div class="main-content api-docs">
+  <nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-jasmine-browser-runner.html">jasmine-browser-runner</a></li></ul><h3>Classes</h3><ul><li><a href="Server.html">Server</a></li></ul><h3>Interfaces</h3><ul><li><a href="BrowserInfo.html">BrowserInfo</a></li><li><a href="RunSpecsOptions.html">RunSpecsOptions</a></li><li><a href="SauceConfig.html">SauceConfig</a></li><li><a href="ServerCtorOptions.html">ServerCtorOptions</a></li><li><a href="ServerStartOptions.html">ServerStartOptions</a></li></ul>
+  </nav>
+
+  <div class="docs">
+    <h1 class="page-title">Interface: RunSpecsOptions</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>RunSpecsOptions</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="ServerCtorOptions.html">ServerCtorOptions</a></li>
+    
+        <li>RunnerRunOptions</li>
+    </ul>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="browser"><span class="type-signature"></span>browser<span class="type-signature"> :string|<a href="BrowserInfo.html">BrowserInfo</a>|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>The browser to run the specs in.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+|
+
+<span class="param-type"><a href="BrowserInfo.html">BrowserInfo</a></span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="clearReporters"><span class="type-signature"></span>clearReporters<span class="type-signature"> :boolean|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>Whether to remove Jasmine's default reporters before executing the suite.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#clearReporters">ServerCtorOptions#clearReporters</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="color"><span class="type-signature"></span>color<span class="type-signature"> :boolean|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>Whether to use color in the console output. Defaults to true.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="color"><span class="type-signature"></span>color<span class="type-signature"> :boolean|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>The name of a module to get a reporter from. The module will be loaded
+using <code>require</code> and its default export must be a constructor that creates a
+<a href="https://jasmine.github.io/api/edge/Reporter.html">reporter</a>.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="cssFiles"><span class="type-signature"></span>cssFiles<span class="type-signature"> :Array.&lt;string>|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>An array of CSS file paths or <a href="https://github.com/isaacs/node-glob#glob-primer">globs</a>
+that match CSS files. Each path or glob will be evaluated relative to
+<a href="ServerCtorOptions.html#srcDir"><code>ServerCtorOptions#srcDir</code></a>.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;string></span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#cssFiles">ServerCtorOptions#cssFiles</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="helpers"><span class="type-signature"></span>helpers<span class="type-signature"> :Array.&lt;string>|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>An array of helper file paths or <a href="https://github.com/isaacs/node-glob#glob-primer">globs</a>
+that match helper files. Each path or glob will be evaluated relative to
+<a href="ServerCtorOptions.html#specDir"><code>ServerCtorOptions#specDir</code></a>. Helpers are loaded before specs.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;string></span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#helpers">ServerCtorOptions#helpers</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="jasmineCore"><span class="type-signature"></span>jasmineCore<span class="type-signature"> :any|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>The instance of jasmine-core to use. Use this if you need to load
+jasmine-core in a nonstandard way. Most of the time it should be omitted.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">any</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#jasmineCore">ServerCtorOptions#jasmineCore</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="port"><span class="type-signature"></span>port<span class="type-signature"> :number|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>The port to listen on.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#port">ServerCtorOptions#port</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="projectBaseDir"><span class="type-signature"></span>projectBaseDir<span class="type-signature"> :string|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>The root directory of the project.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#projectBaseDir">ServerCtorOptions#projectBaseDir</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="specDir"><span class="type-signature"></span>specDir<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>The directory that spec files are contained in, relative to
+<a href="ServerCtorOptions.html#projectBaseDir"><code>ServerCtorOptions#projectBaseDir</code></a>.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#specDir">ServerCtorOptions#specDir</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="specFiles"><span class="type-signature"></span>specFiles<span class="type-signature"> :Array.&lt;string>|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>An array of spec file paths or <a href="https://github.com/isaacs/node-glob#glob-primer">globs</a>
+that match spec files. Each path or glob will be evaluated relative to
+<a href="ServerCtorOptions.html#specDir"><code>ServerCtorOptions#specDir</code></a>.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;string></span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#specFiles">ServerCtorOptions#specFiles</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="srcDir"><span class="type-signature"></span>srcDir<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>The directory that source files are contained in, relative to
+<a href="ServerCtorOptions.html#projectBaseDir"><code>ServerCtorOptions#projectBaseDir</code></a>.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#srcDir">ServerCtorOptions#srcDir</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="srcFiles"><span class="type-signature"></span>srcFiles<span class="type-signature"> :Array.&lt;string>|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>An array of sourec file paths or <a href="https://github.com/isaacs/node-glob#glob-primer">globs</a>
+that match source files. Each path or glob will be evaluated relative to
+<a href="ServerCtorOptions.html#srcDir"><code>ServerCtorOptions#srcDir</code></a>.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;string></span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#srcFiles">ServerCtorOptions#srcFiles</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+  </div>
+
+  <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Sat Jun 26 2021 16:25:59 GMT-0700 (Pacific Daylight Time)
+  </footer>
+</div>
