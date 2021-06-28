@@ -58,6 +58,10 @@ file '.current_browser_runner_version/lib' do
   FileUtils.mkdir_p('.current_browser_runner_version/lib')
 end
 
+file '.current_npm_version/lib' do
+  FileUtils.mkdir_p('.current_npm_version/lib')
+end
+
 def download_core_file(file_name)
   `curl -L 'https://raw.github.com/jasmine/jasmine/main/lib/jasmine-core/#{file_name}' > .current_version/#{file_name}`
 end
@@ -73,13 +77,21 @@ def download_browser_runner_file(file_name)
   `curl -L 'https://raw.github.com/jasmine/jasmine-browser/main/#{file_name}' > .current_browser_runner_version/#{file_name}`
 end
 
-
 desc "update jasmine-browser-runner for edge docs"
 task :update_edge_jasmine_browser => ['.current_browser_runner_version/lib'] do
   download_browser_runner_file('index.js')
   download_browser_runner_file('lib/server.js')
   download_browser_runner_file('lib/runner.js')
   download_browser_runner_file('lib/types.js')
+end
+
+def download_npm_file(file_name)
+  `curl -L 'https://raw.github.com/jasmine/jasmine-npm/main/lib/#{file_name}' > .current_npm_version/#{file_name}`
+end
+
+desc "update jasmine-npm for edge docs"
+task :update_edge_jasmine_npm => ['.current_npm_version'] do
+  download_npm_file('jasmine.js')
 end
 
 desc "make section of docs for a newly released version of jasmine"

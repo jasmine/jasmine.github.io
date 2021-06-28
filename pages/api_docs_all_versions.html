@@ -14,7 +14,16 @@ title: "API Docs: All Versions"
       <li><a href="{{ site.github.url }}{{ version.url }}">{{ version.url | remove_first: "/api/" | remove: "/global" | capitalize }}</a></li>
       {% endif %}
       {% endfor %}
-      <li><a href="api_docs_all_versions.html">All versions</a></li>
+    </ol>
+  </div>
+  <div>
+    <h3>jasmine-npm</h3>
+    <ol class="api-docs-versions">
+      {% for version in site.npm-api reversed %}
+      {% if version.title == "Home" %}
+      <li><a href="{{ site.github.url }}{{ version.url }}">{{ version.url | remove_first: "/api/npm/" | remove: "/index" | capitalize }}</a></li>
+      {% endif %}
+      {% endfor %}
     </ol>
   </div>
   <div>

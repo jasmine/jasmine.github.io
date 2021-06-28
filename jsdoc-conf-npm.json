@@ -1,0 +1,27 @@
+{
+  "source": {
+    "include": [ ".current_npm_version" ],
+    "includePattern": ".+\\.js$"
+  },
+  "tags": {
+    "allowUnknownTags": false,
+    "dictionaries": ["jsdoc"]
+  },
+  "opts": {
+    "destination": "_npm-api/edge",
+    "encoding": "utf8",
+    "recurse": true
+  },
+  "plugins": [
+    "plugins/markdown",
+    "_jsdoc_plugins/see_tutorials"
+  ],
+  "templates": {
+    "cleverLinks": true,
+    "default": {
+      "outputSourceFiles": false,
+      "useLongnameInNav": true,
+      "layoutFile": "_layouts/jsdoc-layout.tmpl"
+    }
+  }
+}

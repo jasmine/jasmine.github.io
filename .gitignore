@@ -10,4 +10,5 @@ _api/edge/fonts/
 *.sw?
 .current_version
 .current_browser_runner_version
+.current_npm_version
 .jekyll-cache
