@@ -30,8 +30,8 @@ title: "API Reference: All Versions"
     <h3>jasmine-browser-runner</h3>
     <ol class="api-docs-versions">
       {% for version in site.browser-runner-api reversed %}
-      {% if version.title == "Home" %}
-      <li><a href="{{ site.github.url }}{{ version.url }}">{{ version.url | remove_first: "/api/browser-runner/" | remove: "/index" | capitalize }}</a></li>
+      {% if version.url contains "/module-jasmine-browser-runner" %}
+      <li><a href="{{ site.github.url }}{{ version.url }}">{{ version.url | remove_first: "/api/browser-runner/" | remove: "/module-jasmine-browser-runner" | capitalize }}</a></li>
       {% endif %}
       {% endfor %}
     </ol>
