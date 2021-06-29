@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Interface: JasmineOptions"
+title: "Interface: ConsoleReporterOptions"
 prettify: true
 ---
 
@@ -10,7 +10,7 @@ prettify: true
   </nav>
 
   <div class="docs">
-    <h1 class="page-title">Interface: JasmineOptions</h1>
+    <h1 class="page-title">Interface: ConsoleReporterOptions</h1>
 
     
 
@@ -21,7 +21,7 @@ prettify: true
 
 <header>
     
-        <h2>JasmineOptions</h2>
+        <h2>ConsoleReporterOptions</h2>
         
     
 </header>
@@ -29,8 +29,6 @@ prettify: true
 <article>
     <div class="container-overview">
     
-        
-            <div class="description"><p>Options for the <a href="Jasmine.html"><code>Jasmine</code></a> constructor</p></div>
         
 
         
@@ -93,15 +91,13 @@ prettify: true
 
         
             
-<h4 class="name" id="projectBaseDir"><span class="type-signature"></span>projectBaseDir<span class="type-signature"> :string|undefined</span></h4>
+<h4 class="name" id="showColors"><span class="type-signature"></span>showColors<span class="type-signature"> :Boolean|undefined</span></h4>
 
 
 
 
 <div class="description">
-    <p>The path to the project's base directory. This can be absolute or relative
-to the current working directory. If it isn't specified, the current working
-directory will be used.</p>
+    <p>Whether to colorize the output</p>
 </div>
 
 
@@ -110,7 +106,84 @@ directory will be used.</p>
     <ul>
         <li>
             
-<span class="param-type">string</span>
+<span class="param-type">Boolean</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>false</li>
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="showColors"><span class="type-signature"></span>showColors<span class="type-signature"> :function|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>A function that takes a random seed and returns the command to reproduce
+that seed. Use this to customize the output when using ConsoleReporter
+in a different command line tool.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">function</span>
 |
 
 <span class="param-type">undefined</span>

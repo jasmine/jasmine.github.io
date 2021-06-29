@@ -58,8 +58,8 @@ file '.current_browser_runner_version/lib' do
   FileUtils.mkdir_p('.current_browser_runner_version/lib')
 end
 
-file '.current_npm_version/lib' do
-  FileUtils.mkdir_p('.current_npm_version/lib')
+file '.current_npm_version/reporters' do
+  FileUtils.mkdir_p('.current_npm_version/reporters')
 end
 
 def download_core_file(file_name)
@@ -90,8 +90,9 @@ def download_npm_file(file_name)
 end
 
 desc "update jasmine-npm for edge docs"
-task :update_edge_jasmine_npm => ['.current_npm_version'] do
+task :update_edge_jasmine_npm => ['.current_npm_version/reporters'] do
   download_npm_file('jasmine.js')
+  download_npm_file('reporters/console_reporter.js')
 end
 
 desc "make section of docs for a newly released version of jasmine"
