@@ -20,8 +20,8 @@ title: "API Reference: All Versions"
     <h3>jasmine-npm</h3>
     <ol class="api-docs-versions">
       {% for version in site.npm-api reversed %}
-      {% if version.title == "Home" %}
-      <li><a href="{{ site.github.url }}{{ version.url }}">{{ version.url | remove_first: "/api/npm/" | remove: "/index" | capitalize }}</a></li>
+      {% if version.title == "Class: Jasmine" %}
+      <li><a href="{{ site.github.url }}{{ version.url }}">{{ version.url | remove_first: "/api/npm/" | remove: "/Jasmine" | capitalize }}</a></li>
       {% endif %}
       {% endfor %}
     </ol>
