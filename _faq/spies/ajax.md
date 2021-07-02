@@ -7,8 +7,9 @@ If you're using `XMLHttpRequest` or any library that uses it under the hood,
 takes care of the sometimes intricate details of mocking `XMLHttpRequest` and
 provides a nice API for verifying requests and stubbing responses.
 
-Newer HTTP client APIs like [axios](https://www.npmjs.com/package/axios) or
-[fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) are easier
+Unlike `XMLHttpRequest`, newer HTTP client APIs such as
+[axios](https://www.npmjs.com/package/axios) or
+[fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) are easy
 to mock by hand using Jasmine spies. Simply inject the HTTP client into the
 code under test:
 
