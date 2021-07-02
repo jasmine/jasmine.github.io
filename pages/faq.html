@@ -1,15 +1,113 @@
 ---
-layout: article
+layout: faq
 title: Frequently Asked Questions
 ---
 
 <h1>Frequently Asked Questions</h1>
 
+<ol id="toc">
+  <li>
+    <a href="#general">General</a>
+    <ol>
+    {% for faq in site.faq %}
+      {% if faq.path contains '_faq/general/' %}
+        <li><a href="#{{faq.slug}}">{{ faq.question }}</a></li>
+      {% endif %}
+    {% endfor %}
+    </ol>
+  </li>
+  <li>
+    <a href="#testing">Writing Specs</a>
+    <ol>
+    {% for faq in site.faq %}
+      {% if faq.path contains '_faq/testing/' %}
+        <li><a href="#{{faq.slug}}">{{ faq.question }}</a></li>
+      {% endif %}
+    {% endfor %}
+    </ol>
+  </li>
+  <li>
+    <a href="#async">Async Testing</a>
+    <ol>
+    {% for faq in site.faq %}
+      {% if faq.path contains '_faq/async/' %}
+        <li><a href="#{{faq.slug}}">{{ faq.question }}</a></li>
+      {% endif %}
+    {% endfor %}
+    </ol>
+  </li>
+  <li>
+    <a href="#spies">Spies</a>
+    <ol>
+    {% for faq in site.faq %}
+      {% if faq.path contains '_faq/spies/' %}
+        <li><a href="#{{faq.slug}}">{{ faq.question }}</a></li>
+      {% endif %}
+    {% endfor %}
+    </ol>
+  </li>
+  <li>
+    <a href="#contrib">Contributing to Jasmine</a>
+    <ol>
+    {% for faq in site.faq %}
+      {% if faq.path contains '_faq/contrib/' %}
+        <li><a href="#{{faq.slug}}">{{ faq.question }}</a></li>
+      {% endif %}
+    {% endfor %}
+    </ol>
+  </li>
+</ol>
+
+<h2 id="general">General</h2>
+
 {% for faq in site.faq %}
-<a id="{{ faq.title | slugify }}"></a>
-<h2>{{ faq.question }}</h2>
-<div class="answer">{{ faq.content }}</div>
+  {% if faq.path contains '_faq/general/' %}
+    <h2 id={{faq.slug}} data-anchor-id="{{faq.slug}}">{{ faq.question }}</h2>
+    <div class="answer">{{ faq.content }}</div>
+	 <a href="#toc">Back to FAQ index</a>
+  {% endif %}
 {% endfor %}
 
+<h2 id="contrib">Contributing</h2>
+
+{% for faq in site.faq %}
+  {% if faq.path contains '_faq/contrib/' %}
+    <h2 id={{faq.slug}} data-anchor-id="{{faq.slug}}">{{ faq.question }}</h2>
+    <div class="answer">{{ faq.content }}</div>
+	 <a href="#toc">Back to FAQ index</a>
+  {% endif %}
+{% endfor %}
+
+<h2 id="testing">Writing Specs</h2>
+
+{% for faq in site.faq %}
+  {% if faq.path contains '_faq/testing/' %}
+    <h2 id={{faq.slug}} data-anchor-id="{{faq.slug}}">{{ faq.question }}</h2>
+    <div class="answer">{{ faq.content }}</div>
+	 <a href="#toc">Back to FAQ index</a>
+  {% endif %}
+{% endfor %}
+
+<h2 id="async">Async Testing</h2>
+
+{% for faq in site.faq %}
+  {% if faq.path contains '_faq/async/' %}
+    <h2 id={{faq.slug}} data-anchor-id="{{faq.slug}}">{{ faq.question }}</h2>
+    <div class="answer">{{ faq.content }}</div>
+	 <a href="#toc">Back to FAQ index</a>
+  {% endif %}
+{% endfor %}
+
+<h2 id="spies">Spies</h2>
+
+{% for faq in site.faq %}
+  {% if faq.path contains '_faq/spies/' %}
+    <h2 id={{faq.slug}} data-anchor-id="{{faq.slug}}">{{ faq.question }}</h2>
+    <div class="answer">{{ faq.content }}</div>
+	 <a href="#toc">Back to FAQ index</a>
+  {% endif %}
+{% endfor %}
+
+
 <h3>Have a question we missed?</h3>
-<div>Please open <a href="https://github.com/jasmine/jasmine.github.io/issues/new">an issue</a> or <a href="https://github.com/jasmine/jasmine.github.io/pulls/new">pull request</a></div>
+<div>Please open <a href="https://github.com/jasmine/jasmine.github.io/issues/new">an issue</a> or <a href="https://github.com/jasmine/jasmine.github.io/pulls/new">pull request</a>.</div>

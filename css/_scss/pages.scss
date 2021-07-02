@@ -241,3 +241,54 @@ a.github {
     display: none;
   }
 }
+
+ul li {
+  list-style-type: disc;
+}
+
+// Global table styling, used (at least) in API docs and FAQs.
+// Qualifying these with table adds more specificity, letting them take
+// precedence over docco rules.
+table {
+  thead tr {
+    background-color: #ddd;
+  }
+
+  td,
+  th {
+    border: 1px solid #ddd;
+    margin: 0;
+    text-align: left;
+    vertical-align: baseline;
+    padding: 4px 6px;
+    display: table-cell;
+    background-color: transparent;
+
+    code {
+      font-size: 14px;
+    }
+  }
+
+  th {
+    border-right: 1px solid #aaa;
+
+    &:last-child {
+      border-right-color: #ddd;
+    }
+  }
+}
+
+
+// Restore docco styles for cells that are actually docco's, overriding the 
+// above.
+table {
+  td.docs, th.doc {
+    border: 0;
+    padding: 10px 25px 1px 50px;
+  }
+
+  td.code, th.code {
+    border: 0;
+    padding: 14px 15px 16px 25px;
+  }
+}

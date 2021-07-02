@@ -1,0 +1,28 @@
+.faq {
+  #toc li {
+	 margin-bottom: 4px;
+  }
+
+  h2 {
+    margin-top: 40px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .warning {
+    // override width: 100% that makes the box too wide
+    width: auto;
+  }
+
+  .highlighter-rouge .highlight {
+    @include light-code();
+  }
+
+  code {
+    @include light-code();
+    padding: 1px 2px;
+  }
+}

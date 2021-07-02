@@ -40,6 +40,12 @@
     font-style: italic;
   }
 
+  ul, ul li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
   code,
   tt,
   kdb,
@@ -133,33 +139,6 @@
 
   p {
     margin: 10px 0;
-  }
-
-  thead tr {
-    background-color: #ddd;
-  }
-
-  td,
-  th {
-    border: 1px solid #ddd;
-    margin: 0;
-    text-align: left;
-    vertical-align: baseline;
-    padding: 4px 6px;
-    display: table-cell;
-    background-color: transparent;
-
-    code {
-      font-size: 14px;
-    }
-  }
-
-  th {
-    border-right: 1px solid #aaa;
-
-    &:last-child {
-      border-right-color: #ddd;
-    }
   }
 
   nav {

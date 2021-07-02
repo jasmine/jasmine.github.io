@@ -49,3 +49,8 @@
   -webkit-flex-wrap: $wrap;
   -ms-flex-wrap: $wrap;
 }
+
+@mixin light-code() {
+  background-color: #f0f0f0;
+  font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
+}

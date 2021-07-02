@@ -2,9 +2,14 @@
   font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
   line-height: 1.2em;
 
+  &.main-content {
+    // Override display:flex that prevents margins on children from collapsing.
+    display: block;
+  }
+
   p {
     width: 100%;
-    margin: 5px 0;
+    margin: 1em 0;
   }
 
   ol, ul {
@@ -27,8 +32,7 @@
   }
 
   code.highlighter-rouge {
-    background-color: #f0f0f0;
-    font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
+    @include light-code();
     padding: 1px 2px;
   }
 }

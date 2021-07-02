@@ -71,7 +71,6 @@ p + p {
 }
 
 strong {
-  font-style: italic;
   font-weight: bold;
 }
 
@@ -100,7 +99,7 @@ td.code, th.code {
 }
 
 .highlight .cm {
-  color: #586e75 !important;
+  color: #93a1a1 !important;
   font-style: italic !important
 }
 
@@ -110,7 +109,7 @@ td.code, th.code {
 }
 
 .highlight .c1 {
-  color: #586e75 !important;
+  color: #93a1a1 !important;
   font-style: italic !important
 }
 
