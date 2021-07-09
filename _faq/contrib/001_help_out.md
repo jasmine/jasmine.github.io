@@ -19,5 +19,4 @@ Hopefully the stories are mostly self-explanatory. If not, please ask a question
 * [jasmine-Core](https://github.com/jasmine/jasmine/labels/ready%20for%20work)
 * [jasmine-npm](https://github.com/jasmine/jasmine-npm/labels/ready%20for%20work)
 * [jasmine-gem](https://github.com/jasmine/jasmine-gem/labels/ready%20for%20work)
-* [jasmine-py](https://github.com/jasmine/jasmine-py/labels/ready%20for%20work)
 * [jasmine-browser-runner](https://github.com/jasmine/jasmine-browser)
