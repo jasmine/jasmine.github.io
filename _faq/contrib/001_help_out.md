@@ -16,7 +16,8 @@ Look at the top of the current iteration or backlog column for the prioritized l
 Unfortunately, Tracker doesn't have a great way to allow for comments and questions on a story for people who aren't already joined into the project.
 Hopefully the stories are mostly self-explanatory. If not, please ask a question in the associated github issue (if any), or on the [developers list](https://groups.google.com/forum/#!forum/jasmine-js-dev).
 
-* [jasmine-Core](https://github.com/jasmine/jasmine/labels/ready%20for%20work)
-* [jasmine-npm](https://github.com/jasmine/jasmine-npm/labels/ready%20for%20work)
-* [jasmine-gem](https://github.com/jasmine/jasmine-gem/labels/ready%20for%20work)
-* [jasmine-browser-runner](https://github.com/jasmine/jasmine-browser)
+* [jasmine-Core](https://github.com/jasmine/jasmine/labels/help%20needed)
+* [jasmine-npm](https://github.com/jasmine/jasmine-npm/labels/help%20needed)
+* [jasmine-gem](https://github.com/jasmine/jasmine-gem/labels/help%20needed)
+* [jasmine-browser-runner](https://github.com/jasmine/jasmine-browser/labels/help%20needed)
+* [jasmine-ajax](https://github.com/jasmine/jasmine-ajax/labels/help%20needed)
