@@ -10,14 +10,14 @@ When github issues are reported that seem like things Jasmine could support, we 
 This label means that we believe there is enough information included in the conversation for someone to implement on their own.
 (We're not always correct. If you have further questions, please ask).
 
-#### Pivotal Tracker
-We have a [backlog in Pivotal Tracker](https://www.pivotaltracker.com/n/projects/10606) that contains work the Jasmine team wants to get into Jasmine.
-Look at the top of the current iteration or backlog column for the prioritized list of functionality.
-Unfortunately, Tracker doesn't have a great way to allow for comments and questions on a story for people who aren't already joined into the project.
-Hopefully the stories are mostly self-explanatory. If not, please ask a question in the associated github issue (if any), or on the [developers list](https://groups.google.com/forum/#!forum/jasmine-js-dev).
-
 * [jasmine-Core](https://github.com/jasmine/jasmine/labels/help%20needed)
 * [jasmine-npm](https://github.com/jasmine/jasmine-npm/labels/help%20needed)
 * [jasmine-gem](https://github.com/jasmine/jasmine-gem/labels/help%20needed)
 * [jasmine-browser-runner](https://github.com/jasmine/jasmine-browser/labels/help%20needed)
 * [jasmine-ajax](https://github.com/jasmine/jasmine-ajax/labels/help%20needed)
+
+#### Pivotal Tracker
+We have a [backlog in Pivotal Tracker](https://www.pivotaltracker.com/n/projects/10606) that contains work the Jasmine team wants to get into Jasmine.
+Look at the top of the current iteration or backlog column for the prioritized list of functionality.
+Unfortunately, Tracker doesn't have a great way to allow for comments and questions on a story for people who aren't already joined into the project.
+Hopefully the stories are mostly self-explanatory. If not, please ask a question in the associated github issue (if any), or on the [developers list](https://groups.google.com/forum/#!forum/jasmine-js-dev).
