@@ -15,6 +15,6 @@ after running your specs.
 
 The second approach is to compile your TypeScript spec files to JavaScript files
 on disk and configure Jasmine to run the compiled TypeScript files. This usually
-gives a slower edit-compile-run-specs cycle. But it's a more familiar workflow
+gives a slower edit-compile-run-specs cycle, but it's a more familiar workflow
 for people who are used to compiled languages. It's also the only option if you
 want to write specs in TypeScript and run them in a browser.
