@@ -99,3 +99,7 @@ desc "make section of docs for a newly released version of jasmine"
 task :release, [:version] do |t, args|
   FileUtils.cp_r('_api/edge', '_api/' + args.version)
 end
+
+task :serve do
+    `jekyll serve --baseurl ''`
+end

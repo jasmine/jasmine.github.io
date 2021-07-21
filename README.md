@@ -45,7 +45,7 @@ Then, regenerate the tutorials:
 
 Now preview your changes locally:
 
-- `bundle exec jekyll serve --baseurl ''`
+- `bundle exec rake serve`
 
 ## Archiving a version of the jasmine-core API docs
 
