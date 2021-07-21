@@ -208,8 +208,8 @@ deprecation warnings by checking whether the second argument is a `MatchersUtil`
 if it isn't a `MatchersUtil`.
 
 
-<h3 id="static-utils">Deprecations related to matcher utilities that are no longer available
-as globals</h3>
+<h3 id="static-utils">Deprecations related to matcher utilities that are no 
+longer available globally</h3>
 
 * "jasmine.matchersUtil is deprecated and will be removed in a future release.
   Use the instance passed to the matcher factory or the asymmetric equality 
@@ -232,15 +232,19 @@ Instead of using `jasmine.pp`, access a `matchersUtil` in either of the above
 ways and then use its [pp method]({{ site.github.url }}/api/edge/MatchersUtil.html#pp).
 
 * The `pp` method of [the first parameter to a matcher factory]({{ site.github.url}}/tutorials/custom_matcher)
+* The first parameter to an object's (particularly an asymmetric equality 
+  tester's) `jasmineToString` method.
 
 
 <h4>Note to library authors</h4>
 
 `matchersUtil` is provided to matcher factories in all versions since 2.0, and
 to asymmetric equality testers in all versions since 2.6. `matchersUtil#pp` was
-introduced in 3.6. If you need to pretty-print in a way that's compatible with
+introduced in 3.6, which is also the first version that passed a pretty-printer
+to `jasmineToString`. If you need to pretty-print in a way that's compatible with
 Jasmine versions older than 3.6, you can check for a `pp` method on the 
-`matchersUtil` instance and then fall back to `jasmine.pp` if it isn't there.
+`matchersUtil` instance or a parameter passed to `jasmineToString` and then 
+fall back to `jasmine.pp` if it isn't there.
 
 
 <h3>Deprecations related to mixing two forms of async</h3>
