@@ -56,7 +56,7 @@ Start the server:
 npx jasmine-browser-runner serve
 ```
 
-Then visit [http://localhost:888/](http://localhost:888/) in the browser of your
+Then visit [http://localhost:8888/](http://localhost:8888/) in the browser of your
 choice.
 
 ## Run the tests on the command line
