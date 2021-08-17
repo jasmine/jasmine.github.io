@@ -6,7 +6,12 @@ redirect_from: /edge/ruby.html
 
 # Using jasmine with ruby
 
-The jasmine gem can be use both with and without Rails.
+The jasmine gem can be used both with and without Rails. (Note: The jasmine
+gem only supports the Asset Pipeline, not Webpacker. 
+[jasmine-browser-runner](browser.html#use-with-rails) works with either style
+of Rails JavaScript management.)
+
+
 Add the jasmine gem to your gemfile and `bundle install`
 
 ```ruby

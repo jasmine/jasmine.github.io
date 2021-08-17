@@ -92,6 +92,82 @@ modules. ES modules will silently fail to load in browsers that don't
 support them. Other kinds of load-time errors are detected and reported as suite
 errors.
 
+## Use with Rails
+
+You can use jasmine-browser-runner to test your Rails application's JavaScript,
+whether you use the Asset Pipeline or Webpacker.
+
+### Webpacker
+
+1. Run `yarn add --dev jasmine-browser-runner`.
+2. Run `npx jasmine-browser-runner init`.
+3. Edit `spec/support/jasmine-browser.json` as follows:
+    ```json
+    {
+      "srcDir": ".",
+      "srcFiles": [],
+      "specDir": "public/packs/js",
+      "specFiles": [
+        "specs-*.js"
+      ],
+      "helpers": [],
+      // ...
+    }
+    ```
+4. Create `app/javascript/packs/specs.js` (or `app/javascript/packs/specs.jsx` if you use JSX) as follows:
+    ```javascript
+    (function() {
+      'use strict';
+    
+      function requireAll(context) {
+        context.keys().forEach(context);
+      }
+
+      requireAll(require.context('spec/javascript/helpers/', true, /\.js/));
+      requireAll(require.context('spec/javascript/', true, /[sS]pec\.js/));
+    })();
+    ```
+5. Add `'spec/javascript'` to the `additional_paths` array in `config/webpacker.yml`.
+6. Put your spec files in `spec/javascript`.
+
+To run the specs:
+
+1. Run `bin/webpack --watch`.
+2. Run `npx jasmine-browser-runner`.
+3. visit <http://localhost:8888>.
+
+### Asset Pipeline
+
+1. Run `yarn init` if there isn't already `package.json` file in the root of
+   the Rails application.
+2. Run `yarn add --dev jasmine-browser-runner`.
+3. Run `npx jasmine-browser-runner init`.
+5. Edit `spec/support/jasmine-browser.json` as follows:
+    ```json
+    {
+      "srcDir": "public/assets",
+      "srcFiles": [
+        "application-*.js"
+      ],
+      "specDir": "spec/javascript",
+      "specFiles": [
+        "**/*[sS]pec.?(m)js"
+      ],
+      "helpers": [
+        "helpers/**/*.?(m)js"
+      ],
+      // ...
+    }
+    ```
+6. Put your spec files in `spec/javascript`.
+
+To run the specs:
+
+1. Either run `bundle exec rake assets:precompile` or start the Rails
+   application in an environment that's configured to precompile assets.
+2. Run `npx jasmine-browser-runner`.
+3. Visit <http://localhost:8888>.
+
 ## Saucelabs support
 
 jasmine-browser can run your Jasmine specs on [Saucelabs](https://saucelabs.com/).
