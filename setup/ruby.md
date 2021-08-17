@@ -4,6 +4,12 @@ title: Ruby Setup
 redirect_from: /edge/ruby.html
 ---
 
+<div class="warning">
+    Jasmine for Ruby is deprecated. We recommend using the
+    <a href="nodejs.html">jasmine</a> or
+    <a href="browser.html">jasmine-browser-runner</a> NPM packages instead.
+</div>
+
 # Using jasmine with ruby
 
 The jasmine gem can be used both with and without Rails. (Note: The jasmine

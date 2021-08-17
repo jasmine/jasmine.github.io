@@ -35,7 +35,7 @@ The following previously-supported environments are no longer supported:
 * Safari 8-12
 * PhantomJS
 * Python
-* TODO: Ruby & Rails status & supported versions
+* Ruby
 * Bower
 
 <h2>Using Jasmine 3.99 to detect compatibility problems</h2>
@@ -49,26 +49,24 @@ the Jasmine packages that you depend on directly, as usual. If you upgrade the
 
 TODO: instructions for jasmine-browser-runner users
 
-<h2>Notes for Ruby users</h2>
+<h2>Notes for Ruby and Python users</h2>
 
-TODO
+3.99 is the final version of Jasmine for Ruby and Python. We recommend that most
+users migrate to the [jasmine-browser-runner](https://github.com/jasmine/jasmine-browser)
+npm package, which is the direct replacement for the `jasmine` Ruby gem and 
+Python package. It runs your specs in browsers, including headless Chrome and
+Saucelabs. It works with Rails applications including those that use Webpacker,
+which was never supported by the `jasmine` gem.
 
-<h2>Notes for Python users</h2>
+If `jasmine-browser-runner` doesn't meet your needs, one of these might:
 
-3.99 is the final version of Jasmine for Python. We recommend migrating to one
-of the following alternatives:
-
-* The [jasmine-browser-runner](https://github.com/jasmine/jasmine-browser)
-npm package to run specs in browsers, including headless Chrome and
-Saucelabs. This is the most direct replacement for the `jasmine server`
-and `jasmine ci` commands provided by the `jasmine` Python package.
 * The [jasmine](https://github.com/jasmine/jasmine-npm) npm package to run
-specs under Node.js.
+specs in Node.js.
 * The [standalone distribution](https://github.com/jasmine/jasmine#installation)
 to run specs in browsers with no additional tools.
 * The [jasmine-core](https://github.com/jasmine/jasmine) npm package if all
 you need is the Jasmine assets. This is the direct equivalent of the
-`jasmine-core` Python package.
+`jasmine-core` Ruby gem and Python package.
 
 <h2>Exit code changes</h2>
 
