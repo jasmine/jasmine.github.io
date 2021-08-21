@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Interface: Suite"
+title: "Interface: AsymmetricEqualityTester"
 prettify: true
 ---
 
@@ -10,7 +10,7 @@ prettify: true
   </nav>
 
   <div class="docs">
-    <h1 class="page-title">Interface: Suite</h1>
+    <h1 class="page-title">Interface: AsymmetricEqualityTester</h1>
 
     
 
@@ -21,7 +21,12 @@ prettify: true
 
 <header>
     
-        <h2>Suite</h2>
+        <h2>AsymmetricEqualityTester</h2>
+        
+            <div class="class-description"><p>An asymmetric equality tester is an object that can match multiple
+objects. Examples include jasmine.any() and jasmine.stringMatching().
+User-defined asymmetric equality testers can also be defined and used in
+expectations.</p></div>
         
     
 </header>
@@ -38,6 +43,9 @@ prettify: true
 
     
 
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
     
 
     
@@ -68,7 +76,7 @@ prettify: true
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
         <ul>
-            <li><a href="Env.html#topSuite">Env#topSuite</a></li>
+            <li><a href="/tutorials/custom_asymmetric_equality_testers">custom asymmetric_equality_testers</a></li>
         </ul>
     </dd>
     
@@ -94,278 +102,6 @@ prettify: true
     
 
     
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="children"><span class="type-signature"></span>children<span class="type-signature"> :Array.&lt;(<a href="Spec.html">Spec</a>|<a href="Suite.html">Suite</a>)></span></h4>
-
-
-
-
-<div class="description">
-    <p>The suite's children.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Array.&lt;(<a href="Spec.html">Spec</a>|<a href="Suite.html">Suite</a>)></span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="description"><span class="type-signature">(readonly) </span>description<span class="type-signature"> :string</span></h4>
-
-
-
-
-<div class="description">
-    <p>The description passed to the <a href="global.html#describe"><code>describe</code></a> that created this suite.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">string</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="id"><span class="type-signature">(readonly) </span>id<span class="type-signature"> :string</span></h4>
-
-
-
-
-<div class="description">
-    <p>The unique ID of this suite.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">string</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="parentSuite"><span class="type-signature">(readonly) </span>parentSuite<span class="type-signature"> :<a href="Suite.html">Suite</a></span></h4>
-
-
-
-
-<div class="description">
-    <p>The parent of this suite, or null if this is the top suite.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><a href="Suite.html">Suite</a></span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -376,7 +112,7 @@ prettify: true
     
 
     
-    <h4 class="name" id="getFullName"><span class="type-signature"></span>getFullName<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id="asymmetricMatch"><span class="type-signature"></span>asymmetricMatch<span class="signature">(value, matchersUtil)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
     
 
     
@@ -384,7 +120,7 @@ prettify: true
 
 
 <div class="description">
-    <p>The full description including all ancestors of this suite.</p>
+    <p>Determines whether a value matches this tester</p>
 </div>
 
 
@@ -393,6 +129,78 @@ prettify: true
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">any</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The value to test</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>matchersUtil</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="MatchersUtil.html">MatchersUtil</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>utilities for testing equality, etc</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -459,7 +267,157 @@ prettify: true
     </dt>
     <dd>
         
-<span class="param-type">string</span>
+<span class="param-type">Boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="jasmineToString"><span class="type-signature"></span>jasmineToString<span class="signature">(pp)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Returns a string representation of this tester to use in matcher failure messages</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>pp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function that takes a value and returns a pretty-printed representation</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
 
 
     </dd>
