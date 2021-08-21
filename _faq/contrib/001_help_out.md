@@ -12,9 +12,9 @@ This label means that we believe there is enough information included in the con
 
 * [jasmine-Core](https://github.com/jasmine/jasmine/labels/help%20needed)
 * [jasmine-npm](https://github.com/jasmine/jasmine-npm/labels/help%20needed)
-* [jasmine-gem](https://github.com/jasmine/jasmine-gem/labels/help%20needed)
 * [jasmine-browser-runner](https://github.com/jasmine/jasmine-browser/labels/help%20needed)
 * [jasmine-ajax](https://github.com/jasmine/jasmine-ajax/labels/help%20needed)
+* [documentation (this site)](https://github.com/jasmine/jasmine.github.io/labels/help%20needed)
 
 #### Pivotal Tracker
 We have a [backlog in Pivotal Tracker](https://www.pivotaltracker.com/n/projects/10606) that contains work the Jasmine team wants to get into Jasmine.
