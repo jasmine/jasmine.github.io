@@ -17,11 +17,6 @@
     font-weight: bold;
   }
 
-  .warning {
-    // override width: 100% that makes the box too wide
-    width: auto;
-  }
-
   .highlighter-rouge .highlight {
     @include light-code();
   }
