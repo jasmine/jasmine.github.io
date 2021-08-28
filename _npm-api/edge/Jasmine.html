@@ -262,6 +262,80 @@ const jasmine = new Jasmine();</code></pre>
 
 
         
+            
+<h4 class="name" id="exitOnCompletion"><span class="type-signature"></span>exitOnCompletion<span class="type-signature"> :boolean</span></h4>
+
+
+
+
+<div class="description">
+    <p>Whether to cause the Node process to exit when the suite finishes executing.</p>
+<p><em>Note</em>: If <a href="Jasmine.html#onComplete"><code>onComplete</code></a> is called, Jasmine will not
+exit when the suite completes even if exitOnCompletion is set to true.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>true</li>
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
     
 
     
@@ -1575,7 +1649,7 @@ specified.</p>
     
 
     
-    <h4 class="name" id="execute"><span class="type-signature"></span>execute<span class="signature">(files<span class="signature-attributes">opt</span>, filterString<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    <h4 class="name" id="execute"><span class="type-signature"></span>execute<span class="signature">(files<span class="signature-attributes">opt</span>, filterString<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;JasmineDoneInfo>}</span></h4>
     
 
     
@@ -1584,6 +1658,9 @@ specified.</p>
 
 <div class="description">
     <p>Runs the test suite.</p>
+<p><em>Note</em>: Set <a href="Jasmine.html#exitOnCompletion"><code>exitOnCompletion</code></a> to false if you
+intend to use the returned promise. Otherwise, the Node process will
+ordinarily exit before the promise is settled.</p>
 </div>
 
 
@@ -1758,7 +1835,7 @@ specs with matching full names will be run.</p></td>
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;void></span>
+<span class="param-type">Promise.&lt;JasmineDoneInfo></span>
 
 
     </dd>
@@ -2073,7 +2150,9 @@ as its default export.</p>
     <p>Registers a callback that will be called when execution finishes.</p>
 <p><em>Note</em>: Only one callback can be registered. The callback will be called
 after the suite has completed and the results have been finalized, but not
-necessarily before all of Jasmine's cleanup has finished.</p>
+necessarily before all of Jasmine's cleanup has finished. Calling this
+function will also prevent Jasmine from exiting the Node process at the end
+of suite execution.</p>
 </div>
 
 
@@ -2153,6 +2232,9 @@ necessarily before all of Jasmine's cleanup has finished.</p>
 
     
 
+    
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Set <a href="Jasmine.html#exitOnCompletion"><code>exitOnCompletion</code></a> to false
+and use the promise returned from <a href="Jasmine.html#execute"><code>execute</code></a> instead.</li></ul></dd>
     
 
     
