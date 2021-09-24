@@ -24,9 +24,13 @@ prettify: true
         <h2>AsymmetricEqualityTester</h2>
         
             <div class="class-description"><p>An asymmetric equality tester is an object that can match multiple
-objects. Examples include jasmine.any() and jasmine.stringMatching().
-User-defined asymmetric equality testers can also be defined and used in
-expectations.</p></div>
+objects. Examples include jasmine.any() and jasmine.stringMatching(). Jasmine
+includes a number of built-in asymmetric equality testers, such as
+<a href="jasmine.html#.objectContaining"><code>jasmine.objectContaining</code></a>. User-defined asymmetric equality testers are
+also supported.</p>
+<p>Asymmetric equality testers work with any matcher, including user-defined
+custom matchers, that uses <a href="MatchersUtil.html#equals"><code>MatchersUtil#equals</code></a> or
+<a href="MatchersUtil.html#contains"><code>MatchersUtil#contains</code></a>.</p></div>
         
     
 </header>
@@ -84,6 +88,27 @@ expectations.</p></div>
     
 </dl>
 
+
+        
+            <h3>Example</h3>
+            
+    <pre class="prettyprint"><code>function numberDivisibleBy(divisor) {
+  return {
+    asymmetricMatch: function(n) {
+      return typeof n === 'number' &amp;&amp; n % divisor === 0;
+    },
+    jasmineToString: function() {
+      return `&lt;a number divisible by ${divisor}>`;
+    }
+  };
+}
+
+var actual = {
+  n: 2,
+  otherFields: "don't care"
+};
+
+expect(actual).toEqual(jasmine.objectContaining({n: numberDivisibleBy(2)}));</code></pre>
 
         
     
