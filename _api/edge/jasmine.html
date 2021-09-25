@@ -97,7 +97,15 @@ prettify: true
 
 
 <div class="description">
-    <p>Default number of milliseconds Jasmine will wait for an asynchronous spec to complete.</p>
+    <p>Default number of milliseconds Jasmine will wait for an asynchronous spec,
+before, or after function to complete. This can be overridden on a case by
+case basis by passing a time limit as the third argument to <a href="global.html#it"><code>it</code></a>,
+<a href="global.html#beforeEach"><code>beforeEach</code></a>, <a href="global.html#afterEach"><code>afterEach</code></a>, <a href="global.html#beforeAll"><code>beforeAll</code></a>, or
+<a href="global.html#afterAll"><code>afterAll</code></a>. The value must be no greater than the largest number of
+milliseconds supported by setTimeout, which is usually 2147483647.</p>
+<p>While debugging tests, you may want to set this to a large number (or pass
+a large number to one of the functions mentioned above) so that Jasmine
+does not move on to after functions or the next spec while you're debugging.</p>
 </div>
 
 
@@ -133,6 +141,11 @@ prettify: true
 
     
 
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>5000</li>
+        </ul></dd>
     
 
     
@@ -196,6 +209,11 @@ Elements past this number will be ellipised.</p>
     
 
     
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>50</li>
+        </ul></dd>
+    
 
     
 
@@ -257,6 +275,11 @@ Characters past this number will be ellipised.</p>
     
 
     
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>100</li>
+        </ul></dd>
+    
 
     
 
@@ -317,6 +340,11 @@ Set this to a lower value to speed up pretty printing if you have large objects.
 
     
 
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>8</li>
+        </ul></dd>
     
 
     
@@ -3395,6 +3423,145 @@ that will succeed if the actual value is a <code>String</code> that matches the 
     
     <dt class="tag-since">Since:</dt>
     <dd class="tag-since"><ul class="dummy"><li>2.2.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".trace"><span class="type-signature">(static) </span>trace<span class="signature">(msg)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Logs a message for use in debugging. If the spec fails, trace messages
+will be included in the <a href="global.html#SpecResult"><code>result</code></a> passed to the
+reporter's specDone method.</p>
+<p>This method should be called only when a spec (including any associated
+beforeEach or afterEach functions) is running.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>msg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The message to log</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.10.0</li></ul></dd>
     
 
     
