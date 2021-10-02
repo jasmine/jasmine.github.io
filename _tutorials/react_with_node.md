@@ -1,9 +1,10 @@
 ---
 layout: article
-title: Testing a React app with Jasmine NPM
+title: Testing a React app in Node.js with Jasmine
+redirect_from: /tutorials/react_with_npm
 ---
 
-# Testing a React app with Jasmine NPM
+# Testing a React app in Node.js with Jasmine
 
 The [Jasmine NPM](/setup/nodejs.html) package was originally designed just to 
 run specs against your Node.js code, but with a couple of other packages, you 
