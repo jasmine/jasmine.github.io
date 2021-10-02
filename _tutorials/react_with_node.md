@@ -274,6 +274,23 @@ for more information. The related
 [jasmine-dom](https://github.com/testing-library/jasmine-dom) matcher library
 may also be of interest.
 
+Note that most of the React Testing Library docs are written for Jest, so the
+code samples require some translation before they'll work in Jasmine. In
+particular:
+
+* The Jasmine equivalent of `test()` is `it()`.
+* Although there's a lot of overlap, Jest and Jasmine have different built-in
+  matchers.
+* Jest creates an implicit top-level suite in each file. Jasmine doesn't, so
+  wrapping the contents of each file in a well-named `describe` is highly
+  recommended.
+
+When translating code samples from Jest to Jasmine, you may find it helpful to
+refer to the [Jasmine tutorial](/tutorials/your_first_suite), the
+[list of matchers that come with Jasmine](/api/edge/matchers.html), and the
+[list of matchers that come with jasmine-dom](https://github.com/testing-library/jasmine-dom#custom-matchers).
+
+
 ## Wrapping up
 
 You're all set. [Write your specs](/tutorials/your_first_suite.html) and run 
