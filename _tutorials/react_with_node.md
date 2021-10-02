@@ -4,6 +4,13 @@ title: Testing a React app in Node.js with Jasmine
 redirect_from: /tutorials/react_with_npm
 ---
 
+<style>
+	#react-with-node-root.npm-selected .yarn { display: none; }
+	#react-with-node-root.yarn-selected .npm { display: none; }
+</style>
+
+<div id="react-with-node-root" class="yarn-selected" markdown="1">
+
 # Testing a React app in Node.js with Jasmine
 
 The [Jasmine NPM](/setup/nodejs.html) package was originally designed just to 
@@ -15,11 +22,23 @@ can use it to run your React specs as well. This tutorial assumes you're using
 to test it. We'll also be using [jsdom](https://www.npmjs.com/package/jsdom) 
 to provide a fake HTML DOM for the specs.
 
+Choose the package managment tool you'll be using:
+
+<label>
+	<input type="radio" name="mgr" value="yarn" checked>
+	`yarn` (the default for create-react-app)
+</label><br>
+<label>
+	<input type="radio" name="mgr" value="npm">
+	`npm`
+</label>
+
 
 ## Basic setup
 
 Install these packages if you haven't already:
 
+<div class="yarn" markdown="1">
 ```shell
 $ yarn add --dev @babel/core \
                  @babel/register \
@@ -28,12 +47,30 @@ $ yarn add --dev @babel/core \
                  jsdom \
                  jasmine
 ```
+</div>
+<div class="npm" markdown="1">
+```shell
+$ npm install --save-dev @babel/core \
+                         @babel/register \
+                         babel-preset-react-app \
+                         cross-env \
+                         jsdom \
+                         jasmine
+```
+</div>
 
 Then initialize Jasmine:
 
+<div class="yarn" markdown="1">
 ```shell
 $ yarn run jasmine init
 ```
+</div>
+<div class="npm" markdown="1">
+```shell
+$ npx jasmine init
+```
+</div>
 
 That command will create `spec/support/jasmine.json` and populate it with an
 initial default configuration. With Jasmine initialized, the first thing we'll 
@@ -108,9 +145,16 @@ It's common for React code to import CSS or image files. Normally those imports
 are resolved at build time but they'll produce errors when the specs are run in 
 Node. To fix that, we add one more package:
 
+<div class="yarn" markdown="1">
 ```shell
 $ yarn add --dev ignore-styles
 ```
+</div>
+<div class="npm" markdown="1">
+```shell
+$ npm install --save-dev ignore-styles
+```
+</div>
 
 And put the following code in `spec/helpers/exclude.js`.
 
@@ -164,11 +208,20 @@ several utility libraries that provide that functionality. The most popular are
 
 To set up Enzyme, we'll first install these packages:
 
+<div class="yarn" markdown="1">
 ```shell
 $ yarn add --dev enzyme \
                  enzyme-adapter-react-16 \
                  jasmine-enzyme
 ```
+</div>
+<div class="npm" markdown="1">
+```shell
+$ npm install --save-dev enzyme \
+                         enzyme-adapter-react-16 \
+                         jasmine-enzyme
+```
+</div>
 
 Then we'll want to make sure that we have enzyme loaded up, so make another
 file in `spec/helpers`, we'll call this one `enzyme.js` for Javascript or
@@ -204,9 +257,16 @@ Setup for react-testing-library is simple. All we need to do is make sure the
 `create-react-app` to initialize your application, it might already be there.
 If not, install it:
 
+<div class="yarn" markdown="1">
 ```shell
 $ yarn add --dev @testing-library/react
 ```
+</div>
+<div class="npm" markdown="1">
+```shell
+$ npm install --save-dev @testing-library/react
+```
+</div>
 
 See the
 [React Testing Library documentation](https://testing-library.com/docs/react-testing-library/intro)
@@ -219,6 +279,29 @@ may also be of interest.
 You're all set. [Write your specs](/tutorials/your_first_suite.html) and run 
 them:
 
+<div class="yarn" markdown="1">
 ```shell
 $ yarn test
 ```
+</div>
+<div class="npm" markdown="1">
+```shell
+$ npm test
+```
+</div>
+
+<script>
+	(function() {
+		var buttons = document.querySelectorAll('input[name=mgr]');
+		var root = document.getElementById('react-with-node-root');
+		Array.prototype.forEach.call(buttons, function(btn) {
+			btn.addEventListener('click', function() {
+				root.classList.remove('npm-selected');
+				root.classList.remove('yarn-selected');
+				root.classList.add(btn.value + '-selected');
+			});
+		});
+	}());
+</script>
+
+</div>
