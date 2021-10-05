@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Interface: ServerCtorOptions"
+title: "Interface: Configuration"
 prettify: true
 ---
 
@@ -10,7 +10,7 @@ prettify: true
   </nav>
 
   <div class="docs">
-    <h1 class="page-title">Interface: ServerCtorOptions</h1>
+    <h1 class="page-title">Interface: Configuration</h1>
 
     
 
@@ -21,11 +21,7 @@ prettify: true
 
 <header>
     
-        <h2>ServerCtorOptions</h2>
-        
-            <div class="class-description"><p>Specifies the configuration for <a href="Server.html"><code>Server</code></a>. The only required
-properties are specDir and srcDir, although in practice you'll almost
-certainly want to provide at least specFiles and srcFiles as well.</p></div>
+        <h2>Configuration</h2>
         
     
 </header>
@@ -33,6 +29,9 @@ certainly want to provide at least specFiles and srcFiles as well.</p></div>
 <article>
     <div class="container-overview">
     
+        
+            <div class="description"><p>Specifies the properties of the configuration file, as well as
+the argument to runSpecs.</p></div>
         
 
         
@@ -69,13 +68,6 @@ certainly want to provide at least specFiles and srcFiles as well.</p></div>
     
 
     
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="Server.html">Server</a></li>
-        </ul>
-    </dd>
-    
 
     
 </dl>
@@ -84,6 +76,17 @@ certainly want to provide at least specFiles and srcFiles as well.</p></div>
         
     
     </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="ServerCtorOptions.html">ServerCtorOptions</a></li>
+    </ul>
+
 
     
 
@@ -99,6 +102,154 @@ certainly want to provide at least specFiles and srcFiles as well.</p></div>
 
     
         <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="browser"><span class="type-signature"></span>browser<span class="type-signature"> :string|<a href="BrowserInfo.html">BrowserInfo</a>|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>The browser to run the specs in.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+|
+
+<span class="param-type"><a href="BrowserInfo.html">BrowserInfo</a></span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="color"><span class="type-signature"></span>color<span class="type-signature"> :boolean|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>Whether to use color in the console output.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>true</li>
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
 
         
             
@@ -138,6 +289,11 @@ that match CSS files. Each path or glob will be evaluated relative to
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#cssFiles">ServerCtorOptions#cssFiles</a>
+    </li></ul></dd>
     
 
     
@@ -211,6 +367,11 @@ that match helper files. Each path or glob will be evaluated relative to
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#helpers">ServerCtorOptions#helpers</a>
+    </li></ul></dd>
+    
 
     
 
@@ -282,6 +443,11 @@ jasmine-core in a nonstandard way. Most of the time it should be omitted.</p>
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#jasmineCore">ServerCtorOptions#jasmineCore</a>
+    </li></ul></dd>
+    
 
     
 
@@ -352,6 +518,11 @@ jasmine-core in a nonstandard way. Most of the time it should be omitted.</p>
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#port">ServerCtorOptions#port</a>
+    </li></ul></dd>
+    
 
     
 
@@ -406,6 +577,82 @@ jasmine-core in a nonstandard way. Most of the time it should be omitted.</p>
 |
 
 <span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#projectBaseDir">ServerCtorOptions#projectBaseDir</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="reporters"><span class="type-signature"></span>reporters<span class="type-signature"> :Array.&lt;(string|Reporter)></span></h4>
+
+
+
+
+<div class="description">
+    <p>An array of <a href="https://jasmine.github.io/api/edge/Reporter.html">reporters</a>
+or names of modules defining reporters. If an entry is a string, it should be
+the <a href="https://nodejs.org/api/esm.html#esm_import_specifiers">import specifier</a>
+for a module that default exports a reporter constructor. The constructor will
+be called with no arguments.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;(string|Reporter)></span>
 
 
         </li>
@@ -490,6 +737,11 @@ jasmine-core in a nonstandard way. Most of the time it should be omitted.</p>
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#specDir">ServerCtorOptions#specDir</a>
+    </li></ul></dd>
+    
 
     
 
@@ -562,6 +814,11 @@ that match spec files. Each path or glob will be evaluated relative to
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#specFiles">ServerCtorOptions#specFiles</a>
+    </li></ul></dd>
+    
 
     
 
@@ -629,6 +886,11 @@ that match spec files. Each path or glob will be evaluated relative to
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#srcDir">ServerCtorOptions#srcDir</a>
+    </li></ul></dd>
     
 
     
@@ -702,6 +964,75 @@ that match source files. Each path or glob will be evaluated relative to
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#srcFiles">ServerCtorOptions#srcFiles</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="useConsoleReporter"><span class="type-signature"></span>useConsoleReporter<span class="type-signature"> :boolean|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>Whether to use the built-in <code>ConsoleReporter</code>.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
 
     
 
@@ -719,6 +1050,17 @@ that match source files. Each path or glob will be evaluated relative to
 
     
 
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>true</li>
+        </ul></dd>
     
 
     
@@ -771,6 +1113,11 @@ that match source files. Each path or glob will be evaluated relative to
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ServerCtorOptions.html#useHtmlReporter">ServerCtorOptions#useHtmlReporter</a>
+    </li></ul></dd>
     
 
     
