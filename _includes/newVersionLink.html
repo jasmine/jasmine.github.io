@@ -3,18 +3,7 @@
   {% assign version = versionPath.first | strip %}
 
   {% unless version == 'edge' %}
-    {% capture allVersions %}
-      {% for version in site.api reversed %}
-        {% if version.url contains "/global" %}
-          {{ version.url | remove_first: "/api/" | remove: "/global" | downcase }},
-        {% endif %}
-      {% endfor %}
-    {% endcapture %}
-    {% assign numberedVersions = allVersions | remove: "edge," | split: "," %}
-    {% assign currentVersion = numberedVersions.first | strip %}
-    {% assign mismatch = version | remove: currentVersion %}
-
-    {% unless mismatch == '' %}
+    {% unless version == '3.10' %}
       {% capture pageName %}
         {% if page.collection == 'api' %}
           {{ page.url | split: "/" | last }}
