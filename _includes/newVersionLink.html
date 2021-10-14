@@ -1,34 +1,34 @@
 {% if page.collection == 'api' or page.collection == 'versions' %}
-{% assign versionPath = page.url | remove_first: "/" | remove: "api/" | split: "/" %}
-{% assign version = versionPath.first | strip %}
+  {% assign versionPath = page.url | remove_first: "/" | remove: "api/" | split: "/" %}
+  {% assign version = versionPath.first | strip %}
 
-{% unless version == 'edge' %}
-{% capture allVersions %}
-{% for version in site.api reversed %}
-{% if version.url contains "/global" %}
-{{ version.url | remove_first: "/api/" | remove: "/global" | downcase }},
-{% endif %}
-{% endfor %}
-{% endcapture %}
-{% assign numberedVersions = allVersions | remove: "edge," | split: "," %}
-{% assign currentVersion = numberedVersions.first | strip %}
-{% assign mismatch = version | remove: currentVersion %}
+  {% unless version == 'edge' %}
+    {% capture allVersions %}
+      {% for version in site.api reversed %}
+        {% if version.url contains "/global" %}
+          {{ version.url | remove_first: "/api/" | remove: "/global" | downcase }},
+        {% endif %}
+      {% endfor %}
+    {% endcapture %}
+    {% assign numberedVersions = allVersions | remove: "edge," | split: "," %}
+    {% assign currentVersion = numberedVersions.first | strip %}
+    {% assign mismatch = version | remove: currentVersion %}
 
-{% unless mismatch == '' %}
-{% capture pageName %}
-{% if page.collection == 'api' %}
-{{ page.url | split: "/" | last }}
-{% else %}
-global
-{% endif %}
-{% endcapture %}
-{% if page.collection == 'api' %}<div class="main-content">{% endif %}
-<div class="warning">
-  This page is for an older version of Jasmine ({{version}})<br/>
-  The current stable version of Jasmine is: <a href="/api/{{ currentVersion }}/{{ pageName }}">{{ currentVersion }}</a> -
-  You can also look at the docs for the next release: <a href="/api/edge/{{ pageName }}">Edge</a>
-</div>
-{% if page.collection == 'api' %}</div>{% endif %}
-{% endunless %}
-{% endunless %}
+    {% unless mismatch == '' %}
+      {% capture pageName %}
+        {% if page.collection == 'api' %}
+          {{ page.url | split: "/" | last }}
+        {% else %}
+          global
+        {% endif %}
+      {% endcapture %}
+      {% if page.collection == 'api' %}<div class="main-content">{% endif %}
+      <div class="warning">
+          This page is for an older version of Jasmine ({{version}})<br/>
+            The current stable version of Jasmine is: <a href="/api/{{ currentVersion }}/{{ pageName }}">{{ currentVersion }}</a> -
+            You can also look at the docs for the next release: <a href="/api/edge/{{ pageName }}">Edge</a>
+      </div>
+      {% if page.collection == 'api' %}</div>{% endif %}
+    {% endunless %}
+  {% endunless %}
 {% endif %}
