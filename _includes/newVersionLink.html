@@ -2,15 +2,24 @@
   {% assign versionPath = page.url | remove_first: "/" | remove: "api/" | split: "/" %}
   {% assign version = versionPath.first | strip %}
 
+
   {% unless version == 'edge' %}
-    {% unless version == '3.10' %}
-      {% capture pageName %}
-        {% if page.collection == 'api' %}
-          {{ page.url | split: "/" | last }}
-        {% else %}
-          global
-        {% endif %}
-      {% endcapture %}
+    {% assign currentVersion = "" %}
+    {% assign latestSortKey = "" %}
+    {% for otherPage in site.api %}
+      {% if otherPage.url contains "/global" and otherPage.sortKey != "edge" and otherPage.sortKey > latestSortKey %}
+         {% assign currentVersion = otherPage.url | remove_first: "/api/" | remove: "/global" | downcase %}
+         {% assign latestSortKey = otherPage.sortKey %}
+      {% endif %}
+    {% endfor %}
+
+
+    {% unless version == currentVersion %}
+      {% if page.collection == 'api' %}
+        {% assign pageName = page.url | split: "/" | last %}
+      {% else %}
+        {% assign pageName = "global" %}
+      {% endif %}
       {% if page.collection == 'api' %}<div class="main-content">{% endif %}
       <div class="warning">
           This page is for an older version of Jasmine ({{version}})<br/>
