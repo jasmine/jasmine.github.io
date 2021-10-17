@@ -4,10 +4,16 @@
     "jsdoc-core": "jsdoc -c jsdoc-conf-core.json --verbose",
     "jsdoc-browser-runner": "jsdoc -c jsdoc-conf-browser-runner.json --verbose",
     "jsdoc-npm": "jsdoc -c jsdoc-conf-npm.json --verbose",
+    "postjsdoc-core": "src/jsdoc-tools/makeSortable.js _api Global.html",
+    "postjsdoc-browser-runner": "src/jsdoc-tools/makeSortable.js _browser-runner-api module-jasmine-browser-runner.html",
+    "postjsdoc-npm": "src/jsdoc-tools/makeSortable.js _npm-api Jasmine.html",
     "install": "cp node_modules/anchor-js/anchor.min.js scripts/anchor.min.js"
   },
   "dependencies": {
     "anchor-js": "^4.3.1",
     "jsdoc": "^3.6.7"
+  },
+  "devDependencies": {
+    "jasmine": "^3.10.0"
   }
 }
