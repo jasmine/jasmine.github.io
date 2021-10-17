@@ -1,8 +1,11 @@
 {{ yaml_delimiter }}
 layout: tutorial
+{{#has_redirects?}}
+redirect_from:
 {{#redirects}}
-redirect_from: "/edge/{{ page }}.html"
+  - "/edge/{{ page }}.html"
 {{/redirects}}
+{{/has_redirects?}}
 file_name: {{ title }}
 order: {{ order }}
 {{ yaml_delimiter }}

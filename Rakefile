@@ -29,6 +29,10 @@ task :tutorials do
       '---'
     end
 
+    def has_redirects?
+      redirects.any?
+    end
+
     def redirects
       base = [ { page: title } ]
       if title == 'your_first_suite'
