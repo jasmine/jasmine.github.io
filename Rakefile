@@ -25,6 +25,10 @@ task :tutorials do
       @order
     end
 
+    def yaml_delimiter
+      '---'
+    end
+
     def redirects
       base = [ { page: title } ]
       if title == 'your_first_suite'
