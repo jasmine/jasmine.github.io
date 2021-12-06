@@ -15,6 +15,13 @@ that when you update your `jasmine` dependency, you'll also get the newest
 patch release of `jasmine-core` does not require a corresponding patch release
 of `jasmine`, or vice versa.
 
+`jasmine-browser-runner` versions differently because it's newer and not as
+mature as `jasmine-core`. Its version numbers are not related to `jasmine-core`
+version numbers. It declares `jasmine-core` as a peer dependency. Recent
+versions of `yarn` and `npm` will automatically install a compatible version
+of `jasmine-core` for you, or you can specify a version by adding it as a
+direct dependency of your package.
+
 Jasmine generally treats loss of support for a browser, Node version, Ruby
 version, or Python version as a breaking change requiring a major version
 number change. The exceptions to this are language versions that are past end
