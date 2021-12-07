@@ -1,6 +1,5 @@
 ---
 layout: faq # FAQ styling for lists and code blocks is right for this page
-omit_from_index: true
 ---
 
 <h1>Upgrading to Jasmine 4.0</h1>
