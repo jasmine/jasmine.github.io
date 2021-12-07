@@ -261,3 +261,18 @@ Jasmine never supported functions that combine multiple forms of async, and
 they never had a consistent or well-defined behavior. Jasmine 4.0 will issue a
 spec failure whenever it encounters such a function.
 [The FAQ discusses the reason for this change and how to update your specs]({{ site.github.url}}/pages/faq.html#010-mixed-style).
+
+
+<h3>Deprecations due to calling `done` multiple times</h3>
+
+* "An asynchronous function called its 'done' callback more than once. This is
+  a bug in the spec, beforeAll, beforeEach, afterAll, or afterEach function in
+  question. This will be treated as an error in a future version."
+* "A top-level beforeAll or afterAll function called its 'done' callback more
+  than once. This is a bug in the beforeAll or afterAll function in question.
+  This will be treated as an error in a future version."
+
+Jasmine historically tolerated multiple `done` calls, but the bugs that this
+masked proved to be a common source of confusion. Jasmine 4 will report an
+error whenever an asynchronous function calls `done` more than once.
+[The FAQ discusses the reason for this change and how to update your specs]({{ site.github.url}}/pages/faq.html#012-done-twice).
