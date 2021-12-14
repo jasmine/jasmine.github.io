@@ -40,7 +40,7 @@ function allowUnsafeMultipleDone(fn) {
   }
 }
 
-it('things twice', allowUnsafeMultipleDone(function(done) {
+it('calls done twice', allowUnsafeMultipleDone(function(done) {
   setTimeout(done);
   setTimeout(function() {
 	 // This code may interleave with subsequent specs or even run after Jasmine
