@@ -4,9 +4,11 @@ title: Node.js Setup
 redirect_from: /edge/node.html
 ---
 
-# Using Jasmine with node
+# Using Jasmine with Node
 
-The Jasmine node package contains helper code for developing and running Jasmine tests for node-based projects. Jasmine 3.x supports Node versions 10, 12, 14, and 16. (Odd-numbered Node versions aren't supported, but will probably work.)
+The `jasmine` module is a command line interface and supporting code for running
+Jasmine specs under Node.js. Jasmine 4.x supports Node versions 12.17+, 14,
+and 16. (Odd-numbered Node versions aren't supported, but many of them work.)
 
 ## Install
 
@@ -18,7 +20,10 @@ npm install --save-dev jasmine
 
 With the above local installation you can invoke the CLI tool using `npx jasmine ...` commands.
 
-Optionally you can also install jasmine globally so that you can invoke the CLI tool using `jasmine ...` commands.
+Optionally you can also install jasmine globally so that you can invoke the
+CLI tool without `npx`. This is not recommended, however, since it's difficult
+to keep the globally installed `jasmine` version in sync with each project that
+uses it.
 
 ```sh
 npm install -g jasmine
@@ -26,13 +31,7 @@ npm install -g jasmine
 
 ## Init a Project
 
-Initialize a project for Jasmine by creating a spec directory and configuration json for you.
-
-```sh
-jasmine init
-```
-
-Note that if you installed Jasmine locally use `npx jasmine` instead of `jasmine` in any of these examples, like so:
+Initialize a project for Jasmine by creating a spec directory and configuration json for you:
 
 ```sh
 npx jasmine init
@@ -40,13 +39,13 @@ npx jasmine init
 
 ## Generate examples
 
-Generate example spec and source files
+Generate example spec and source files:
 
 ```sh
-jasmine examples
+npx jasmine examples
 ```
 
-At this point you should be able to [write your first suite](/tutorials/your_first_suite.html)
+At this point you should be able to [write your first suite](/tutorials/your_first_suite.html).
 
 ## Configuration
 
@@ -56,7 +55,7 @@ Jasmine runner to include. You may use dir glob strings.
 Paths starting with `!` are excluded, for example `!**/*nospec.js`.
 
 `spec_dir` is used as a prefix for all `spec_files` and `helpers`.
-Helpers are executed before specs. For an example of some helpers see the [react tutorial](/tutorials/react_with_npm)
+Helpers are executed before specs. For an example of some helpers see the [React tutorial](/tutorials/react_with_npm).
 
 ```javascript
 {
@@ -65,50 +64,94 @@ Helpers are executed before specs. For an example of some helpers see the [react
 
   // Array of filepaths (and globs) relative to spec_dir to include and exclude
   "spec_files": [
-    "**/*[sS]pec.js",
+    "**/*[sS]pec.?(m)js",
     "!**/*nospec.js"
   ],
 
   // Array of filepaths (and globs) relative to spec_dir to include before jasmine specs
   "helpers": [
-    "helpers/**/*.js"
+    "helpers/**/*.?(m)js"
   ],
+  
+  // Configuration of the Jasmine environment
+  // "env" is optional, as are all of its properties.
+  "env": {
+    // Whether to fail a spec that ran no expectations
+    "failSpecWithNoExpectations": false,
+    
+    // Stop execution of a spec after the first expectation failure in it
+    "stopSpecOnExpectationFailure": false,
 
-  // Whether to fail a spec that ran no expectations
-  "failSpecWithNoExpectations": false,
+    // Stop execution of the suite after the first spec failure  
+    "stopOnSpecFailure": false,
 
-  // Stop execution of a spec after the first expectation failure in it
-  "stopSpecOnExpectationFailure": false,
-
-  // Stop execution of the suite after the first spec failure  
-  "stopOnSpecFailure": false,
-
-  // Run specs in semi-random order
-  "random": false
+    // Run specs in semi-random order
+    "random": false
+  }
 }
 ```
 
-## Running tests
+You can also specify a different config file by using either the `--config`
+command line argument or the `JASMINE_CONFIG_PATH` environment variable, as
+follows. Config files may be either `.json` or `.js`. A `.js` config file
+should be a module whose default export is a configuration object.
+
+```sh
+jasmine JASMINE_CONFIG_PATH=relative/path/to/your/jasmine.json
+jasmine --config=relative/path/to/your/jasmine.json
+```
+
+## Running Specs
 
 Once you have set up your `jasmine.json`, you can execute all your specs by running `jasmine` from the root of your project (or `npx jasmine` if you had installed it locally).
 
-If you want to just run one spec or only those whom file names match a certain [glob](https://github.com/isaacs/node-glob) pattern you can do it like this:
+If you want to just run one spec or only those in files that match a certain [glob](https://github.com/isaacs/node-glob) pattern you can do it like this:
 
 ```sh
-jasmine spec/appSpec.js
-jasmine "**/model/**/critical/**/*Spec.js"
+npx jasmine spec/appSpec.js
+npx jasmine "**/model/**/critical/**/*Spec.js"
 ```
 
-## Using ES modules
+# Filtering specs
 
-If the name of a spec file or helper file ends in `.mjs`, Jasmine will load it
-as an [ES module](https://nodejs.org/docs/latest-v13.x/api/esm.html) rather 
-than a CommonJS module. This allows the spec file or helper to import other 
-ES modules. No extra configuration is required.
+Execute only those specs which filename match given glob:
 
-If you have ES modules with names ending in `.js`, add `"jsLoader": "import"`
-to `jasmine.json`. This will cause Jasmine to load `.js` files using dynamc
-import, which should be compatible with both ES modules and CommonJS modules.
+```sh
+npx jasmine "spec/**/critical/*Spec.js"
+```
+
+Or a single file:
+
+```sh
+npx jasmine spec/currentSpec.js
+```
+
+Or execute only those specs which name matches a particular regex:
+
+```sh
+npx jasmine --filter "adapter21*"
+```
+
+(where the *name* of a spec is the first parameter passed to `describe()`)
+
+
+## Using ES Modules
+
+Jasmine loads your code using dynamic import, which should be compatible with
+both [ES modules](https://nodejs.org/docs/latest-v16.x/api/esm.html) and 
+[CommonJS modules](https://nodejs.org/docs/latest-v16.x/api/modules.html). This
+means that a script will be loaded as an ES module if its name ends in `.mjs` or
+if the `package.json` of the package containing the file contains 
+`"type": "module"`.
+
+The default configuration should work fine for nearly all CommonJS projects as
+well as those that use ES modules. But if necessary you can configure Jasmine
+to load scripts using `require` by adding `"jsLoader": "require"` to your
+Jasmine config file. If you have code that works with `"jsLoader": "require"`
+but not without it, please [let us know](https://github.com/jasmine/jasmine-npm/issues).
+Files with names ending in `.mjs` will be loaded via dynamic import even if
+`jsLoader` is set to `"require"`.
+
 
 ### CLI Options
 
@@ -118,51 +161,53 @@ Specify a relative or absolute path to your configuration file. Can be used as a
 ```sh
 JASMINE_CONFIG_PATH=spec/config/jasmine.json jasmine
 
-jasmine --config=spec/config/jasmine.json
+npx jasmine --config=spec/config/jasmine.json
 ```
 
 #### `--no-color`
 Turns off color in spec output
 
 ```sh
-jasmine --no-color
+npx jasmine --no-color
 ```
 
 #### `--filter=`
 Only runs specs that match the given string
 
 ```sh
-jasmine --filter="a spec name"
+npx jasmine --filter="a spec name"
 ```
 
-#### `--stop-on-failure=[true|false]`
- Stops execution of a spec after the first expectation failure when set to `true`
+#### `--fail-fast=[true|false]`
+Stops execution of the suite after the first expectation failure or other error when set to `true`
 
 ```sh
-jasmine --stop-on-failure=true
+npx jasmine --fail-fast=true
 ```
 
 #### `--random=[true|false]`
 Tells jasmine to run specs in semi random order or not for this run, overriding `jasmine.json`
 
 ```sh
-jasmine --random=true
+npx jasmine --random=true
 ```
 
 #### `--seed=`
 Sets the randomization seed if randomization is turned on
 
 ```sh
-jasmine --seed=4321
+npx jasmine --seed=4321
 ```
 
 #### `--reporter=`
 
-Sets the reporter default reporter implementation. Must be a valid node.js module name and needs installed in your project. If Jasmine-npm cannot load it it will use the default one.
+Sets the default reporter. The value must be a valid 
+[import specifier](https://nodejs.org/docs/latest-v16.x/api/esm.html#import-specifiers)
+for a module whose default export is a reporter constructor.
 
 ```sh
 npm i --save-dev jasmine-ts-console-reporter
-jasmine --reporter=jasmine-ts-console-reporter
+npx jasmine --reporter=jasmine-ts-console-reporter
 ```
 
 
@@ -194,19 +239,24 @@ jasmine.loadConfig({
 });
 ```
 
-### Custom onComplete
+### Custom completion handler
 
-Optionally specify a custom `onComplete` callback. The callback is given a boolean of whether all of the specs passed or not. This is often used to message a status to task runners like grunt.
+By default, Jasmine will cause the Node process to exit once the suite finishes
+running. The exit code will be 0 if the [overall status](https://jasmine.github.io/api/edge/global.html#JasmineDoneInfo)
+of the suite is `'passed'` and nonzero in all other cases. If you want to handle
+completion differently, you can set the Jasmine instance's `exitOnCompletion`
+property to `false` and use the promise returned from `execute`. This is often 
+used to message a status to task runners like grunt.
 
 ```javascript
-jasmine.onComplete(function(passed) {
-    if(passed) {
-        console.log('All specs have passed');
-    }
-    else {
-        console.log('At least one spec has failed');
-    }
-});
+jasmine.exitOnCompletion = false;
+const result = await jasmine.execute();
+
+if (result.overallStatus === 'passed') {
+    console.log('All specs have passed');
+} else {
+    console.log('At least one spec has failed');
+}
 ```
 
 ### Reporters
