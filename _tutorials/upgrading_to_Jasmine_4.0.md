@@ -31,11 +31,16 @@ The following previously-supported environments are no longer supported:
 
 * Node <12.17
 * Internet Explorer
-* Safari 8-12
+* Firefox 68 and 78
+* Safari 8-13
 * PhantomJS
 * Python
 * Ruby
 * Bower
+
+Odd-numbered Node versions (13.x, 15.x, 17.x) are unsupported and may or may
+not work. In particular, some 13.x versions have incomplete support for
+ES/CommonJS module interop and can't run Jasmine 4.0.
 
 <h2>Using Jasmine 3.99 to detect compatibility problems</h2>
 
@@ -46,33 +51,36 @@ the Jasmine packages that you depend on directly, as usual. If you upgrade the
 `jasmine` NPM package, the `jasmine` Rubygem, or the `jasmine` Python package to
 3.99, you'll also get version 3.99 of jasmine-core.
 
-TODO: instructions for jasmine-browser-runner users
+If you're using jasmine-browser-runner, just add `jasmine-core` 3.99 to your
+dependencies.
 
-<h2>Notes for Ruby and Python users</h2>
+<h2>Migration path for Ruby and Python users</h2>
 
 3.99 is the final version of Jasmine for Ruby and Python. We recommend that most
 users migrate to the [jasmine-browser-runner](https://github.com/jasmine/jasmine-browser)
-npm package, which is the direct replacement for the `jasmine` Ruby gem and 
+NPM package, which is the direct replacement for the `jasmine` Ruby gem and 
 Python package. It runs your specs in browsers, including headless Chrome and
 Saucelabs. It works with Rails applications including those that use Webpacker,
 which was never supported by the `jasmine` gem.
 
 If `jasmine-browser-runner` doesn't meet your needs, one of these might:
 
-* The [jasmine](https://github.com/jasmine/jasmine-npm) npm package to run
+* The [jasmine](https://github.com/jasmine/jasmine-npm) NPM package to run
 specs in Node.js.
 * The [standalone distribution](https://github.com/jasmine/jasmine#installation)
 to run specs in browsers with no additional tools.
-* The [jasmine-core](https://github.com/jasmine/jasmine) npm package if all
+* The [jasmine-core](https://github.com/jasmine/jasmine) NPM package if all
 you need is the Jasmine assets. This is the direct equivalent of the
 `jasmine-core` Ruby gem and Python package.
 
 <h2>Exit code changes</h2>
 
-Prior to version 4, jasmine-npm exited with a status of 1 in almost all 
-scenarios other than complete success. Version 4 uses different exit codes for
-different types of failures. You don't need to change anything unless your build
-or CI system specifically checks for an exit code of 1 (this is very unusual).
+Prior to version 4, the `jasmine` command exited with a status of 1 in almost
+all scenarios other than complete success. Version 4 uses different exit codes
+for different types of failures. You don't need to change anything unless your
+build or CI system specifically checks for an exit code of 1 (this is very
+unusual). Anything that treats 0 as success and everything else as failure will
+still work.
 
 <h2>Tips for resolving specific deprecation warnings</h2>
 
@@ -228,10 +236,8 @@ following ways:
 Instead of using `jasmine.pp`, access a `matchersUtil` in either of the above
 ways and then use its [pp method]({{ site.github.url }}/api/edge/MatchersUtil.html#pp).
 
-* The `pp` method of [the first parameter to a matcher factory]({{ site.github.url}}/tutorials/custom_matcher)
-* The first parameter to an object's (particularly an asymmetric equality 
-  tester's) `jasmineToString` method.
-
+Also, if an object has a `jasmineToString` method, `pp` will be passed as the
+first parameter.
 
 <h4>Note to library authors</h4>
 
