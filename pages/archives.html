@@ -1,0 +1,74 @@
+---
+layout: default
+title: Archived Documentation
+---
+
+<div class="main-content">
+
+    <h1>Archived Documentation</h1>
+
+    <p>
+        This page contains links to archived documentation for older versions
+        of Jasmine.</a>
+    </p>
+</div>
+<div class="main-content">
+    <div>
+        <h2>API Reference</h2>
+
+        <h3>jasmine-core</h3>
+        <ol class="api-docs-versions">
+            {% assign versions = site.api | sort: 'sortKey' %}
+            {% for version in versions reversed %}
+            {% if version.url contains "/global" and version.archived %}
+            <li><a href="{{ site.github.url }}{{ version.url }}">{{ version.url | remove_first: "/api/" | remove: "/global" | capitalize }}</a></li>
+            {% endif %}
+            {% endfor %}
+        </ol>
+        <h3>jasmine-npm</h3>
+        <ol class="api-docs-versions">
+            {% assign versions = site.npm-api | sort: 'sortKey' %}
+            {% for version in versions reversed %}
+            {% if version.title == "Class: Jasmine" and version.archived %}
+            <li><a href="{{ site.github.url }}{{ version.url }}">{{ version.url | remove_first: "/api/npm/" | remove: "/Jasmine" | capitalize }}</a></li>
+            {% endif %}
+            {% endfor %}
+        </ol>
+        <h3>jasmine-browser-runner</h3>
+        <ol class="api-docs-versions">
+            {% assign versions = site.browser-runner-api | sort: 'sortKey' %}
+            {% for version in versions reversed %}
+            {% if version.url contains "/module-jasmine-browser-runner" and version.archived %}
+            <li><a href="{{ site.github.url }}{{ version.url }}">{{ version.url | remove_first: "/api/browser-runner/" | remove: "/module-jasmine-browser-runner" | capitalize }}</a></li>
+            {% endif %}
+            {% endfor %}
+        </ol>
+    </div>
+
+
+    <div>
+        <h2>Getting Started</h2>
+
+        <h3><a href="{{ site.github.url }}/setup/ruby.html">Ruby</a></h3>
+        <h3><a href="{{ site.github.url }}/setup/python.html">Python</a></h3>
+
+    </div>
+
+    <div>
+        <h2>Tutorials</h2>
+
+        <h3><a href="{{ site.github.url }}/2.9/introduction">2.9</a></h3>
+        <h3><a href="{{ site.github.url }}/2.8/introduction">2.8</a></h3>
+        <h3><a href="{{ site.github.url }}/2.7/introduction">2.7</a></h3>
+        <h3><a href="{{ site.github.url }}/2.6/introduction">2.6</a></h3>
+        <h3><a href="{{ site.github.url }}/2.5/introduction">2.5</a></h3>
+        <h3><a href="{{ site.github.url }}/2.4/introduction">2.4</a></h3>
+        <h3><a href="{{ site.github.url }}/2.3/introduction">2.3</a></h3>
+        <h3><a href="{{ site.github.url }}/2.2/introduction">2.2</a></h3>
+        <h3><a href="{{ site.github.url }}/2.1/introduction">2.1</a></h3>
+        <h3><a href="{{ site.github.url }}/2.0/introduction">2.0</a></h3>
+        <h3><a href="{{ site.github.url }}/tutorials/upgrading_to_2">Upgrading to 2.0</a></h3>
+        <h3><a href="{{ site.github.url }}/1.3/introduction">1.3</a></h3>
+    </div>
+
+</div>

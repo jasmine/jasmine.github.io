@@ -5,7 +5,7 @@ redirect_from: /edge/python.html
 ---
 
 <div class="warning">
-    Jasmine for Python is deprecated. We recommend using the
+    Jasmine for Python is discontinued. We recommend using the
     <a href="nodejs.html">jasmine</a> or
     <a href="browser.html">jasmine-browser-runner</a> NPM packages instead.
 </div>
