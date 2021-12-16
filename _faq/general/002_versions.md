@@ -22,9 +22,10 @@ versions of `yarn` and `npm` will automatically install a compatible version
 of `jasmine-core` for you, or you can specify a version by adding it as a
 direct dependency of your package.
 
-Jasmine generally treats loss of support for a browser, Node version, Ruby
-version, or Python version as a breaking change requiring a major version
-number change. The exceptions to this are language versions that are past end
-of life and browsers that we can no longer install locally and/or test against
-in our CI builds. We'll make reasonable efforts to keep Jasmine working in
-those environments but won't necessarily do a major release if they break.
+Jasmine generally avoids dropping support for browser or Node versions except
+in major releases. The exceptions to this are Node versions that are past
+end of life, browsers that we can no longer install locally and/or test against
+in our CI builds, browsers that no longer receive security updates, and browsers
+that only run on operating systems that no longer receive security updates.
+We'll make reasonable efforts to keep Jasmine working in those environments
+but won't necessarily do a major release if they break.

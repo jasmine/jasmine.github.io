@@ -64,6 +64,5 @@ it('finishes and reports errors reliably', async function() {
 
 Callback-style specs are still useful in some situations. Some callback-based
 interfaces are difficult to promisify or don't benefit much from being
-promisified. And some people still run specs in older browsers that don't
-provide promises, such as Internet Explorer. But in most cases it's easier to
-write a reliable spec using `async`/`await` or at least promises.
+promisified. But in most cases it's easier to write a reliable spec using
+`async`/`await` or at least promises.
