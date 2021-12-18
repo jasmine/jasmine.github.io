@@ -148,7 +148,7 @@ The default configuration should work fine for nearly all CommonJS projects as
 well as those that use ES modules. But if necessary you can configure Jasmine
 to load scripts using `require` by adding `"jsLoader": "require"` to your
 Jasmine config file. If you have code that works with `"jsLoader": "require"`
-but not without it, please [let us know](https://github.com/jasmine/jasmine-npm/issues).
+but not without it, please [let us know](https://github.com/jasmine/jasmine-npm/issues/new).
 Files with names ending in `.mjs` will be loaded via dynamic import even if
 `jsLoader` is set to `"require"`.
 
