@@ -162,6 +162,9 @@
 
   .docs {
     flex: 1;
+	 // Allow wide code samples to scroll rathe than widening .docs
+	 // and pushing it below the nav sidebar
+	 overflow-x: hidden;
   }
 
   footer {
