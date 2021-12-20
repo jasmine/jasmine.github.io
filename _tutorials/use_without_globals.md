@@ -9,17 +9,29 @@ can use to write your specs. If you're running Jasmine
 4.0 or later via Node.js you also have the option of importing the Jasmine
 interface rather than having Jasmine create globals.
 
-<h2 markdown="1">If you're using the `jasmine` NPM package</h2>
+<h2 markdown="1">Initialization when using the `jasmine` NPM package</h2>
 
-First, pass `{globals: false}` to the
-[Jasmine constructor](/api/npm/edge/Jasmine.html):
+Pass `{globals: false}` to the [Jasmine constructor](/api/npm/edge/Jasmine.html):
 
 ```
 const Jasmine = require('jasmine');
-const jasmine = new Jasmine({globals: false});
+const runner = new Jasmine({globals: false});
 ```
 
-Then, in each of your spec files, use the jasmine-core module's noGlobals function to obtain the things that would normally be provided as [globals](/api/edge/global):
+
+<h2 markdown="1">Initialization when using `jasmine-core` directly</h2>
+
+Initialize jasmine-core by calling `noGlobals` instead of `boot`:
+
+```
+const jasmine = require('jasmine-core').noGlobals().jasmine;
+```
+
+<h2>Writing spec and helper files</h2>
+
+In each of your spec and helper files, use the jasmine-core module's noGlobals
+function to obtain the things that would normally be provided as
+[globals](/api/edge/global):
 
 ```
 const {describe, beforeEach, it, expect, jasmine} = require('jasmine-core').noGlobals();
