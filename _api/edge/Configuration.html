@@ -6,7 +6,7 @@ prettify: true
 
 <div class="main-content api-docs">
   <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="async-matchers.html">async-matchers</a></li><li><a href="jasmine.html">jasmine</a></li><li><a href="matchers.html">matchers</a></li><li><a href="Spy_calls.html">Spy#calls</a></li></ul><h3>Classes</h3><ul><li><a href="Clock.html">Clock</a></li><li><a href="Env.html">Env</a></li><li><a href="jsApiReporter.html">jsApiReporter</a></li><li><a href="MatchersUtil.html">MatchersUtil</a></li><li><a href="Spy.html">Spy</a></li></ul><h3>Interfaces</h3><ul><li><a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a></li><li><a href="Configuration.html">Configuration</a></li><li><a href="Reporter.html">Reporter</a></li><li><a href="Spec.html">Spec</a></li><li><a href="SpyStrategy.html">SpyStrategy</a></li><li><a href="Suite.html">Suite</a></li></ul><h3>Global</h3><ul><li><a href="global.html#afterAll">afterAll</a></li><li><a href="global.html#afterEach">afterEach</a></li><li><a href="global.html#beforeAll">beforeAll</a></li><li><a href="global.html#beforeEach">beforeEach</a></li><li><a href="global.html#describe">describe</a></li><li><a href="global.html#expect">expect</a></li><li><a href="global.html#expectAsync">expectAsync</a></li><li><a href="global.html#fail">fail</a></li><li><a href="global.html#fdescribe">fdescribe</a></li><li><a href="global.html#fit">fit</a></li><li><a href="global.html#it">it</a></li><li><a href="global.html#pending">pending</a></li><li><a href="global.html#setSpecProperty">setSpecProperty</a></li><li><a href="global.html#setSuiteProperty">setSuiteProperty</a></li><li><a href="global.html#spyOn">spyOn</a></li><li><a href="global.html#spyOnAllFunctions">spyOnAllFunctions</a></li><li><a href="global.html#spyOnProperty">spyOnProperty</a></li><li><a href="global.html#xdescribe">xdescribe</a></li><li><a href="global.html#xit">xit</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-jasmine-core.html">jasmine-core</a></li></ul><h3>Namespaces</h3><ul><li><a href="async-matchers.html">async-matchers</a></li><li><a href="jasmine.html">jasmine</a></li><li><a href="matchers.html">matchers</a></li><li><a href="Spy_calls.html">Spy#calls</a></li></ul><h3>Classes</h3><ul><li><a href="Clock.html">Clock</a></li><li><a href="Env.html">Env</a></li><li><a href="jsApiReporter.html">jsApiReporter</a></li><li><a href="MatchersUtil.html">MatchersUtil</a></li><li><a href="Spy.html">Spy</a></li></ul><h3>Interfaces</h3><ul><li><a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a></li><li><a href="Configuration.html">Configuration</a></li><li><a href="Reporter.html">Reporter</a></li><li><a href="Spec.html">Spec</a></li><li><a href="SpyStrategy.html">SpyStrategy</a></li><li><a href="Suite.html">Suite</a></li></ul><h3>Global</h3><ul><li><a href="global.html#afterAll">afterAll</a></li><li><a href="global.html#afterEach">afterEach</a></li><li><a href="global.html#beforeAll">beforeAll</a></li><li><a href="global.html#beforeEach">beforeEach</a></li><li><a href="global.html#describe">describe</a></li><li><a href="global.html#expect">expect</a></li><li><a href="global.html#expectAsync">expectAsync</a></li><li><a href="global.html#fail">fail</a></li><li><a href="global.html#fdescribe">fdescribe</a></li><li><a href="global.html#fit">fit</a></li><li><a href="global.html#it">it</a></li><li><a href="global.html#pending">pending</a></li><li><a href="global.html#setSpecProperty">setSpecProperty</a></li><li><a href="global.html#setSuiteProperty">setSuiteProperty</a></li><li><a href="global.html#spyOn">spyOn</a></li><li><a href="global.html#spyOnAllFunctions">spyOnAllFunctions</a></li><li><a href="global.html#spyOnProperty">spyOnProperty</a></li><li><a href="global.html#xdescribe">xdescribe</a></li><li><a href="global.html#xit">xit</a></li></ul>
   </nav>
 
   <div class="docs">
@@ -180,83 +180,6 @@ This prevents memory leaks, but you won't be able to run jasmine multiple times.
 
         
             
-<h4 class="name" id="failFast"><span class="type-signature"></span>failFast<span class="type-signature"> :Boolean</span></h4>
-
-
-
-
-<div class="description">
-    <p>Whether to stop execution of the suite after the first spec failure</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Boolean</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-    <dt class="tag-since">Since:</dt>
-    <dd class="tag-since"><ul class="dummy"><li>3.3.0</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use the `stopOnSpecFailure` config property instead.</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>false</li>
-        </ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
 <h4 class="name" id="failSpecWithNoExpectations"><span class="type-signature"></span>failSpecWithNoExpectations<span class="type-signature"> :Boolean</span></h4>
 
 
@@ -391,160 +314,6 @@ Currently only supported by Jasmine's HTMLReporter</p>
     <dt class="tag-default">Default Value:</dt>
     <dd class="tag-default"><ul class="dummy">
             <li>false</li>
-        </ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="oneFailurePerSpec"><span class="type-signature"></span>oneFailurePerSpec<span class="type-signature"> :Boolean</span></h4>
-
-
-
-
-<div class="description">
-    <p>Whether to cause specs to only have one expectation failure.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Boolean</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-    <dt class="tag-since">Since:</dt>
-    <dd class="tag-since"><ul class="dummy"><li>3.3.0</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use the `stopSpecOnExpectationFailure` config property instead.</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>false</li>
-        </ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="Promise"><span class="type-signature"></span>Promise<span class="type-signature"> :function</span></h4>
-
-
-
-
-<div class="description">
-    <p>Set to provide a custom promise library that Jasmine will use if it needs
-to create a promise. If not set, it will default to whatever global Promise
-library is available (if any).</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">function</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-    <dt class="tag-since">Since:</dt>
-    <dd class="tag-since"><ul class="dummy"><li>3.5.0</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>undefined</li>
         </ul></dd>
     
 
@@ -942,6 +711,85 @@ Null causes the seed to be determined randomly at the start of execution.</p>
 
 
         
+            
+<h4 class="name" id="verboseDeprecations"><span class="type-signature"></span>verboseDeprecations<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+<div class="description">
+    <p>Whether or not to issue warnings for certain deprecated functionality
+every time it's used. If not set or set to false, deprecation warnings
+for methods that tend to be called frequently will be issued only once
+or otherwise throttled to to prevent the suite output from being flooded
+with warnings.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.6.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>false</li>
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
     
 
     
@@ -959,6 +807,6 @@ Null causes the seed to be determined randomly at the start of execution.</p>
   </div>
 
   <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a>.
   </footer>
 </div>

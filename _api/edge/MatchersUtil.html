@@ -6,7 +6,7 @@ prettify: true
 
 <div class="main-content api-docs">
   <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="async-matchers.html">async-matchers</a></li><li><a href="jasmine.html">jasmine</a></li><li><a href="matchers.html">matchers</a></li><li><a href="Spy_calls.html">Spy#calls</a></li></ul><h3>Classes</h3><ul><li><a href="Clock.html">Clock</a></li><li><a href="Env.html">Env</a></li><li><a href="jsApiReporter.html">jsApiReporter</a></li><li><a href="MatchersUtil.html">MatchersUtil</a></li><li><a href="Spy.html">Spy</a></li></ul><h3>Interfaces</h3><ul><li><a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a></li><li><a href="Configuration.html">Configuration</a></li><li><a href="Reporter.html">Reporter</a></li><li><a href="Spec.html">Spec</a></li><li><a href="SpyStrategy.html">SpyStrategy</a></li><li><a href="Suite.html">Suite</a></li></ul><h3>Global</h3><ul><li><a href="global.html#afterAll">afterAll</a></li><li><a href="global.html#afterEach">afterEach</a></li><li><a href="global.html#beforeAll">beforeAll</a></li><li><a href="global.html#beforeEach">beforeEach</a></li><li><a href="global.html#describe">describe</a></li><li><a href="global.html#expect">expect</a></li><li><a href="global.html#expectAsync">expectAsync</a></li><li><a href="global.html#fail">fail</a></li><li><a href="global.html#fdescribe">fdescribe</a></li><li><a href="global.html#fit">fit</a></li><li><a href="global.html#it">it</a></li><li><a href="global.html#pending">pending</a></li><li><a href="global.html#setSpecProperty">setSpecProperty</a></li><li><a href="global.html#setSuiteProperty">setSuiteProperty</a></li><li><a href="global.html#spyOn">spyOn</a></li><li><a href="global.html#spyOnAllFunctions">spyOnAllFunctions</a></li><li><a href="global.html#spyOnProperty">spyOnProperty</a></li><li><a href="global.html#xdescribe">xdescribe</a></li><li><a href="global.html#xit">xit</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-jasmine-core.html">jasmine-core</a></li></ul><h3>Namespaces</h3><ul><li><a href="async-matchers.html">async-matchers</a></li><li><a href="jasmine.html">jasmine</a></li><li><a href="matchers.html">matchers</a></li><li><a href="Spy_calls.html">Spy#calls</a></li></ul><h3>Classes</h3><ul><li><a href="Clock.html">Clock</a></li><li><a href="Env.html">Env</a></li><li><a href="jsApiReporter.html">jsApiReporter</a></li><li><a href="MatchersUtil.html">MatchersUtil</a></li><li><a href="Spy.html">Spy</a></li></ul><h3>Interfaces</h3><ul><li><a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a></li><li><a href="Configuration.html">Configuration</a></li><li><a href="Reporter.html">Reporter</a></li><li><a href="Spec.html">Spec</a></li><li><a href="SpyStrategy.html">SpyStrategy</a></li><li><a href="Suite.html">Suite</a></li></ul><h3>Global</h3><ul><li><a href="global.html#afterAll">afterAll</a></li><li><a href="global.html#afterEach">afterEach</a></li><li><a href="global.html#beforeAll">beforeAll</a></li><li><a href="global.html#beforeEach">beforeEach</a></li><li><a href="global.html#describe">describe</a></li><li><a href="global.html#expect">expect</a></li><li><a href="global.html#expectAsync">expectAsync</a></li><li><a href="global.html#fail">fail</a></li><li><a href="global.html#fdescribe">fdescribe</a></li><li><a href="global.html#fit">fit</a></li><li><a href="global.html#it">it</a></li><li><a href="global.html#pending">pending</a></li><li><a href="global.html#setSpecProperty">setSpecProperty</a></li><li><a href="global.html#setSuiteProperty">setSuiteProperty</a></li><li><a href="global.html#spyOn">spyOn</a></li><li><a href="global.html#spyOnAllFunctions">spyOnAllFunctions</a></li><li><a href="global.html#spyOnProperty">spyOnProperty</a></li><li><a href="global.html#xdescribe">xdescribe</a></li><li><a href="global.html#xit">xit</a></li></ul>
   </nav>
 
   <div class="docs">
@@ -129,7 +129,7 @@ pass it to matchers and asymmetric equality testers.</p></div>
     
 
     
-    <h4 class="name" id="contains"><span class="type-signature"></span>contains<span class="signature">(haystack, needle, customTesters<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <h4 class="name" id="contains"><span class="type-signature"></span>contains<span class="signature">(haystack, needle)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
     
 
     
@@ -162,8 +162,6 @@ logic as <a href="MatchersUtil.html#equals"><code>MatchersUtil#equals</code></a>
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -189,14 +187,6 @@ logic as <a href="MatchersUtil.html#equals"><code>MatchersUtil#equals</code></a>
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
@@ -220,46 +210,10 @@ logic as <a href="MatchersUtil.html#equals"><code>MatchersUtil#equals</code></a>
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
             <td class="description last"><p>The value to search for</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>customTesters</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>An array of custom equality testers</p></td>
         </tr>
 
     
@@ -356,7 +310,7 @@ logic as <a href="MatchersUtil.html#equals"><code>MatchersUtil#equals</code></a>
     
 
     
-    <h4 class="name" id="equals"><span class="type-signature"></span>equals<span class="signature">(a, b, customTesters<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <h4 class="name" id="equals"><span class="type-signature"></span>equals<span class="signature">(a, b)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
     
 
     
@@ -388,8 +342,6 @@ logic as <a href="MatchersUtil.html#equals"><code>MatchersUtil#equals</code></a>
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -415,14 +367,6 @@ logic as <a href="MatchersUtil.html#equals"><code>MatchersUtil#equals</code></a>
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
@@ -446,46 +390,10 @@ logic as <a href="MatchersUtil.html#equals"><code>MatchersUtil#equals</code></a>
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
             <td class="description last"><p>The second value to compare</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>customTesters</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>An array of custom equality testers</p></td>
         </tr>
 
     
@@ -750,6 +658,6 @@ taking into account the current set of custom value formatters.</p>
   </div>
 
   <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a>.
   </footer>
 </div>
