@@ -178,8 +178,8 @@ Only runs specs that match the given string
 npx jasmine --filter="a spec name"
 ```
 
-#### `--fail-fast=[true|false]`
-Stops execution of the suite after the first expectation failure or other error when set to `true`
+#### `--fail-fast`
+Stops execution of the suite after the first expectation failure or other error 
 
 ```sh
 npx jasmine --fail-fast=true
