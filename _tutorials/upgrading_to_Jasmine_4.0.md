@@ -82,6 +82,54 @@ build or CI system specifically checks for an exit code of 1 (this is very
 unusual). Anything that treats 0 as success and everything else as failure will
 still work.
 
+<h2 markdown="1">Changes to how `beforeAll` and `beforeEach` failures are handled</h2>
+
+Jasmine 4 handles `beforeAll` and `beforeEach` failures differently. The change
+may cause problems with certain unusual setup and teardown patterns. As long as
+you tear down resources in the same suite where they were set up, you don't
+need to make any changes.
+
+When a `beforeAll` function fails for any other reason other than a failed
+expectation, Jasmine 4 will skip the entire suite except for any `afterAll`
+functions defined in the same suite as the failed `beforeAll`. Similarly, a
+`beforeEach` failure other than a failed expectation will cause any subsequent
+`beforeEach` functions, the spec in question, and any `afterEach` functions
+defined in nested suites to be skipped.
+
+```
+// Unsafe. Test pollution can result because the afterEach won't always run.
+describe('Outer suite', function() {
+  beforeEach(function() {
+    setSomeGlobalState();
+    possiblyFail();
+  });
+
+  describe('inner suite', function() {
+    it('does something', function() { /*...*/ });
+
+    // This afterEach function should be moved up to the outer suite.
+    afterEach(function() {
+      cleanUpTheGlobalState();
+    });
+  });
+});
+```
+
+<h2>Reporter interface changes</h2>
+
+Jasmine 4.0 adds a `debugLogs` field to the
+[object that's passed to a reporter's specDone method]({{site.url}}/api/edge/global.html#SpecResult).
+It will be defined if the spec called
+[jasmine.debugLog]({{site.url}}/api/edge/jasmine.html#.debugLog)
+and also failed. Most reporters should display it if it's present.
+
+Jasmine 4.0 is more likely than previous versions to report errors in the
+`jasmineDone` event. Failing to display those errors is a common bug in custom
+reporters. You can check yours by creating an `afterAll` function at the top
+level (i.e. not in a `describe`) that throws an exception and making sure that
+your reporter displays it.
+
+
 <h2>Tips for resolving specific deprecation warnings</h2>
 
 <h3 id="matchers-cet">Deprecations related to custom equality testers in matchers</h3>
@@ -174,10 +222,11 @@ Prior to 3.6, [custom asymmetric equality testers]({{ site.github.url }}/tutoria
 that wanted to support [custom equality testers]({{ site.github.url }}/tutorials/custom_equality)
 had to accept an array of custom equality testers as second argument to
 `asymmetricMatch` and pass it to methods like `MatchersUtil#equals` and
-`MatchersUtil#contains`. Since 3.6, the second argument is both an array of
-custom equality testers and a `MatchersUtil` instance that's preconfigured with
-them. To resolve the deprecation warning, use the provided `MatchersUtil`
-directly:
+`MatchersUtil#contains`. From 3.6, to 3.99, the second argument is both an
+array of custom equality testers and a `MatchersUtil` instance that's
+preconfigured with them. In 4.0 and later it's just a properly configured
+`MatchersUtil`. To resolve the deprecation warning, use the provided
+`MatchersUtil` directly:
 
 Before:
 
