@@ -24,6 +24,19 @@ of common errors, and changes to the system requirements. You can find a
 complete list of breaking changes in the 
 [release notes](https://github.com/jasmine/jasmine/blob/main/release_notes/4.0.0.md).
 
+
+<h2>Contents</h2>
+
+<ol>
+  <li><a href="#system-requirements">System requirements</a></li>
+  <li><a href="#using-jasmine-3-99-to-detect-compatibility-problems">Using Jasmine 3.99 to detect compatibility problems</a></li>
+  <li><a href="#migration-path-for-ruby-and-python-users">Migration path for Ruby and Python users</a></li>
+  <li><a href="#exit-code-changes">Exit code changes</a></li>
+  <li><a href="#changes-to-how-beforeall-and-beforeeach-failures-are-handled">Changes to how beforeAll and beforeEach failures are handled</a></li>
+  <li><a href="#reporter-interface-changes">Reporter interface changes</a></li>
+  <li><a href="#tips-for-resolving-specific-deprecation-warnings">Tips for resolving specific deprecation warnings</a></li>
+</ol>
+
 <h2>System requirements</h2>
 
 The following previously-supported environments are no longer supported:
