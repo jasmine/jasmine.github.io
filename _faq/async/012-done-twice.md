@@ -43,8 +43,8 @@ function allowUnsafeMultipleDone(fn) {
 it('calls done twice', allowUnsafeMultipleDone(function(done) {
   setTimeout(done);
   setTimeout(function() {
-	 // This code may interleave with subsequent specs or even run after Jasmine
-	 // has finished executing.
+    // This code may interleave with subsequent specs or even run after Jasmine
+    // has finished executing.
     done();
   }, 50);
 }));
