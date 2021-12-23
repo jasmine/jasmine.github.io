@@ -330,7 +330,7 @@ spec failure whenever it encounters such a function.
 [The FAQ discusses the reason for this change and how to update your specs]({{ site.github.url}}/pages/faq.html#010-mixed-style).
 
 
-<h3>Deprecations due to calling `done` multiple times</h3>
+<h3 markdown="1">Deprecations due to calling `done` multiple times</h3>
 
 * "An asynchronous function called its 'done' callback more than once. This is
   a bug in the spec, beforeAll, beforeEach, afterAll, or afterEach function in
