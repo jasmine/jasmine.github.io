@@ -354,3 +354,60 @@ Jasmine historically tolerated multiple `done` calls, but the bugs that this
 masked proved to be a common source of confusion. Jasmine 4 will report an
 error whenever an asynchronous function calls `done` more than once.
 [The FAQ discusses the reason for this change and how to update your specs]({{ site.github.url}}/pages/faq.html#012-done-twice).
+
+<h3 markdown="1">Deprecations due to reentrant calls to `jasmine.clock().tick()`</h3>
+
+Prior to 4.0, calling `jasmine.clock().tick()` from inside a `setTimeout` or
+`setInterval` handler could cause the current time as exposed by `Date` to
+travel backwards. Beginning with 4.0, the current time will not decrease even
+in the case of reentrant calls to `tick()`. This might affect the behavior of
+specs that both call `tick()` from inside a timer handler and also care about
+the current time.
+
+You can ignore this warning if the affected specs don't care about the current
+time, or if you plan to check them after upgrading to 4.0. However, we recommend
+modifying the affected specs to not call `tick()` from inside a timer handler.
+
+Before:
+
+```
+it('makes a reentrant call to tick()', function() {
+  const foo = jasmine.createSpy('foo');
+  const bar = jasmine.createSpy('bar');
+
+  setTimeout(function() {
+    foo();
+    jasmine.clock().tick(9);
+  }, 1);
+
+  setTimeout(function() {
+    bar();
+  }, 10);
+
+  jasmine.clock().tick(1);
+  expect(foo).toHaveBeenCalled();
+  expect(bar).toHaveBeenCalled();
+});
+```
+
+After:
+
+```
+it('does not make a reentrant call to tick()', function() {
+  const foo = jasmine.createSpy('foo');
+  const bar = jasmine.createSpy('bar');
+
+  setTimeout(function() {
+    foo();
+  }, 1);
+
+  setTimeout(function() {
+    bar();
+  }, 10);
+
+  jasmine.clock().tick(1);
+  expect(foo).toHaveBeenCalled();
+  jasmine.clock().tick(9);
+  expect(bar).toHaveBeenCalled();
+});
+```
