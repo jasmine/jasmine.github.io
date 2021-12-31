@@ -41,7 +41,6 @@ complete list of breaking changes in the
 <h2>System requirements</h2>
 
 The following previously-supported environments are no longer supported:
-[ TODO: Update shortly before release. ]
 
 * Node <12.17
 * Internet Explorer
