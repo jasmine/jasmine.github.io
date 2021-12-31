@@ -31,6 +31,7 @@ complete list of breaking changes in the
   <li><a href="#system-requirements">System requirements</a></li>
   <li><a href="#using-jasmine-3-99-to-detect-compatibility-problems">Using Jasmine 3.99 to detect compatibility problems</a></li>
   <li><a href="#migration-path-for-ruby-and-python-users">Migration path for Ruby and Python users</a></li>
+  <li><a href="#jasmine-package-public-interface" markdown="1">`jasmine` package public interface</a></li>
   <li><a href="#exit-code-changes">Exit code changes</a></li>
   <li><a href="#changes-to-how-beforeall-and-beforeeach-failures-are-handled">Changes to how beforeAll and beforeEach failures are handled</a></li>
   <li><a href="#reporter-interface-changes">Reporter interface changes</a></li>
@@ -85,6 +86,16 @@ to run specs in browsers with no additional tools.
 * The [jasmine-core](https://github.com/jasmine/jasmine) NPM package if all
 you need is the Jasmine assets. This is the direct equivalent of the
 `jasmine-core` Ruby gem and Python package.
+
+<h2 markdown="1">`jasmine` package public interface</h2>
+
+Unlike the `jasmine-core` pacakge, the `jasmine` package did not have a
+documented public interface until version 3.8. Beginning with 4.0, anything
+that's not part part of the documented public interface will be considered a
+private API and subject to change at any time. If you use the `jasmine` package
+programmatically (i.e. you have code that does `require('jasmine'`) or
+`import('jasmine')`, please check your code against the
+[API docs](https://jasmine.github.io/api/npm/4.0/Jasmine).
 
 <h2>Exit code changes</h2>
 
