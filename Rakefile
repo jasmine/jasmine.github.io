@@ -78,7 +78,8 @@ desc "update jasmine-core for edge docs"
 task :update_edge_jasmine => ['.current_version'] do
   download_core_file('jasmine.js')
   download_core_file('jasmine-html.js')
-  download_core_file('boot.js')
+  download_core_file('boot0.js')
+  download_core_file('boot1.js')
 end
 
 def download_browser_runner_file(file_name)
