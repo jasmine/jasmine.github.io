@@ -71,15 +71,16 @@ file '.current_npm_version/reporters' do
 end
 
 def download_core_file(file_name)
-  `curl -L 'https://raw.github.com/jasmine/jasmine/main/lib/jasmine-core/#{file_name}' > .current_version/#{file_name}`
+  `curl -L 'https://raw.github.com/jasmine/jasmine/main/lib/#{file_name}' > .current_version/#{File.basename(file_name)}`
 end
 
 desc "update jasmine-core for edge docs"
 task :update_edge_jasmine => ['.current_version'] do
-  download_core_file('jasmine.js')
-  download_core_file('jasmine-html.js')
-  download_core_file('boot0.js')
-  download_core_file('boot1.js')
+  download_core_file('jasmine-core/jasmine.js')
+  download_core_file('jasmine-core.js')
+  download_core_file('jasmine-core/jasmine-html.js')
+  download_core_file('jasmine-core/boot0.js')
+  download_core_file('jasmine-core/boot1.js')
 end
 
 def download_browser_runner_file(file_name)
