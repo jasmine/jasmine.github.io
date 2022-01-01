@@ -5,8 +5,8 @@ layout: faq # FAQ styling for lists and code blocks is right for this page
 <h1>Upgrading to Jasmine 4.0</h1>
 
 <div class="warning">
-	This is a rough draft that describes an unreleased version of Jasmine.
-	Things will change between the time you read this and the final release.
+	This document describes an unreleased version of Jasmine.
+	It may contain broken links and other issues until Jasmine 4.0 is released.
 </div>
 
 <h2>Overview</h2>
@@ -21,8 +21,9 @@ guide will give you the greatest chance of a smooth upgrade experience.
 Breaking changes in Jasmine 4.0 include changes to how Jasmine is configured,
 changes to custom matchers and asymmetric equality testers, better detection
 of common errors, and changes to the system requirements. You can find a
-complete list of breaking changes in the 
-[release notes](https://github.com/jasmine/jasmine/blob/main/release_notes/4.0.0.md).
+complete list of breaking changes in the release notes for
+[`jasmine-core`](https://github.com/jasmine/jasmine/blob/main/release_notes/4.0.0.md)
+and [`jasmine`](https://github.com/jasmine/jasmine-npm/blob/main/release_notes/4.0.0.md).
 
 
 <h2>Contents</h2>
@@ -51,6 +52,9 @@ The following previously-supported environments are no longer supported:
 * Ruby
 * Bower
 
+Although Jasmine 4.0 may still work in some of those environments, we no longer
+test against them and won't try to maintain compatibility with them in future
+4.x releases.
 Odd-numbered Node versions (13.x, 15.x, 17.x) are unsupported and may or may
 not work. In particular, some 13.x versions have incomplete support for
 ES/CommonJS module interop and can't run Jasmine 4.0.
