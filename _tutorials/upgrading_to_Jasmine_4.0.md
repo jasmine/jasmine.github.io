@@ -4,11 +4,6 @@ layout: faq # FAQ styling for lists and code blocks is right for this page
 
 <h1>Upgrading to Jasmine 4.0</h1>
 
-<div class="warning">
-	This document describes an unreleased version of Jasmine.
-	It may contain broken links and other issues until Jasmine 4.0 is released.
-</div>
-
 <h2>Overview</h2>
 
 **tl;dr**: Update to 3.99 and fix any deprecation warnings before updating to 4.0.
@@ -145,9 +140,9 @@ describe('Outer suite', function() {
 <h2>Reporter interface changes</h2>
 
 Jasmine 4.0 adds a `debugLogs` field to the
-[object that's passed to a reporter's specDone method]({{site.url}}/api/edge/global.html#SpecResult).
+[object that's passed to a reporter's specDone method]({{site.url}}/api/4.0/global.html#SpecResult).
 It will be defined if the spec called
-[jasmine.debugLog]({{site.url}}/api/edge/jasmine.html#.debugLog)
+[jasmine.debugLog]({{site.url}}/api/4.0/jasmine.html#.debugLog)
 and also failed. Most reporters should display it if it's present.
 
 Jasmine 4.0 is more likely than previous versions to report errors in the
