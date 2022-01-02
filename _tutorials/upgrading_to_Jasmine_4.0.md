@@ -28,6 +28,7 @@ and [`jasmine`](https://github.com/jasmine/jasmine-npm/blob/main/release_notes/4
   <li><a href="#using-jasmine-3-99-to-detect-compatibility-problems">Using Jasmine 3.99 to detect compatibility problems</a></li>
   <li><a href="#migration-path-for-ruby-and-python-users">Migration path for Ruby and Python users</a></li>
   <li><a href="#jasmine-package-public-interface" markdown="1">`jasmine` package public interface</a></li>
+  <li><a href="#es-module-support">ES module support</a></li>
   <li><a href="#exit-code-changes">Exit code changes</a></li>
   <li><a href="#changes-to-how-beforeall-and-beforeeach-failures-are-handled">Changes to how beforeAll and beforeEach failures are handled</a></li>
   <li><a href="#reporter-interface-changes">Reporter interface changes</a></li>
@@ -94,6 +95,17 @@ private API and subject to change at any time. If you use the `jasmine` package
 programmatically (i.e. you have code that does `require('jasmine'`) or
 `import('jasmine')`, please check your code against the
 [API docs](https://jasmine.github.io/api/npm/4.0/Jasmine).
+
+<h2>ES module support</h2>
+
+Beginning with version 4, the `jasmine` package defaults to loading specs and
+other files using dynamic `import()`. This allows ES modules with `.js` 
+extension to be used without any configuration. However, it may break loading
+of some files such as those with nonstandard (but very common) extensions like
+`.jsx`. If you have scripts that don't load with dynamic `import()`, you can
+restore the previous behavior by adding `jsLoader: "require"` to your
+`jasmine.json` file.
+
 
 <h2>Exit code changes</h2>
 
