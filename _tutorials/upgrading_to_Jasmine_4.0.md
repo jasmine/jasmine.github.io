@@ -100,12 +100,9 @@ programmatically (i.e. you have code that does `require('jasmine'`) or
 
 Beginning with version 4, the `jasmine` package defaults to loading specs and
 other files using dynamic `import()`. This allows ES modules with `.js` 
-extension to be used without any configuration. However, it may break loading
-of some files such as those with nonstandard (but very common) extensions like
-`.jsx`. If you have scripts that don't load with dynamic `import()`, you can
-restore the previous behavior by adding `jsLoader: "require"` to your
-`jasmine.json` file.
-
+extension to be used without any configuration. Version 4.0.1 fixes the loading
+of files with nonstandard extensions like `.jsx` or `.coffee`, so be sure to 
+install at least that version if you have such files.
 
 <h2>Exit code changes</h2>
 

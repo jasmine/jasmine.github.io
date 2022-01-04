@@ -162,16 +162,6 @@ And put the following code in `spec/helpers/exclude.js`.
 import 'ignore-styles';
 ```
 
-## Optional: Configuring Jasmine to load files with `.jsx` or `.tsx` extensions
-
-By default, Jasmine 4 loads specs and helpers using dynamic `import()`, which
-supports ES modules but doesn't support nonstandard (but common) extensions
-like `.jsx` and `.tsx`. You can enable support for those extensions
-`jsLoader: "require"` to `spec/support/jasmine.json`. Note that if you do this,
-Jasmine will only load specs or helpers as ES modules if their names end in
-`.mjs`.
-
-
 ## Optional: Spec file pattern configuration
 
 You also might want to change the way that Jasmine looks for spec files. 
