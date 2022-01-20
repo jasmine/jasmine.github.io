@@ -16,7 +16,7 @@ var customMatchers = {
    *
    * Custom matcher factories are passed two parameters: `util`, which has a set of utility functions for matchers to use (see: [`matchersUtil.js`][mu.js] for the current list) and `customEqualityTesters` which needs to be passed in if `util.equals` is ever called. These parameters are available for use when the matcher is called.
    *
-   * [mu.js]: https://github.com/pivotal/jasmine/blob/master/src/core/matchers/matchersUtil.js
+   * [mu.js]: https://github.com/jasmine/jasmine/blob/main/src/core/matchers/matchersUtil.js
    */
   toBeGoofy: function(util, customEqualityTesters) {
     /**
