@@ -1,0 +1,255 @@
+---
+layout: side-by-side
+title: Boot
+test-source: src/boot.js
+---
+<ul class="jump_to">
+<li> Jump To: </li>
+  <li><a class="source" href="ajax.html">ajax.js</a></li>
+  <li><a class="source" href="boot.html">boot.js</a></li>
+  <li><a class="source" href="custom_boot.html">custom_boot.js</a></li>
+  <li><a class="source" href="custom_equality.html">custom_equality.js</a></li>
+  <li><a class="source" href="custom_matcher.html">custom_matcher.js</a></li>
+  <li><a class="source" href="custom_reporter.html">custom_reporter.js</a></li>
+  <li><a class="source" href="focused_specs.html">focused_specs.js</a></li>
+  <li><a class="source" href="introduction.html">introduction.js</a></li>
+  <li><a class="source" href="node.html">node.js</a></li>
+  <li><a class="source" href="python_egg.html">python_egg.py</a></li>
+  <li><a class="source" href="ruby_gem.html">ruby_gem.rb</a></li>
+  <li><a class="source" href="upgrading.html">upgrading.js</a></li>
+</ul>
+<table cellspacing="0" cellpadding="0">
+  <thead>
+  <tr>
+    <th class="docs">
+      <h1>boot.js</h1>
+    </th>
+    <th class="code"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr id="section-1">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-1">&#182;</a>
+      </div>
+      <p>Starting with version 2.0, this file &quot;boots&quot; Jasmine, performing all of the necessary initialization before executing the loaded environment and all of a project&#39;s specs. This file should be loaded after <code>jasmine.js</code> and <code>jasmine_html.js</code>, but before any project source files or spec files are loaded. Thus this file can also be used to customize Jasmine for a project.</p>
+
+<p>If a project is using Jasmine via the standalone distribution, this file can be <a href="custom_boot.html">customized</a> directly. If a project is using Jasmine via the <a href="http://github.com/pivotal/jasmine-gem">Ruby gem</a>, this file can be copied into the support directory via <code>jasmine copy_boot_js</code>. Other environments (e.g., Python) will have different mechanisms.</p>
+
+<p>The location of <code>boot.js</code> can be specified and/or overridden in <code>jasmine.yml</code>.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre><span></span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-Require_&amp;amp;_Instantiate">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-Require_&amp;amp;_Instantiate">&#182;</a>
+      </div>
+      <h2>Require &amp; Instantiate</h2>
+
+<p>Require Jasmine&#39;s core files. Specifically, this requires and attaches all of Jasmine&#39;s code to the <code>jasmine</code> reference.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="nb">window</span><span class="p">.</span><span class="nx">jasmine</span> <span class="o">=</span> <span class="nx">jasmineRequire</span><span class="p">.</span><span class="nx">core</span><span class="p">(</span><span class="nx">jasmineRequire</span><span class="p">);</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-3">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-3">&#182;</a>
+      </div>
+      <p>Since this is being run in a browser and the results should populate to an HTML page, require the HTML-specific Jasmine code, injecting the same reference.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="nx">jasmineRequire</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">);</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-4">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-4">&#182;</a>
+      </div>
+      <p>Create the Jasmine environment. This is used to run all specs in a project.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="kd">var</span> <span class="nx">env</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">getEnv</span><span class="p">();</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-The_Global_Interface">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-The_Global_Interface">&#182;</a>
+      </div>
+      <h2>The Global Interface</h2>
+
+<p>Build up the functions that will be exposed as the Jasmine public interface. A project can <a href="custom_boot.html">customize</a>, rename or alias any of these functions as desired, provided the implementation remains unchanged.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="kd">var</span> <span class="nx">jasmineInterface</span> <span class="o">=</span> <span class="nx">jasmineRequire</span><span class="p">.</span><span class="kr">interface</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">,</span> <span class="nx">env</span><span class="p">);</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-6">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-6">&#182;</a>
+      </div>
+      <p>Add all of the Jasmine global/public interface to the proper global, so a project can use the public interface directly. For example, calling <code>describe</code> in specs instead of <code>jasmine.getEnv().describe</code>.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nb">window</span> <span class="o">==</span> <span class="s2">&quot;undefined&quot;</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">exports</span> <span class="o">==</span> <span class="s2">&quot;object&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">extend</span><span class="p">(</span><span class="nx">exports</span><span class="p">,</span> <span class="nx">jasmineInterface</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">extend</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="nx">jasmineInterface</span><span class="p">);</span>
+<span class="p">}</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-Runner_Parameters">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-Runner_Parameters">&#182;</a>
+      </div>
+      <h2>Runner Parameters</h2>
+
+<p>More browser specific code - wrap the query string in an object and to allow for getting/setting parameters from the runner user interface.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="kd">var</span> <span class="nx">queryString</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">QueryString</span><span class="p">({</span>
+  <span class="nx">getWindowLocation</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">catchingExceptions</span> <span class="o">=</span> <span class="nx">queryString</span><span class="p">.</span><span class="nx">getParam</span><span class="p">(</span><span class="s2">&quot;catch&quot;</span><span class="p">);</span>
+<span class="nx">env</span><span class="p">.</span><span class="nx">catchExceptions</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">catchingExceptions</span> <span class="o">===</span> <span class="s2">&quot;undefined&quot;</span> <span class="o">?</span> <span class="kc">true</span> <span class="o">:</span> <span class="nx">catchingExceptions</span><span class="p">);</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-Reporters">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-Reporters">&#182;</a>
+      </div>
+      <h2>Reporters</h2>
+
+<p>The <code>HtmlReporter</code> builds all of the HTML UI for the runner page. This reporter paints the dots, stars, and x&#39;s for specs, as well as all spec names and all failures (if any).</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="kd">var</span> <span class="nx">htmlReporter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">HtmlReporter</span><span class="p">({</span>
+  <span class="nx">env</span><span class="o">:</span> <span class="nx">env</span><span class="p">,</span>
+  <span class="nx">onRaiseExceptionsClick</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">queryString</span><span class="p">.</span><span class="nx">setParam</span><span class="p">(</span><span class="s2">&quot;catch&quot;</span><span class="p">,</span> <span class="o">!</span><span class="nx">env</span><span class="p">.</span><span class="nx">catchingExceptions</span><span class="p">());</span> <span class="p">},</span>
+  <span class="nx">getContainer</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span> <span class="p">},</span>
+  <span class="nx">createElement</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span> <span class="p">},</span>
+  <span class="nx">createTextNode</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span> <span class="p">},</span>
+  <span class="nx">timer</span><span class="o">:</span> <span class="k">new</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">Timer</span><span class="p">()</span>
+<span class="p">});</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-9">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-9">&#182;</a>
+      </div>
+      <p>The <code>jsApiReporter</code> also receives spec results, and is used by any environment that needs to extract the results  from JavaScript.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="nx">env</span><span class="p">.</span><span class="nx">addReporter</span><span class="p">(</span><span class="nx">jasmineInterface</span><span class="p">.</span><span class="nx">jsApiReporter</span><span class="p">);</span>
+<span class="nx">env</span><span class="p">.</span><span class="nx">addReporter</span><span class="p">(</span><span class="nx">htmlReporter</span><span class="p">);</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-10">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-10">&#182;</a>
+      </div>
+      <p>Filter which specs will be run by matching the start of the full name against the <code>spec</code> query param.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="kd">var</span> <span class="nx">specFilter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">HtmlSpecFilter</span><span class="p">({</span>
+  <span class="nx">filterString</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">queryString</span><span class="p">.</span><span class="nx">getParam</span><span class="p">(</span><span class="s2">&quot;spec&quot;</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">env</span><span class="p">.</span><span class="nx">specFilter</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">spec</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">specFilter</span><span class="p">.</span><span class="nx">matches</span><span class="p">(</span><span class="nx">spec</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>
+<span class="p">};</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-11">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-11">&#182;</a>
+      </div>
+      <p>Setting up timing functions to be able to be overridden. Certain browsers (Safari, IE 8, phantomjs) require this hack.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeout</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">;</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">setInterval</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">setInterval</span><span class="p">;</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">clearTimeout</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">clearTimeout</span><span class="p">;</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">clearInterval</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">clearInterval</span><span class="p">;</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-Execution">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-Execution">&#182;</a>
+      </div>
+      <h2>Execution</h2>
+
+<p>Replace the browser window&#39;s <code>onload</code>, ensure it&#39;s called, and then run all of the loaded specs. This includes initializing the <code>HtmlReporter</code> instance and then executing the loaded Jasmine environment. All of this will happen after all of the specs are loaded.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="kd">var</span> <span class="nx">currentWindowOnload</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span><span class="p">;</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">currentWindowOnload</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">currentWindowOnload</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="nx">htmlReporter</span><span class="p">.</span><span class="nx">initialize</span><span class="p">();</span>
+  <span class="nx">env</span><span class="p">.</span><span class="nx">execute</span><span class="p">();</span>
+<span class="p">};</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-13">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-13">&#182;</a>
+      </div>
+      <p>Helper function for readability above.</p>
+
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre>  <span class="kd">function</span> <span class="nx">extend</span><span class="p">(</span><span class="nx">destination</span><span class="p">,</span> <span class="nx">source</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">property</span> <span class="k">in</span> <span class="nx">source</span><span class="p">)</span> <span class="nx">destination</span><span class="p">[</span><span class="nx">property</span><span class="p">]</span> <span class="o">=</span> <span class="nx">source</span><span class="p">[</span><span class="nx">property</span><span class="p">];</span>
+  <span class="k">return</span> <span class="nx">destination</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">}());</span></pre>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>

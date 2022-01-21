@@ -1,0 +1,175 @@
+---
+layout: side-by-side
+title: Python Egg
+---
+<ul class="jump_to">
+<li> Jump To: </li>
+  <li><a class="source" href="ajax.html">ajax.js</a></li>
+  <li><a class="source" href="boot.html">boot.js</a></li>
+  <li><a class="source" href="custom_equality.html">custom_equality.js</a></li>
+  <li><a class="source" href="custom_matcher.html">custom_matcher.js</a></li>
+  <li><a class="source" href="introduction.html">introduction.js</a></li>
+  <li><a class="source" href="node.html">node.js</a></li>
+  <li><a class="source" href="python_egg.html">python_egg.py</a></li>
+  <li><a class="source" href="ruby_gem.html">ruby_gem.rb</a></li>
+  <li><a class="source" href="upgrading.html">upgrading.js</a></li>
+</ul>
+<table cellspacing="0" cellpadding="0">
+  <thead>
+  <tr>
+    <th class="docs">
+      <h1>python_egg.py</h1>
+    </th>
+    <th class="code"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr id="section-Using_Jasmine_with_Python">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-Using_Jasmine_with_Python">&#182;</a>
+      </div>
+      <h1>Using Jasmine with Python</h1>
+
+<p>The Jasmine Python package contains helper code for developing Jasmine projects for Python-based web projects (Django, Flask, etc.)
+or for JavaScript projects where Python is a welcome partner. It serves up a project&#39;s Jasmine suite in a browser so you can focus on
+your code instead of manually editing script tags in the Jasmine runner HTML file.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre><span></span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-Install">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-Install">&#182;</a>
+      </div>
+      <h2>Install</h2>
+
+<p>You can install Jasmine using pip or by adding it to your <code>requirements.txt</code>.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre><span class="n">pip</span> <span class="n">install</span> <span class="n">jasmine</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-__init___a_Project">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-__init___a_Project">&#182;</a>
+      </div>
+      <h2>__init__ a Project</h2>
+
+<p>Initailize a project for Jasmine by creating a spec directory and configuration yaml for you.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre><span class="n">jasmine</span><span class="o">-</span><span class="n">install</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-Configuration">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-Configuration">&#182;</a>
+      </div>
+      <h2>Configuration</h2>
+
+<p>Customize <code>spec/javascripts/support/jasmine.yml</code> to enumerate the source files, stylesheets, and spec files you would like the
+Jasmine runner to include. You may use dir glob strings.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-Usage">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-Usage">&#182;</a>
+      </div>
+      <h2>Usage</h2>
+
+<p>Once you have set up your <code>jasmine.yml</code>, you can start the Jasmine server by running <code>jasmine</code>.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre><span class="n">jasmine</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-6">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-6">&#182;</a>
+      </div>
+      <p>Point your browser to <code>localhost:8888</code>. The suite will run every time the page is re-loaded.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-7">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-7">&#182;</a>
+      </div>
+      <p>Start Jasmine on a different port by passing the <code>-p</code> flag.</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre><span class="n">jasmine</span> <span class="o">-</span><span class="n">p</span> <span class="mi">1337</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-Continuous_Integration">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-Continuous_Integration">&#182;</a>
+      </div>
+      <h3>Continuous Integration</h3>
+
+<p>For Continuous Integration environments, run <code>jasmine-ci</code> in the project build steps:</p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre><span class="n">jasmine</span><span class="o">-</span><span class="n">ci</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-9">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-9">&#182;</a>
+      </div>
+      <p>The browser used by selenium can be changed by exporting <code>JASMINE_BROWSER</code></p>
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre><span class="n">export</span> <span class="n">JASMINE_BROWSER</span><span class="o">=</span><span class="n">chrome</span>
+<span class="n">jasmine</span><span class="o">-</span><span class="n">ci</span></pre>
+      </div>
+    </td>
+  </tr>
+  <tr id="section-10">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-10">&#182;</a>
+      </div>
+      <p>or by setting the <code>----browser</code> flag.</p>
+
+    </td>
+    <td class="code">
+      <div class="highlight">
+        <pre><span class="n">jasmine</span><span class="o">-</span><span class="n">ci</span> <span class="o">--</span><span class="n">browser</span> <span class="n">firefox</span></pre>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>

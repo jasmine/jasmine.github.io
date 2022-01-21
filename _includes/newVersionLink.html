@@ -1,5 +1,5 @@
-{% if page.collection == 'api' or page.collection == 'versions' %}
-  {% assign versionPath = page.url | remove_first: "/" | remove: "api/" | split: "/" %}
+{% if page.collection == 'api' or page.collection == 'archives' %}
+  {% assign versionPath = page.url | remove_first: "/" | remove: "api/" | remove: "archives/" | split: "/" %}
   {% assign version = versionPath.first | strip %}
 
 

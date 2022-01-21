@@ -1,0 +1,19 @@
+.side-by-side {
+  @include align-items(inherit);
+
+  .content-push.small {
+    margin-top: 60px;
+  }
+
+  table {
+    thead {
+      tr {
+        background: none;
+      }
+    }
+
+    td, th {
+      border: none;
+    }
+  }
+}

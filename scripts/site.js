@@ -4,6 +4,11 @@
       var header = document.querySelector('.header');
       if (typeof header.classList === 'undefined') { return; }
 
+      // permanently shrink the header and don't change on scroll
+      if (header.classList.contains('no-resize')) {
+         return;
+      }
+
       document.addEventListener('scroll', function() {
         header.classList.remove('shrinking');
         header.classList.remove('small');

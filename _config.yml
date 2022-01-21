@@ -11,9 +11,9 @@ exclude:
   - "*.json"
 
 collections:
-  versions:
+  archives:
     output: true
-    permalink: :path
+    permalink: archives/:path
   api:
     output: true
     permalink: api/:path

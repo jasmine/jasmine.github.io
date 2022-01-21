@@ -104,6 +104,14 @@ body {
   margin-top: 360px;
 }
 
+.header.small.no-resize {
+  height: 50px;
+}
+
+.content-push.small {
+  margin-top: 50px;
+}
+
 .main-content {
   margin: 0;
   background-color: white;
@@ -293,5 +301,16 @@ table {
   td.code, th.code {
     border: 0;
     padding: 14px 15px 16px 25px;
+  }
+}
+
+.not-found {
+  @include display-flex(column);
+  @include align-content(center);
+  @include align-items(center);
+  @include justify-content(flex-start);
+
+  h1 {
+    width: auto;
   }
 }
