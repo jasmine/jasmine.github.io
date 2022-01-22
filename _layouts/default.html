@@ -4,7 +4,7 @@
 {% comment %}
 Use omit_docco with care. Much of the site's CSS builds on top of docco.
 {% endcomment %}
-{% if layout.omit_docco != true %}
+{% if layout.omit_docco != true and page.omit_docco != true %}
 <link rel="stylesheet" href="{{ site.github.url }}/css/docco.css" type="text/css" />
 <link rel="stylesheet" href="{{ site.github.url }}/css/jasmine_docco.css" type="text/css" />
 {% endif %}

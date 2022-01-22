@@ -74,6 +74,7 @@
     color: #aaa;
     font-style: italic;
     font-weight: lighter;
+    margin-left: 4px;
   }
 
   .prettyprint {
@@ -162,9 +163,23 @@
 
   .docs {
     flex: 1;
-	 // Allow wide code samples to scroll rathe than widening .docs
-	 // and pushing it below the nav sidebar
-	 overflow-x: hidden;
+    // Allow wide code samples to scroll rather than widening .docs
+    // and pushing it below the nav sidebar
+    overflow-x: hidden;
+
+    pre {
+      margin: 15px 0 15px;
+      padding-left: 15px;
+    }
+
+    p {
+      tt, code {
+        background: #f8f8ff;
+        border: 1px solid #dedede;
+        font-size: 0.8em;
+        padding: 0 0.2em;
+      }
+    }
   }
 
   footer {
