@@ -13,7 +13,7 @@ interface rather than having Jasmine create globals.
 
 Pass `{globals: false}` to the [Jasmine constructor](/api/npm/edge/Jasmine.html):
 
-```
+```javascript
 const Jasmine = require('jasmine');
 const runner = new Jasmine({globals: false});
 ```
@@ -23,7 +23,7 @@ const runner = new Jasmine({globals: false});
 
 Initialize jasmine-core by calling `noGlobals` instead of `boot`:
 
-```
+```javascript
 const jasmine = require('jasmine-core').noGlobals().jasmine;
 ```
 
@@ -33,7 +33,7 @@ In each of your spec and helper files, use the jasmine-core module's noGlobals
 function to obtain the things that would normally be provided as
 [globals](/api/edge/global):
 
-```
+```javascript
 const {describe, beforeEach, it, expect, jasmine} = require('jasmine-core').noGlobals();
 ```
 

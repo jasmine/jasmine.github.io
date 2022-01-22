@@ -127,7 +127,7 @@ functions defined in the same suite as the failed `beforeAll`. Similarly, a
 `beforeEach` functions, the spec in question, and any `afterEach` functions
 defined in nested suites to be skipped.
 
-```
+```javascript
 // Unsafe. Test pollution can result because the afterEach won't always run.
 describe('Outer suite', function() {
   beforeEach(function() {
@@ -186,7 +186,7 @@ passing it to `MatchersUtil` methods.
 
 Before:
 
-```
+```javascript
 jasmine.addMatchers({
   toContain42: function(matchersUtil, customEqualityTesters) {
     return {
@@ -203,7 +203,7 @@ jasmine.addMatchers({
 
 After:
 
-```
+```javascript
 jasmine.addMatchers({
   toContain42: function(matchersUtil) {
     return {
@@ -228,7 +228,7 @@ to access the array of custom equality testers. Then check for a `deprecated`
 property on the array, which will be present in Jasmine 3.6 and later, before
 passing it along:
 
-````
+```javascript
 jasmine.addMatchers({
   toContain42: function(matchersUtil, ...extraArgs) {
     const customEqualityTesters = 
@@ -243,7 +243,7 @@ jasmine.addMatchers({
     };
   }
 });
-````
+```
 
 <h3 id="asymmetricMatch-cet">"The second argument to asymmetricMatch is now a
 MatchersUtil. Using it as an array of custom equality testers is deprecated and
@@ -261,7 +261,7 @@ preconfigured with them. In 4.0 and later it's just a properly configured
 
 Before:
 
-```
+```javascript
 function somethingContaining42() {
   return {
     asymmetricMatch: function(other, customEqualityTesters) {
@@ -274,7 +274,7 @@ function somethingContaining42() {
 
 After:
 
-```
+```javascript
 function somethingContaining42() {
   return {
     asymmetricMatch: function(other, matchersUtil) {
@@ -377,7 +377,7 @@ modifying the affected specs to not call `tick()` from inside a timer handler.
 
 Before:
 
-```
+```javascript
 it('makes a reentrant call to tick()', function() {
   const foo = jasmine.createSpy('foo');
   const bar = jasmine.createSpy('bar');
@@ -399,7 +399,7 @@ it('makes a reentrant call to tick()', function() {
 
 After:
 
-```
+```javascript
 it('does not make a reentrant call to tick()', function() {
   const foo = jasmine.createSpy('foo');
   const bar = jasmine.createSpy('bar');

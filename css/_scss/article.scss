@@ -18,7 +18,9 @@
 
   .highlighter-rouge {
     width: 100%;
+    overflow-x: auto;
     margin: 15px 0;
+    @include light-code();
 
     .highlight {
       margin-left: 6px;
@@ -32,7 +34,6 @@
   }
 
   code.highlighter-rouge {
-    @include light-code();
     padding: 1px 2px;
   }
 }

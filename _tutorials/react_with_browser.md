@@ -157,7 +157,7 @@ module.exports = {
 
 The differences between them are as follows:
 
-```
+```diff
 -const HtmlWebpackPlugin = require("html-webpack-plugin");
  const path = require("path");
 +const glob = require("glob");
@@ -196,7 +196,7 @@ plugin to automatically add that at compile time. Check your component source
 files. If they don't have an import statement like the one above, you'll need
 to make sure that `webpack-test.config.ts` contains something like this:
 
-```
+```diff
          test: /\.jsx?$/,
          exclude: /node_modules/,
          loader: require.resolve("babel-loader"),
@@ -223,7 +223,7 @@ If you don't already have a
 [Babel configuration](https://babeljs.io/docs/en/configuration), create one
 with the following contents:
 
-```
+```json
 {
   "presets": [
     "@babel/preset-react",
@@ -239,7 +239,7 @@ This is usually only necessary if you used create-react-app.
 
 Next, create `spec/support/jasmine-browser.json` with the following contents:
 
-```
+```json
 {
   "srcDir": "src",
   "srcFiles": [],
@@ -261,7 +261,7 @@ or `MicrosoftEdge`.
 Now, add the following to the `scripts` section of `package.json`:
 
 
-```
+```json
     "test:build": "cross-env NODE_ENV=test npx webpack --config webpack-test.config.js --mode development",
     "test:watch": "cross-env NODE_ENV=test npx webpack --config webpack-test.config.js --mode development --watch",
     "test": "npm run test:build && jasmine-browser-runner runSpecs",
@@ -336,7 +336,7 @@ If you'd rather have <span class="yarn" markdown="1">`yarn test`</span>
 add `--browser=headlessChrome` to the end of the `test` script in
 `package.json`:
 
-```
+```json
     "test": "npm run test:build && jasmine-browser-runner runSpecs --browser=headlessChrome",
 ```
 
