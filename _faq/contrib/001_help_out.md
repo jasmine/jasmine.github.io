@@ -15,3 +15,10 @@ This label means that we believe there is enough information included in the con
 * [jasmine-browser-runner](https://github.com/jasmine/jasmine-browser/labels/help%20needed)
 * [jasmine-ajax](https://github.com/jasmine/jasmine-ajax/labels/help%20needed)
 * [documentation (this site)](https://github.com/jasmine/jasmine.github.io/labels/help%20needed)
+
+#### New Ideas
+
+Do you have an idea that's not already captured in a GitHub issue? Feel free to
+propose it. We recommend (but don't require) that you open an issue to discuss
+your idea before submitting a pull request. We don't say yes to every proposal,
+so it's best to ask before you put in a lot of work.
