@@ -111,5 +111,5 @@ task :release, [:version] do |t, args|
 end
 
 task :serve do
-    `jekyll serve --baseurl ''`
+    system("jekyll serve --baseurl ''")
 end
