@@ -36,7 +36,8 @@ changes you make to them will be lost the next time the documentation is generat
 First, update the jasmine API docs:
 
 - Update local copies of jasmine using `bundle exec rake update_edge_jasmine`
-  and `bundle exec rake update_edge_jasmine_browser`
+  `bundle exec rake update_edge_jasmine_npm`, and/or
+  `bundle exec rake update_edge_jasmine_browser` as appropriate
 - Run `npm run jsdoc` to update the API documentation
 
 Then, regenerate the tutorials:
@@ -47,12 +48,20 @@ Now preview your changes locally:
 
 - `bundle exec rake serve`
 
-## Archiving a version of the jasmine-core API docs
+## Publishing API docs for a new version of Jasmine
 
-To archive the API docs for an older version of jasmine-core, add `archived: true`
-to the YAML at the top of `_api/<version>/global.html`. This will remove the 
-version from the listing on the docs home page. It will still be published at the
-same URLs and can still be reached through the All versions link.
+- Update the edge API docs as described in the previous section
+- Copy the edge docs to the new version for each package, e.g.
+  `cp -r _api/edge _api/4.4`
+- Set the sort key in `_api/<new version>/global.html>`, `_npm-api/Jasmine.html`,
+  and/or `_browser-runner-api/module-jasmine-browser-runner.html`. The sort key
+  should be a string with three digits for the major and minor versions, e.g.
+  "004.003" for version 4.3.
+- Archive the oldest non-archived version by adding `archived: true` to 
+  `_api/<new version>/global.html>`, `_npm-api/Jasmine.html`, and/or 
+  `_browser-runner-api/module-jasmine-browser-runner.html`. This will remove the
+  version from the listing on the docs home page. It will still be published at
+  the same URLs and can still be reached through the Archived Documentation link.
 
 ## Submit your changes
 
