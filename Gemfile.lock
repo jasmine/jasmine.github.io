@@ -42,7 +42,6 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.3.6)
-    mustache (1.1.1)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     phantomjs (2.1.1.0)
@@ -51,11 +50,7 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redcarpet (3.5.1)
     rexml (3.2.5)
-    rocco (0.8.2)
-      mustache
-      redcarpet
     rouge (3.26.1)
     safe_yaml (1.0.5)
     sass (3.7.4)
@@ -74,7 +69,6 @@ DEPENDENCIES
   kramdown-parser-gfm (~> 1.1)
   phantomjs
   rake
-  rocco
   tilt
 
 BUNDLED WITH
