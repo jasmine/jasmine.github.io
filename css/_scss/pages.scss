@@ -301,6 +301,13 @@ table {
   td.code, th.code {
     border: 0;
     padding: 14px 15px 16px 25px;
+
+    code {
+      // Ensure that code gets 16px even if the element has been de-docco'd
+      // This overrides the more general style for table td code elsewhere
+      // in this file.
+      font-size: 16px;
+    }
   }
 }
 
