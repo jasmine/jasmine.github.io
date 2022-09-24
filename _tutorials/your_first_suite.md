@@ -53,7 +53,7 @@ describe("A suite", function() {
 <div class="highlight" markdown="1">
 ```javascript
 describe("A suite is just a function", function() {
-    var a;
+    let a;
 
     it("and so is a spec", function() {
         a = true;
@@ -150,7 +150,7 @@ There is also the ability to write <a href="custom_matcher.html">custom matchers
 <div class="highlight" markdown="1">
 ```javascript
 describe("A suite with some shared setup", function() {
-    var foo = 0;
+    let foo = 0;
 ```
 </div>
     </td>
@@ -245,6 +245,9 @@ Since they are not reset between specs, it is easy to accidentally leak state be
       <h3>The <code>this</code> keyword</h3>
 
 <p>Another way to share variables between a <code>beforeEach</code>, <code>it</code>, and <code>afterEach</code> is through the <code>this</code> keyword. Each spec&#39;s <code>beforeEach</code>/<code>it</code>/<code>afterEach</code> has the <code>this</code> as the same empty object that is set back to empty for the next spec&#39;s <code>beforeEach</code>/<code>it</code>/<code>afterEach</code>.</p>
+<p><em>Note:</em> If you want to use the <code>this</code> keyword to share
+    variables, you must use the <code>function</code> keyword and not arrow
+    functions.</p>
     </td>
     <td class="code">
 <div class="highlight" markdown="1">
@@ -281,7 +284,7 @@ describe("A spec", function() {
 <div class="highlight" markdown="1">
 ```javascript
 describe("A spec using the fail function", function() {
-    var foo = function(x, callBack) {
+    function foo(x, callBack) {
         if (x) {
             callBack();
         }
@@ -310,7 +313,7 @@ describe("A spec using the fail function", function() {
 <div class="highlight" markdown="1">
 ```javascript
 describe("A spec", function() {
-    var foo;
+    let foo;
 
     beforeEach(function() {
         foo = 0;
@@ -331,7 +334,7 @@ describe("A spec", function() {
     });
 
     describe("nested inside a second describe", function() {
-        var bar;
+        let bar;
 
         beforeEach(function() {
           bar = 1;
@@ -359,7 +362,7 @@ describe("A spec", function() {
 <div class="highlight" markdown="1">
 ```javascript
 xdescribe("A spec", function() {
-    var foo;
+    let foo;
     
     beforeEach(function() {
         foo = 0;
@@ -459,7 +462,8 @@ There are special matchers for interacting with spies.</p>
 <div class="highlight" markdown="1">
 ```javascript
 describe("A spy", function() {
-    var foo, bar = null;
+    let foo;
+    let bar = null;
 
     beforeEach(function() {
         foo = {
@@ -580,7 +584,7 @@ This spy acts as any other spy - tracking calls, arguments, etc. But there is no
 <div class="highlight" markdown="1">
 ```javascript
 describe("A spy, when created manually", function() {
-    var whatAmI;
+    let whatAmI;
 
     beforeEach(function() {
         whatAmI = jasmine.createSpy('whatAmI');
@@ -610,7 +614,7 @@ It returns an object that has a property for each string that is a spy.</p>
 <div class="highlight" markdown="1">
 ```javascript
 describe("Multiple spies, when created manually", function() {
-    var tape;
+    let tape;
 
     beforeEach(function() {
         tape = jasmine.createSpyObj('tape', ['play', 'pause', 'stop', 'rewind']);
@@ -668,7 +672,7 @@ It returns <code>true</code> if the constructor matches the constructor of the a
     
         describe("when used with a spy", function() {
             it("is useful for comparing arguments", function() {
-                var foo = jasmine.createSpy('foo');
+                const foo = jasmine.createSpy('foo');
                 foo(12, function() {
                     return true;
                 });
@@ -698,7 +702,7 @@ It returns <code>true</code> if the constructor matches the constructor of the a
 
         describe("when used with a spy", function() {
             it("is useful when the argument can be ignored", function() {
-                var foo = jasmine.createSpy('foo');
+                const foo = jasmine.createSpy('foo');
                 foo(12, function() {
                     return false;
                 });
@@ -722,7 +726,7 @@ It returns <code>true</code> if the constructor matches the constructor of the a
 <div class="highlight" markdown="1">
 ```javascript
     describe("jasmine.objectContaining", function() {
-        var foo;
+        let foo;
 
         beforeEach(function() {
             foo = {
@@ -743,7 +747,7 @@ It returns <code>true</code> if the constructor matches the constructor of the a
 
         describe("when used with a spy", function() {
             it("is useful for comparing arguments", function() {
-                var callback = jasmine.createSpy('callback');
+                const callback = jasmine.createSpy('callback');
 
                 callback({
                     bar: "baz"
@@ -770,7 +774,7 @@ It returns <code>true</code> if the constructor matches the constructor of the a
 <div class="highlight" markdown="1">
 ```javascript
     describe("jasmine.arrayContaining", function() {
-        var foo;
+        let foo;
 
         beforeEach(function() {
             foo = [1, 2, 3, 4];
@@ -783,7 +787,7 @@ It returns <code>true</code> if the constructor matches the constructor of the a
 
         describe("when used with a spy", function() {
             it("is useful when comparing arguments", function() {
-                var callback = jasmine.createSpy('callback');
+                const callback = jasmine.createSpy('callback');
 
                 callback([1, 2, 3, 4]);
 
@@ -814,7 +818,7 @@ It returns <code>true</code> if the constructor matches the constructor of the a
 
         describe("when used with a spy", function() {
             it("is useful for comparing arguments", function() {
-                var callback = jasmine.createSpy('callback');
+                const callback = jasmine.createSpy('callback');
 
                 callback('foobarbaz');
 
@@ -840,9 +844,9 @@ It returns <code>true</code> if the constructor matches the constructor of the a
 <div class="highlight" markdown="1">
 ```javascript
     describe("custom asymmetry", function() {
-        var tester = {
+        const tester = {
             asymmetricMatch: function(actual) {
-                var secondValue = actual.split(',')[1];
+                const secondValue = actual.split(',')[1];
                 return secondValue === 'bar';
             }
         };
@@ -853,7 +857,7 @@ It returns <code>true</code> if the constructor matches the constructor of the a
 
         describe("when used with a spy", function() {
             it("is useful for comparing arguments", function() {
-                var callback = jasmine.createSpy('callback');
+                const callback = jasmine.createSpy('callback');
 
                 callback('foo,bar,baz');
 
@@ -879,7 +883,7 @@ It returns <code>true</code> if the constructor matches the constructor of the a
 <div class="highlight" markdown="1">
 ```javascript
 describe("Manually ticking the Jasmine Clock", function() {
-    var timerCallback;
+    let timerCallback;
 ```
 </div>
     </td>
@@ -979,7 +983,7 @@ describe("Manually ticking the Jasmine Clock", function() {
 ```javascript
     describe("Mocking the Date object", function(){
         it("mocks the Date object and sets it to a given time", function() {
-            var baseTime = new Date(2013, 9, 23);
+            const baseTime = new Date(2013, 9, 23);
 ```
 </div>
     </td>
