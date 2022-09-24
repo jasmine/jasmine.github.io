@@ -17,9 +17,6 @@ order:
 <p>A custom matcher at its root is a comparison function that takes an <code>actual</code> value and <code>expected</code> value. This factory is passed to Jasmine, ideally in a call to <code>beforeEach</code> and will be in scope and available for all of the specs inside a given call to <code>describe</code>. Custom matchers are torn down between specs. The name of the factory will be the name of the matcher exposed on the return value of the call to <code>expect</code>.</p>
     </td>
     <td class="code">
-      <div class="highlight">
-        <pre></pre>
-      </div>
     </td>
   </tr>
   <tr id="section-2">
@@ -30,9 +27,11 @@ order:
       <p>This object has a custom matcher named &quot;toBeGoofy&quot;.</p>
     </td>
     <td class="code">
-      <div class="highlight">
-        <pre><span class="kd">var</span> <span class="nx">customMatchers</span> <span class="o">=</span> <span class="p">{</span></pre>
-      </div>
+<div class="highlight" markdown="1">
+```javascript
+var customMatchers = {
+```
+</div>
     </td>
   </tr>
   <tr id="section-Matcher_Factories">
@@ -55,9 +54,11 @@ Jasmine 3.5 and earlier. Matchers written for Jasmine 3.6 and later should
 ignore it. It will no longer be provided in Jasmine 4.</p>
     </td>
     <td class="code">
-      <div class="highlight">
-        <pre>  <span class="nx">toBeGoofy</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">matchersUtil</span><span class="p">)</span> <span class="p">{</span></pre>
-      </div>
+<div class="highlight" markdown="1">
+```javascript
+    toBeGoofy: function(matchersUtil) {
+```
+</div>
     </td>
   </tr>
   <tr id="section-4">
@@ -68,9 +69,11 @@ ignore it. It will no longer be provided in Jasmine 4.</p>
       <p>The factory method should return an object with a <code>compare</code> function that will be called to check the expectation.</p>
     </td>
     <td class="code">
-      <div class="highlight">
-        <pre>    <span class="k">return</span> <span class="p">{</span></pre>
-      </div>
+<div class="highlight" markdown="1">
+```javascript
+        return {
+```
+</div>
     </td>
   </tr>
   <tr id="section-A_Function_to_&lt;code&gt;compare&lt;/code&gt;">
@@ -83,9 +86,11 @@ ignore it. It will no longer be provided in Jasmine 4.</p>
 <p>The compare function receives the value passed to <code>expect()</code> as the first argument - the actual - and the value (if any) passed to the matcher itself as second argument.</p>
     </td>
     <td class="code">
-      <div class="highlight">
-        <pre>      <span class="nx">compare</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">actual</span><span class="p">,</span> <span class="nx">expected</span><span class="p">)</span> <span class="p">{</span></pre>
-      </div>
+<div class="highlight" markdown="1">
+```javascript
+            compare: function(actual, expected) {
+```
+</div>
     </td>
   </tr>
   <tr id="section-6">
@@ -96,11 +101,13 @@ ignore it. It will no longer be provided in Jasmine 4.</p>
       <p><code>toBeGoofy</code> takes an optional <code>expected</code> argument, so define it here if not passed in.</p>
     </td>
     <td class="code">
-      <div class="highlight">
-        <pre>        <span class="k">if</span> <span class="p">(</span><span class="nx">expected</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">expected</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-        <span class="p">}</span></pre>
-      </div>
+<div class="highlight" markdown="1">
+```javascript
+                if (expected === undefined) {
+                    expected = '';
+                }
+```
+</div>
     </td>
   </tr>
   <tr id="section-Result">
@@ -113,9 +120,11 @@ ignore it. It will no longer be provided in Jasmine 4.</p>
 <p>The <code>compare</code> function must return a result object with a <code>pass</code> property that is a boolean result of the matcher. The <code>pass</code> property tells the expectation whether the matcher was successful (<code>true</code>) or unsuccessful (<code>false</code>). If the expectation is called/chained with <code>.not</code>, the expectation will negate this to determine whether the expectation is met.</p>
     </td>
     <td class="code">
-      <div class="highlight">
-        <pre>        <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{};</span></pre>
-      </div>
+<div class="highlight" markdown="1">
+```javascript
+                var result = {};
+```
+</div>
     </td>
   </tr>
   <tr id="section-8">
@@ -126,9 +135,11 @@ ignore it. It will no longer be provided in Jasmine 4.</p>
       <p><code>toBeGoofy</code> tests for equality of the actual&#39;s <code>hyuk</code> property to see if it matches the expectation.</p>
     </td>
     <td class="code">
-      <div class="highlight">
-        <pre>        <span class="nx">result</span><span class="p">.</span><span class="nx">pass</span> <span class="o">=</span> <span class="nx">matchersUtil</span><span class="p">.</span><span class="nx">equals</span><span class="p">(</span><span class="nx">actual</span><span class="p">.</span><span class="nx">hyuk</span><span class="p">,</span> <span class="s2">&quot;gawrsh&quot;</span> <span class="o">+</span> <span class="nx">expected</span><span class="p">);</span></pre>
-      </div>
+<div class="highlight" markdown="1">
+```javascript
+                result.pass = matchersUtil.equals(actual.hyuk, "gawrsh" + expected);
+```
+</div>
     </td>
   </tr>
   <tr id="section-Failure_Messages">
@@ -141,9 +152,11 @@ ignore it. It will no longer be provided in Jasmine 4.</p>
 <p>If left <code>undefined</code>, the expectation will attempt to craft a failure message for the matcher. However, if the return value has a <code>message</code> property it will be used for a  failed expectation.</p>
     </td>
     <td class="code">
-      <div class="highlight">
-        <pre>        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">pass</span><span class="p">)</span> <span class="p">{</span></pre>
-      </div>
+<div class="highlight" markdown="1">
+```javascript
+                if (result.pass) {
+```
+</div>
     </td>
   </tr>
   <tr id="section-10">
@@ -154,10 +167,12 @@ ignore it. It will no longer be provided in Jasmine 4.</p>
       <p>The matcher succeeded, so the custom failure message should be present in the case of a negative expectation - when the expectation is used with <code>.not</code>.</p>
     </td>
     <td class="code">
-      <div class="highlight">
-        <pre>          <span class="nx">result</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s2">&quot;Expected &quot;</span> <span class="o">+</span> <span class="nx">actual</span> <span class="o">+</span> <span class="s2">&quot; not to be quite so goofy&quot;</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span></pre>
-      </div>
+<div class="highlight" markdown="1">
+```javascript
+                    result.message = "Expected " + actual + " not to be quite so goofy";
+                } else {
+```
+</div>
     </td>
   </tr>
   <tr id="section-11">
@@ -168,10 +183,12 @@ ignore it. It will no longer be provided in Jasmine 4.</p>
       <p>The matcher failed, so the custom failure message should be present in the case of a positive expectation</p>
     </td>
     <td class="code">
-      <div class="highlight">
-        <pre>          <span class="nx">result</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s2">&quot;Expected &quot;</span> <span class="o">+</span> <span class="nx">actual</span> <span class="o">+</span> <span class="s2">&quot; to be goofy, but it was not very goofy&quot;</span><span class="p">;</span>
-        <span class="p">}</span></pre>
-      </div>
+<div class="highlight" markdown="1">
+```javascript
+                    result.message = "Expected " + actual + " to be goofy, but it was not very goofy";
+                }
+```
+</div>
     </td>
   </tr>
   <tr id="section-12">
@@ -182,13 +199,15 @@ ignore it. It will no longer be provided in Jasmine 4.</p>
       <p>Return the result of the comparison.</p>
     </td>
     <td class="code">
-      <div class="highlight">
-        <pre>        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-      <span class="p">}</span>
-    <span class="p">};</span>
-  <span class="p">}</span>
-<span class="p">};</span></pre>
-      </div>
+<div class="highlight" markdown="1">
+```javascript
+                return result;
+            }
+        };
+    }
+};
+```
+</div>
     </td>
   </tr>
   <tr id="section-Custom_negative_comparators">
@@ -201,9 +220,6 @@ ignore it. It will no longer be provided in Jasmine 4.</p>
 <p>If you need more control over the negative comparison (the <code>not</code> case) than the simple boolean inversion above, you can also have your matcher factory include another key, <code>negativeCompare</code> alongside <code>compare</code>, for which the value is a function to invoke when <code>.not</code> is used. This function/key is optional.</p>
     </td>
     <td class="code">
-      <div class="highlight">
-        <pre></pre>
-      </div>
     </td>
   </tr>
   <tr id="section-Registration_and_Usage">
@@ -214,9 +230,11 @@ ignore it. It will no longer be provided in Jasmine 4.</p>
       <h2>Registration and Usage</h2>
     </td>
     <td class="code">
-      <div class="highlight">
-        <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Custom matcher: &#39;toBeGoofy&#39;&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre>
-      </div>
+<div class="highlight" markdown="1">
+```javascript
+describe("Custom matcher: 'toBeGoofy'", function() {
+```
+</div>
     </td>
   </tr>
   <tr id="section-15">
@@ -227,11 +245,13 @@ ignore it. It will no longer be provided in Jasmine 4.</p>
       <p>Register the custom matchers with Jasmine. All properties on the object passed in will be available as custom matchers (e.g., in this case <code>toBeGoofy</code>).</p>
     </td>
     <td class="code">
-      <div class="highlight">
-        <pre>  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">jasmine</span><span class="p">.</span><span class="nx">addMatchers</span><span class="p">(</span><span class="nx">customMatchers</span><span class="p">);</span>
-  <span class="p">});</span></pre>
-      </div>
+<div class="highlight" markdown="1">
+```javascript
+    beforeEach(function() {
+        jasmine.addMatchers(customMatchers);
+    });
+```
+</div>
     </td>
   </tr>
   <tr id="section-16">
@@ -243,26 +263,28 @@ ignore it. It will no longer be provided in Jasmine 4.</p>
 
     </td>
     <td class="code">
-      <div class="highlight">
-        <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is available on an expectation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">expect</span><span class="p">({</span>
-      <span class="nx">hyuk</span><span class="o">:</span> <span class="s1">&#39;gawrsh&#39;</span>
-    <span class="p">}).</span><span class="nx">toBeGoofy</span><span class="p">();</span>
-  <span class="p">});</span>
+<div class="highlight" markdown="1">
+```javascript
+    it("is available on an expectation", function() {
+        expect({
+            hyuk: 'gawrsh'
+        }).toBeGoofy();
+    });
 
-  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can take an &#39;expected&#39; parameter&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">expect</span><span class="p">({</span>
-      <span class="nx">hyuk</span><span class="o">:</span> <span class="s1">&#39;gawrsh is fun&#39;</span>
-    <span class="p">}).</span><span class="nx">toBeGoofy</span><span class="p">(</span><span class="s1">&#39; is fun&#39;</span><span class="p">);</span>
-  <span class="p">});</span>
+    it("can take an 'expected' parameter", function() {
+        expect({
+            hyuk: 'gawrsh is fun'
+        }).toBeGoofy(' is fun');
+    });
 
-  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can be negated&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">expect</span><span class="p">({</span>
-      <span class="nx">hyuk</span><span class="o">:</span> <span class="s1">&#39;this is fun&#39;</span>
-    <span class="p">}).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeGoofy</span><span class="p">();</span>
-  <span class="p">});</span>
-<span class="p">});</span></pre>
-      </div>
+    it("can be negated", function() {
+        expect({
+            hyuk: 'this is fun'
+        }).not.toBeGoofy();
+    });
+});
+```
+</div>
     </td>
   </tr>
   </tbody>
