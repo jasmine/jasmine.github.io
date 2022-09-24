@@ -203,11 +203,10 @@ active tunnel.
 ## Want more control?
 
 ```javascript
-var path = require('path'),
-  jasmineBrowser = require('jasmine-browser-runner'),
-  jasmineCore = require('../../lib/jasmine-core.js');
+const path = require('path');
+const jasmineBrowser = require('jasmine-browser-runner');
 
-var config = require(path.resolve('spec/support/jasmine-browser.json'));
+const config = require(path.resolve('spec/support/jasmine-browser.json'));
 config.projectBaseDir = path.resolve('some/path');
 
 jasmineBrowser.startServer(config, { port: 4321 });

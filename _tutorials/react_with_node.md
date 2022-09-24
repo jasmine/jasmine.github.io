@@ -308,15 +308,16 @@ $ npm test
 
 <script>
 	(function() {
-		var buttons = document.querySelectorAll('input[name=mgr]');
-		var root = document.getElementById('react-with-node-root');
-		Array.prototype.forEach.call(buttons, function(btn) {
+		const buttons = document.querySelectorAll('input[name=mgr]');
+		const root = document.getElementById('react-with-node-root');
+
+		for (const btn of buttons) {
 			btn.addEventListener('click', function() {
 				root.classList.remove('npm-selected');
 				root.classList.remove('yarn-selected');
 				root.classList.add(btn.value + '-selected');
 			});
-		});
+		};
 	}());
 </script>
 

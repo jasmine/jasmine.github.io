@@ -217,8 +217,8 @@ If you want more granular control over the configuration, Jasmine can also be us
 This allows you to load multiple config files or control your configuration in different ways.
 
 ```javascript
-var Jasmine = require('jasmine');
-var jasmine = new Jasmine();
+const Jasmine = require('jasmine');
+const jasmine = new Jasmine();
 ```
 
 ### Load configuration from a file or from an object
@@ -282,10 +282,9 @@ You can add a custom reporter with `addReporter`. If you add a reporter through 
 Multiple reporters can be added.
 
 ```javascript
-var CustomReporter = require('./myCustomReporter');
-var customReporter = new CustomReporter();
+const CustomReporter = require('./myCustomReporter');
 
-jasmine.addReporter(customReporter);
+jasmine.addReporter(new CustomReporter());
 ```
 
 ### Run the tests
@@ -305,8 +304,8 @@ jasmine.execute(['fooSpec.js'], 'a spec name');
 ### A simple example using the library
 
 ```javascript
-var Jasmine = require('jasmine');
-var jasmine = new Jasmine();
+const Jasmine = require('jasmine');
+const jasmine = new Jasmine();
 
 jasmine.loadConfigFile('spec/support/jasmine.json');
 jasmine.configureDefaultReporter({

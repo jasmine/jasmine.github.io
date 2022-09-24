@@ -72,7 +72,7 @@ describe("mocking ajax", function() {
         });
 
         it("specifying response when you need it", function() {
-            var doneFn = jasmine.createSpy("success");
+            const doneFn = jasmine.createSpy("success");
 ```
 </div>
     </td>
@@ -88,7 +88,7 @@ Jasmine-Ajax mocks out your request at the XMLHttpRequest object, so should be c
     <td class="code">
 <div class="highlight" markdown="1">
 ```javascript
-            var xhr = new XMLHttpRequest();
+            const xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function(args) {
                 if (this.readyState == this.DONE) {
                     doneFn(this.responseText);
@@ -205,7 +205,7 @@ Jasmine-Ajax mocks out your request at the XMLHttpRequest object, so should be c
 <div class="highlight" markdown="1">
 ```javascript
         it("allows responses to be setup ahead of time", function () {
-            var doneFn = jasmine.createSpy("success");
+            const doneFn = jasmine.createSpy("success");
 ```
 </div>
     </td>
@@ -238,7 +238,7 @@ Then <code>andReturn</code> receives the same type of argument as <code>respondW
     <td class="code">
 <div class="highlight" markdown="1">
 ```javascript
-            var xhr = new XMLHttpRequest();
+            const xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function(args) {
                 if (this.readyState == this.DONE) {
                     doneFn(this.responseText);
@@ -268,9 +268,9 @@ Then <code>andReturn</code> receives the same type of argument as <code>respondW
 <div class="highlight" markdown="1">
 ```javascript
     it("allows use in a single spec", function() {
-        var doneFn = jasmine.createSpy('success');
+        const doneFn = jasmine.createSpy('success');
         jasmine.Ajax.withMock(function() {
-            var xhr = new XMLHttpRequest();
+            const xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function(args) {
                 if (this.readyState == this.DONE) {
                     doneFn(this.responseText);

@@ -19,7 +19,7 @@ See the [async tutorial](/tutorials/async) for more information.
 More details on the [Reporter interface](/api/edge/Reporter.html) can be found in the API docs
 
 ```javascript
-var myReporter = {
+const myReporter = {
   jasmineStarted: function(suiteInfo) {
     console.log('Running suite with ' + suiteInfo.totalSpecsDefined);
   },
@@ -29,7 +29,7 @@ var myReporter = {
       + ' whose full description is: ' + result.fullName);
   },
 
-  specStarted: function(result) {
+  specStarted: async function(result) {
     await somethingAsync();
     console.log('Spec started: ' + result.description
       + ' whose full description is: ' + result.fullName);
@@ -38,9 +38,9 @@ var myReporter = {
   specDone: function(result) {
     console.log('Spec: ' + result.description + ' was ' + result.status);
 
-    for(var i = 0; i < result.failedExpectations.length; i++) {
-      console.log('Failure: ' + result.failedExpectations[i].message);
-      console.log(result.failedExpectations[i].stack);
+    for (const expectation of result.failedExpectations) {
+      console.log('Failure: ' + expectation.message);
+      console.log(expectation.stack);
     }
 
     console.log(result.passedExpectations.length);
@@ -48,17 +48,17 @@ var myReporter = {
 
   suiteDone: function(result) {
     console.log('Suite: ' + result.description + ' was ' + result.status);
-    for(var i = 0; i < result.failedExpectations.length; i++) {
-      console.log('Suite ' + result.failedExpectations[i].message);
-      console.log(result.failedExpectations[i].stack);
+    for (const expectation of result.failedExpectations) {
+      console.log('Suite ' + expectation.message);
+      console.log(expectation.stack);
     }
   },
 
   jasmineDone: function(result) {
     console.log('Finished suite: ' + result.overallStatus);
-    for(var i = 0; i < result.failedExpectations.length; i++) {
-      console.log('Global ' + result.failedExpectations[i].message);
-      console.log(result.failedExpectations[i].stack);
+    for (const expectation of result.failedExpectations) {
+      console.log('Global ' + expectation.message);
+      console.log(expectation.stack);
     }
   }
 };

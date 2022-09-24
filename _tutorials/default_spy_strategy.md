@@ -15,7 +15,7 @@ beforeEach(function() {
 });
 
 it("returns the value Hello World", function() {
-  var spy = jasmine.createSpy();
+  const spy = jasmine.createSpy();
   expect(spy()).toEqual("Hello World");
 });
 ```
@@ -26,7 +26,7 @@ to temporarily create a spy strategy for a series of spies.
 ```javascript
 it("throws if you call any methods", function() {
   jasmine.setDefaultSpyStrategy(and => and.throwError(new Error("Do Not Call Me")));
-  var program = jasmine.createSpyObj(["start", "stop", "examine"]);
+  const program = jasmine.createSpyObj(["start", "stop", "examine"]);
   jasmine.setDefaultSpyStrategy();
 
   expect(() => {

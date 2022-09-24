@@ -145,7 +145,7 @@ The `done` function will also detect an `Error` passed directly to it to cause t
 ```javascript
 beforeEach(function(done) {
   setTimeout(function() {
-    var err = null;
+    let err = null;
 
     try {
       riskyThing();

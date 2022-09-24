@@ -47,7 +47,7 @@ cell, it returns undefined.
 ```javascript
 function formatCell(val) {
     if (val.hasOwnProperty('entry') && val.hasOwnProperty('correctValue')) {
-        var entries = val.entry.pencil
+        const entries = val.entry.pencil
             ? 'pencil entries: ' + val.entry.numbers.join(',')
             : 'entry: ' + val.entry.number;
 

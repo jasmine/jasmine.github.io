@@ -29,7 +29,7 @@ order:
     <td class="code">
 <div class="highlight" markdown="1">
 ```javascript
-var customMatchers = {
+const customMatchers = {
 ```
 </div>
     </td>
@@ -122,7 +122,8 @@ ignore it. It will no longer be provided in Jasmine 4.</p>
     <td class="code">
 <div class="highlight" markdown="1">
 ```javascript
-                var result = {};
+                const result = {
+                };
 ```
 </div>
     </td>
