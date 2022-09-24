@@ -25,11 +25,8 @@ it('does a thing', async function() {
 });
 ```
 
-Note that in order to use `async`/`await` you need to either run your tests in a browser or Node version that supports it, or else use [Babel](https://babeljs.io/) to compile your code to an older dialect of Javascript. `async`/`await` is supported by Jasmine 2.7 and later.
-
-
 ## Promises
-If you can't use `async`/`await` or you need more control, you can explicitly return a promise instead. Jasmine considers any object with a `then` method to be a promise, so you can use either the Javascript runtime's built-in `Promise` type or a library.
+If you need more control, you can explicitly return a promise instead. Jasmine considers any object with a `then` method to be a promise, so you can use either the Javascript runtime's built-in `Promise` type or a library.
 
 ```javascript
 beforeEach(function() {
@@ -45,9 +42,6 @@ it('does a thing', function() {
   });
 });
 ```
-
-Promise-returning asynchronous functions are supported by Jasmine 2.7 and later.
-
 
 ## Callbacks
 It's also possible to write asynchronous tests using callbacks. This is a lower-level mechanism and tends to be more error-prone, but it can be useful for testing callback-based code or for tests that are inconvenient to express in terms of promises. If the function passed to Jasmine takes an argument (traditionally called `done`), Jasmine will pass a function to be invoked when asynchronous work has been completed.
@@ -109,7 +103,7 @@ function somePromiseReturningFunction() {
 ```
 
 ### Failing with `async`/`await`
-Since `async`/`await` is syntactic sugar for promises, `async`/`await` functions can indicate failure by either returning a rejected promise or by throwing an error.
+`async`/`await` functions can indicate failure by either returning a rejected promise or by throwing an error.
 
 ```javascript
 beforeEach(async function() {
@@ -131,7 +125,7 @@ it('does a thing', async function() {
 
 ### Failing with callbacks
 
-Since Jasmine 2.1, the `done` function passed as a callback can also be used to fail the spec by using `done.fail()`, optionally passing a message or an `Error` object.
+The `done` function passed as a callback can also be used to fail the spec by using `done.fail()`, optionally passing a message or an `Error` object.
 
 ```javascript
 beforeEach(function(done) {
@@ -146,7 +140,7 @@ beforeEach(function(done) {
 });
 ```
 
-Since Jasmine 3.0, the `done` function will also detect an `Error` passed directly to it to cause the spec to fail.
+The `done` function will also detect an `Error` passed directly to it to cause the spec to fail.
 
 ```javascript
 beforeEach(function(done) {
@@ -166,7 +160,7 @@ beforeEach(function(done) {
 
 ## Reporters
 
-As of Jasmine 3.0, reporter event handlers can also be asynchronous with any of these methods. Note that all reporter events already receive data, so if you're using the callback method, the `done` callback should be the last parameter.
+Reporter event handlers can also be asynchronous with any of these methods. Note that all reporter events already receive data, so if you're using the callback method, the `done` callback should be the last parameter.
 
 ## Using the mock clock to avoid writing asynchronous tests
 

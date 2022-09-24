@@ -6,7 +6,7 @@ slug: preferred-style
 The `async`/`await` style should be your first choice. Most developers have a
 much easier time writing error-free specs in that style. Promise-returning
 specs are a bit harder to write, but they can be useful in more complex
-scenarios or when running specs in browsers that don't support `async`/`await`.
+scenarios.
 Callback style specs are very error-prone and should be avoided if possible.
 
 There are two major drawbacks to callback style specs. The first is that the
