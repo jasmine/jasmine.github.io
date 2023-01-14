@@ -87,12 +87,9 @@ Its value can be `"internet explorer"`, `"firefox"`, `"safari"`,
 ## ES module support
 
 If a source, spec, or helper file's name ends in `.mjs`, it will be loaded as
-an ES module rather than a regular script. Note that ES modules are not 
-available in all browsers supported by jasmine-browser. Currently, 
-jasmine-browser does not try to determine whether the browser supports ES
-modules. ES modules will silently fail to load in browsers that don't
-support them. Other kinds of load-time errors are detected and reported as suite
-errors.
+an ES module rather than a regular script. Note that ES modules can only be
+loaded from other ES modules. So if your source files are ES modules, your
+spec files need to be ES modules too.
 
 ## Use with Rails
 
