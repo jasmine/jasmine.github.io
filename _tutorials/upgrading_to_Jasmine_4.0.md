@@ -178,7 +178,7 @@ had to accept an array of custom equality testers as the matcher factory's
 second argument and pass it to methods like `MatchersUtil#equals` and
 `MatchersUtil#contains`. Since 3.6, the `MatchersUtil` instance passed to the
 matcher factory is preconfigured with the current set of custom equality
-testers, and matchers do not need to provide the. Beginning with Jasmine 4.0,
+testers, and matchers do not need to provide them. Beginning with Jasmine 4.0,
 custom equality testers are neither passed to the matcher factory nor accepted
 as parameters to `MatchersUtil` methods. To update your custom matchers to the
 new style, simply remove the extra parameter from the matcher factory and stop
