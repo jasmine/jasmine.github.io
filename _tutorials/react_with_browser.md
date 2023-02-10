@@ -8,7 +8,7 @@ title: Testing a React app in browsers with Jasmine
 	#react-with-browser-root.yarn-selected .npm { display: none; }
 </style>
 
-<div id="react-with-browser-root" class="yarn-selected" markdown="1">
+<div id="react-with-browser-root" class="npm-selected" markdown="1">
 
 This tutorial will explain how to set up [jasmine-browser-runner](/setup/browser.html)
 to test React applications in web browsers. You can follow a similar process to
@@ -33,12 +33,12 @@ so that you can see how create-react-app configures Webpack and Babel.
 Choose the package managment tool you'll be using:
 
 <label>
-	<input type="radio" name="mgr" value="yarn" checked>
-	yarn (the default for create-react-app)
+	<input type="radio" name="mgr" value="npm" checked>
+	npm (the default for create-react-app)
 </label><br>
 <label>
-	<input type="radio" name="mgr" value="npm">
-	npm
+	<input type="radio" name="mgr" value="yarn">
+	yarn
 </label>
 
 ## Adding dependencies

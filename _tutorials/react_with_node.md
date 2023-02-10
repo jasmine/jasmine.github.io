@@ -9,7 +9,7 @@ redirect_from: /tutorials/react_with_npm
 	#react-with-node-root.yarn-selected .npm { display: none; }
 </style>
 
-<div id="react-with-node-root" class="yarn-selected" markdown="1">
+<div id="react-with-node-root" class="npm-selected" markdown="1">
 
 # Testing a React app in Node.js with Jasmine
 
@@ -24,12 +24,12 @@ to provide a fake HTML DOM for the specs.
 Choose the package managment tool you'll be using:
 
 <label>
-	<input type="radio" name="mgr" value="yarn" checked>
-	`yarn` (the default for create-react-app)
+	<input type="radio" name="mgr" value="npm" checked>
+	`npm` (the default for create-react-app)
 </label><br>
 <label>
-	<input type="radio" name="mgr" value="npm">
-	`npm`
+	<input type="radio" name="mgr" value="yarn">
+	`yarn`
 </label>
 
 
