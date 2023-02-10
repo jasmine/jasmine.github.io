@@ -16,8 +16,7 @@ redirect_from: /tutorials/react_with_npm
 The [Jasmine NPM](/setup/nodejs.html) package was originally designed just to 
 run specs against your Node.js code, but with a couple of other packages, you 
 can use it to run your React specs as well. This tutorial assumes you're using 
-[babel](https://www.npmjs.com/package/babel) to compile your code and either
-[enzyme](https://www.npmjs.com/package/enzyme) or 
+[babel](https://www.npmjs.com/package/babel) to compile your code and 
 [React Testing Library](https://www.npmjs.com/package/@testing-library/react) 
 to test it. We'll also be using [jsdom](https://www.npmjs.com/package/jsdom) 
 to provide a fake HTML DOM for the specs.
@@ -198,58 +197,9 @@ Or, for TypeScript:
 ## Setting up a React testing utility
 
 We'll need a way to render React components and inspect the result. There are
-several utility libraries that provide that functionality. The most popular are
-[enzyme](https://www.npmjs.com/package/enzyme) and 
+several utility libraries that provide that functionality. The most popular is
 [React Testing Library](https://www.npmjs.com/package/@testing-library/react).
 
-
-### Enzyme
-
-To set up Enzyme, we'll first install these packages:
-
-<div class="yarn" markdown="1">
-```shell
-$ yarn add --dev enzyme \
-                 enzyme-adapter-react-16 \
-                 jasmine-enzyme
-```
-</div>
-<div class="npm" markdown="1">
-```shell
-$ npm install --save-dev enzyme \
-                         enzyme-adapter-react-16 \
-                         jasmine-enzyme
-```
-</div>
-
-Then we'll want to make sure that we have enzyme loaded up, so make another
-file in `spec/helpers`, we'll call this one `enzyme.js` for Javascript or
-`enzyme.ts` for TypeScript. (The file extension is important. While most of the
-helpers can be `.js` regardless of whether we're using Javascript or 
-TypeScript, this one has to be `.ts` in a TypeScript project. Otherwise the 
-type definitions for `jasmine-enzyme` won't be imported and spec files that use 
-those matchers will fail to type check.)
-
-```javascript
-import jasmineEnzyme from 'jasmine-enzyme';
-import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-
-configure({ adapter: new Adapter() });
-
-beforeEach(function() {
-  jasmineEnzyme();
-});
-```
-
-See the
-[Enzyme documentation](https://enzymejs.github.io/enzyme/)
-for more information about using Enzyme, and the 
-[jasmine-enzyme documenatation](https://github.com/FormidableLabs/enzyme-matchers/blob/master/packages/jasmine-enzyme/README.md)
-for a list of available matchers.
-
-
-### React Testing Library
 
 Setup for react-testing-library is simple. All we need to do is make sure the
 `@testing-library/react` package is installed. If you used a recent version of
