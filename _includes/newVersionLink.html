@@ -7,12 +7,13 @@
     {% assign currentVersion = "" %}
     {% assign latestSortKey = "" %}
     {% for otherPage in site.api %}
-      {% if otherPage.url contains "/global" and otherPage.sortKey != "edge" and otherPage.sortKey > latestSortKey %}
-         {% assign currentVersion = otherPage.url | remove_first: "/api/" | remove: "/global" | downcase %}
-         {% assign latestSortKey = otherPage.sortKey %}
-      {% endif %}
+      {% unless otherPage.prereleaseFor %}
+        {% if otherPage.url contains "/global" and otherPage.sortKey != "edge" and otherPage.sortKey > latestSortKey %}
+          {% assign currentVersion = otherPage.url | remove_first: "/api/" | remove: "/global" | downcase %}
+          {% assign latestSortKey = otherPage.sortKey %}
+        {% endif %}
+      {% endunless %}
     {% endfor %}
-
 
     {% unless version == currentVersion %}
       {% if page.collection == 'api' %}
@@ -22,11 +23,32 @@
       {% endif %}
       {% if page.collection == 'api' %}<div class="main-content">{% endif %}
       <div class="warning">
-          This page is for an older version of Jasmine ({{version}})<br/>
-            The current stable version of Jasmine is: <a href="/api/{{ currentVersion }}/{{ pageName }}">{{ currentVersion }}</a> -
-            You can also look at the docs for the next release: <a href="/api/edge/{{ pageName }}">Edge</a>
+      {% if page.prereleaseFor %}
+        This page describes a pre-release version of Jasmine ({{version}}).
+        There may be additional changes, including breaking changes, before the
+        final {{page.prereleaseFor}} release.<br>
+        The current stable version of Jasmine is <a href="/api/{{ currentVersion }}/{{ pageName }}">{{ currentVersion }}</a>.
+        {% else %}
+        This page is for an older version of Jasmine ({{version}})<br/>
+        The current stable version of Jasmine is: <a href="/api/{{ currentVersion }}/{{ pageName }}">{{ currentVersion }}</a> -
+        You can also look at the docs for the next release: <a href="/api/edge/{{ pageName }}">Edge</a>
+      {% endif %}
       </div>
       {% if page.collection == 'api' %}</div>{% endif %}
     {% endunless %}
   {% endunless %}
+{% elsif page.collection == 'npm-api' and page.prereleaseFor %}
+  {% comment %}
+   The full older version link functionality isn't implemented for npm-api yet,
+   but we want to be able to at least show pre-release banners.
+  {% endcomment %}
+  {% assign versionPath = page.url | remove_first: "/api/npm/" | split: "/" %}
+  {% assign version = versionPath.first | strip %}
+  <div class="main-content">
+      <div class="warning">
+          This page describes a pre-release version of Jasmine ({{version}}).
+          There may be additional changes, including breaking changes, before the
+          final {{page.prereleaseFor}} release.<br>
+      </div>
+  </div>
 {% endif %}
