@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Interface: ConsoleReporterOptions"
+title: "Interface: ParallelRunnerOptions"
 prettify: true
 omit_docco: true
 ---
@@ -11,7 +11,7 @@ omit_docco: true
   </nav>
 
   <div class="docs">
-    <h1 class="page-title">Interface: ConsoleReporterOptions</h1>
+    <h1 class="page-title">Interface: ParallelRunnerOptions</h1>
 
     
 
@@ -22,7 +22,7 @@ omit_docco: true
 
 <header>
     
-        <h2>ConsoleReporterOptions</h2>
+        <h2>ParallelRunnerOptions</h2>
         
     
 </header>
@@ -30,6 +30,8 @@ omit_docco: true
 <article>
     <div class="container-overview">
     
+        
+            <div class="description"><p>Options for the <a href="ParallelRunner.html"><code>ParallelRunner</code></a> constructor</p></div>
         
 
         
@@ -92,13 +94,13 @@ omit_docco: true
 
         
             
-<h4 class="name" id="alwaysListPendingSpecs"><span class="type-signature"></span>alwaysListPendingSpecs<span class="type-signature"> :Boolean|undefined</span></h4>
+<h4 class="name" id="numWorkers"><span class="type-signature"></span>numWorkers<span class="type-signature"> :number|undefined</span></h4>
 
 
 
 
 <div class="description">
-    <p>Whether to list pending specs even if there are failures.</p>
+    <p>The number of worker processes to use.</p>
 </div>
 
 
@@ -107,7 +109,7 @@ omit_docco: true
     <ul>
         <li>
             
-<span class="param-type">Boolean</span>
+<span class="param-type">number</span>
 |
 
 <span class="param-type">undefined</span>
@@ -147,7 +149,7 @@ omit_docco: true
     
     <dt class="tag-default">Default Value:</dt>
     <dd class="tag-default"><ul class="dummy">
-            <li>true</li>
+            <li>2</li>
         </ul></dd>
     
 
@@ -167,15 +169,15 @@ omit_docco: true
 
         
             
-<h4 class="name" id="randomSeedReproductionCmd"><span class="type-signature"></span>randomSeedReproductionCmd<span class="type-signature"> :function|undefined</span></h4>
+<h4 class="name" id="projectBaseDir"><span class="type-signature"></span>projectBaseDir<span class="type-signature"> :string|undefined</span></h4>
 
 
 
 
 <div class="description">
-    <p>A function that takes a random seed and returns the command to reproduce
-that seed. Use this to customize the output when using ConsoleReporter
-in a different command line tool.</p>
+    <p>The path to the project's base directory. This can be absolute or relative
+to the current working directory. If it isn't specified, the current working
+directory will be used.</p>
 </div>
 
 
@@ -184,7 +186,7 @@ in a different command line tool.</p>
     <ul>
         <li>
             
-<span class="param-type">function</span>
+<span class="param-type">string</span>
 |
 
 <span class="param-type">undefined</span>
@@ -221,81 +223,6 @@ in a different command line tool.</p>
 
     
 
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="showColors"><span class="type-signature"></span>showColors<span class="type-signature"> :Boolean|undefined</span></h4>
-
-
-
-
-<div class="description">
-    <p>Whether to colorize the output</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Boolean</span>
-|
-
-<span class="param-type">undefined</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>false</li>
-        </ul></dd>
     
 
     

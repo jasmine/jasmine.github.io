@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Module: jasmine-core"
+title: "Interface: Spec"
 prettify: true
 omit_docco: true
 ---
@@ -11,7 +11,7 @@ omit_docco: true
   </nav>
 
   <div class="docs">
-    <h1 class="page-title">Module: jasmine-core</h1>
+    <h1 class="page-title">Interface: Spec</h1>
 
     
 
@@ -22,8 +22,7 @@ omit_docco: true
 
 <header>
     
-        
-            
+        <h2>Spec</h2>
         
     
 </header>
@@ -32,21 +31,97 @@ omit_docco: true
     <div class="container-overview">
     
         
-            <div class="description"><p>Note: Only available on Node.</p></div>
+
         
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="Configuration.html#specFilter">Configuration#specFilter</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
 
         
             
+<h4 class="name" id="description"><span class="type-signature">(readonly) </span>description<span class="type-signature"> :string</span></h4>
 
 
 
 
+<div class="description">
+    <p>The description passed to the <a href="global.html#it"><code>it</code></a> that created this spec.</p>
+</div>
 
 
 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
 
 
-
+        </li>
+    </ul>
 
 
 
@@ -56,6 +131,9 @@ omit_docco: true
 
     
 
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
     
 
     
@@ -92,14 +170,70 @@ omit_docco: true
 
 
 
+        
+            
+<h4 class="name" id="id"><span class="type-signature">(readonly) </span>id<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>The unique ID of this spec.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
 
 
 
 
 
+<dl class="details">
 
+    
 
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
+    
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
 
 
 
@@ -107,21 +241,6 @@ omit_docco: true
 
 
         
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
     
 
     
@@ -133,7 +252,7 @@ omit_docco: true
     
 
     
-    <h4 class="name" id=".boot"><span class="type-signature">(static) </span>boot<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="jasmine.html">jasmine</a>}</span></h4>
+    <h4 class="name" id="getFullName"><span class="type-signature"></span>getFullName<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
     
 
     
@@ -141,8 +260,7 @@ omit_docco: true
 
 
 <div class="description">
-    <p>Boots a copy of Jasmine and returns an object as described in <a href="jasmine.html"><code>jasmine</code></a>.
-If boot is called multiple times, the same object is returned every time.</p>
+    <p>The full description including all ancestors of this spec.</p>
 </div>
 
 
@@ -161,6 +279,9 @@ If boot is called multiple times, the same object is returned every time.</p>
 
     
 
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
     
 
     
@@ -217,7 +338,7 @@ If boot is called multiple times, the same object is returned every time.</p>
     </dt>
     <dd>
         
-<span class="param-type"><a href="jasmine.html">jasmine</a></span>
+<span class="param-type">string</span>
 
 
     </dd>
@@ -226,96 +347,6 @@ If boot is called multiple times, the same object is returned every time.</p>
     
 
 
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id=".noGlobals"><span class="type-signature">(static) </span>noGlobals<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Boots a copy of Jasmine and returns an object containing the properties
-that would normally be added to the global object. If noGlobals is called
-multiple times, the same object is returned every time.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>const {describe, beforeEach, it, expect, jasmine} = require('jasmine-core').noGlobals();</code></pre>
 
 
 
