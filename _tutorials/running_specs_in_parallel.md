@@ -107,9 +107,8 @@ Unsure which setup/teardown tool to use?
 * If it needs to run once for all specs in the entire suite and initializes
   in-process state, you cannot use parallel mode.
 
-## Known bugs as of 5.0.0-alpha.0:
+## Known bugs as of 5.0.0-alpha.1
 
-* Errors from reporters are not handled properly.
 * Unhandled async errors that occur after a spec finishes are somewhat less
   likely to be reported.
 * [Use without globals](tutorials/use_without_globals) is not yet supported.
