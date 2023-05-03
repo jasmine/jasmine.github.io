@@ -357,6 +357,7 @@ describe("A spec", function() {
       <h2>Disabling Suites</h2>
 
 <p>Suites can be disabled with the <code>xdescribe</code> function. These suites and any specs inside them are skipped when run and thus their results will show as pending.</p>
+      <p>Suites can also be focused with the <code>fdescribe</code> function. That means only <code>fdescribe</code> suits will run.</p>
     </td>
     <td class="code">
 <div class="highlight" markdown="1">
@@ -433,6 +434,7 @@ describe("Pending specs", function() {
       </div>
       <p>And if you call the function <code>pending</code> anywhere in the spec body, no matter the expectations, the spec will be marked pending.
 A string passed to <code>pending</code> will be treated as a reason and displayed when the suite finishes.</p>
+      <p>Tests can also be focused with the <code>fit</code> function. That means only <code>fit</code> tests will run.</p>
     </td>
     <td class="code">
 <div class="highlight" markdown="1">
