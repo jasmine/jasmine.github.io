@@ -1,6 +1,6 @@
 [Jasmine doc site](https://jasmine.github.io/)
 
-# Contributing
+# Contributing:
 
 ## Prepare your local environment
 
