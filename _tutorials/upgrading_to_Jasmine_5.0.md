@@ -23,7 +23,8 @@ errors or deprecation warnings prior to upgrading to 5.0. In particular, people
 who use the `jasmine` package on Windows should upgrade to at least 4.5.0 first
 because that release adds an important deprecation warning that affects Windows
 users. For the same reason, people who use the `jasmine-browser-runner` package
-on Windows should upgrade to at least 1.3.0.
+on Windows should upgrade that package to at least 1.3.0 prior to upgrading it
+to 2.0.
 
 The new parallel execution mode introduced in Jasmine 5.0 comes with additional
 restrictions on how both specs and reporters are written. These restrictions
