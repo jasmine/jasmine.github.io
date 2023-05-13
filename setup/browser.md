@@ -24,35 +24,22 @@ yarn add -D jasmine-browser-runner jasmine-core
 npx jasmine-browser-runner init
 ```
 
-Edit `spec/support/jasmine-browser.json` to customize the set of source files,
-spec files, and helpers to be loaded. For example:
+If you intend to use ES modules, add `--esm` to the `jasmine-browser-runner init`
+command.
 
-```json
-{
-  "srcDir": "src",
-  "srcFiles": [
-    "**/*.?(m)js"
-  ],
-  "specDir": "spec",
-  "specFiles": [
-    "**/*[Ss]pec.?(m)js"
-  ],
-  "helpers": [
-    "helpers/asyncAwait.js"
-  ],
-  "env": {
-    "random": true
-  }
-}
-```
+Then, customize `spec/support/jasmine-browser.json` to suit your needs. You can
+change the spec files, helpers, and source files that are loaded, specify the
+[Jasmine env's configuration](https://jasmine.github.io/api/edge/Configuration.html),
+and more.
 
-You can also use the `--config` option to specify a different file. This file 
-can be a JSON file or a javascript file that exports a object that looks like 
+You can also use the `--config` option to specify a different file. This file
+can be a JSON file or a javascript file that exports a object that looks like
 the JSON above.
 
 ## Running specs interactively
 
-Start the server:
+To start the server so that you can run the specs interactively (particularly
+useful for debugging):
 
 ```
 npx jasmine-browser-runner serve
