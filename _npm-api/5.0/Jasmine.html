@@ -3,19 +3,18 @@ layout: default
 title: "Class: Jasmine"
 prettify: true
 omit_docco: true
-sortKey: "004.004"
-archived: true
+sortKey: "005.000"
 ---
 
 <div class="main-content api-docs">
   <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ConsoleReporter.html">ConsoleReporter</a></li><li><a href="Jasmine.html">Jasmine</a></li></ul><h3>Interfaces</h3><ul><li><a href="Configuration.html">Configuration</a></li><li><a href="ConsoleReporterOptions.html">ConsoleReporterOptions</a></li><li><a href="JasmineOptions.html">JasmineOptions</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ConsoleReporter.html">ConsoleReporter</a></li><li><a href="Jasmine.html">Jasmine</a></li><li><a href="ParallelRunner.html">ParallelRunner</a></li><li><a href="Runner.html">Runner</a></li></ul><h3>Interfaces</h3><ul><li><a href="Configuration.html">Configuration</a></li><li><a href="ConsoleReporterOptions.html">ConsoleReporterOptions</a></li><li><a href="JasmineOptions.html">JasmineOptions</a></li><li><a href="ParallelRunnerOptions.html">ParallelRunnerOptions</a></li></ul>
   </nav>
 
   <div class="docs">
     <h1 class="page-title">Class: Jasmine</h1>
 
-    
+
 
 
 
@@ -23,28 +22,28 @@ archived: true
 <section>
 
 <header>
-    
+
         <h2><span class="attribs"><span class="type-signature"></span></span>Jasmine<span class="signature">(options)</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description"><p>Configures, builds, and executes a Jasmine test suite</p></div>
-        
-    
+
+            <div class="class-description"><p>Configures, builds, and executes a Jasmine test suite.<br>See also <a href="ParallelRunner.html"><code>ParallelRunner</code></a> which provides equivalent functionality for parallel execution.</p></div>
+
+
 </header>
 
 <article>
     <div class="container-overview">
-    
-        
 
-    
+
+
+
     <h2>Constructor</h2>
-    
 
-    
+
+
     <h4 class="name" id="Jasmine"><span class="type-signature"></span>new Jasmine<span class="signature">(options)</span><span class="type-signature"></span></h4>
-    
 
-    
+
+
 
 
 
@@ -57,53 +56,53 @@ archived: true
 
 
     <h5>Parameters:</h5>
-    
+
 
 <table class="params">
     <thead>
     <tr>
-        
+
         <th>Name</th>
-        
+
 
         <th>Type</th>
 
-        
 
-        
+
+
 
         <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
-    
+
 
         <tr>
-            
+
                 <td class="name"><code>options</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type"><a href="JasmineOptions.html">JasmineOptions</a></span>
 |
 
 <span class="param-type">undefined</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"></td>
         </tr>
 
-    
+
     </tbody>
 </table>
 
@@ -114,37 +113,37 @@ archived: true
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </dl>
 
 
@@ -166,90 +165,43 @@ archived: true
 
 
     <h5>Example</h5>
-    
+
     <pre class="prettyprint"><code>const Jasmine = require('jasmine');
 const jasmine = new Jasmine();</code></pre>
 
 
 
-    
+
     </div>
 
-    
 
-    
+        <h3 class="subsection-title">Extends</h3>
 
-    
 
-    
 
-    
 
-    
+    <ul>
+        <li><a href="Runner.html">Runner</a></li>
+    </ul>
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <h3 class="subsection-title">Members</h3>
 
-        
-            
-<h4 class="name" id="alwaysListPendingSpecs"><span class="type-signature"></span>alwaysListPendingSpecs<span class="type-signature"></span></h4>
 
 
-
-
-<div class="description">
-    <p>Sets whether the console reporter should list pending specs even when there
-are failures.</p>
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
 <h4 class="name" id="env"><span class="type-signature">(readonly) </span>env<span class="type-signature"> :Env</span></h4>
 
 
@@ -264,7 +216,7 @@ are failures.</p>
     <h5>Type:</h5>
     <ul>
         <li>
-            
+
 <span class="param-type">Env</span>
 
 
@@ -277,44 +229,44 @@ are failures.</p>
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
         <ul>
             <li><a href="https://jasmine.github.io/api/edge/Env.html">Env</a></li>
         </ul>
     </dd>
-    
 
-    
+
+
 </dl>
 
 
@@ -322,8 +274,8 @@ are failures.</p>
 
 
 
-        
-            
+
+
 <h4 class="name" id="exitOnCompletion"><span class="type-signature"></span>exitOnCompletion<span class="type-signature"> :boolean</span></h4>
 
 
@@ -338,7 +290,7 @@ are failures.</p>
     <h5>Type:</h5>
     <ul>
         <li>
-            
+
 <span class="param-type">boolean</span>
 
 
@@ -351,42 +303,47 @@ are failures.</p>
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Runner.html#exitOnCompletion">Runner#exitOnCompletion</a>
+    </li></ul></dd>
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
     <dt class="tag-default">Default Value:</dt>
     <dd class="tag-default"><ul class="dummy">
             <li>true</li>
         </ul></dd>
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 </dl>
 
 
@@ -394,22 +351,22 @@ are failures.</p>
 
 
 
-        
-    
 
-    
+
+
+
         <h3 class="subsection-title">Methods</h3>
 
-        
-            
 
-    
 
-    
+
+
+
+
     <h4 class="name" id="addHelperFile"><span class="type-signature"></span>addHelperFile<span class="signature">(filePath)</span><span class="type-signature"></span></h4>
-    
 
-    
+
+
 
 
 
@@ -426,50 +383,50 @@ are failures.</p>
 
 
     <h5>Parameters:</h5>
-    
+
 
 <table class="params">
     <thead>
     <tr>
-        
+
         <th>Name</th>
-        
+
 
         <th>Type</th>
 
-        
 
-        
+
+
 
         <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
-    
+
 
         <tr>
-            
+
                 <td class="name"><code>filePath</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">string</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The path to the file to be loaded.</p></td>
         </tr>
 
-    
+
     </tbody>
 </table>
 
@@ -480,37 +437,42 @@ are failures.</p>
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Runner.html#addHelperFile">Runner#addHelperFile</a>
+    </li></ul></dd>
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </dl>
 
 
@@ -532,16 +494,16 @@ are failures.</p>
 
 
 
-        
-            
 
-    
 
-    
+
+
+
+
     <h4 class="name" id="addMatchers"><span class="type-signature"></span>addMatchers<span class="signature">(matchers)</span><span class="type-signature"></span></h4>
-    
 
-    
+
+
 
 
 
@@ -559,50 +521,50 @@ are failures.</p>
 
 
     <h5>Parameters:</h5>
-    
+
 
 <table class="params">
     <thead>
     <tr>
-        
+
         <th>Name</th>
-        
+
 
         <th>Type</th>
 
-        
 
-        
+
+
 
         <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
-    
+
 
         <tr>
-            
+
                 <td class="name"><code>matchers</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">Object</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>Keys from this object will be the new matcher names.</p></td>
         </tr>
 
-    
+
     </tbody>
 </table>
 
@@ -613,44 +575,44 @@ are failures.</p>
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
         <ul>
             <li><a href="/tutorials/custom_matcher">custom matcher</a></li>
         </ul>
     </dd>
-    
 
-    
+
+
 </dl>
 
 
@@ -672,16 +634,16 @@ are failures.</p>
 
 
 
-        
-            
 
-    
 
-    
+
+
+
+
     <h4 class="name" id="addMatchingHelperFiles"><span class="type-signature"></span>addMatchingHelperFiles<span class="signature">(patterns)</span><span class="type-signature"></span></h4>
-    
 
-    
+
+
 
 
 
@@ -698,52 +660,52 @@ are failures.</p>
 
 
     <h5>Parameters:</h5>
-    
+
 
 <table class="params">
     <thead>
     <tr>
-        
+
         <th>Name</th>
-        
+
 
         <th>Type</th>
 
-        
 
-        
+
+
 
         <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
-    
+
 
         <tr>
-            
+
                 <td class="name"><code>patterns</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">Array.&lt;string></span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>An array of helper file paths
 or <a href="https://github.com/isaacs/node-glob#glob-primer">globs</a> that match
 helper files. Each path or glob will be evaluated relative to the spec directory.</p></td>
         </tr>
 
-    
+
     </tbody>
 </table>
 
@@ -754,37 +716,42 @@ helper files. Each path or glob will be evaluated relative to the spec directory
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Runner.html#addMatchingHelperFiles">Runner#addMatchingHelperFiles</a>
+    </li></ul></dd>
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </dl>
 
 
@@ -806,16 +773,16 @@ helper files. Each path or glob will be evaluated relative to the spec directory
 
 
 
-        
-            
 
-    
 
-    
+
+
+
+
     <h4 class="name" id="addMatchingSpecFiles"><span class="type-signature"></span>addMatchingSpecFiles<span class="signature">(patterns)</span><span class="type-signature"></span></h4>
-    
 
-    
+
+
 
 
 
@@ -832,52 +799,52 @@ helper files. Each path or glob will be evaluated relative to the spec directory
 
 
     <h5>Parameters:</h5>
-    
+
 
 <table class="params">
     <thead>
     <tr>
-        
+
         <th>Name</th>
-        
+
 
         <th>Type</th>
 
-        
 
-        
+
+
 
         <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
-    
+
 
         <tr>
-            
+
                 <td class="name"><code>patterns</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">Array.&lt;string></span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>An array of spec file paths
 or <a href="https://github.com/isaacs/node-glob#glob-primer">globs</a> that match
 spec files. Each path or glob will be evaluated relative to the spec directory.</p></td>
         </tr>
 
-    
+
     </tbody>
 </table>
 
@@ -888,37 +855,42 @@ spec files. Each path or glob will be evaluated relative to the spec directory.<
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Runner.html#addMatchingSpecFiles">Runner#addMatchingSpecFiles</a>
+    </li></ul></dd>
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </dl>
 
 
@@ -940,16 +912,16 @@ spec files. Each path or glob will be evaluated relative to the spec directory.<
 
 
 
-        
-            
 
-    
 
-    
+
+
+
+
     <h4 class="name" id="addReporter"><span class="type-signature"></span>addReporter<span class="signature">(reporter)</span><span class="type-signature"></span></h4>
-    
 
-    
+
+
 
 
 
@@ -966,50 +938,50 @@ spec files. Each path or glob will be evaluated relative to the spec directory.<
 
 
     <h5>Parameters:</h5>
-    
+
 
 <table class="params">
     <thead>
     <tr>
-        
+
         <th>Name</th>
-        
+
 
         <th>Type</th>
 
-        
 
-        
+
+
 
         <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
-    
+
 
         <tr>
-            
+
                 <td class="name"><code>reporter</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">Reporter</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The reporter to add</p></td>
         </tr>
 
-    
+
     </tbody>
 </table>
 
@@ -1020,44 +992,49 @@ spec files. Each path or glob will be evaluated relative to the spec directory.<
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Runner.html#addReporter">Runner#addReporter</a>
+    </li></ul></dd>
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
         <ul>
             <li><a href="/tutorials/custom_reporter">custom reporter</a></li>
         </ul>
     </dd>
-    
 
-    
+
+
 </dl>
 
 
@@ -1079,16 +1056,16 @@ spec files. Each path or glob will be evaluated relative to the spec directory.<
 
 
 
-        
-            
 
-    
 
-    
+
+
+
+
     <h4 class="name" id="addSpecFile"><span class="type-signature"></span>addSpecFile<span class="signature">(filePath)</span><span class="type-signature"></span></h4>
-    
 
-    
+
+
 
 
 
@@ -1105,50 +1082,50 @@ spec files. Each path or glob will be evaluated relative to the spec directory.<
 
 
     <h5>Parameters:</h5>
-    
+
 
 <table class="params">
     <thead>
     <tr>
-        
+
         <th>Name</th>
-        
+
 
         <th>Type</th>
 
-        
 
-        
+
+
 
         <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
-    
+
 
         <tr>
-            
+
                 <td class="name"><code>filePath</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">string</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The path to the file to be loaded.</p></td>
         </tr>
 
-    
+
     </tbody>
 </table>
 
@@ -1159,37 +1136,42 @@ spec files. Each path or glob will be evaluated relative to the spec directory.<
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Runner.html#addSpecFile">Runner#addSpecFile</a>
+    </li></ul></dd>
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </dl>
 
 
@@ -1211,16 +1193,154 @@ spec files. Each path or glob will be evaluated relative to the spec directory.<
 
 
 
-        
-            
 
-    
 
-    
+
+
+
+
+    <h4 class="name" id="alwaysListPendingSpecs"><span class="type-signature"></span>alwaysListPendingSpecs<span class="signature">(value)</span><span class="type-signature"></span></h4>
+
+
+
+
+
+
+<div class="description">
+    <p>Sets whether the console reporter should list pending specs even when there
+are failures.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+
+
+<table class="params">
+    <thead>
+    <tr>
+
+        <th>Name</th>
+
+
+        <th>Type</th>
+
+
+
+
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+
+        <tr>
+
+                <td class="name"><code>value</code></td>
+
+
+            <td class="type">
+
+
+<span class="param-type">boolean</span>
+
+
+
+            </td>
+
+
+
+
+
+            <td class="description last"></td>
+        </tr>
+
+
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Runner.html#alwaysListPendingSpecs">Runner#alwaysListPendingSpecs</a>
+    </li></ul></dd>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <h4 class="name" id="clearReporters"><span class="type-signature"></span>clearReporters<span class="signature">()</span><span class="type-signature"></span></h4>
-    
 
-    
+
+
 
 
 
@@ -1242,37 +1362,42 @@ spec files. Each path or glob will be evaluated relative to the spec directory.<
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Runner.html#clearReporters">Runner#clearReporters</a>
+    </li></ul></dd>
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </dl>
 
 
@@ -1294,16 +1419,16 @@ spec files. Each path or glob will be evaluated relative to the spec directory.<
 
 
 
-        
-            
 
-    
 
-    
+
+
+
+
     <h4 class="name" id="configureDefaultReporter"><span class="type-signature"></span>configureDefaultReporter<span class="signature">(options)</span><span class="type-signature"></span></h4>
-    
 
-    
+
+
 
 
 
@@ -1321,50 +1446,50 @@ specified.</p>
 
 
     <h5>Parameters:</h5>
-    
+
 
 <table class="params">
     <thead>
     <tr>
-        
+
         <th>Name</th>
-        
+
 
         <th>Type</th>
 
-        
 
-        
+
+
 
         <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
-    
+
 
         <tr>
-            
+
                 <td class="name"><code>options</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type"><a href="ConsoleReporterOptions.html">ConsoleReporterOptions</a></span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"></td>
         </tr>
 
-    
+
     </tbody>
 </table>
 
@@ -1375,37 +1500,42 @@ specified.</p>
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Runner.html#configureDefaultReporter">Runner#configureDefaultReporter</a>
+    </li></ul></dd>
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </dl>
 
 
@@ -1427,16 +1557,16 @@ specified.</p>
 
 
 
-        
-            
 
-    
 
-    
+
+
+
+
     <h4 class="name" id="coreVersion"><span class="type-signature"></span>coreVersion<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
-    
 
-    
+
+
 
 
 
@@ -1454,37 +1584,37 @@ specified.</p>
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </dl>
 
 
@@ -1503,7 +1633,7 @@ specified.</p>
 
 <h5>Returns:</h5>
 
-        
+
 <div class="param-desc">
     <p>The version of jasmine-core in use</p>
 </div>
@@ -1515,29 +1645,29 @@ specified.</p>
         Type
     </dt>
     <dd>
-        
+
 <span class="param-type">string</span>
 
 
     </dd>
 </dl>
 
-    
 
 
 
 
 
-        
-            
 
-    
 
-    
+
+
+
+
+
     <h4 class="name" id="execute"><span class="type-signature">(async) </span>execute<span class="signature">(files<span class="signature-attributes">opt</span>, filterString<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;JasmineDoneInfo>}</span></h4>
-    
 
-    
+
+
 
 
 
@@ -1557,97 +1687,97 @@ ordinarily exit before the promise is settled.</p>
 
 
     <h5>Parameters:</h5>
-    
+
 
 <table class="params">
     <thead>
     <tr>
-        
+
         <th>Name</th>
-        
+
 
         <th>Type</th>
 
-        
-        <th>Attributes</th>
-        
 
-        
+        <th>Attributes</th>
+
+
+
 
         <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
-    
+
 
         <tr>
-            
+
                 <td class="name"><code>files</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">Array.&lt;string></span>
 
 
-            
+
             </td>
 
-            
+
                 <td class="attributes">
-                
+
                     &lt;optional><br>
-                
 
-                
 
-                
+
+
+
                 </td>
-            
 
-            
+
+
 
             <td class="description last"><p>Spec files to run instead of the previously
 configured set</p></td>
         </tr>
 
-    
+
 
         <tr>
-            
+
                 <td class="name"><code>filterString</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">string</span>
 
 
-            
+
             </td>
 
-            
+
                 <td class="attributes">
-                
+
                     &lt;optional><br>
-                
 
-                
 
-                
+
+
+
                 </td>
-            
 
-            
+
+
 
             <td class="description last"><p>Regex used to filter specs. If specified, only
 specs with matching full names will be run.</p></td>
         </tr>
 
-    
+
     </tbody>
 </table>
 
@@ -1658,37 +1788,37 @@ specs with matching full names will be run.</p></td>
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </dl>
 
 
@@ -1707,7 +1837,7 @@ specs with matching full names will be run.</p></td>
 
 <h5>Returns:</h5>
 
-        
+
 <div class="param-desc">
     <p>Promise that is resolved when the suite completes.</p>
 </div>
@@ -1719,29 +1849,29 @@ specs with matching full names will be run.</p></td>
         Type
     </dt>
     <dd>
-        
+
 <span class="param-type">Promise.&lt;JasmineDoneInfo></span>
 
 
     </dd>
 </dl>
 
-    
 
 
 
 
 
-        
-            
 
-    
 
-    
+
+
+
+
+
     <h4 class="name" id="loadConfig"><span class="type-signature"></span>loadConfig<span class="signature">(config)</span><span class="type-signature"></span></h4>
-    
 
-    
+
+
 
 
 
@@ -1758,50 +1888,50 @@ specs with matching full names will be run.</p></td>
 
 
     <h5>Parameters:</h5>
-    
+
 
 <table class="params">
     <thead>
     <tr>
-        
+
         <th>Name</th>
-        
+
 
         <th>Type</th>
 
-        
 
-        
+
+
 
         <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
-    
+
 
         <tr>
-            
+
                 <td class="name"><code>config</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type"><a href="Configuration.html">Configuration</a></span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"></td>
         </tr>
 
-    
+
     </tbody>
 </table>
 
@@ -1812,37 +1942,42 @@ specs with matching full names will be run.</p></td>
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Runner.html#loadConfig">Runner#loadConfig</a>
+    </li></ul></dd>
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </dl>
 
 
@@ -1864,16 +1999,16 @@ specs with matching full names will be run.</p></td>
 
 
 
-        
-            
 
-    
 
-    
-    <h4 class="name" id="loadConfigFile"><span class="type-signature">(async) </span>loadConfigFile<span class="signature">(configFilePath<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
-    
 
-    
+
+
+
+    <h4 class="name" id="loadConfigFile"><span class="type-signature"></span>loadConfigFile<span class="signature">(configFilePath<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+
+
 
 
 
@@ -1892,70 +2027,70 @@ as its default export.</p>
 
 
     <h5>Parameters:</h5>
-    
+
 
 <table class="params">
     <thead>
     <tr>
-        
+
         <th>Name</th>
-        
+
 
         <th>Type</th>
 
-        
-        <th>Attributes</th>
-        
 
-        
+        <th>Attributes</th>
+
+
+
         <th>Default</th>
-        
+
 
         <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
-    
+
 
         <tr>
-            
+
                 <td class="name"><code>configFilePath</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">string</span>
 
 
-            
+
             </td>
 
-            
+
                 <td class="attributes">
-                
+
                     &lt;optional><br>
-                
 
-                
 
-                
+
+
+
                 </td>
-            
 
-            
+
+
                 <td class="default">
-                
+
                     spec/support/jasmine.json
-                
+
                 </td>
-            
+
 
             <td class="description last"></td>
         </tr>
 
-    
+
     </tbody>
 </table>
 
@@ -1966,37 +2101,42 @@ as its default export.</p>
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Runner.html#loadConfigFile">Runner#loadConfigFile</a>
+    </li></ul></dd>
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </dl>
 
 
@@ -2015,29 +2155,29 @@ as its default export.</p>
 
 <h5>Returns:</h5>
 
-        
+
 <div class="param-desc">
     <p>Promise</p>
 </div>
 
 
 
-    
 
 
 
 
 
-        
-            
 
-    
 
-    
+
+
+
+
+
     <h4 class="name" id="provideFallbackReporter"><span class="type-signature"></span>provideFallbackReporter<span class="signature">(reporter)</span><span class="type-signature"></span></h4>
-    
 
-    
+
+
 
 
 
@@ -2054,45 +2194,45 @@ as its default export.</p>
 
 
     <h5>Parameters:</h5>
-    
+
 
 <table class="params">
     <thead>
     <tr>
-        
+
         <th>Name</th>
-        
+
 
         <th>Type</th>
 
-        
 
-        
+
+
 
         <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
-    
+
 
         <tr>
-            
+
                 <td class="name"><code>reporter</code></td>
-            
+
 
             <td class="type">
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The fallback reporter</p></td>
         </tr>
 
-    
+
     </tbody>
 </table>
 
@@ -2103,44 +2243,44 @@ as its default export.</p>
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
         <ul>
             <li><a href="/tutorials/custom_reporter">custom reporter</a></li>
         </ul>
     </dd>
-    
 
-    
+
+
 </dl>
 
 
@@ -2162,16 +2302,16 @@ as its default export.</p>
 
 
 
-        
-            
 
-    
 
-    
+
+
+
+
     <h4 class="name" id="randomizeTests"><span class="type-signature"></span>randomizeTests<span class="signature">(value)</span><span class="type-signature"></span></h4>
-    
 
-    
+
+
 
 
 
@@ -2188,50 +2328,50 @@ as its default export.</p>
 
 
     <h5>Parameters:</h5>
-    
+
 
 <table class="params">
     <thead>
     <tr>
-        
+
         <th>Name</th>
-        
+
 
         <th>Type</th>
 
-        
 
-        
+
+
 
         <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
-    
+
 
         <tr>
-            
+
                 <td class="name"><code>value</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">boolean</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>Whether to randomize</p></td>
         </tr>
 
-    
+
     </tbody>
 </table>
 
@@ -2242,37 +2382,37 @@ as its default export.</p>
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </dl>
 
 
@@ -2294,16 +2434,16 @@ as its default export.</p>
 
 
 
-        
-            
 
-    
 
-    
+
+
+
+
     <h4 class="name" id="seed"><span class="type-signature"></span>seed<span class="signature">(seed)</span><span class="type-signature"></span></h4>
-    
 
-    
+
+
 
 
 
@@ -2320,50 +2460,50 @@ as its default export.</p>
 
 
     <h5>Parameters:</h5>
-    
+
 
 <table class="params">
     <thead>
     <tr>
-        
+
         <th>Name</th>
-        
+
 
         <th>Type</th>
 
-        
 
-        
+
+
 
         <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
-    
+
 
         <tr>
-            
+
                 <td class="name"><code>seed</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">number</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The random seed</p></td>
         </tr>
 
-    
+
     </tbody>
 </table>
 
@@ -2374,37 +2514,37 @@ as its default export.</p>
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </dl>
 
 
@@ -2426,16 +2566,16 @@ as its default export.</p>
 
 
 
-        
-            
 
-    
 
-    
+
+
+
+
     <h4 class="name" id="showColors"><span class="type-signature"></span>showColors<span class="signature">(value)</span><span class="type-signature"></span></h4>
-    
 
-    
+
+
 
 
 
@@ -2452,50 +2592,50 @@ as its default export.</p>
 
 
     <h5>Parameters:</h5>
-    
+
 
 <table class="params">
     <thead>
     <tr>
-        
+
         <th>Name</th>
-        
+
 
         <th>Type</th>
 
-        
 
-        
+
+
 
         <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
-    
+
 
         <tr>
-            
+
                 <td class="name"><code>value</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">boolean</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>Whether to show colors</p></td>
         </tr>
 
-    
+
     </tbody>
 </table>
 
@@ -2506,37 +2646,42 @@ as its default export.</p>
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Runner.html#showColors">Runner#showColors</a>
+    </li></ul></dd>
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </dl>
 
 
@@ -2558,16 +2703,16 @@ as its default export.</p>
 
 
 
-        
-            
 
-    
 
-    
+
+
+
+
     <h4 class="name" id="stopOnSpecFailure"><span class="type-signature"></span>stopOnSpecFailure<span class="signature">(value)</span><span class="type-signature"></span></h4>
-    
 
-    
+
+
 
 
 
@@ -2584,51 +2729,51 @@ as its default export.</p>
 
 
     <h5>Parameters:</h5>
-    
+
 
 <table class="params">
     <thead>
     <tr>
-        
+
         <th>Name</th>
-        
+
 
         <th>Type</th>
 
-        
 
-        
+
+
 
         <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
-    
+
 
         <tr>
-            
+
                 <td class="name"><code>value</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">boolean</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>Whether to stop execution of the suite after the
 first spec failure</p></td>
         </tr>
 
-    
+
     </tbody>
 </table>
 
@@ -2639,37 +2784,37 @@ first spec failure</p></td>
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </dl>
 
 
@@ -2691,16 +2836,16 @@ first spec failure</p></td>
 
 
 
-        
-            
 
-    
 
-    
+
+
+
+
     <h4 class="name" id="stopSpecOnExpectationFailure"><span class="type-signature"></span>stopSpecOnExpectationFailure<span class="signature">(value)</span><span class="type-signature"></span></h4>
-    
 
-    
+
+
 
 
 
@@ -2717,51 +2862,51 @@ first spec failure</p></td>
 
 
     <h5>Parameters:</h5>
-    
+
 
 <table class="params">
     <thead>
     <tr>
-        
+
         <th>Name</th>
-        
+
 
         <th>Type</th>
 
-        
 
-        
+
+
 
         <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
-    
+
 
         <tr>
-            
+
                 <td class="name"><code>value</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">boolean</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>Whether to cause specs to only have one expectation
 failure</p></td>
         </tr>
 
-    
+
     </tbody>
 </table>
 
@@ -2772,37 +2917,37 @@ failure</p></td>
 
 <dl class="details">
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </dl>
 
 
@@ -2824,12 +2969,12 @@ failure</p></td>
 
 
 
-        
-    
 
-    
 
-    
+
+
+
+
 </article>
 
 </section>

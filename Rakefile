@@ -45,15 +45,13 @@ def download_npm_file(file_name)
   `curl -L 'https://raw.github.com/jasmine/jasmine-npm/5.0/lib/#{file_name}' > .current_npm_version/#{file_name}`
 end
 
-# Currently, 5.0 and main branches need different sets of files.
-# While that's the case, download them manually instead of using this rake task.
-# desc "update jasmine-npm for edge docs"
-# task :update_edge_jasmine_npm => ['.current_npm_version/reporters'] do
-#   download_npm_file('jasmine.js')
-#   download_npm_file('parallel_runner.js')
-#   download_npm_file('runner_base.js')
-#   download_npm_file('reporters/console_reporter.js')
-# end
+desc "update jasmine-npm for edge docs"
+task :update_edge_jasmine_npm => ['.current_npm_version/reporters'] do
+  download_npm_file('jasmine.js')
+  download_npm_file('parallel_runner.js')
+  download_npm_file('runner_base.js')
+  download_npm_file('reporters/console_reporter.js')
+end
 
 desc "make section of docs for a newly released version of jasmine"
 task :release, [:version] do |t, args|
