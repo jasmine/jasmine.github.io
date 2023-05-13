@@ -38,5 +38,5 @@ describe('Something', function() {
 ```
 
 To use top-level `await`, your spec files must be ES modules. If you are running
-specs in a browser, you'll need to use `jasmine-browser-runner` 2.0.0-beta-0 or
+specs in a browser, you'll need to use `jasmine-browser-runner` 2.0.0 or
 later and add `"enableTopLevelAwait": true` to the configuration file.

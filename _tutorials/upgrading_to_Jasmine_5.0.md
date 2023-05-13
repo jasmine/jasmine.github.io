@@ -1,0 +1,165 @@
+---
+layout: faq # FAQ styling for lists and code blocks is right for this page
+---
+<h1>Upgrading to Jasmine 5.0</h1>
+
+<h2>Overview</h2>
+
+Most users will be able to upgrade to Jasmine 5.0 without making any changes.
+However, it does contain a few breaking changes that will affect some users.
+Following the advice in this guide will give you the greatest chance of a smooth
+upgrade experience.
+
+Breaking changes in Jasmine 5.0 include changes to how backslashes are handled
+in file globs on Windows, changes to how `Env#execute` is called, changes to how
+Node-based libraries boot jasmine-core, and changes to the system requirements.
+You can find a complete list of breaking changes in the release notes for
+[`jasmine-core`](https://github.com/jasmine/jasmine/blob/main/release_notes/5.0.0.md)
+and [`jasmine`](https://github.com/jasmine/jasmine-npm/blob/main/release_notes/5.0.0.md)
+.
+
+All users are encouraged to upgrade to the latest 4.x release and resolve any
+errors or deprecation warnings prior to upgrading to 5.0. In particular, people
+who use the `jasmine` package on Windows should upgrade to at least 4.5.0 first
+because that release adds an important deprecation warning that affects Windows
+users. For the same reason, people who use the `jasmine-browser-runner` package
+on Windows should upgrade to at least 1.3.0.
+
+The new parallel execution mode introduced in Jasmine 5.0 comes with additional
+restrictions on how both specs and reporters are written. These restrictions
+apply only when Jasmine is run in the parallel mode. See the
+[guide to parallel execution](running_specs_in_parallel) for details.
+
+<h2>Contents</h2>
+
+<ol>
+  <li><a href="#system-requirements">System requirements</a></li>
+  <li><a href="#upgrading-jasmine-browser-runner">Upgrading jasmine-browser-runner</a></li>
+  <li><a href="#changes-to-backslash-handling-on-windows">Changes to backslash handling on Windows</a></li>
+  <li><a href="#support-for-parallel-execution">Support for parallel execution</a></li>
+  <li><a href="#changes-to-global-error-handling-in-browsers">Changes to global error handling in browsers</a></li>
+  <li><a href="#changes-to-env-execute" markdown="1">Changes to `Env#execute`</a></li>
+  <li><a href="#node_boot-js-removal" markdown="1">`node_boot.js` removal</a></li>
+</ol>
+
+<h2>System requirements</h2>
+
+The following previously-supported environments are no longer supported:
+
+* Node <18
+* Safari 14
+* Firefox 91
+
+Although Jasmine 5.0 may still work in some of those environments, we no longer
+test against them and won't try to maintain compatibility with them in future
+5.x releases.
+
+<h2>Upgrading jasmine-browser-runner</h2>
+
+If you're using `jasmine-browser-runner`, upgrade to version 2.0. Your package
+manager (npm/yarn/etc) should automatically install `jasmine-core` 5.0 or later
+unless your `package.json` specifies an earlier version.
+
+<h2>Changes to backslash handling on Windows</h2>
+
+Historically, backslashes in file globs such as the `spec_files` configuration
+property were treated as directory separators on Windows and as the start of an
+escape sequence on other operating systems. Beginning with `jasmine` 5.0 and
+`jasmine-browser-runner` 2.0, they are treated as the start of an escape
+sequence on all operating systems. This change makes Jasmine configuration files
+more portable and ensures that Windows users can specify filenames that happen
+to match special glob syntax. See the `glob` package's
+[changelog](https://github.com/isaacs/node-glob/blob/main/changelog.md#80) and
+[README](https://github.com/isaacs/node-glob/blob/main/README.md)
+for more information.
+
+Deprecation warnings related to backslashes were added in `jasmine` 4.6.0 and
+`jasmine-browser-runner` 1.3.0. Windows users should upgrade to those versions
+or later and resolve all deprecation warnings before upgrading to `jasmine` 5.x
+or `jasmine-browser-runner` 2.x.
+
+<h2>Support for parallel execution</h2>
+
+The biggest change in 5.0 is support for parallel execution in Node.js via the
+`jasmine` package. Parallel execution imposes some constraints on both test
+suites and reporters, and as a result not everyone will be able to adopt it
+without making changes. See [Running Specs in Parallel](running_specs_in_parallel)
+for more information.
+
+<h2>Changes to global error handling in browsers</h2>
+
+Previous versions of Jasmine detected unhandled exceptions and unhandled promise
+rejections in browsers by installing a `window.onerror` handler. 5.0 and later
+use `addEventListener` instead. This means that Jasmine will no longer override
+any error handler that your code installs prior to startup. It also means that
+you can no longer override Jasmine's global error handling by setting
+`window.onerror`. If you need to override Jasmine's global error handling, use
+[spyOnGlobalErrors](http://localhost:4000/api/4.6/jasmine.html#.spyOnGlobalErrorsAsync).
+
+Using `addEventListener` allows Jasmine to provide better error information in
+many cases. However, some browsers limit the information that's provided to
+error listeners when the source of the error was loaded from a `file://` URL. If
+you're using the standalone distribution, you may find it easier to debug
+unhandled exceptions and promise rejections if you load Jasmine via a web
+server. An easy way to do this is to run `npx serve` from the directory
+containing
+`SpecRunner.html`.
+
+<h2 markdown="1">Changes to `Env#execute`</h2>
+
+Jasmine 5.0 completes the migration of `Env#execute` to async/await. Most users
+don't need to care about this because they either don't call `Env#execute`
+directly or use it in a "fire and forget" fashion. However, anyone who's either
+passing a callback to `Env#execute` or catching exceptions from it may need to
+make changes.
+
+Before:
+
+```javascript
+try {
+    env.execute(null, function () {
+        // Handle completion
+    });
+} catch (e) {
+    // Handle failures to start
+}
+```
+
+After:
+
+```javascript
+try {
+    const jasmineDoneInfo = await env.execute();
+} catch (e) {
+    // Handle failures to start, which are now delivered via promise rejection
+    // rather than synchronous throw
+}
+```
+
+<h3>Note to library authors</h3>
+
+The "after" form works with `jasmine-core` 4.0.0 and later, or 3.9.0 and later
+if you ignore the value that the promise is resolved to.
+
+<h2 markdown="1">`node_boot.js` removal</h2>
+
+This change mainly affects authors of libraries that wrap `jasmine-core` in
+Node.js, not end users. Prior to 5.0, the `boot` function used to
+initialize `jasmine-core` in Node was provided via `jasmine-core/node_boot.js`
+and also exported on the `jasmine-core` module itself. `node_boot.js` no longer
+exists in 5.0.
+
+Before:
+
+```javascript
+const boot = require('jasmine-core/node_boot.js');
+```
+
+After:
+
+```javascript
+const boot = require('jasmine-core').boot;
+```
+
+The "After" version should work in all versions of `jasmine-core` that support
+Node.js.
