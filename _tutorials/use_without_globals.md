@@ -18,6 +18,16 @@ const Jasmine = require('jasmine');
 const runner = new Jasmine({globals: false});
 ```
 
+Or, if running in parallel:
+
+```javascript
+const ParallelRunner = require('jasmine/parallel');
+const runner = new ParallelRunner({
+    numWorkers: 3,
+    globals: false
+});
+```
+
 
 <h2 markdown="1">Initialization when using `jasmine-core` directly</h2>
 

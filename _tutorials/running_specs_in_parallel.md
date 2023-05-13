@@ -166,3 +166,17 @@ In addition, several APIs used by reporters are unavailable or limited:
 
 Note that the above applies only to parallel mode. In the default sequential
 mode, Jasmine 5 is fully compatible with existing reporters.
+
+## Programmatic usage
+
+You can run specs in parallel programmatically using the `ParallelRunner` class.
+
+```javascript
+const ParallelRunner = require('jasmine/parallel');
+const runner = new ParallelRunner({numWorkers: 3});
+runner.loadConfigFile('spec/support/jasmine.json');
+runner.execute();
+```
+
+`ParallelRunner` supports many of the same methods as the `Jasmine` class. See
+the [API reference documentation](/api/npm/5.0/ParallelRunner.html) for details.
