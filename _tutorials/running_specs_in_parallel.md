@@ -2,15 +2,10 @@
 layout: article
 title: Running Specs in Parallel
 ---
-<div class="warning">
-    This document describes pre-release functionality. There may be bugs, and
-    there may be additional breaking changes that affect this functionality
-    between now and the final release of Jasmine 5.0.
-</div>
 
 # Running Specs in Parallel
 
-Support for parallel execution in Node.js is available in 5.0.0-alpha.0 and later
+Support for parallel execution in Node.js is available in 5.0.0 and later
 releases. You can run your Jasmine specs in parallel if all the following apply:
 
 * You're running your specs in Node.js using the `jasmine` package.
@@ -30,7 +25,7 @@ To use parallel mode:
    to you. In particular, make sure that you don't have to disable
    randomization, specify a random seed, or specify a custom order to make your
    suite run reliably.
-2. Set your `jasmine` dependency to `5.0.0-alpha.0` or later.
+2. Set your `jasmine` dependency to `5.0.0` or later.
 3. Add the `--parallel=<n>` argument to your `jasmine` command, e.g.
    `jasmine --parallel=4` to run specs in four parallel processes.
 
