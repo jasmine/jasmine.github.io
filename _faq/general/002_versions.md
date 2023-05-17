@@ -3,24 +3,24 @@ question: How does Jasmine get versioned?
 slug: versions
 ---
 
-Jasmine attempts as best as possible to follow [semantic versioning](http://semver.org/). This means we reserve major versions (1.0, 2.0, etc.) for breaking changes or other significant work. Most Jasmine releases end up being minor releases (2.3, 2.4, etc.). Major releases are very infrequent.
+Jasmine attempts as best as possible to
+follow [semantic versioning](http://semver.org/). This means we reserve major
+versions (1.0, 2.0, etc.) for breaking changes or other significant work. Most
+Jasmine releases end up being minor releases (2.3, 2.4, etc.). Major releases
+are infrequent.
 
-The primary binding libraries
-([jasmine-py](https://github.com/jasmine/jasmine-py),
-[jasmine-gem](https://github.com/jasmine/jasmine-gem),
-and [jasmine-npm](https://github.com/jasmine/jasmine-npm)) have the same major
-and minor version as the version of jasmine-core that they depend on. This means
-that when you update your `jasmine` dependency, you'll also get the newest
-`jasmine-core`. Patch releases (2.4.2, 2.6.3, etc.) are handled separately: a
-patch release of `jasmine-core` does not require a corresponding patch release
-of `jasmine`, or vice versa.
+Many people use Jasmine via either the [`jasmine` package](https://github.com/jasmine/jasmine-npm)
+which runs specs in Node or the [`jasmine-browser-runner` package](https://github.com/jasmine/jasmine-brower-runner).
+For historical reasons, those packages have different versioning strategies:
 
-`jasmine-browser-runner` versions differently because it's newer and not as
-mature as `jasmine-core`. Its version numbers are not related to `jasmine-core`
-version numbers. It declares `jasmine-core` as a peer dependency. Recent
-versions of `yarn` and `npm` will automatically install a compatible version
-of `jasmine-core` for you, or you can specify a version by adding it as a
-direct dependency of your package.
+* `jasmine` major and minor versions match `jasmine-core`, so that when you update
+your `jasmine` dependency you'll also get the latest `jasmine-core`. Patch
+versions are handled separately: a patch release of `jasmine-core` does not
+require a corresponding patch release of `jasmine`, or vice versa. 
+* `jasmine-browser-runner` version numbers are not related to `jasmine-core`
+version numbers. It declares `jasmine-core` as a peer dependency. `yarn` and 
+`npm` will automatically install a compatible version of `jasmine-core` for you,
+or you can specify a version by adding it as a direct dependency of your package.
 
 Jasmine generally avoids dropping support for browser or Node versions except
 in major releases. The exceptions to this are Node versions that are past

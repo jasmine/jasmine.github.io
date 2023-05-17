@@ -3,4 +3,10 @@ question: When is the next release of Jasmine?
 slug: next-release
 ---
 
-Because Jasmine is maintained in our free time, releases don't always come out in a timely manner. We strive to release a minor version ([versioning strategy](#versions)) every few months, based on the amount of functionality that has been added since the last release. This goal could get moved if we haven't gotten time to add functionality or merge pull requests, as the amount of new functionality since the last release may not seem large enough to warrant a new release. Additionally, though we strive to break things, when a minor release breaks some functionality, we do our best to get the issues fixed in patch releases as quickly as possible.
+That depends on the pace of contributions and the availability of maintainer
+time.
+
+Jasmine is entirely a volunteer effort, which makes it difficult to predict when
+releases will come out and impossible to commit to a timeline. In the past,
+releases containing new features have usually come out every 1-6 months. When
+new bugs are found, we try to release a fix as quickly as possible.
