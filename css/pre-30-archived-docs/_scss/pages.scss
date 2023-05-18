@@ -1,0 +1,323 @@
+@import 'mixins';
+@import 'constants';
+
+body {
+  font-family: Helvetica, sans-serif;
+  @include display-flex(column);
+  @include align-items(stretch);
+  color: #4d4d4d;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  min-width: 650px;
+}
+
+.header {
+  background-color: $jasmine-color;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  @include flex-shrink(0);
+  @include align-self(stretch);
+
+  .header-logo {
+    opacity: 0.25;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 500px;
+    width: 500px;
+  }
+
+  .header-title {
+    margin-left: $smallScreen-margin;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .header-title-text {
+    margin-top: -20px;
+    margin-left: 200px;
+    color: white;
+    font-size: 30px;
+    display: block;
+  }
+
+  &.shrinking {
+    .header-title {
+      height: 95%;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    .header-logo {
+      display: none;
+    }
+    .header-title-text {
+      display: none;
+    }
+  }
+}
+
+.menu {
+  margin-top: 300px;
+  border-bottom: 3px solid $jasmine-color;
+  background: white;
+  padding: 0 $smallScreen-margin;
+  @include display-flex(row);
+  @include align-items(center);
+  @include flex-shrink(0);
+  height: 3em;
+
+  a.menu-option {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $jasmine-color;
+    margin-left: 10px;
+    @include flex-grow(1);
+    @include flex-shrink(0);
+
+    &:hover {
+      text-decoration: none;
+      opacity: 0.75;
+    }
+  }
+
+  .home {
+    @include flex-grow(5);
+    img:hover {
+      opacity: 0.75;
+    }
+  }
+}
+
+.header.small + .menu {
+  position: fixed;
+  margin-top: 50px;
+}
+
+.header.small + .menu + .content-push {
+  margin-top: 360px;
+}
+
+.header.small.no-resize {
+  height: 50px;
+}
+
+.content-push.small {
+  margin-top: 50px;
+}
+
+.main-content {
+  margin: 0;
+  background-color: white;
+  @include flex-grow(1);
+  @include display-flex(row);
+  @include align-items(flex-start);
+  @include align-content(flex-start);
+  @include justify-content(space-between);
+  @include flex-wrap(wrap);
+  padding: 30px;
+
+  a {
+    color: $jasmine-color;
+
+    &:visited {
+      color: $jasmine-color;
+    }
+  }
+}
+
+h1 {
+  font-size: 32px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+h3, .api-docs-versions li {
+  font-size: 20px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.api-docs-versions {
+  margin-left: 15px;
+  padding-left: 0;
+  list-style: none;
+}
+
+h4 {
+  font-size: 18px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+.footer-wrapper {
+  background-color: white;
+  @include flex-shrink(0);
+  padding: 0 $smallScreen-margin;
+}
+
+.footer {
+  @include display-flex(row);
+  @include align-items(center);
+  @include justify-content(space-between);
+  padding: 30px 0 15px;
+
+  a {
+    color: $jasmine-color;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}
+
+a.button {
+  display: inline-block;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: $jasmine-color;
+  color: white;
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: white;
+  }
+}
+
+a.github {
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: bottom;
+  float: right;
+}
+
+@media (min-width: 1000px) {
+  body {
+    @include align-items(center);
+  }
+
+  .menu, .main-content, .footer-wrapper {
+    width: $largeScreen-width;
+    border-left: 1px solid $jasmine-color;
+    border-right: 1px solid $jasmine-color;
+  }
+}
+
+.warning {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 10px 30px;
+  border: 3px solid #d21515;
+  background: #f3d3d3;
+  line-height: 1.4;
+
+  a {
+    color: $jasmine-color;
+  }
+}
+
+/*
+ * anchorjs styling
+ */
+
+.anchorjs-link {
+  color: $jasmine-color;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .anchorjs-link {
+    display: none;
+  }
+}
+
+ul li {
+  list-style-type: disc;
+}
+
+// Global table styling, used (at least) in API docs and FAQs.
+// Qualifying these with table adds more specificity, letting them take
+// precedence over docco rules.
+table {
+  thead tr {
+    background-color: #ddd;
+  }
+
+  td,
+  th {
+    border: 1px solid #ddd;
+    margin: 0;
+    text-align: left;
+    vertical-align: baseline;
+    padding: 4px 6px;
+    display: table-cell;
+    background-color: transparent;
+
+    code {
+      font-size: 14px;
+    }
+  }
+
+  th {
+    border-right: 1px solid #aaa;
+
+    &:last-child {
+      border-right-color: #ddd;
+    }
+  }
+}
+
+
+// Restore docco styles for cells that are actually docco's, overriding the 
+// above.
+table {
+  td.docs, th.doc {
+    border: 0;
+    padding: 10px 25px 1px 50px;
+  }
+
+  td.code, th.code {
+    border: 0;
+    padding: 14px 15px 16px 25px;
+
+    code {
+      // Ensure that code gets 16px even if the element has been de-docco'd
+      // This overrides the more general style for table td code elsewhere
+      // in this file.
+      font-size: 16px;
+    }
+  }
+}
+
+.not-found {
+  @include display-flex(column);
+  @include align-content(center);
+  @include align-items(center);
+  @include justify-content(flex-start);
+
+  h1 {
+    width: auto;
+  }
+}

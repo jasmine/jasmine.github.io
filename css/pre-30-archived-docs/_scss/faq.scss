@@ -1,0 +1,28 @@
+.faq {
+  #toc li {
+	 margin-bottom: 4px;
+  }
+
+  h2 {
+    margin-top: 40px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  h4 {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .highlighter-rouge .highlight {
+    @include light-code();
+  }
+
+  code {
+    @include light-code();
+    padding: 1px 2px;
+  }
+}
