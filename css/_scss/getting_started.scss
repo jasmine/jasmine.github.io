@@ -2,8 +2,8 @@
 @import 'constants';
 
 .option {
-  width: 45%;
-  margin-bottom: 20px;
+  width: 100%;
+  margin-bottom: 30px;
 
   h2 {
     font-size: 1.1rem;
@@ -18,7 +18,6 @@
 
   pre {
     @include light-code();
-    font-size: 14px; // make things fit
     padding: 10px;
     margin-bottom: 1rem;
   }

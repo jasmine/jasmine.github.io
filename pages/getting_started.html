@@ -28,15 +28,11 @@ title: Getting Started
   <div class="option">
     <h2>Jasmine for Browsers</h2>
     <p>Add Jasmine to your package.json</p>
-    <pre>npm install --save-dev \
-    jasmine-browser-runner \
-    jasmine-core</pre>
+    <pre>npm install --save-dev jasmine-browser-runner jasmine-core</pre>
     <p>Initialize Jasmine in your project</p>
     <pre>npx jasmine-browser-runner init</pre>
     <p>Set jasmine as your test script in your package.json</p>
-    <pre>"scripts": {
-    "test": "jasmine-browser-runner runSpecs"
-}</pre>
+    <pre>"scripts": {"test": "jasmine-browser-runner runSpecs"}</pre>
     <p>Run your tests</p>
     <pre>npm test</pre>
     <p>
