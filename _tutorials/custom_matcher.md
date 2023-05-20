@@ -139,7 +139,8 @@ ignore it. It will no longer be provided in Jasmine 4.</p>
     <td class="code">
 <div class="highlight" markdown="1">
 ```javascript
-                result.pass = matchersUtil.equals(actual.hyuk, "gawrsh" + expected);
+                result.pass = matchersUtil.equals(actual.hyuk, 
+                    "gawrsh" + expected);
 ```
 </div>
     </td>
@@ -171,7 +172,8 @@ ignore it. It will no longer be provided in Jasmine 4.</p>
     <td class="code">
 <div class="highlight" markdown="1">
 ```javascript
-                    result.message = "Expected " + actual + " not to be quite so goofy";
+                    result.message = "Expected " + actual + 
+                        " not to be quite so goofy";
                 } else {
 ```
 </div>
@@ -187,7 +189,8 @@ ignore it. It will no longer be provided in Jasmine 4.</p>
     <td class="code">
 <div class="highlight" markdown="1">
 ```javascript
-                    result.message = "Expected " + actual + " to be goofy, but it was not very goofy";
+                    result.message = "Expected " + actual + 
+                        " to be goofy, but it was not very goofy";
                 }
 ```
 </div>

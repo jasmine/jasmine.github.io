@@ -112,7 +112,8 @@ Jasmine-Ajax mocks out your request at the XMLHttpRequest object, so should be c
     <td class="code">
 <div class="highlight" markdown="1">
 ```javascript
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('/some/cool/url');
+            expect(jasmine.Ajax.requests.mostRecent().url)
+                .toBe('/some/cool/url');
             expect(doneFn).not.toHaveBeenCalled();
 ```
 </div>

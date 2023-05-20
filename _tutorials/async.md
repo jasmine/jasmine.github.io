@@ -11,7 +11,7 @@ Asynchronous code is common in modern Javascript applications. Testing it is mos
 
 Jasmine supports three ways of managing asynchronous work: `async`/`await`, promises, and callbacks. If Jasmine doesn't detect one of these, it will assume that the work is synchronous and move on to the next thing in the queue as soon as the function returns. All of these mechanisms work for `beforeEach`, `afterEach`, `beforeAll`, `afterAll`, and `it`.
 
-## `async`/`await`
+## `async/await`
 Usually, the most convenient way to write async tests is to use `async`/`await`. `async` functions implicitly return a promise. Jasmine will wait until the returned promise is either resolved or rejected before moving on to the next thing in the queue. Rejected promises will cause a spec failure, or a suite-level failure in the case of `beforeAll` or `afterAll`.
 
 ```javascript
@@ -52,11 +52,8 @@ It's vital that the `done` callback be called exactly once, and that calling `do
 ```javascript
 beforeEach(function(done) {
   setTimeout(function() {
-
     // do some stuff
-
     done();
-
   }, 100);
 });
 

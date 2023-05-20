@@ -263,7 +263,8 @@ describe("A spec", function() {
         this.bar = "test pollution?";
     });
 
-    it("prevents test pollution by having an empty `this` created for the next spec", function() {
+    it("prevents test pollution by having an empty `this` " +
+            "created for the next spec", function() {
         expect(this.foo).toEqual(0);
         expect(this.bar).toBe(undefined);
     });
@@ -620,7 +621,10 @@ describe("Multiple spies, when created manually", function() {
     let tape;
 
     beforeEach(function() {
-        tape = jasmine.createSpyObj('tape', ['play', 'pause', 'stop', 'rewind']);
+        tape = jasmine.createSpyObj(
+            'tape',
+            ['play', 'pause', 'stop', 'rewind']
+        );
 
         tape.play();
         tape.pause();
@@ -680,7 +684,9 @@ It returns <code>true</code> if the constructor matches the constructor of the a
                     return true;
                 });
     
-                expect(foo).toHaveBeenCalledWith(jasmine.any(Number), jasmine.any(Function));
+                expect(foo).toHaveBeenCalledWith(
+                    jasmine.any(Number), jasmine.any(Function)
+                );
             });
         });
     });
@@ -756,9 +762,9 @@ It returns <code>true</code> if the constructor matches the constructor of the a
                     bar: "baz"
                 });
 
-                expect(callback).toHaveBeenCalledWith(jasmine.objectContaining({
-                    bar: "baz"
-                }));
+                expect(callback).toHaveBeenCalledWith(
+                    jasmine.objectContaining({ bar: "baz" })
+                );
             });
         });
     });
@@ -794,8 +800,12 @@ It returns <code>true</code> if the constructor matches the constructor of the a
 
                 callback([1, 2, 3, 4]);
 
-                expect(callback).toHaveBeenCalledWith(jasmine.arrayContaining([4, 2, 3]));
-                expect(callback).not.toHaveBeenCalledWith(jasmine.arrayContaining([5, 2]));
+                expect(callback).toHaveBeenCalledWith(
+                    jasmine.arrayContaining([4, 2, 3])
+                );
+                expect(callback).not.toHaveBeenCalledWith(
+                    jasmine.arrayContaining([5, 2])
+                );
             });
         });
     });
@@ -815,8 +825,12 @@ It returns <code>true</code> if the constructor matches the constructor of the a
 ```javascript
     describe('jasmine.stringMatching', function() {
         it("matches as a regexp", function() {
-            expect({foo: 'bar'}).toEqual({foo: jasmine.stringMatching(/^bar$/)});
-            expect({foo: 'foobarbaz'}).toEqual({foo: jasmine.stringMatching('bar')});
+            expect({foo: 'bar'}).toEqual({
+                foo: jasmine.stringMatching(/^bar$/)
+            });
+            expect({foo: 'foobarbaz'}).toEqual({
+                foo: jasmine.stringMatching('bar')
+            });
         });
 
         describe("when used with a spy", function() {
@@ -825,8 +839,12 @@ It returns <code>true</code> if the constructor matches the constructor of the a
 
                 callback('foobarbaz');
 
-                expect(callback).toHaveBeenCalledWith(jasmine.stringMatching('bar'));
-                expect(callback).not.toHaveBeenCalledWith(jasmine.stringMatching(/^bar$/));
+                expect(callback).toHaveBeenCalledWith(
+                    jasmine.stringMatching('bar')
+                );
+                expect(callback).not.toHaveBeenCalledWith(
+                    jasmine.stringMatching(/^bar$/)
+                );
             });
         });
     });
@@ -1050,11 +1068,13 @@ describe("Using async/await", function() {
     <td class="code">
 <div class="highlight" markdown="1">
 ```javascript
-    it("should support async execution of test preparation and expectations", async function() {
-        await soon();
-        value++;
-        expect(value).toBeGreaterThan(0);
-    });
+    it("supports async execution of test preparation and expectations",
+        async function() {
+            await soon();
+            value++;
+            expect(value).toBeGreaterThan(0);
+        }
+    );
 });
 ```
 </div>

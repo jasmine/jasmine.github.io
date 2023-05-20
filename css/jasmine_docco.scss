@@ -1,3 +1,8 @@
+---
+---
+
+@import 'mixins';
+
 table.docco {
     /* Prevent overly-wide <pre> from blowing out the width of the table */
     width: 100%;
@@ -11,12 +16,6 @@ table.docco td.docs, table.docco th.docs {
 table.docco td.code, table.docco th.code {
     border: 0;
     padding: 14px 15px 16px 25px;
-}
-
-/* Ensure that code gets 16px even if the element has been de-docco'd
-   This overrides the more general style for table td code in pages.scss. */
-table.docco .code code {
-    font-size: 16px;
 }
 
 .docco th.docs, .docco td.docs {
@@ -52,14 +51,11 @@ table.docco .code code {
     padding-left: 0;
 }
 
-.code {
-    /* TODO: Fix the tutorial code to fit when using the light-code font,
-       then use the light-code mixin. */
-    background-color: #f0f0f0;
+.code, .code code {
+    @include light-code();
 }
 
 .docs code {
     /* make jasmine.DEFAULT_TIMEOUT_INTERVAL fit */
     font-size: 12px;
 }
-

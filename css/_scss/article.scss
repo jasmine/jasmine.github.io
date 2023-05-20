@@ -30,7 +30,7 @@
   }
 
   pre.highlight {
-    font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
+    @include light-code();
   }
 
   code.highlighter-rouge {
