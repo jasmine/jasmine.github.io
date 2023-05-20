@@ -1,54 +1,38 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, img, ins, kbd, q, s, samp,
-small, strike, sub, sup, tt, var,
-u,  center,
-dl, dt, dd,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+// Minimal reset CSS
+// Unlike a traditional reset stylesheet, this only resets properties whose
+// defaults negatively affect the rendering of this site in modern-ish (as of
+// 2023) browsers.
+body {
 	margin: 0;
 	padding: 0;
-	border: 0;
 	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-
-// Accept the default margin and padding for lists and items, so that
-// the item decorations don't end up outdented
-ol, ul, li {
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
 	line-height: 1;
 }
-blockquote, q {
-	quotes: none;
+
+h1, h2, h3, h4, h5 {
+	margin-top: 0;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+
+p {
+	// Reduce spacing between paragraphs and preceding headings etc
+	margin-top: 0;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-em {
-    font-style: italic;
+
+th {
+	font-weight: normal;
+}
+
+figure, pre {
+	margin: 0;
+}
+
+// TODO: Fix side-by-side tutorials to lay out correctly with a monospace font,
+// then remove this.
+code {
+	font-family: Helvetica, sans-serif;
 }

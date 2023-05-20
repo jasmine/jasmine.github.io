@@ -1,11 +1,12 @@
 ---
 layout: tutorial
+include_docco: true
 redirect_from:
   - "/edge/custom_matcher.html"
 file_name: custom_matcher
 order: 
 ---
-<table cellspacing="0" cellpadding="0">
+<table cellspacing="0" cellpadding="0" class="docco">
   <tbody>
   <tr id="section-1">
     <td class="docs">

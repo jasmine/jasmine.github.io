@@ -1,11 +1,12 @@
 ---
 layout: tutorial
+include_docco: true
 redirect_from:
   - "/edge/mocking_ajax.html"
 file_name: mocking_ajax
 order: 
 ---
-<table cellspacing="0" cellpadding="0">
+<table cellspacing="0" cellpadding="0" class="docco">
   <tbody>
   <tr id="section-Testing_ajax_calls">
     <td class="docs">

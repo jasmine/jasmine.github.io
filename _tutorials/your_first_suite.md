@@ -1,12 +1,13 @@
 ---
 layout: tutorial
+include_docco: true
 redirect_from:
   - "/edge/your_first_suite.html"
   - "/edge/introduction.html"
 file_name: your_first_suite
 order: 0
 ---
-<table cellspacing="0" cellpadding="0">
+<table cellspacing="0" cellpadding="0" class="docco">
   <tbody>
   <tr id="section-Suites:_&lt;code&gt;describe&lt;/code&gt;_Your_Tests">
     <td class="docs">

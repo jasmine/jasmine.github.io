@@ -1,5 +1,5 @@
 .side-by-side {
-  @include align-items(inherit);
+  align-items: inherit;
 
   .content-push.small {
     margin-top: 60px;

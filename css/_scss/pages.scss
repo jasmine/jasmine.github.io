@@ -3,8 +3,9 @@
 
 body {
   font-family: Helvetica, sans-serif;
-  @include display-flex(column);
-  @include align-items(stretch);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   color: #4d4d4d;
   background-color: #f5f5f5;
   min-height: 100vh;
@@ -18,8 +19,8 @@ body {
   width: 100%;
   height: 300px;
   overflow: hidden;
-  @include flex-shrink(0);
-  @include align-self(stretch);
+  flex-shrink: 0;
+  align-self: stretch;
 
   .header-logo {
     opacity: 0.25;
@@ -68,9 +69,10 @@ body {
   border-bottom: 3px solid $jasmine-color;
   background: white;
   padding: 0 $smallScreen-margin;
-  @include display-flex(row);
-  @include align-items(center);
-  @include flex-shrink(0);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 0;
   height: 3em;
 
   a.menu-option {
@@ -78,8 +80,8 @@ body {
     text-decoration: none;
     color: $jasmine-color;
     margin-left: 10px;
-    @include flex-grow(1);
-    @include flex-shrink(0);
+    flex-grow: 1;
+    flex-shrink: 0;
 
     &:hover {
       text-decoration: none;
@@ -88,7 +90,7 @@ body {
   }
 
   .home {
-    @include flex-grow(5);
+    flex-grow: 5;
     img:hover {
       opacity: 0.75;
     }
@@ -115,12 +117,13 @@ body {
 .main-content {
   margin: 0;
   background-color: white;
-  @include flex-grow(1);
-  @include display-flex(row);
-  @include align-items(flex-start);
-  @include align-content(flex-start);
-  @include justify-content(space-between);
-  @include flex-wrap(wrap);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
   padding: 30px;
 
   a {
@@ -130,6 +133,10 @@ body {
       color: $jasmine-color;
     }
   }
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
 }
 
 h1 {
@@ -165,16 +172,22 @@ h4 {
   margin-bottom: 8px;
 }
 
+h5 {
+  font-size: 16px;
+}
+
+
 .footer-wrapper {
   background-color: white;
-  @include flex-shrink(0);
+  flex-shrink: 0;
   padding: 0 $smallScreen-margin;
 }
 
 .footer {
-  @include display-flex(row);
-  @include align-items(center);
-  @include justify-content(space-between);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   padding: 30px 0 15px;
 
   a {
@@ -214,7 +227,7 @@ a.github {
 
 @media (min-width: 1000px) {
   body {
-    @include align-items(center);
+    align-items: center;
   }
 
   .menu, .main-content, .footer-wrapper {
@@ -289,33 +302,12 @@ table {
   }
 }
 
-
-// Restore docco styles for cells that are actually docco's, overriding the 
-// above.
-table {
-  td.docs, th.doc {
-    border: 0;
-    padding: 10px 25px 1px 50px;
-  }
-
-  td.code, th.code {
-    border: 0;
-    padding: 14px 15px 16px 25px;
-
-    code {
-      // Ensure that code gets 16px even if the element has been de-docco'd
-      // This overrides the more general style for table td code elsewhere
-      // in this file.
-      font-size: 16px;
-    }
-  }
-}
-
 .not-found {
-  @include display-flex(column);
-  @include align-content(center);
-  @include align-items(center);
-  @include justify-content(flex-start);
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
 
   h1 {
     width: auto;
