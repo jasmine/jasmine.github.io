@@ -17,10 +17,8 @@
   }
 
   pre {
-    font-family: Monaco, Consolas, "Lucida Console", monospace;
-    font-size: 12px;
-    background-color: #031317;
-    color: #93a1a1;
+    @include light-code();
+    font-size: 14px; // make things fit
     padding: 10px;
     margin-bottom: 1rem;
   }
