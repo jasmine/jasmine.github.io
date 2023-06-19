@@ -89,11 +89,12 @@ require('@babel/register')({
 });
 ```
 
-We need to tell Babel what flavor of Javascript we want by adding the following 
-to `package.json`:
+We need to tell Babel what flavor of Javascript we want by adding a
+[Babel configuration](https://babeljs.io/docs/en/configuration) with the 
+following contents:
 
 ```json
-"babel": {
+{
   "presets": ["react-app"]
 }
 ```
@@ -112,7 +113,8 @@ global.navigator = dom.window.navigator;
 
 In order to ensure these files are loaded before any specs run, we'll edit 
 `spec/support/jasmine.json`. We need the Babel helper to be loaded before any
-helpers that contain TypeScript code, so we modify `jasmine.json` like so:
+helpers that contain TypeScript, JSX, or any other code that needs to be
+transpiled, so we modify `jasmine.json` like so:
 
 ```json
 "helpers": [

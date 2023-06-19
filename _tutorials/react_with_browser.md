@@ -16,7 +16,7 @@ test other kinds of applications that are built with Webpack and Babel.
 
 Prerequisites:
 * Your application already builds and runs.
-* You have Node 14 or newer.
+* You have Node 18 or newer.
 * You're comfortable editing Webpack config files, or at least willing to give
   it a try.
 * If you want to run your specs in Firefox, a version of
@@ -30,7 +30,7 @@ If you used create-react-app to set up your application, you don't have to
 eject. However, it can help to eject in a separate copy of your application
 so that you can see how create-react-app configures Webpack and Babel.
 
-Choose the package managment tool you'll be using:
+Choose the package management tool you'll be using:
 
 <label>
 	<input type="radio" name="mgr" value="npm" checked>
@@ -231,9 +231,6 @@ with the following contents:
   ]
 }
 ```
-
-This is usually only necessary if you used create-react-app.
-
 
 ## Configuring jasmine-browser-runner
 
