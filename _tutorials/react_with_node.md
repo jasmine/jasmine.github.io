@@ -21,6 +21,9 @@ can use it to run your React specs as well. This tutorial assumes you're using
 to test it. We'll also be using [jsdom](https://www.npmjs.com/package/jsdom) 
 to provide a fake HTML DOM for the specs.
 
+A [complete working example](https://github.com/jasmine/jasmine.github.io/tree/master/examples/react-in-node)
+of this setup is also available.
+
 Choose the package managment tool you'll be using:
 
 <label>

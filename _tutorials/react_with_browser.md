@@ -14,6 +14,9 @@ This tutorial will explain how to set up [jasmine-browser-runner](/setup/browser
 to test React applications in web browsers. You can follow a similar process to
 test other kinds of applications that are built with Webpack and Babel.
 
+A [complete working example](https://github.com/jasmine/jasmine.github.io/tree/master/examples/react-in-browser)
+of this setup is also available.
+
 Prerequisites:
 * Your application already builds and runs.
 * You have Node 18 or newer.

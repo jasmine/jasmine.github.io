@@ -1,0 +1,34 @@
+{
+  "name": "react-in-browser-demo",
+  "version": "0.1.0",
+  "description": "Demo of testing a React app in the browser using jasmine-browser-runner",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve  --hot --open --mode development",
+    "build": "webpack --config webpack.config.js --mode production",
+    "test:build": "npx webpack --config webpack-test.config.js --mode development",
+    "test:watch": "npx webpack --config webpack-test.config.js --mode development --watch",
+    "test": "npm run test:build && jasmine-browser-runner runSpecs --browser=headlessChrome",
+    "test:serve": "npm run test:build && jasmine-browser-runner"
+  },
+  "author": "Stephen Gravrock",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "@babel/preset-react": "^7.22.5",
+    "@testing-library/react": "^14.0.0",
+    "babel-loader": "^9.1.2",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.3",
+    "jasmine-browser-runner": "^2.0.0",
+    "jasmine-core": "^5.0.1",
+    "webpack": "^5.87.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}

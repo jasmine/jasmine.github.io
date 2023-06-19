@@ -1,0 +1,25 @@
+{
+  "name": "react-in-browser-demo",
+  "version": "0.1.0",
+  "description": "Demo of testing a React app in Node",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test jasmine"
+  },
+  "author": "Stephen Gravrock",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/register": "^7.22.5",
+    "@testing-library/react": "^14.0.0",
+    "babel-preset-react-app": "^10.0.1",
+    "cross-env": "^7.0.3",
+    "ignore-styles": "^5.0.1",
+    "jasmine": "^5.0.2",
+    "jsdom": "^22.1.0"
+  }
+}
