@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Interface: ServerStartOptions"
+title: "Interface: RemoteSeleniumGridConfig"
 prettify: true
 ---
 
@@ -10,7 +10,7 @@ prettify: true
   </nav>
 
   <div class="docs">
-    <h1 class="page-title">Interface: ServerStartOptions</h1>
+    <h1 class="page-title">Interface: RemoteSeleniumGridConfig</h1>
 
     
 
@@ -21,7 +21,7 @@ prettify: true
 
 <header>
     
-        <h2>ServerStartOptions</h2>
+        <h2>RemoteSeleniumGridConfig</h2>
         
     
 </header>
@@ -30,7 +30,9 @@ prettify: true
     <div class="container-overview">
     
         
-            <div class="description"><p>Options passed to <a href="Server.html#start"><code>Server#start</code></a></p></div>
+            <div class="description"><p>Configuration for running specs on a remote Selenium grid
+Any additional properties, such as &quot;sauce:options&quot; or &quot;bstack:options&quot;, will
+be included in the capabilities object passed through to Selenium Webdriver.</p></div>
         
 
         
@@ -73,6 +75,23 @@ prettify: true
 
 
         
+            <h3>Example</h3>
+            
+    <pre class="prettyprint"><code>{
+   "url": "https://hub-cloud.browserstack.com/wd/hub",
+   "bstack:options": {
+     "browserVersion": "16",
+     "os": "OS X",
+     "osVersion": "Monterey",
+     "local": "true",
+     "localIdentifier": "tunnel ID",
+     "debug": "true",
+     "userName": "your BrowserStack username",
+     "accessKey": "your BrowserStack access key"
+   }
+ }</code></pre>
+
+        
     
     </div>
 
@@ -93,13 +112,13 @@ prettify: true
 
         
             
-<h4 class="name" id="port"><span class="type-signature"></span>port<span class="type-signature"> :number|undefined</span></h4>
+<h4 class="name" id="url"><span class="type-signature"></span>url<span class="type-signature"> :string</span></h4>
 
 
 
 
 <div class="description">
-    <p>The port number to listen on.</p>
+    <p>URL of the remote Selenium grid</p>
 </div>
 
 
@@ -108,10 +127,7 @@ prettify: true
     <ul>
         <li>
             
-<span class="param-type">number</span>
-|
-
-<span class="param-type">undefined</span>
+<span class="param-type">string</span>
 
 
         </li>
