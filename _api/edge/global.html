@@ -2,13 +2,12 @@
 layout: default
 title: "Global"
 prettify: true
-omit_docco: true
 sortKey: "edge"
 ---
 
 <div class="main-content api-docs">
   <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-jasmine-core.html">jasmine-core</a></li></ul><h3>Namespaces</h3><ul><li><a href="async-matchers.html">async-matchers</a></li><li><a href="jasmine.html">jasmine</a></li><li><a href="matchers.html">matchers</a></li><li><a href="Spy_calls.html">Spy#calls</a></li></ul><h3>Classes</h3><ul><li><a href="Clock.html">Clock</a></li><li><a href="Env.html">Env</a></li><li><a href="jsApiReporter.html">jsApiReporter</a></li><li><a href="MatchersUtil.html">MatchersUtil</a></li><li><a href="ParallelReportDispatcher.html">ParallelReportDispatcher</a></li><li><a href="Spy.html">Spy</a></li><li><a href="Timer.html">Timer</a></li></ul><h3>Interfaces</h3><ul><li><a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a></li><li><a href="Configuration.html">Configuration</a></li><li><a href="Reporter.html">Reporter</a></li><li><a href="Spec.html">Spec</a></li><li><a href="SpyStrategy.html">SpyStrategy</a></li><li><a href="Suite.html">Suite</a></li></ul><h3>Global</h3><ul><li><a href="global.html#afterAll">afterAll</a></li><li><a href="global.html#afterEach">afterEach</a></li><li><a href="global.html#beforeAll">beforeAll</a></li><li><a href="global.html#beforeEach">beforeEach</a></li><li><a href="global.html#describe">describe</a></li><li><a href="global.html#expect">expect</a></li><li><a href="global.html#expectAsync">expectAsync</a></li><li><a href="global.html#fail">fail</a></li><li><a href="global.html#fdescribe">fdescribe</a></li><li><a href="global.html#fit">fit</a></li><li><a href="global.html#it">it</a></li><li><a href="global.html#pending">pending</a></li><li><a href="global.html#setSpecProperty">setSpecProperty</a></li><li><a href="global.html#setSuiteProperty">setSuiteProperty</a></li><li><a href="global.html#spyOn">spyOn</a></li><li><a href="global.html#spyOnAllFunctions">spyOnAllFunctions</a></li><li><a href="global.html#spyOnProperty">spyOnProperty</a></li><li><a href="global.html#xdescribe">xdescribe</a></li><li><a href="global.html#xit">xit</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-jasmine-core.html">jasmine-core</a></li></ul><h3>Namespaces</h3><ul><li><a href="async-matchers.html">async-matchers</a></li><li><a href="jasmine.html">jasmine</a></li><li><a href="matchers.html">matchers</a></li><li><a href="Spy_calls.html">Spy#calls</a></li></ul><h3>Classes</h3><ul><li><a href="Clock.html">Clock</a></li><li><a href="Env.html">Env</a></li><li><a href="jsApiReporter.html">jsApiReporter</a></li><li><a href="MatchersUtil.html">MatchersUtil</a></li><li><a href="ParallelReportDispatcher.html">ParallelReportDispatcher</a></li><li><a href="Spy.html">Spy</a></li><li><a href="Timer.html">Timer</a></li></ul><h3>Interfaces</h3><ul><li><a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a></li><li><a href="Configuration.html">Configuration</a></li><li><a href="Reporter.html">Reporter</a></li><li><a href="Spec.html">Spec</a></li><li><a href="SpyStrategy.html">SpyStrategy</a></li><li><a href="Suite.html">Suite</a></li><li><a href="ThrowUnlessFailure.html">ThrowUnlessFailure</a></li></ul><h3>Global</h3><ul><li><a href="global.html#afterAll">afterAll</a></li><li><a href="global.html#afterEach">afterEach</a></li><li><a href="global.html#beforeAll">beforeAll</a></li><li><a href="global.html#beforeEach">beforeEach</a></li><li><a href="global.html#describe">describe</a></li><li><a href="global.html#expect">expect</a></li><li><a href="global.html#expectAsync">expectAsync</a></li><li><a href="global.html#fail">fail</a></li><li><a href="global.html#fdescribe">fdescribe</a></li><li><a href="global.html#fit">fit</a></li><li><a href="global.html#it">it</a></li><li><a href="global.html#pending">pending</a></li><li><a href="global.html#setSpecProperty">setSpecProperty</a></li><li><a href="global.html#setSuiteProperty">setSuiteProperty</a></li><li><a href="global.html#spyOn">spyOn</a></li><li><a href="global.html#spyOnAllFunctions">spyOnAllFunctions</a></li><li><a href="global.html#spyOnProperty">spyOnProperty</a></li><li><a href="global.html#throwUnless">throwUnless</a></li><li><a href="global.html#throwUnlessAsync">throwUnlessAsync</a></li><li><a href="global.html#xdescribe">xdescribe</a></li><li><a href="global.html#xit">xit</a></li></ul>
   </nav>
 
   <div class="docs">
@@ -3204,6 +3203,364 @@ complete sentence.</p>
     <dd>
         
 <span class="param-type"><a href="Spy.html">Spy</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="throwUnless"><span class="type-signature"></span>throwUnless<span class="signature">(actual, actual)</span><span class="type-signature"> &rarr; {<a href="matchers.html">matchers</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Create an expectation for a spec and throw an error if it fails.</p>
+<p>This is intended to allow Jasmine matchers to be used with tools like
+testing-library's <code>waitFor</code>, which expect matcher failures to throw
+exceptions and not trigger a spec failure if the exception is caught.
+It can also be used to integration-test custom matchers.</p>
+<p>If the resulting expectation fails, a <a href="ThrowUnlessFailure.html"><code>ThrowUnlessFailure</code></a> will be
+thrown. A failed expectation will not result in a spec failure unless the
+exception propagates back to Jasmine, either via the call stack or via
+the global unhandled exception/unhandled promise rejection events.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>actual</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>actual</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Actual computed value to test expectations against.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>5.1.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="matchers.html">matchers</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="throwUnlessAsync"><span class="type-signature"></span>throwUnlessAsync<span class="signature">(actual, actual)</span><span class="type-signature"> &rarr; {<a href="matchers.html">matchers</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Create an asynchronous expectation for a spec and throw an error if it fails.</p>
+<p>This is intended to allow Jasmine matchers to be used with tools like
+testing-library's <code>waitFor</code>, which expect matcher failures to throw
+exceptions and not trigger a spec failure if the exception is caught.
+It can also be used to integration-test custom matchers.</p>
+<p>If the resulting expectation fails, a <a href="ThrowUnlessFailure.html"><code>ThrowUnlessFailure</code></a> will be
+thrown. A failed expectation will not result in a spec failure unless the
+exception propagates back to Jasmine, either via the call stack or via
+the global unhandled exception/unhandled promise rejection events.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>actual</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>actual</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Actual computed value to test expectations against.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>5.1.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="matchers.html">matchers</a></span>
 
 
     </dd>
