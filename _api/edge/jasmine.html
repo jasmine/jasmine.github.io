@@ -1808,7 +1808,11 @@ that will succeed if the actual value is an <code>Array</code> that contains all
 
             
 
-            <td class="description last"><p>Function to act as the real implementation.</p></td>
+            <td class="description last"><p>The &quot;real&quot; function. This will
+be used for subsequent calls to the spy after you call
+<code>mySpy.and.callThrough()</code>. In most cases you should omit this parameter.
+The usual way to supply an original function is to call <a href="global.html#spyOn"><code>spyOn</code></a>
+instead of createSpy.</p></td>
         </tr>
 
     
