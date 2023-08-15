@@ -791,6 +791,101 @@ jasmine-core in a nonstandard way. Most of the time it should be omitted.</p>
 
         
             
+<h4 class="name" id="middleware"><span class="type-signature"></span>middleware<span class="type-signature"> :object|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>An optional map from paths to Express application middleware to mount on
+those paths. This can be used to serve static files, proxy requests to
+another server, etc.
+<p>Note: Requests made by jasmine-browser-runner (e.g. /, /__jasmine__/*,
+/__spec__/*, etc) are considered private APIs for semver purposes. If you
+configure middleware that modifies these requests and responses, there is a
+possibility that future jasmine-browser-runner releases, including minor and
+patch releases, may be incompatible with that middleware.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>undefined</li>
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// jasmine-browser.js
+const express = require('express');
+
+module.exports = {
+  // ...
+  middleware: {
+    '/assets': express.static('./path/to/assets')
+  }
+}</code></pre>
+
+
+
+        
+            
 <h4 class="name" id="port"><span class="type-signature"></span>port<span class="type-signature"> :number|undefined</span></h4>
 
 
