@@ -55,7 +55,7 @@ Jasmine runner to include. You may use dir glob strings.
 Paths starting with `!` are excluded, for example `!**/*nospec.js`.
 
 `spec_dir` is used as a prefix for all `spec_files` and `helpers`.
-Helpers are executed before specs. For an example of some helpers see the [React tutorial](/tutorials/react_with_npm).
+Helpers are executed once before all specs. For an example of some helpers see the [React tutorial](/tutorials/react_with_npm).
 
 ```javascript
 {
