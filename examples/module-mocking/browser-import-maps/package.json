@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "test": "jasmine-browser-runner runSpecs",
+    "serve": "jasmine-browser-runner serve"
+  },
+  "devDependencies": {
+    "jasmine-browser-runner": "^2.0.0"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "srcDir": "src",
+  "srcFiles": [],
+  "specDir": ".",
+  "specFiles": [
+    "spec/**/*[sS]pec.?(m)js"
+  ],
+  "esmFilenameExtension": ".mjs",
+  "browser": {
+    "name": "firefox"
+  },
+  "importMap": {
+    "moduleRootDir": "mockModules",
+    "imports": {
+      "anotherModule": "./anotherModule.mjs"
+    }
+  }
+}

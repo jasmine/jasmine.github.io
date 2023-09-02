@@ -1,0 +1,15 @@
+{
+  "name": "node-esm-testdouble",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --loader=testdouble ./node_modules/.bin/jasmine"
+  },
+  "author": "",
+  "devDependencies": {
+    "jasmine": "^5.1.0",
+    "testdouble": "^3.18.0"
+  }
+}

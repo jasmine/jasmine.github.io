@@ -1,0 +1,13 @@
+{
+  "include": ["src/**/*.ts", "spec/**/*.ts"],
+  "compilerOptions": {
+    "outDir": "build",
+    "module": "nodenext",
+
+	 // Options below here might not be important
+    "target": "es2016",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  }
+}
