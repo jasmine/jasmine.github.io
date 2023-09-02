@@ -17,6 +17,16 @@ title: Frequently Asked Questions
     </ol>
   </li>
   <li>
+    <a href="#other">Other software that works with Jasmine</a>
+    <ol>
+    {% for faq in site.faq %}
+      {% if faq.path contains '_faq/other-software/' %}
+        <li><a href="#{{faq.slug}}">{{ faq.question }}</a></li>
+      {% endif %}
+    {% endfor %}
+    </ol>
+  </li>
+  <li>
     <a href="#testing">Writing Specs</a>
     <ol>
     {% for faq in site.faq %}
@@ -65,6 +75,16 @@ title: Frequently Asked Questions
     <h2 id={{faq.slug}} data-anchor-id="{{faq.slug}}">{{ faq.question }}</h2>
     <div class="answer">{{ faq.content }}</div>
 	 <a href="#toc">Back to FAQ index</a>
+  {% endif %}
+{% endfor %}
+
+<h2 id="other">Other software that works with Jasmine</h2>
+
+{% for faq in site.faq %}
+  {% if faq.path contains '_faq/other-software/' %}
+    <h2 id={{faq.slug}} data-anchor-id="{{faq.slug}}">{{ faq.question }}</h2>
+    <div class="answer">{{ faq.content }}</div>
+    <a href="#toc">Back to FAQ index</a>
   {% endif %}
 {% endfor %}
 
