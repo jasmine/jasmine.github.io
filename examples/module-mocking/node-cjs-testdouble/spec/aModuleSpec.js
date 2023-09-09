@@ -22,7 +22,7 @@ describe('aModule', function() {
 	});
 
 	describe('Using TestDouble to install Jasmine spies', function() {
-		beforeEach(async function () {
+		beforeEach(function () {
 			this.anotherModule = td.replace(
 				'../anotherModule.js',
 				{theString: jasmine.createSpy('anotherModule.theString')}
