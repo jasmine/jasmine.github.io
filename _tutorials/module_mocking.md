@@ -13,39 +13,44 @@ bundlers, transpilers, etc. that may change in the future.</div>
 
 # Module Mocking
 
-Module mocking is a popular alternative to dependency injection in which tests
-replace hard-wired dependencies with mocks. Module mocking can be done in most 
-environments, but the technique varies from environment to environment and in 
-many cases third party tools are required.
+Module mocking is a testing technique in which a test replaces parts or all
+of one module that are imported into another module, without the cooperation
+of either of the modules involved. In most cases dependency injection is a 
+better choice than module mocking. But if you really want to do it, it's 
+possible in most of the environments where Jasmine is used.
+
 
 ## Advantages and disadvantages of module mocking
 
 The biggest advantage of module mocking is that it lets you easily test code
 that is tightly coupled to its dependencies. This can be very convenient, 
 especially if you're testing legacy code that wasn't designed with testability
-in mind or you've decided that you prefer hard-wiring over dependency injection.
+in mind or you've decided that you prefer hard-wired dependencies.
 
 The biggest disadvantage of module mocking is *also* that it lets you easily
 test code that is tightly coupled to its dependencies. As a result, the act of
 writing tests will no longer give you feedback about excessive coupling.
 
-Another major disadvantage of module mocking is that it alter global state that
+Another major disadvantage of module mocking is that it alters global state that
 the code under test depends on. This makes tests *flaky by default*: each test
 that interacts with a mocked module will affect the behavior of the tests that
 follow unless the mocks are reset to their original configuration between tests.
 
 Module mocking also "sands against the grain" of the JavaScript language. It
-involves module A mutating what appear to be local variables inside module B,
-without B's knowledge or involvement. This can be confusing because it doesn't 
+involves one file mutating what appear to be global variables in another file,
+without that file's knowledge or involvement. This can be confusing because it doesn't 
 happen anywhere else in JavaScript. It can also cause problems in cases where 
 the mocking technique conflicts with the specification of the module system or 
 the language itself.
 
+Module mocking in many environments involves unstable APIs or private
+implementation details of Node, transpilers, or bundlers. This greatly increases
+the risk that things will stop working in the future.
 
-## So you want to use module mocking anyway
+## If you want to use module mocking anyway
 
 Here are some recipes that might help. Most of them include links to complete
-working examples.
+working examples that you can run locally.
 
 To choose the right recipe you'll need to know a bit about how your code is
 compiled, bundled, and loaded. In most cases, what matters is the kind of code
@@ -339,11 +344,42 @@ different ways to configure Rewiremock. See
 
 ### Angular
 
-Angular tests should use Angular's robust support for dependency injection
+Angular tests should [use Angular's robust support for dependency injection](https://angular.io/guide/testing-components-scenarios#component-with-a-dependency
+)
 rather than trying to mock properties of modules. Enabling module mocking would
 likely require patching the Angular compiler (or rewriting its output) to mark 
 exported properties writeable. There aren't currently any known tools that do
 that. If there were, it's likely that future Angular releases would break them.
+
+If you really want to mock a hard-wired dependency in Angular, you can work
+around the module system by exporting a wrapper object that you control.
+
+```javascript
+// foo.js
+const wrapper = {
+    foo() { /* ... */ }
+}
+```
+```javascript
+// bar.js
+import fooWrapper from './foo.js';
+//...
+fooWrapper.foo();
+```
+```javascript
+// bar.spec.js
+import fooWrapper from '../path/to/foo.js';
+import bar from '../path/to/bar.js';
+// ...
+it('can mock foo', function() {
+    spyOn(fooWrapper, 'foo').and.callFake(function() { /*... */ });
+    // ...
+})
+```
+
+More information about testing Angular applications can be found in the Angular
+manual, particularly the sections on [testing](https://angular.io/guide/testing)
+and [dependency injection](https://angular.io/guide/dependency-injection-overview).
 
 
 ## Contributing to this guide
