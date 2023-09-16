@@ -1,0 +1,588 @@
+---
+layout: default
+title: "Interface: SauceConfig"
+prettify: true
+---
+
+<div class="main-content api-docs">
+  <nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-jasmine-browser-runner.html">jasmine-browser-runner</a></li></ul><h3>Classes</h3><ul><li><a href="Server.html">Server</a></li></ul><h3>Interfaces</h3><ul><li><a href="BrowserInfo.html">BrowserInfo</a></li><li><a href="Configuration.html">Configuration</a></li><li><a href="ImportMap.html">ImportMap</a></li><li><a href="RemoteSeleniumGridConfig.html">RemoteSeleniumGridConfig</a></li><li><a href="SauceConfig.html">SauceConfig</a></li><li><a href="ServerCtorOptions.html">ServerCtorOptions</a></li><li><a href="ServerStartOptions.html">ServerStartOptions</a></li></ul>
+  </nav>
+
+  <div class="docs">
+    <h1 class="page-title">Interface: SauceConfig</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>SauceConfig</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Configuration for running specs on <a href="https://saucelabs.com/">Saucelabs</a></p></div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="accessKey"><span class="type-signature"></span>accessKey<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Saucelabs access key</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="browserVersion"><span class="type-signature"></span>browserVersion<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Browser version. Omit this to use the latest version of the specified browser.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="build"><span class="type-signature"></span>build<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Build identifier to pass to Saucelabs</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="os"><span class="type-signature"></span>os<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Operating system to run the browser on.</p>
+<p><em>Note</em>: It's best to omit this property
+unless you really need your specs to run on a specific OS. If you omit it,
+Saucelabs will select a suitable OS. If you specify an unsupported combination
+of os and browserVersion, Saucelabs will select a different browser version
+that's available on the specified OS.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tags"><span class="type-signature"></span>tags<span class="type-signature"> :Array.&lt;string></span></h4>
+
+
+
+
+<div class="description">
+    <p>Tags to pass to Saucelabs</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;string></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tunnelIdentifier"><span class="type-signature"></span>tunnelIdentifier<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Identifier of the Sauce Connect tunnel to use.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="username"><span class="type-signature"></span>username<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Saucelabs username</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+  </div>
+
+  <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a>.
+  </footer>
+</div>
