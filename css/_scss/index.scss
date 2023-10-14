@@ -45,8 +45,9 @@
   text-align: center;
 }
 
+// TODO: move search styles out of index. They apply to all pages.
 .search-wrapper {
-  position: fixed;
+  position: absolute;
   top: 12px;
   right: 30px;
 }
@@ -63,6 +64,7 @@ input[name=search] {
   z-index: 100;
   background: white;
   font-size: 1.2rem;
+  box-sizing: border-box;
   width: 100%;
   line-height: 1.3;
 

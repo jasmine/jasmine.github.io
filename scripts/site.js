@@ -1,30 +1,5 @@
 (function() {
   window.JasmineDocs = {
-    initHeader: function initHeader() {
-      var header = document.querySelector('.header');
-      if (typeof header.classList === 'undefined') { return; }
-
-      // permanently shrink the header and don't change on scroll
-      if (header.classList.contains('no-resize')) {
-         return;
-      }
-
-      document.addEventListener('scroll', function() {
-        header.classList.remove('shrinking');
-        header.classList.remove('small');
-
-        var height = Math.max(50, 300 - window.scrollY);
-        header.style.height = height + 'px';
-        if (height <= 150) {
-          header.classList.add('shrinking');
-        }
-
-        if (height === 50) {
-          header.classList.add('small');
-        }
-      });
-    },
-
     initSearch: function initSearch() {
       SimpleJekyllSearch({
         searchInput: document.querySelector('input[name="search"]'),
@@ -49,7 +24,6 @@
     },
 
     init: function init() {
-      window.JasmineDocs.initHeader();
       window.JasmineDocs.initSearch();
       window.addEventListener('load', window.JasmineDocs.scrollTargetLink);
       window.addEventListener('hashchange', window.JasmineDocs.scrollTargetLink);

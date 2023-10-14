@@ -3,6 +3,7 @@
 
 body {
   font-family: Helvetica, sans-serif;
+  // Center contents by default and eliminate vertical space between children
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -13,22 +14,26 @@ body {
 }
 
 .header {
+  // Will be set to either position: relative or position: sticky below.
+  // Either allows title and search to be positioned within.
   background-color: $jasmine-color;
-  position: fixed;
-  top: 0;
   width: 100%;
-  height: 300px;
-  overflow: hidden;
-  flex-shrink: 0;
-  align-self: stretch;
+  // Allow the search menu to extend outside the header
+  overflow: visible;
 
-  .header-logo {
-    opacity: 0.25;
+  .header-logo-wrapper {
     position: absolute;
     top: 0;
     right: 0;
-    height: 500px;
+    max-height: 100%;
+    // Prevent the logo from extending below the header and blocking
+    // interactions with elements further down the page
+    overflow: hidden;
+  }
+
+  .header-logo {
     width: 500px;
+    opacity: 0.25;
   }
 
   .header-title {
@@ -38,15 +43,11 @@ body {
     transform: translateY(-50%);
   }
 
-  .header-title-text {
-    margin-top: -20px;
-    margin-left: 200px;
-    color: white;
-    font-size: 30px;
-    display: block;
-  }
+  &.small-header {
+    position: sticky;
+    top: 0;
+    height: 80px;
 
-  &.shrinking {
     .header-title {
       height: 95%;
 
@@ -54,25 +55,32 @@ body {
         height: 100%;
       }
     }
+  }
+
+  &.big-header {
+    position: relative;
+    height: 300px;
 
     .header-logo {
-      display: none;
+      height: 500px;
     }
+
     .header-title-text {
-      display: none;
+      margin-top: -20px;
+      margin-left: 200px;
+      color: white;
+      font-size: 30px;
     }
   }
 }
 
 .menu {
-  margin-top: 300px;
   border-bottom: 3px solid $jasmine-color;
   background: white;
   padding: 0 $smallScreen-margin;
   display: flex;
   flex-direction: row;
   align-items: center;
-  flex-shrink: 0;
   height: 3em;
 
   a.menu-option {
@@ -95,23 +103,6 @@ body {
       opacity: 0.75;
     }
   }
-}
-
-.header.small + .menu {
-  position: fixed;
-  margin-top: 50px;
-}
-
-.header.small + .menu + .content-push {
-  margin-top: 360px;
-}
-
-.header.small.no-resize {
-  height: 50px;
-}
-
-.content-push.small {
-  margin-top: 50px;
 }
 
 .main-content {
