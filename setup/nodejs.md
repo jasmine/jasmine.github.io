@@ -59,7 +59,7 @@ Helpers are executed once before all specs. For an example of some helpers see t
 
 ```javascript
 {
-  // Spec directory path relative to the current working dir when jasmine is executed.
+  // Spec directory path relative to the current working dir when jasmine is executed. The project root is specified with ""
   "spec_dir": "spec",
 
   // Array of filepaths (and globs) relative to spec_dir to include and exclude
