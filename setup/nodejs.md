@@ -60,6 +60,7 @@ Helpers are executed once before all specs. For an example of some helpers see t
 ```javascript
 {
   // Spec directory path relative to the current working dir when jasmine is executed.
+  // The value "" represents the current working directory.
   "spec_dir": "spec",
 
   // Array of filepaths (and globs) relative to spec_dir to include and exclude
@@ -295,7 +296,7 @@ Calling `execute` will run the specs.
 jasmine.execute();
 ```
 
-`execute` can optionally be called with a list of spec file paths to execute relative to your project root and a string to filter by spec name.
+`execute` can optionally be called with a list of spec file paths to execute relative to the current working directory and a string to filter by spec name.
 
 ```javascript
 jasmine.execute(['fooSpec.js'], 'a spec name');
