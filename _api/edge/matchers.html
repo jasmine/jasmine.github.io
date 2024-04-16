@@ -99,7 +99,7 @@ prettify: true
 
 
 <div class="description">
-    <p>Invert the matcher following this <a href="global.html#expect"><code>expect</code></a></p>
+    <p>Invert the matcher following this <a href="global.html#expect"><code>expectation</code></a></p>
 </div>
 
 
@@ -4177,7 +4177,9 @@ expect(function() { return 'other'; }).toThrowError();</code></pre>
 
 
 <div class="description">
-    <p>Add some context for an <a href="global.html#expect"><code>expect</code></a></p>
+    <p>Add some context to be included in matcher failures for an
+<a href="global.html#expect"><code>expectation</code></a>, so that it can be more easily distinguished
+from similar expectations.</p>
 </div>
 
 
@@ -4313,6 +4315,12 @@ expect(function() { return 'other'; }).toThrowError();</code></pre>
     
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>expect(things[0]).withContext('thing 0').toEqual('a');
+expect(things[1]).withContext('thing 1').toEqual('b');</code></pre>
 
 
 
