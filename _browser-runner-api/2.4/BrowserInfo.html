@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Interface: ServerStartOptions"
+title: "Interface: BrowserInfo"
 prettify: true
 ---
 
@@ -10,7 +10,7 @@ prettify: true
   </nav>
 
   <div class="docs">
-    <h1 class="page-title">Interface: ServerStartOptions</h1>
+    <h1 class="page-title">Interface: BrowserInfo</h1>
 
     
 
@@ -21,7 +21,7 @@ prettify: true
 
 <header>
     
-        <h2>ServerStartOptions</h2>
+        <h2>BrowserInfo</h2>
         
     
 </header>
@@ -30,7 +30,7 @@ prettify: true
     <div class="container-overview">
     
         
-            <div class="description"><p>Options passed to <a href="Server.html#start"><code>Server#start</code></a></p></div>
+            <div class="description"><p>Describes a web browser.</p></div>
         
 
         
@@ -93,16 +93,14 @@ prettify: true
 
         
             
-<h4 class="name" id="hostname"><span class="type-signature"></span>hostname<span class="type-signature"> :string</span></h4>
+<h4 class="name" id="name"><span class="type-signature"></span>name<span class="type-signature"> :string|undefined</span></h4>
 
 
 
 
 <div class="description">
-    <p>The hostname to use.  This influences both the URL given to browsers and the
-addresses on which the socket listens.  If blank, for backward
-compatibility, the browsers will be pointed to localhost, but the listening
-socket will listen on all IPs.</p>
+    <p>The browser name. Valid values include &quot;firefox&quot;, &quot;headlessFirefox&quot;,
+&quot;safari&quot;, &quot;MicrosoftEdge&quot;, &quot;chrome&quot;, and &quot;headlessChrome&quot;.</p>
 </div>
 
 
@@ -112,73 +110,6 @@ socket will listen on all IPs.</p>
         <li>
             
 <span class="param-type">string</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="port"><span class="type-signature"></span>port<span class="type-signature"> :number|undefined</span></h4>
-
-
-
-
-<div class="description">
-    <p>The port number to listen on.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">number</span>
 |
 
 <span class="param-type">undefined</span>
@@ -233,14 +164,13 @@ socket will listen on all IPs.</p>
 
         
             
-<h4 class="name" id="tlsCert"><span class="type-signature"></span>tlsCert<span class="type-signature"> :string</span></h4>
+<h4 class="name" id="remoteSeleniumGrid"><span class="type-signature"></span>remoteSeleniumGrid<span class="type-signature"> :<a href="RemoteSeleniumGridConfig.html">RemoteSeleniumGridConfig</a>|undefined</span></h4>
 
 
 
 
 <div class="description">
-    <p>The path to a TLS cert. Activates HTTPS mode. If specified, tlsKey must also
-be specified.</p>
+    <p>Configuration for running specs on a remote Selenium grid</p>
 </div>
 
 
@@ -249,7 +179,10 @@ be specified.</p>
     <ul>
         <li>
             
-<span class="param-type">string</span>
+<span class="param-type"><a href="RemoteSeleniumGridConfig.html">RemoteSeleniumGridConfig</a></span>
+|
+
+<span class="param-type">undefined</span>
 
 
         </li>
@@ -301,14 +234,13 @@ be specified.</p>
 
         
             
-<h4 class="name" id="tlsKey"><span class="type-signature"></span>tlsKey<span class="type-signature"> :string</span></h4>
+<h4 class="name" id="sauce"><span class="type-signature"></span>sauce<span class="type-signature"> :<a href="SauceConfig.html">SauceConfig</a>|undefined</span></h4>
 
 
 
 
 <div class="description">
-    <p>The path to a TLS key. Activates HTTPS mode. If specified, tlsCert must also
-be specified.</p>
+    <p>Configuration for running specs on <a href="https://saucelabs.com/">Saucelabs</a></p>
 </div>
 
 
@@ -317,7 +249,152 @@ be specified.</p>
     <ul>
         <li>
             
-<span class="param-type">string</span>
+<span class="param-type"><a href="SauceConfig.html">SauceConfig</a></span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="useRemoteSeleniumGrid"><span class="type-signature"></span>useRemoteSeleniumGrid<span class="type-signature"> :boolean|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>Whether to run the specs on a remote Selenium grid.
+Defaults to false.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="useSauce"><span class="type-signature"></span>useSauce<span class="type-signature"> :boolean|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>Whether to run the specs on <a href="https://saucelabs.com/">Saucelabs</a>.
+Defaults to false.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">undefined</span>
 
 
         </li>

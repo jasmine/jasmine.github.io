@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Interface: ServerStartOptions"
+title: "Interface: ImportMap"
 prettify: true
 ---
 
@@ -10,7 +10,7 @@ prettify: true
   </nav>
 
   <div class="docs">
-    <h1 class="page-title">Interface: ServerStartOptions</h1>
+    <h1 class="page-title">Interface: ImportMap</h1>
 
     
 
@@ -21,7 +21,7 @@ prettify: true
 
 <header>
     
-        <h2>ServerStartOptions</h2>
+        <h2>ImportMap</h2>
         
     
 </header>
@@ -30,7 +30,7 @@ prettify: true
     <div class="container-overview">
     
         
-            <div class="description"><p>Options passed to <a href="Server.html#start"><code>Server#start</code></a></p></div>
+            <div class="description"><p>Describes an import map.</p></div>
         
 
         
@@ -66,6 +66,15 @@ prettify: true
 
     
 
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap</a></li>
+        
+            <li><a href="https://github.com/WICG/import-maps">https://github.com/WICG/import-maps</a></li>
+        </ul>
+    </dd>
     
 
     
@@ -93,16 +102,88 @@ prettify: true
 
         
             
-<h4 class="name" id="hostname"><span class="type-signature"></span>hostname<span class="type-signature"> :string</span></h4>
+<h4 class="name" id="imports"><span class="type-signature"></span>imports<span class="type-signature"> :Object.&lt;string, string></span></h4>
 
 
 
 
 <div class="description">
-    <p>The hostname to use.  This influences both the URL given to browsers and the
-addresses on which the socket listens.  If blank, for backward
-compatibility, the browsers will be pointed to localhost, but the listening
-socket will listen on all IPs.</p>
+    <p>A single, unscoped module specifier map.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object.&lt;string, string></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="moduleRootDir"><span class="type-signature"></span>moduleRootDir<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Optional directory that specifies the root for relative paths in import map
+(if required).</p>
+<p>For example, if you only use import paths that resolve to absolute targets,
+e.g.  'my-pkg': 'https://mycdn.url/my-pkg', then you do not need this dir
+option. But if you need to reference a folder, e.g. <code>node_modules</code>, then this
+is required.</p>
+<p>moduleRootDir is evaluated relative to the project base directory, which is
+typically the current working directory from which jasmine-browser-runner is
+run.</p>
 </div>
 
 
@@ -160,16 +241,21 @@ socket will listen on all IPs.</p>
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>'node_modules'</code></pre>
+
+
 
         
             
-<h4 class="name" id="port"><span class="type-signature"></span>port<span class="type-signature"> :number|undefined</span></h4>
+<h4 class="name" id="scopes"><span class="type-signature"></span>scopes<span class="type-signature"> :Object.&lt;string, Object.&lt;string, string>></span></h4>
 
 
 
 
 <div class="description">
-    <p>The port number to listen on.</p>
+    <p>Map of one or more scoped module specifier maps.</p>
 </div>
 
 
@@ -178,146 +264,7 @@ socket will listen on all IPs.</p>
     <ul>
         <li>
             
-<span class="param-type">number</span>
-|
-
-<span class="param-type">undefined</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="tlsCert"><span class="type-signature"></span>tlsCert<span class="type-signature"> :string</span></h4>
-
-
-
-
-<div class="description">
-    <p>The path to a TLS cert. Activates HTTPS mode. If specified, tlsKey must also
-be specified.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">string</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="tlsKey"><span class="type-signature"></span>tlsKey<span class="type-signature"> :string</span></h4>
-
-
-
-
-<div class="description">
-    <p>The path to a TLS key. Activates HTTPS mode. If specified, tlsCert must also
-be specified.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">string</span>
+<span class="param-type">Object.&lt;string, Object.&lt;string, string>></span>
 
 
         </li>
