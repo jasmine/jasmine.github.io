@@ -6,6 +6,38 @@ redirect_from:
 order:
 archived: true
 ---
+<div class="warning" style="margin-bottom: 2em">
+  If you're still using Jasmine 1.x, you'll probably find it easier to skip
+  directly to the latest version (5.x as of this writing) rather than upgrading
+  to each major version in turn. In particular:
+
+  <ul>
+    <li>
+      <a href="../tutorials/async">async/await specs</a>,
+      which were not available yet in 2.0, are a better choice than callback-style
+      async specs. It's also easier to convert Jasmine 1.x async specs directly
+      to async/await.
+    </li>
+    <li>
+      The custom matcher interface changed in 4.0. See
+      <a href="./upgrading_to_Jasmine_4.0">the 4.0 migration guide</a> for
+      details on what changed, or the
+      <a href="../tutorials/custom_matcher">current custom matcher documentation</a>
+      for more information.
+    </li>
+    <li>
+      Most of the breaking changes in future major releases have to do with APIs
+      that didn't exist yet in 1.x. You can skip those changes entirely by upgrading
+      directly to the latest version.
+    </li>
+  </ul>
+
+  <p>
+    The rest of this upgrade guide is preserved more or less as it was at the
+    time of the 2.0 release.
+  </p>
+</div>
+
 <table cellspacing="0" cellpadding="0">
   <tbody>
   <tr id="section-1">
