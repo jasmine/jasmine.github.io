@@ -26,6 +26,9 @@ collections:
   tutorials:
     output: true
     permalink: tutorials/:path
+  upgrade-guides:
+    output: true
+    permalink: upgrade-guides/:path
   faq:
     output: false
 
