@@ -14,7 +14,8 @@
   },
   "plugins": [
     "plugins/markdown",
-    "_jsdoc_plugins/see_tutorials"
+    "_jsdoc_plugins/see_tutorials",
+    "_jsdoc_plugins/emitted_name"
   ],
   "templates": {
     "cleverLinks": true,

@@ -20,13 +20,24 @@ def download_core_file(file_name)
   `curl -L 'https://raw.github.com/jasmine/jasmine/main/lib/#{file_name}' > .current_version/#{File.basename(file_name)}`
 end
 
+# Usage:
+# rake update_edge_jasmine to pull from github
+# rake 'update_edge_jasmine[../jasmine]' to pull from local dir ../jasmine
 desc "update jasmine-core for edge docs"
-task :update_edge_jasmine => ['.current_version'] do
-  download_core_file('jasmine-core/jasmine.js')
-  download_core_file('jasmine-core.js')
-  download_core_file('jasmine-core/jasmine-html.js')
-  download_core_file('jasmine-core/boot0.js')
-  download_core_file('jasmine-core/boot1.js')
+task :update_edge_jasmine, [:path] => ['.current_version'] do |t, args|
+  if args.path then
+    system('cp', "#{args.path}/lib/jasmine-core/jasmine.js", '.current_version/')
+    system('cp', "#{args.path}/lib/jasmine-core.js", '.current_version/')
+    system('cp', "#{args.path}/lib/jasmine-core/jasmine-html.js", '.current_version/')
+    system('cp', "#{args.path}/lib/jasmine-core/boot0.js", '.current_version/')
+    system('cp', "#{args.path}/lib/jasmine-core/boot1.js", '.current_version/')
+  else
+    download_core_file('jasmine-core/jasmine.js')
+    download_core_file('jasmine-core.js')
+    download_core_file('jasmine-core/jasmine-html.js')
+    download_core_file('jasmine-core/boot0.js')
+    download_core_file('jasmine-core/boot1.js')
+  end
 end
 
 def download_browser_runner_file(file_name)
