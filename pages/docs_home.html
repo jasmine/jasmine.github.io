@@ -6,6 +6,27 @@ big_header: true
 
 <div class="main-content">
   <div>
+    <h2>Getting Started</h2>
+    <h3><a href="{{ site.github.url }}/pages/faq.html">Frequently asked questions</a>
+    <h3><a href="{{ site.github.url }}/setup/nodejs.html">Node.js</a>
+    <h3><a href="{{ site.github.url }}/setup/browser.html">Browser runner</a>
+
+    <h2>Upgrade Guides</h2>
+    <h3><a href="{{ site.github.url }}/upgrade-guides/5.0">5.0</a></h3>
+    <h3><a href="{{ site.github.url }}/upgrade-guides/4.0">4.0</a></h3>
+    <h3><a href="{{ site.github.url }}/upgrade-guides/3.0">3.0</a></h3>
+    <h3><a href="{{ site.github.url }}/upgrade-guides/2.0">2.0</a></h3>
+  </div>
+  <div>
+    <h2>Tutorials</h2>
+    {% assign sorted_tutorials = site.tutorials | sort:"order", "last" %}
+    {% for tut in sorted_tutorials %}
+	   {% unless tut.omit_from_index or tut.archived %}
+      <h3><a href="{{site.github.url}}{{tut.url}}">{{ tut.url  | remove_first: "/tutorials/" | replace: "_", " " | capitalize }}</a></h3>
+	   {% endunless %}
+    {% endfor %}
+  </div>
+  <div>
     <h2>API Reference</h2>
     <h3>jasmine-core</h3>
     <ol class="api-docs-versions">
@@ -34,27 +55,6 @@ big_header: true
     {% endif %}
     {% endfor %}
     </ol>
-  </div>
-  <div>
-    <h2>Getting Started</h2>
-    <h3><a href="{{ site.github.url }}/pages/faq.html">Frequently asked questions</a>
-    <h3><a href="{{ site.github.url }}/setup/nodejs.html">Node.js</a>
-    <h3><a href="{{ site.github.url }}/setup/browser.html">Browser runner</a>
-
-    <h2>Upgrade Guides</h2>
-    <h3><a href="{{ site.github.url }}/upgrade-guides/5.0">5.0</a></h3>
-    <h3><a href="{{ site.github.url }}/upgrade-guides/4.0">4.0</a></h3>
-    <h3><a href="{{ site.github.url }}/upgrade-guides/3.0">3.0</a></h3>
-    <h3><a href="{{ site.github.url }}/upgrade-guides/2.0">2.0</a></h3>
-  </div>
-  <div>
-    <h2>Tutorials</h2>
-    {% assign sorted_tutorials = site.tutorials | sort:"order", "last" %}
-    {% for tut in sorted_tutorials %}
-	   {% unless tut.omit_from_index or tut.archived %}
-      <h3><a href="{{site.github.url}}{{tut.url}}">{{ tut.url  | remove_first: "/tutorials/" | replace: "_", " " | capitalize }}</a></h3>
-	   {% endunless %}
-    {% endfor %}
   </div>
 </div>
 <div class="main-content">
