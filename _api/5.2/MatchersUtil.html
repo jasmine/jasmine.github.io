@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Interface: AsymmetricEqualityTester"
+title: "Class: MatchersUtil"
 prettify: true
 ---
 
@@ -10,7 +10,7 @@ prettify: true
   </nav>
 
   <div class="docs">
-    <h1 class="page-title">Interface: AsymmetricEqualityTester</h1>
+    <h1 class="page-title">Class: MatchersUtil</h1>
 
     
 
@@ -21,16 +21,11 @@ prettify: true
 
 <header>
     
-        <h2>AsymmetricEqualityTester</h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>MatchersUtil</h2>
         
-            <div class="class-description"><p>An asymmetric equality tester is an object that can match multiple
-objects. Examples include jasmine.any() and jasmine.stringMatching(). Jasmine
-includes a number of built-in asymmetric equality testers, such as
-<code>jasmine.objectContaining</code>. User-defined asymmetric equality testers are
-also supported.</p>
-<p>Asymmetric equality testers work with any matcher, including user-defined
-custom matchers, that uses <a href="MatchersUtil.html#equals"><code>MatchersUtil#equals</code></a> or
-<a href="MatchersUtil.html#contains"><code>MatchersUtil#contains</code></a>.</p></div>
+            <div class="class-description"><p>Utilities for use in implementing matchers.<br>
+<em>Note:</em> Do not construct this directly. Jasmine will construct one and
+pass it to matchers and asymmetric equality testers.</p></div>
         
     
 </header>
@@ -40,7 +35,194 @@ custom matchers, that uses <a href="MatchersUtil.html#equals"><code>MatchersUtil
     
         
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
         
+            
+
+    
+
+    
+    <h4 class="name" id="contains"><span class="type-signature"></span>contains<span class="signature">(haystack, needle)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Determines whether <code>haystack</code> contains <code>needle</code>, using the same comparison
+logic as <a href="MatchersUtil.html#equals"><code>MatchersUtil#equals</code></a>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>haystack</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The collection to search</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>needle</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The value to search for</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
 
 
 <dl class="details">
@@ -77,59 +259,50 @@ custom matchers, that uses <a href="MatchersUtil.html#equals"><code>MatchersUtil
     
 
     
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li>custom_asymmetric_equality_testers</li>
-        </ul>
-    </dd>
-    
 
     
 </dl>
 
 
-        
-            <h3>Example</h3>
-            
-    <pre class="prettyprint"><code>function numberDivisibleBy(divisor) {
-  return {
-    asymmetricMatch: function(n) {
-      return typeof n === 'number' &amp;&amp; n % divisor === 0;
-    },
-    jasmineToString: function() {
-      return `&lt;a number divisible by ${divisor}>`;
-    }
-  };
-}
 
-const actual = {
-  n: 2,
-  otherFields: "don't care"
-};
 
-expect(actual).toEqual(jasmine.objectContaining({n: numberDivisibleBy(2)}));</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
 
         
-    
-    </div>
+<div class="param-desc">
+    <p>True if <code>needle</code> was found in <code>haystack</code></p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
 
     
 
-    
 
-    
 
-    
 
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
 
         
             
@@ -137,7 +310,7 @@ expect(actual).toEqual(jasmine.objectContaining({n: numberDivisibleBy(2)}));</co
     
 
     
-    <h4 class="name" id="asymmetricMatch"><span class="type-signature"></span>asymmetricMatch<span class="signature">(value, matchersUtil)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    <h4 class="name" id="equals"><span class="type-signature"></span>equals<span class="signature">(a, b)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
     
 
     
@@ -145,7 +318,188 @@ expect(actual).toEqual(jasmine.objectContaining({n: numberDivisibleBy(2)}));</co
 
 
 <div class="description">
-    <p>Determines whether a value matches this tester</p>
+    <p>Determines whether two values are deeply equal to each other.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The first value to compare</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The second value to compare</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>True if the values are equal</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="pp"><span class="type-signature"></span>pp<span class="signature">(value)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Formats a value for use in matcher failure messages and similar contexts,
+taking into account the current set of custom value formatters.</p>
 </div>
 
 
@@ -187,7 +541,7 @@ expect(actual).toEqual(jasmine.objectContaining({n: numberDivisibleBy(2)}));</co
             <td class="type">
             
                 
-<span class="param-type">any</span>
+<span class="param-type">*</span>
 
 
             
@@ -197,30 +551,7 @@ expect(actual).toEqual(jasmine.objectContaining({n: numberDivisibleBy(2)}));</co
 
             
 
-            <td class="description last"><p>The value to test</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>matchersUtil</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="MatchersUtil.html">MatchersUtil</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>utilities for testing equality, etc</p></td>
+            <td class="description last"><p>The value to pretty-print</p></td>
         </tr>
 
     
@@ -236,6 +567,9 @@ expect(actual).toEqual(jasmine.objectContaining({n: numberDivisibleBy(2)}));</co
 
     
 
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.6.0</li></ul></dd>
     
 
     
@@ -284,165 +618,19 @@ expect(actual).toEqual(jasmine.objectContaining({n: numberDivisibleBy(2)}));</co
 <h5>Returns:</h5>
 
         
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="jasmineToString"><span class="type-signature"></span>jasmineToString<span class="signature">(pp)</span><span class="type-signature"> &rarr; {String}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Returns a string representation of this tester to use in matcher failure messages</p>
+<div class="param-desc">
+    <p>The pretty-printed value</p>
 </div>
 
 
 
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>pp</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Function that takes a value and returns a pretty-printed representation</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
 <dl>
     <dt>
         Type
     </dt>
     <dd>
         
-<span class="param-type">String</span>
+<span class="param-type">string</span>
 
 
     </dd>

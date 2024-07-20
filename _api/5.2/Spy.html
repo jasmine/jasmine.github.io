@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Interface: AsymmetricEqualityTester"
+title: "Class: Spy"
 prettify: true
 ---
 
@@ -10,7 +10,7 @@ prettify: true
   </nav>
 
   <div class="docs">
-    <h1 class="page-title">Interface: AsymmetricEqualityTester</h1>
+    <h1 class="page-title">Class: Spy</h1>
 
     
 
@@ -21,16 +21,11 @@ prettify: true
 
 <header>
     
-        <h2>AsymmetricEqualityTester</h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>Spy</h2>
         
-            <div class="class-description"><p>An asymmetric equality tester is an object that can match multiple
-objects. Examples include jasmine.any() and jasmine.stringMatching(). Jasmine
-includes a number of built-in asymmetric equality testers, such as
-<code>jasmine.objectContaining</code>. User-defined asymmetric equality testers are
-also supported.</p>
-<p>Asymmetric equality testers work with any matcher, including user-defined
-custom matchers, that uses <a href="MatchersUtil.html#equals"><code>MatchersUtil#equals</code></a> or
-<a href="MatchersUtil.html#contains"><code>MatchersUtil#contains</code></a>.</p></div>
+            <div class="class-description"><p><em>Note:</em> Do not construct this directly. Use <a href="global.html#spyOn"><code>spyOn</code></a>,
+<a href="global.html#spyOnProperty"><code>spyOnProperty</code></a>, <a href="jasmine.html#.createSpy"><code>jasmine.createSpy</code></a>, or
+<a href="jasmine.html#.createSpyObj"><code>jasmine.createSpyObj</code></a> instead.</p></div>
         
     
 </header>
@@ -40,7 +35,295 @@ custom matchers, that uses <a href="MatchersUtil.html#equals"><code>MatchersUtil
     
         
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Namespaces</h3>
+
+        <dl>
+            <dt><a href="Spy_calls.html">calls</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
         
+            
+<h4 class="name" id=".callData"><span class="type-signature">(static) </span>callData<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>object</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p><code>this</code> context for the invocation.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>invocationOrder</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Order of the invocation.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The arguments passed for this invocation.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>returnValue</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The value that was returned from this invocation.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="and"><span class="type-signature"></span>and<span class="type-signature"> :<a href="SpyStrategy.html">SpyStrategy</a></span></h4>
+
+
+
+
+<div class="description">
+    <p>Accesses the default strategy for the spy. This strategy will be used
+whenever the spy is called with arguments that don't match any strategy
+created with <a href="Spy.html#withArgs"><code>Spy#withArgs</code></a>.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="SpyStrategy.html">SpyStrategy</a></span>
+
+
+        </li>
+    </ul>
+
+
+
 
 
 <dl class="details">
@@ -77,55 +360,21 @@ custom matchers, that uses <a href="MatchersUtil.html#equals"><code>MatchersUtil
     
 
     
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li>custom_asymmetric_equality_testers</li>
-        </ul>
-    </dd>
-    
 
     
 </dl>
 
 
-        
-            <h3>Example</h3>
-            
-    <pre class="prettyprint"><code>function numberDivisibleBy(divisor) {
-  return {
-    asymmetricMatch: function(n) {
-      return typeof n === 'number' &amp;&amp; n % divisor === 0;
-    },
-    jasmineToString: function() {
-      return `&lt;a number divisible by ${divisor}>`;
-    }
-  };
-}
 
-const actual = {
-  n: 2,
-  otherFields: "don't care"
-};
 
-expect(actual).toEqual(jasmine.objectContaining({n: numberDivisibleBy(2)}));</code></pre>
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>spyOn(someObj, 'func').and.returnValue(42);</code></pre>
+
+
 
         
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
     
 
     
@@ -137,7 +386,7 @@ expect(actual).toEqual(jasmine.objectContaining({n: numberDivisibleBy(2)}));</co
     
 
     
-    <h4 class="name" id="asymmetricMatch"><span class="type-signature"></span>asymmetricMatch<span class="signature">(value, matchersUtil)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    <h4 class="name" id="withArgs"><span class="type-signature"></span>withArgs<span class="signature">(&hellip;args)</span><span class="type-signature"> &rarr; {<a href="SpyStrategy.html">SpyStrategy</a>}</span></h4>
     
 
     
@@ -145,7 +394,8 @@ expect(actual).toEqual(jasmine.objectContaining({n: numberDivisibleBy(2)}));</co
 
 
 <div class="description">
-    <p>Determines whether a value matches this tester</p>
+    <p>Specifies a strategy to be used for calls to the spy that have the
+specified arguments.</p>
 </div>
 
 
@@ -169,6 +419,8 @@ expect(actual).toEqual(jasmine.objectContaining({n: numberDivisibleBy(2)}));</co
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -181,46 +433,33 @@ expect(actual).toEqual(jasmine.objectContaining({n: numberDivisibleBy(2)}));</co
 
         <tr>
             
-                <td class="name"><code>value</code></td>
+                <td class="name"><code>args</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">any</span>
+<span class="param-type">*</span>
 
 
             
             </td>
 
             
-
-            
-
-            <td class="description last"><p>The value to test</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>matchersUtil</code></td>
-            
-
-            <td class="type">
-            
+                <td class="attributes">
                 
-<span class="param-type"><a href="MatchersUtil.html">MatchersUtil</a></span>
 
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
 
             
-            </td>
 
-            
-
-            
-
-            <td class="description last"><p>utilities for testing equality, etc</p></td>
+            <td class="description last"><p>The arguments to match</p></td>
         </tr>
 
     
@@ -236,6 +475,9 @@ expect(actual).toEqual(jasmine.objectContaining({n: numberDivisibleBy(2)}));</co
 
     
 
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.0.0</li></ul></dd>
     
 
     
@@ -292,7 +534,7 @@ expect(actual).toEqual(jasmine.objectContaining({n: numberDivisibleBy(2)}));</co
     </dt>
     <dd>
         
-<span class="param-type">Boolean</span>
+<span class="param-type"><a href="SpyStrategy.html">SpyStrategy</a></span>
 
 
     </dd>
@@ -303,154 +545,10 @@ expect(actual).toEqual(jasmine.objectContaining({n: numberDivisibleBy(2)}));</co
 
 
 
-
-        
-            
-
+    <h5>Example</h5>
     
-
-    
-    <h4 class="name" id="jasmineToString"><span class="type-signature"></span>jasmineToString<span class="signature">(pp)</span><span class="type-signature"> &rarr; {String}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Returns a string representation of this tester to use in matcher failure messages</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>pp</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Function that takes a value and returns a pretty-printed representation</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">String</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
+    <pre class="prettyprint"><code>spyOn(someObj, 'func').withArgs(1, 2, 3).and.returnValue(42);
+someObj.func(1, 2, 3); // returns 42</code></pre>
 
 
 

@@ -53,7 +53,7 @@ task :update_edge_jasmine_browser => ['.current_browser_runner_version/lib'] do
 end
 
 def download_npm_file(file_name)
-  `curl -L 'https://raw.github.com/jasmine/jasmine-npm/5.0/lib/#{file_name}' > .current_npm_version/#{file_name}`
+  `curl -L 'https://raw.github.com/jasmine/jasmine-npm/main/lib/#{file_name}' > .current_npm_version/#{file_name}`
 end
 
 desc "update jasmine-npm for edge docs"
