@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Interface: ThrowUnlessFailure"
+title: "Interface: ReporterCapabilities"
 prettify: true
 ---
 
@@ -10,7 +10,7 @@ prettify: true
   </nav>
 
   <div class="docs">
-    <h1 class="page-title">Interface: ThrowUnlessFailure</h1>
+    <h1 class="page-title">Interface: ReporterCapabilities</h1>
 
     
 
@@ -21,7 +21,7 @@ prettify: true
 
 <header>
     
-        <h2>ThrowUnlessFailure</h2>
+        <h2>ReporterCapabilities</h2>
         
     
 </header>
@@ -30,156 +30,11 @@ prettify: true
     <div class="container-overview">
     
         
-            <div class="description"><p>Represents a failure of an expectation evaluated with
-<a href="global.html#throwUnless"><code>throwUnless</code></a>. Properties of this error are a subset of the
-properties of <a href="global.html#Expectation"><code>Expectation</code></a> and have the same values.</p></div>
+            <div class="description"><p>Used to tell Jasmine what optional or uncommonly implemented features
+the reporter supports.</p></div>
         
 
         
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>matcherName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The name of the matcher that was executed for this expectation.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>message</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The failure message for the expectation.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>passed</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Whether the expectation passed or failed.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>expected</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>If the expectation failed, what was the expected value.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>actual</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>If the expectation failed, what actual value was produced.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
 
 
 <dl class="details">
@@ -187,7 +42,8 @@ properties of <a href="global.html#Expectation"><code>Expectation</code></a> and
     
 
     
-
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>5.0</li></ul></dd>
     
 
     
@@ -212,6 +68,15 @@ properties of <a href="global.html#Expectation"><code>Expectation</code></a> and
 
     
 
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="Reporter.html#reporterCapabilities">Reporter#reporterCapabilities</a></li>
+        </ul>
+    </dd>
     
 
     
@@ -223,16 +88,59 @@ properties of <a href="global.html#Expectation"><code>Expectation</code></a> and
     </div>
 
     
-        <h3 class="subsection-title">Extends</h3>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
 
         
+            
+<h4 class="name" id="parallel"><span class="type-signature"></span>parallel<span class="type-signature"> :boolean|undefined</span></h4>
 
 
+
+
+<div class="description">
+    <p>Indicates whether the reporter supports parallel execution. Jasmine will
+not allow parallel execution unless all reporters that are in use set this
+capability to true.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
     <ul>
-        <li>Error</li>
+        <li>
+            
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
     </ul>
 
 
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>5.0</li></ul></dd>
     
 
     
@@ -245,6 +153,43 @@ properties of <a href="global.html#Expectation"><code>Expectation</code></a> and
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>false</li>
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="/tutorials/running_specs_in_parallel">running specs_in_parallel</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
     
 
     
