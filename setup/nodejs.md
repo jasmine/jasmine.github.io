@@ -7,8 +7,8 @@ redirect_from: /edge/node.html
 # Using Jasmine with Node
 
 The `jasmine` module is a command line interface and supporting code for running
-Jasmine specs under Node.js. Jasmine 4.x supports Node versions 12.17+, 14,
-and 16. (Odd-numbered Node versions aren't supported, but many of them work.)
+Jasmine specs under Node.js. Jasmine 5.x supports Node versions 18, 20,
+and 22. (Odd-numbered Node versions aren't supported, but many of them work.)
 
 ## Install
 
