@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Interface: ThrowUnlessFailure"
+title: "Interface: Spec"
 prettify: true
 ---
 
@@ -10,7 +10,7 @@ prettify: true
   </nav>
 
   <div class="docs">
-    <h1 class="page-title">Interface: ThrowUnlessFailure</h1>
+    <h1 class="page-title">Interface: Spec</h1>
 
     
 
@@ -21,7 +21,7 @@ prettify: true
 
 <header>
     
-        <h2>ThrowUnlessFailure</h2>
+        <h2>Spec</h2>
         
     
 </header>
@@ -30,159 +30,98 @@ prettify: true
     <div class="container-overview">
     
         
-            <div class="description"><p>Represents a failure of an expectation evaluated with
-<a href="global.html#throwUnless"><code>throwUnless</code></a>. Properties of this error are a subset of the
-properties of <a href="global.html#ExpectationResult"><code>ExpectationResult</code></a> and have the same values.</p>
-<p>Note: The expected and actual properties are deprecated and may be removed
-in a future release. In many Jasmine configurations they are passed
-through JSON serialization and deserialization, which is inherently
-lossy. In such cases, the expected and actual values may be placeholders
-or approximations of the original objects.</p></div>
-        
 
         
 
 
-    <h5 class="subsection-title">Properties:</h5>
+<dl class="details">
 
     
 
-<table class="props">
-    <thead>
-    <tr>
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="Configuration.html#specFilter">Configuration#specFilter</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
         
-        <th>Name</th>
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
         
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
             
-                <td class="name"><code>matcherName</code></td>
+<h4 class="name" id="description"><span class="type-signature">(readonly) </span>description<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>The description passed to the <a href="global.html#it"><code>it</code></a> that created this spec.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
             
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
+<span class="param-type">string</span>
 
 
-            
-            </td>
+        </li>
+    </ul>
 
-            
-
-            
-
-            <td class="description last"><p>The name of the matcher that was executed for this expectation.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>message</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The failure message for the expectation.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>passed</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Whether the expectation passed or failed.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>expected</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Deprecated. If the expectation failed, what was the expected value.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>actual</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Deprecated. If the expectation failed, what actual value was produced.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -191,6 +130,9 @@ or approximations of the original objects.</p></div>
 
     
 
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
     
 
     
@@ -223,21 +165,44 @@ or approximations of the original objects.</p></div>
 </dl>
 
 
-        
-    
-    </div>
 
-    
-        <h3 class="subsection-title">Extends</h3>
+
+
 
         
+            
+<h4 class="name" id="id"><span class="type-signature">(readonly) </span>id<span class="type-signature"> :string</span></h4>
 
 
+
+
+<div class="description">
+    <p>The unique ID of this spec.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
     <ul>
-        <li>Error</li>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
     </ul>
 
 
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
     
 
     
@@ -252,6 +217,139 @@ or approximations of the original objects.</p></div>
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getFullName"><span class="type-signature"></span>getFullName<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>The full description including all ancestors of this spec.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
     
 
     
