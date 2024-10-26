@@ -65,13 +65,13 @@
     margin: 0.75em 0;
   }
 
-  .type-signature {
-    color: #aaa;
+  .type-signature, .signature-attributes {
+    // matches comment color in highlight.css and has sufficient contrast
+    color: #007400;
   }
 
   .signature-attributes {
     font-size: 60%;
-    color: #aaa;
     font-style: italic;
     font-weight: lighter;
     margin-left: 4px;
