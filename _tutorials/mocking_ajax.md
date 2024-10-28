@@ -6,6 +6,15 @@ redirect_from:
 file_name: mocking_ajax
 order: 
 ---
+<div class="warning" style="margin-bottom: 1em">
+    This tutorial describes an approach for mocking AJAX calls that are made via
+    <code>XMLHTTPRequest</code>. Most newer codebases use either 
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"><code>fetch</code></a>
+    or a wrapper library that is more amenable to dependency injection than
+    <code>XMLHTTPRequest</code> is. Code using those approaches can be tested 
+    with Jasmine's built-in spy functionality, as described in
+    <a href="{{ site.github.url }}/pages/faq.html#ajax">the FAQ</a>.
+</div>
 <table cellspacing="0" cellpadding="0" class="docco">
   <tbody>
   <tr id="section-Testing_ajax_calls">
@@ -13,7 +22,7 @@ order:
       <div class="pilwrap">
         <a class="pilcrow" href="#section-Testing_ajax_calls">&#182;</a>
       </div>
-      <h2>Testing ajax calls</h2>
+      <h2>Testing AJAX calls</h2>
 
 <p>We have written a plugin called <a href="https://github.com/pivotal/jasmine-ajax">jasmine-ajax</a> that allows ajax calls to be mocked out in tests.
 To use it, you need to download the <code>mock-ajax.js</code> file and add it to your jasmine helpers so it gets loaded before any specs that use it.</p>
