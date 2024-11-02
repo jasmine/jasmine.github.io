@@ -21,15 +21,20 @@ You're ready to make some changes to the documentation!
     ├── _includes/              # Jekyll snippets (headers, footers, etc.)
     ├── _layouts/               # Jekyll layouts (overall page structure)
     ├── _tutorials/             # Tutorials / How-to Articles
-    │   ├── src/                # Docco source files for "side-by-side" tutorials
-    │   ├── *.html              # Auto-generated docco tutorials - don't by edit by hand!
-    │   ├── *.md                # Newer markdown tutorials
+    │   ├── src/                # Source files for "side-by-side" tutorials
+    │   ├── *.md                # Tutorials. See note below about auto-generation.
     ├── css/                    # Stylesheets (SCSS)
     ├── examples/               # Raw javascript examples of jasmine tests (rare)
     ├── pages/                  # Various documentation pages
 
-Note the auto-generated files `_api/**` and `_tutorials/*.html`, don't edit these files as any
-changes you make to them will be lost the next time the documentation is generated.
+Note that some files are auto-generated:
+
+* Everything under `_api`, `_npm_api`, and `_browser-runner-runner-api`
+* A few of `_tutorials/*.md`. The ones that are auto-generated have a comment
+  neaer the top saying what they were generated from.
+
+Don't edit those files directly as any changes you make to them will be lost 
+the next time the documentation is generated.
 
 ## Test your changes
 
@@ -42,7 +47,7 @@ First, update the jasmine API docs:
 
 Then, regenerate the tutorials:
 
-- `bundle exec rake tutorials`
+- `node locco.js`
 
 Now preview your changes locally:
 
