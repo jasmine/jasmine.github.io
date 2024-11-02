@@ -219,15 +219,15 @@ This allows you to load multiple config files or control your configuration in d
 
 ```javascript
 const Jasmine = require('jasmine');
-const jasmine = new Jasmine();
+const runner = new Jasmine();
 ```
 
 ### Load configuration from a file or from an object
 
 ```javascript
-jasmine.loadConfigFile('spec/support/jasmine.json');
+runner.loadConfigFile('spec/support/jasmine.json');
 
-jasmine.loadConfig({
+runner.loadConfig({
     spec_dir: 'spec',
     spec_files: [
         'appSpec.js',
@@ -250,8 +250,8 @@ property to `false` and use the promise returned from `execute`. This is often
 used to message a status to task runners like grunt.
 
 ```javascript
-jasmine.exitOnCompletion = false;
-const result = await jasmine.execute();
+runner.exitOnCompletion = false;
+const result = await runner.execute();
 
 if (result.overallStatus === 'passed') {
     console.log('All specs have passed');
@@ -267,7 +267,7 @@ You can configure the default reporter with `configureDefaultReporter`.
 The default values are shown in the example.
 
 ```javascript
-jasmine.configureDefaultReporter({
+runner.configureDefaultReporter({
     // The `timer` passed to the reporter will determine the mechanism for seeing how long the suite takes to run.
     timer: new jasmine.jasmine.Timer(),
     // The `print` function passed the reporter will be called to print its results.
@@ -285,7 +285,7 @@ Multiple reporters can be added.
 ```javascript
 const CustomReporter = require('./myCustomReporter');
 
-jasmine.addReporter(new CustomReporter());
+runner.addReporter(new CustomReporter());
 ```
 
 ### Run the tests
@@ -293,25 +293,25 @@ jasmine.addReporter(new CustomReporter());
 Calling `execute` will run the specs.
 
 ```javascript
-jasmine.execute();
+runner.execute();
 ```
 
 `execute` can optionally be called with a list of spec file paths to execute relative to the current working directory and a string to filter by spec name.
 
 ```javascript
-jasmine.execute(['fooSpec.js'], 'a spec name');
+runner.execute(['fooSpec.js'], 'a spec name');
 ```
 
 ### A simple example using the library
 
 ```javascript
 const Jasmine = require('jasmine');
-const jasmine = new Jasmine();
+const runner = new Jasmine();
 
-jasmine.loadConfigFile('spec/support/jasmine.json');
-jasmine.configureDefaultReporter({
+runner.loadConfigFile('spec/support/jasmine.json');
+runner.configureDefaultReporter({
     showColors: false
 });
-jasmine.execute();
+runner.execute();
 ```
 
