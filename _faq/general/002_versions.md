@@ -1,5 +1,5 @@
 ---
-question: How does Jasmine get versioned?
+question: How is Jasmine versioned?
 slug: versions
 ---
 
