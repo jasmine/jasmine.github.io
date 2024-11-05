@@ -10,7 +10,7 @@ Jasmine releases end up being minor releases (2.3, 2.4, etc.). Major releases
 are infrequent.
 
 Many people use Jasmine via either the [`jasmine` package](https://github.com/jasmine/jasmine-npm)
-which runs specs in Node or the [`jasmine-browser-runner` package](https://github.com/jasmine/jasmine-brower-runner).
+which runs specs in Node or the [`jasmine-browser-runner` package](https://github.com/jasmine/jasmine-browser-runner).
 For historical reasons, those packages have different versioning strategies:
 
 * `jasmine` major and minor versions match `jasmine-core`, so that when you update
