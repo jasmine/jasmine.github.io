@@ -19,13 +19,13 @@ describe('Element', function() {
     this.subject = new Element();
   });
 
-  ['x', 'y', 'width', 'height'].forEach(name => {
+  for (const name of ['x', 'y', 'width', 'height']) {
     describe(name, function() {
       it('returns a number', function() {
         expect(typeof this.subject[name]()).toBe('number');
       });
     });
-  });
+  };
 });
 ```
 
@@ -78,13 +78,44 @@ describe('Cat', function() {
 
 Sharing behaviors in tests can be a powerful tool, but use them with caution.
 
-- Overuse of complex helper functions can lead to logic in your tests, which
+- Sharing doesn't just remove duplication, it also creates coupling. Sharing
+  behaviors makes it more difficult to handle situations where one of the suites
+  involved needs to do something slightly different. If requirements
+  change, a function may no longer "fit the mold" like other functions, forcing
+  the developer to do more refactoring than if you had just listed out your 
+  tests separately.It's often more important for test code to be decoupled than
+  for it to be DRY.
+
+- Sharing doesn't just remove duplication, it also tends to make the code harder
+  to understand. Readers often need to "ping pong" back and forth between the
+  shared portion and the non-shared portion to understand what's going on. It's 
+  often more important for test code to be obvious than for
+  it to be DRY.
+
+- Overuse of complex helper functions can lead to more logic in your tests, which
   in turn may have bugs of its own - bugs that could lead you to think you're
   testing something that you aren't. Be especially wary about conditional logic
   (if statements) in your helper functions.
 
 - Having lots of tests defined by test loops and helper functions can make life harder
   for developers. For example, searching for the name of a failed spec may be
-  more difficult if your test names are pieced together at runtime. If requirements
-  change, a function may no longer "fit the mold" like other functions, forcing the
-  developer to do more refactoring than if you had just listed out your tests separately.
+  more difficult if your test names are pieced together at runtime. Stack traces
+  can also be less useful, particularly in async specs, because they may point
+  only to shared code.
+
+Good questions to ask yourself if you're considering sharing behavior:
+
+- Is it important that all the suites in question work the same, or is it just
+  more convenient? How confident are you that a change to one of them should 
+  affect all of them?
+
+- What message are you trying to send to future maintainers? Are you trying to
+  say "these things should all behave the same"? Or is that message just a side
+  effect of de-duplication?
+
+- How easy is it to understand the resulting test code?
+
+- How easy is it to debug failures?
+
+- If the behavior was duplicated instead of shared, how hard would it be to 
+  maintain?
