@@ -6,6 +6,7 @@ redirect_from:
 order: 
 include_docco: true
 file_name: "mocking_ajax"
+archived: true
 ---
 <div class="warning" style="margin-bottom: 1em">
     This tutorial describes an approach for mocking AJAX calls that are made via
