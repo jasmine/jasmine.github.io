@@ -4,7 +4,6 @@ layout: tutorial
 redirect_from:
     - "/edge/your_first_suite.html"
     - "/edge/introduction.html"
-order: 0
 include_docco: true
 file_name: "your_first_suite"
 ---

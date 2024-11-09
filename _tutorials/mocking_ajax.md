@@ -3,7 +3,6 @@
 layout: tutorial
 redirect_from:
     - "/edge/mocking_ajax.html"
-order: 
 include_docco: true
 file_name: "mocking_ajax"
 archived: true

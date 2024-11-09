@@ -1,7 +1,6 @@
 ---
 layout: article
 title: Asynchronous work
-order: 1
 ---
 
 # Asynchronous Work

@@ -53,6 +53,29 @@ Now preview your changes locally:
 
 - `bundle exec rake serve`
 
+## Adding a new tutorial
+
+Tutorials come in two forms: regular and side-by-side. To create a new regular
+tutorial, make a new `.md` file in `_tutorials/`. Add front matter (the YAML
+metadata at the top) following the pattern of other files in that directory,
+followed by your content in HTML and/or Markdown format.
+
+To create a new side-by-side tutorial, make a new `.js` file in `_tutorials/src`.
+Add mixed doc comment blocks and code, following the pattern of other files in
+that directory. Then add a configuration for your new tutorial to `locco.js` and
+run `node locco.js`. Be sure to check in both the JS source file in
+`_tutorials/src` and the generated Markdown file in `_tutorials`.
+
+In either case, you'll need to manually add a link to your new tutorial to 
+`pages/docs_home.html`.
+
+## Archiving an old tutorial
+
+To archive an old tutorial:
+
+1. Add `archived: true` to the YAML at the top of the tutorial's Markdown file.
+2. Add a link to the tutorial to `pages/archives.html`.
+
 ## Publishing API docs for a new version of Jasmine
 
 - Update the edge API docs as described in the previous section

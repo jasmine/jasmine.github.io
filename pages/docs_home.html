@@ -10,6 +10,7 @@ big_header: true
     <h3><a href="{{ site.github.url }}/pages/faq.html">Frequently asked questions</a>
     <h3><a href="{{ site.github.url }}/setup/nodejs.html">Node.js</a>
     <h3><a href="{{ site.github.url }}/setup/browser.html">Browser runner</a>
+    <h3><a href="{{ site.github.url }}/tutorials/your_first_suite">Your first suite</a>
 
     <h2>Upgrade Guides</h2>
     <h3><a href="{{ site.github.url }}/upgrade-guides/5.0">5.0</a></h3>
@@ -19,17 +20,63 @@ big_header: true
   </div>
   <div>
     <h2>Tutorials</h2>
-    {% assign sorted_tutorials = site.tutorials | sort:"order", "last" %}
-    {% for tut in sorted_tutorials %}
-	   {% unless tut.omit_from_index or tut.archived %}
-      <h3><a href="{{site.github.url}}{{tut.url}}">{{ tut.url  | remove_first: "/tutorials/" | replace: "_", " " | capitalize }}</a></h3>
-	   {% endunless %}
-    {% endfor %}
+    <h3>Basics</h3>
+    <ol class="doc-list">
+      <li><a href="{{ site.github.url }}/tutorials/your_first_suite">Your first suite</a></li>
+      <li><a href="{{ site.github.url }}/tutorials/async">Async</a></li>
+    </ol>
+
+    <h3>Matcher and equality customization</h3>
+    <ol class="doc-list">
+      <li><a href="{{ site.github.url }}/tutorials/custom_matcher">
+        Custom matcher
+      </a></li>
+      <li><a href="{{ site.github.url }}/tutorials/custom_equality">
+        Custom equality
+      </a></li>
+      <li><a href="{{ site.github.url }}/tutorials/custom_asymmetric_equality_testers">
+        Custom asymmetric equality testers
+      </a></li>
+      <li><a href="{{ site.github.url }}/tutorials/custom_object_formatters">
+        Custom object formatters
+      </a></li>
+    </ol>
+
+    <h3>Spies/Mocking</h3>
+    <ol class="doc-list">
+      <li><a href="{{ site.github.url }}/tutorials/spying_on_properties">
+        Spying on propertids</a></li>
+      <li><a href="{{ site.github.url }}/tutorials/default_spy_strategy">
+        Default spy strategy</a></li>
+      <li><a href="{{ site.github.url }}/tutorials/module_mocking">Module mocking</a></li>
+    </ol>
+
+    <h3>Other Jasmine Features</h3>
+    <ol class="doc-list">
+      <li><a href="{{ site.github.url }}/tutorials/custom_reporter">Custom reporter</a></li>
+      <li><a href="{{ site.github.url }}/tutorials/running_specs_in_parallel">
+        Running specs in parallel
+      </a></li>
+      <li><a href="{{ site.github.url }}/tutorials/use_without_globals">
+        Use without globals
+      </a></li>
+    </ol>
+
+    <h3>Techniques</h3>
+    <ol class="doc-list">
+      <li><a href="{{ site.github.url }}/tutorials/sharing_behaviors">Sharing behaviors</a></li>
+    </ol>
+
+    <h3>Guides for Specific Environments</h3>
+    <ol class="doc-list">
+      <li><a href="{{ site.github.url }}/tutorials/react_with_browser">React with browser</a></li>
+      <li><a href="{{ site.github.url }}/tutorials/react_with_node">React with node</a></li>
+    </ol>
   </div>
   <div>
     <h2>API Reference</h2>
     <h3>jasmine-core</h3>
-    <ol class="api-docs-versions">
+    <ol class="doc-list">
     {% assign versions = site.api | sort: 'sortKey' %}
     {% for version in versions reversed %}
     {% if version.url contains "/global" and version.archived != true %}
@@ -38,7 +85,7 @@ big_header: true
     {% endfor %}
     </ol>
     <h3>jasmine-npm</h3>
-    <ol class="api-docs-versions">
+    <ol class="doc-list">
       {% assign versions = site.npm-api | sort: 'sortKey' %}
       {% for version in versions reversed %}
       {% if version.title == "Class: Jasmine" and version.archived != true %}
@@ -47,7 +94,7 @@ big_header: true
       {% endfor %}
     </ol>
     <h3>jasmine-browser-runner</h3>
-    <ol class="api-docs-versions">
+    <ol class="doc-list">
     {% assign versions = site.browser-runner-api | sort: 'sortKey' %}
     {% for version in versions reversed %}
     {% if version.url contains "/module-jasmine-browser-runner" and version.archived != true %}

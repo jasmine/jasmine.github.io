@@ -18,7 +18,7 @@ title: Archived Documentation
         <h2>API Reference</h2>
 
         <h3>jasmine-core</h3>
-        <ol class="api-docs-versions">
+        <ol class="doc-list">
             {% assign versions = site.api | sort: 'sortKey' %}
             {% for version in versions reversed %}
             {% if version.url contains "/global" and version.archived %}
@@ -27,7 +27,7 @@ title: Archived Documentation
             {% endfor %}
         </ol>
         <h3>jasmine-npm</h3>
-        <ol class="api-docs-versions">
+        <ol class="doc-list">
             {% assign versions = site.npm-api | sort: 'sortKey' %}
             {% for version in versions reversed %}
             {% if version.title == "Class: Jasmine" and version.archived %}
@@ -36,7 +36,7 @@ title: Archived Documentation
             {% endfor %}
         </ol>
         <h3>jasmine-browser-runner</h3>
-        <ol class="api-docs-versions">
+        <ol class="doc-list">
             {% assign versions = site.browser-runner-api | sort: 'sortKey' %}
             {% for version in versions reversed %}
             {% if version.url contains "/module-jasmine-browser-runner" and version.archived %}

@@ -3,7 +3,6 @@
 layout: tutorial
 redirect_from:
     - "/edge/custom_matcher.html"
-order: 
 include_docco: true
 file_name: "custom_matcher"
 ---

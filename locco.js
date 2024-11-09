@@ -10,7 +10,7 @@
     documentation and code blocks are fed to _layouts/tutorail_docco.html as
     a list of {docs, code} pairs.
 
-    Redirects and/or order can be specified in this file. They will be omitted
+    Redirects can be specified in this file. They will be omitted
     (i.e. inferred by Jekyll) if not specified.
  */
 
@@ -27,7 +27,6 @@ const configs = [
     {
         src: '_tutorials/src/your_first_suite.js',
         dest: '_tutorials/your_first_suite.md',
-        order: 0,
         redirectFrom: [
             {path: '/edge/your_first_suite.html'},
             {path: '/edge/introduction.html'},
