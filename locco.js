@@ -33,10 +33,13 @@ const configs = [
         ],
     },
     {
-        src: '_tutorials/src/custom_matcher.js',
-        dest: '_tutorials/custom_matcher.md',
+        src: '_tutorials/src/custom_matchers.js',
+        dest: '_tutorials/custom_matchers.md',
         redirectFrom: [
-            {path: '/edge/custom_matcher.html'},
+            {
+                path: '/edge/custom_matcher.html',
+                path: '/tutorials/custom_matcher',
+            },
         ],
     },
     {

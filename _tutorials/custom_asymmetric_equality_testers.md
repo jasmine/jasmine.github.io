@@ -1,9 +1,9 @@
 ---
-title: Custom asymmetric equality testers
+title: Custom Asymmetric Equality Testers
 layout: article
 redirect_from: /tutorials/custom_argument_matchers
 ---
-# Custom asymmetric equality testers
+# Custom Asymmetric Equality Testers
 
 Jasmine provides a number of asymmetric equality testers out of the box, such
 as [`jasmine.any()`](/api/edge/jasmine.html#.any) and

@@ -1,7 +1,7 @@
 ---
 layout: article
 redirect_from: "/edge/custom_equality.html"
-title: Custom Equality
+title: Custom Equality Testers
 ---
 
 # Custom Equality Testers

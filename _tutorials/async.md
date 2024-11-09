@@ -1,9 +1,9 @@
 ---
 layout: article
-title: Asynchronous work
+title: Testing Async Code
 ---
 
-# Asynchronous Work
+# Testing Async Code
 
 Asynchronous code is common in modern Javascript applications. Testing it is mostly the same as testing synchronous code, except for one key difference: Jasmine needs to know when the asynchronous work is finished.
 

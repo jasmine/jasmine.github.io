@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Custom Reporter
+title: Custom Reporters
 ---
 
 # Custom Reporters

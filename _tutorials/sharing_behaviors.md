@@ -1,8 +1,8 @@
 ---
-title: Sharing behaviors
+title: Sharing Behaviors
 layout: article
 ---
-# Sharing behaviors
+# Sharing Behaviors
 
 Sometimes you may have multiple classes or methods that have similar behaviors, and you
 want to test those behaviors for all of them without writing duplicate specs. There are
