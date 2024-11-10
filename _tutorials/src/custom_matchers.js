@@ -113,7 +113,7 @@ const customMatchers = {
  */
 
 /**
- ## Registration and Usage
+ ### Registration and Usage
  */
 describe("Custom matcher: 'toBeGoofy'", function() {
     /**
@@ -145,5 +145,106 @@ describe("Custom matcher: 'toBeGoofy'", function() {
         expect({
             hyuk: 'this is fun'
         }).not.toBeGoofy();
+    });
+});
+
+/**
+ ## Custom async matchers
+
+ You can also create your own async matchers. These are like regular custom
+ matchers except that they are used with `expectAsync` rather than `expect`
+ and the `compare` function is asynchronous.
+ */
+const customAsyncMatchers = {
+    toBeResolvedToGoofy: function (matchersUtil) {
+        return {
+            /**
+             ## A Function to `compare`
+
+             The compare function should return a promise that resolves to a
+             value like the one returned by a regular matcher's compare function.
+             That can be done by explicitly returning a promise, as shown here,
+             or by declaring the function `async`.
+             */
+            compare: function (actualPromise, expected) {
+                /**
+                 The expected value should be a promise, but Jasmine does not
+                 enforce that. It's a good idea to make sure custom async
+                 matchers do something reasonable if a non-promise is passed
+                 to `expectAsync`.
+                 */
+                if (!actualPromise ||
+                        typeof actualPromise.then !== 'function') {
+                    throw new Error(
+                        'Expected toBeResolvedToGoofy to be called on ' +
+                        'a promise.'
+                    );
+                }
+
+                if (expected === undefined) {
+                    expected = '';
+                }
+
+                /**
+                 The `compare` function returns a promise.
+                 */
+                return actualPromise.then(function (actual) {
+                    /**
+                     The result is the same as for regular expectations.
+                     */
+                    const result = {
+                    };
+
+                    result.pass = matchersUtil.equals(actual.hyuk,
+                        "gawrsh" + expected);
+
+                    if (result.pass) {
+                        result.message = "Expected a promise not to resolve " +
+                            "to something quite so goofy";
+                    } else {
+                        result.message = "Expected a promise to resolve " +
+                            "to something goofy, but it was not very goofy";
+                    }
+
+                    return result;
+                });
+            }
+        }
+    }
+};
+
+/**
+ ### Registration and Usage
+ */
+describe("Custom async matcher: 'toBeResolvedToGoofy'", function() {
+    /**
+     Registration works the same as with regular custom matchers, except that
+     you call `jasmine.addAsyncMatchers` to register the matcher and `expectAsync`
+     to use it.
+     */
+    beforeEach(function() {
+        jasmine.addAsyncMatchers(customAsyncMatchers);
+    });
+
+    /**
+     Once a custom matcher is registered with Jasmine, it is available on any
+     expectation.
+     */
+    it("is available on an expectation", async function() {
+        await expectAsync(Promise.resolve({
+            hyuk: 'gawrsh'
+        })).toBeResolvedToGoofy();
+    });
+
+    it("can take an 'expected' parameter", async function() {
+        await expectAsync(Promise.resolve({
+            hyuk: 'gawrsh is fun'
+        })).toBeResolvedToGoofy(' is fun');
+    });
+
+    it("can be negated", async function() {
+        await expectAsync(Promise.resolve({
+            hyuk: 'this is fun'
+        })).not.toBeResolvedToGoofy();
     });
 });

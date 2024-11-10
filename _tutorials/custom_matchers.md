@@ -252,7 +252,7 @@ optional.</p>
         <a class="pilcrow" href="#section-Registration_and_Usage">&#182;</a>
       </div>
       <div>
-        <h2>Registration and Usage</h2>
+        <h3>Registration and Usage</h3>
 
       </div>
     </td>
@@ -307,6 +307,185 @@ expectation.</p>
         expect({
             hyuk: 'this is fun'
         }).not.toBeGoofy();
+    });
+});
+ {% endhighlight %}
+    </td>
+  </tr>
+  <tr id="section-Custom_async_matchers">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-Custom_async_matchers">&#182;</a>
+      </div>
+      <div>
+        <h2>Custom async matchers</h2>
+<p>You can also create your own async matchers. These are like regular custom
+matchers except that they are used with <code>expectAsync</code> rather than <code>expect</code>
+and the <code>compare</code> function is asynchronous.</p>
+
+      </div>
+    </td>
+    <td class="code">
+      {% highlight javascript %}const customAsyncMatchers = {
+    toBeResolvedToGoofy: function (matchersUtil) {
+        return { {% endhighlight %}
+    </td>
+  </tr>
+  <tr id="section-A_Function_to_compare">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-A_Function_to_compare">&#182;</a>
+      </div>
+      <div>
+        <h2>A Function to <code>compare</code></h2>
+<p>The compare function should return a promise that resolves to a
+value like the one returned by a regular matcher&#39;s compare function.
+That can be done by explicitly returning a promise, as shown here,
+or by declaring the function <code>async</code>.</p>
+
+      </div>
+    </td>
+    <td class="code">
+      {% highlight javascript %}            compare: function (actualPromise, expected) { {% endhighlight %}
+    </td>
+  </tr>
+  <tr id="section-The_expected_value_should_be_a_promise,_but_Jasmine_does_not">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-The_expected_value_should_be_a_promise,_but_Jasmine_does_not">&#182;</a>
+      </div>
+      <div>
+        <p>The expected value should be a promise, but Jasmine does not
+enforce that. It&#39;s a good idea to make sure custom async
+matchers do something reasonable if a non-promise is passed
+to <code>expectAsync</code>.</p>
+
+      </div>
+    </td>
+    <td class="code">
+      {% highlight javascript %}                if (!actualPromise ||
+                        typeof actualPromise.then !== 'function') {
+                    throw new Error(
+                        'Expected toBeResolvedToGoofy to be called on ' +
+                        'a promise.'
+                    );
+                }
+
+                if (expected === undefined) {
+                    expected = '';
+                }
+ {% endhighlight %}
+    </td>
+  </tr>
+  <tr id="section-The_compare_function_returns_a_promise">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-The_compare_function_returns_a_promise">&#182;</a>
+      </div>
+      <div>
+        <p>The <code>compare</code> function returns a promise.</p>
+
+      </div>
+    </td>
+    <td class="code">
+      {% highlight javascript %}                return actualPromise.then(function (actual) { {% endhighlight %}
+    </td>
+  </tr>
+  <tr id="section-The_result_is_the_same_as_for_regular_expectations">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-The_result_is_the_same_as_for_regular_expectations">&#182;</a>
+      </div>
+      <div>
+        <p>The result is the same as for regular expectations.</p>
+
+      </div>
+    </td>
+    <td class="code">
+      {% highlight javascript %}                    const result = {
+                    };
+
+                    result.pass = matchersUtil.equals(actual.hyuk,
+                        "gawrsh" + expected);
+
+                    if (result.pass) {
+                        result.message = "Expected a promise not to resolve " +
+                            "to something quite so goofy";
+                    } else {
+                        result.message = "Expected a promise to resolve " +
+                            "to something goofy, but it was not very goofy";
+                    }
+
+                    return result;
+                });
+            }
+        }
+    }
+};
+ {% endhighlight %}
+    </td>
+  </tr>
+  <tr id="section-Registration_and_Usage">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-Registration_and_Usage">&#182;</a>
+      </div>
+      <div>
+        <h3>Registration and Usage</h3>
+
+      </div>
+    </td>
+    <td class="code">
+      {% highlight javascript %}describe("Custom async matcher: 'toBeResolvedToGoofy'", function() { {% endhighlight %}
+    </td>
+  </tr>
+  <tr id="section-Registration_works_the_same_as_with_regular_custom_matchers,_except_that">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-Registration_works_the_same_as_with_regular_custom_matchers,_except_that">&#182;</a>
+      </div>
+      <div>
+        <p>Registration works the same as with regular custom matchers, except that
+you call <code>jasmine.addAsyncMatchers</code> to register the matcher and <code>expectAsync</code>
+to use it.</p>
+
+      </div>
+    </td>
+    <td class="code">
+      {% highlight javascript %}    beforeEach(function() {
+        jasmine.addAsyncMatchers(customAsyncMatchers);
+    });
+ {% endhighlight %}
+    </td>
+  </tr>
+  <tr id="section-Once_a_custom_matcher_is_registered_with_Jasmine,_it_is_available_on_any">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-Once_a_custom_matcher_is_registered_with_Jasmine,_it_is_available_on_any">&#182;</a>
+      </div>
+      <div>
+        <p>Once a custom matcher is registered with Jasmine, it is available on any
+expectation.</p>
+
+      </div>
+    </td>
+    <td class="code">
+      {% highlight javascript %}    it("is available on an expectation", async function() {
+        await expectAsync(Promise.resolve({
+            hyuk: 'gawrsh'
+        })).toBeResolvedToGoofy();
+    });
+
+    it("can take an 'expected' parameter", async function() {
+        await expectAsync(Promise.resolve({
+            hyuk: 'gawrsh is fun'
+        })).toBeResolvedToGoofy(' is fun');
+    });
+
+    it("can be negated", async function() {
+        await expectAsync(Promise.resolve({
+            hyuk: 'this is fun'
+        })).not.toBeResolvedToGoofy();
     });
 });
  {% endhighlight %}
