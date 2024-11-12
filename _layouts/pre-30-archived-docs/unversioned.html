@@ -5,20 +5,20 @@
   Use omit_docco with care. Much of the site's CSS builds on top of docco.
   {% endcomment %}
   {% if layout.omit_docco != true and page.omit_docco != true %}
-  <link rel="stylesheet" href="{{ site.github.url }}/css/pre-30-archived-docs/docco.css" type="text/css" />
-  <link rel="stylesheet" href="{{ site.github.url }}/css/pre-30-archived-docs/jasmine_docco.css" type="text/css" />
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/pre-30-archived-docs/docco.css" type="text/css" />
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/pre-30-archived-docs/jasmine_docco.css" type="text/css" />
   {% endif %}
-  <link rel="stylesheet" href="{{ site.github.url }}/css/pre-30-archived-docs/site.css" type="text/css" />
-  <link rel="stylesheet" href="{{ site.github.url }}/css/pre-30-archived-docs/highlight.css" type="text/css" />
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/pre-30-archived-docs/site.css" type="text/css" />
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/pre-30-archived-docs/highlight.css" type="text/css" />
   {% if page.prettify == true %}
   <script src="scripts/prettify/prettify.js"></script>
   <script src="scripts/prettify/lang-css.js"></script>
   <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
   {% endif %}
-  <script src="{{ site.github.url }}/scripts/simple-jekyll-search.min.js"></script>
-  <script src="{{ site.github.url }}/scripts/search.js"></script>
-  <script src="{{ site.github.url }}/scripts/site.js"></script>
-  <script src="{{ site.github.url }}/scripts/anchor.min.js"></script>
+  <script src="{{ site.baseurl }}/scripts/simple-jekyll-search.min.js"></script>
+  <script src="{{ site.baseurl }}/scripts/search.js"></script>
+  <script src="{{ site.baseurl }}/scripts/site.js"></script>
+  <script src="{{ site.baseurl }}/scripts/anchor.min.js"></script>
   <title>{{ page.title }}</title>
 </head>
 <body>

@@ -10,7 +10,7 @@ imported:
 * If you're using Vite-specific syntax such as extensionless ES module imports,
   use [tsx](https://www.npmjs.com/package/tsx).
 * If you're using standard TypeScript, you can use `@babel/register`. See
-  [Testing a React app with Jasmine NPM]({{ site.github.url }}/tutorials/react_with_npm) for an
+  [Testing a React app with Jasmine NPM]({{ site.baseurl }}/tutorials/react_with_npm) for an
   example. 
 
 The second approach is to compile your TypeScript spec files to JavaScript files

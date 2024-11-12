@@ -36,7 +36,7 @@ it('does not cause an unhandled promise rejection', async function() {
 });
 ```
 You can make this a bit clearer by using the
-[rejectWith]({{ site.github.url }}/api/edge/SpyStrategy.html#rejectWith) spy strategy:
+[rejectWith]({{ site.baseurl }}/api/edge/SpyStrategy.html#rejectWith) spy strategy:
 
 ```javascript
 it('does not cause an unhandled promise rejection', async function() {

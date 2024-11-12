@@ -13,7 +13,7 @@ enable that behavior by setting the `failSpecWithNoExpectations` option to
 * If you're using a third party tool that wraps jasmine-core, check that tool's
   documentation for how to pass configuration options.
 * If you're using jasmine-core directly, add it to the object that you pass to
-  [Env#configure]({{ site.github.url }}/api/edge/Env.html#configure).
+  [Env#configure]({{ site.baseurl }}/api/edge/Env.html#configure).
 
 We don't recommend relying on the `failSpecWithNoExpectations` option.
 All it ensures is that each spec has at least one expectation, not

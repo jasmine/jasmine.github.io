@@ -36,9 +36,9 @@ There are three ways to make the output of a spec like that more clear:
 
 * Put each expectation in its own spec. (This is sometimes a good idea, but not
   always.)
-* Write a [custom matcher]({{ site.github.url }}/tutorials/custom_matcher). (This is sometimes worth
+* Write a [custom matcher]({{ site.baseurl }}/tutorials/custom_matcher). (This is sometimes worth
   the effort, but not always.)
-* Use [withContext]({{ site.github.url }}/api/edge/matchers.html#withContext) to add extra text to
+* Use [withContext]({{ site.baseurl }}/api/edge/matchers.html#withContext) to add extra text to
   the matcher failure messages.
 
 Here's the same spec as above, but modified to use `withContext`:

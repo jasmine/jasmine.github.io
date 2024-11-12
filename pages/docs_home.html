@@ -6,73 +6,73 @@ big_header: true
 
 <div class="main-content">
   <div>
-    <h2>Getting Started</h2>
-    <h3><a href="{{ site.github.url }}/pages/faq.html">Frequently Asked Questions</a>
-    <h3><a href="{{ site.github.url }}/setup/nodejs.html">Node.js</a>
-    <h3><a href="{{ site.github.url }}/setup/browser.html">Browser Runner</a>
-    <h3><a href="{{ site.github.url }}/tutorials/your_first_suite">Your First Suite</a>
+    <h2>Getting Started!</h2>
+    <h3><a href="{{ site.baseurl }}/pages/faq.html">Frequently Asked Questions</a>
+    <h3><a href="{{ site.baseurl }}/setup/nodejs.html">Node.js</a>
+    <h3><a href="{{ site.baseurl }}/setup/browser.html">Browser Runner</a>
+    <h3><a href="{{ site.baseurl }}/tutorials/your_first_suite">Your First Suite</a>
 
     <h2>Upgrade Guides</h2>
-    <h3><a href="{{ site.github.url }}/upgrade-guides/5.0">5.0</a></h3>
-    <h3><a href="{{ site.github.url }}/upgrade-guides/4.0">4.0</a></h3>
-    <h3><a href="{{ site.github.url }}/upgrade-guides/3.0">3.0</a></h3>
-    <h3><a href="{{ site.github.url }}/upgrade-guides/2.0">2.0</a></h3>
+    <h3><a href="{{ site.baseurl }}/upgrade-guides/5.0">5.0</a></h3>
+    <h3><a href="{{ site.baseurl }}/upgrade-guides/4.0">4.0</a></h3>
+    <h3><a href="{{ site.baseurl }}/upgrade-guides/3.0">3.0</a></h3>
+    <h3><a href="{{ site.baseurl }}/upgrade-guides/2.0">2.0</a></h3>
   </div>
   <div>
     <h2>Tutorials</h2>
     <h3>Basics</h3>
     <ol class="doc-list">
-      <li><a href="{{ site.github.url }}/tutorials/your_first_suite">Your First Suite</a></li>
-      <li><a href="{{ site.github.url }}/tutorials/async">Testing Async Code</a></li>
+      <li><a href="{{ site.baseurl }}/tutorials/your_first_suite">Your First Suite</a></li>
+      <li><a href="{{ site.baseurl }}/tutorials/async">Testing Async Code</a></li>
     </ol>
 
     <h3>Matcher and Equality Customization</h3>
     <ol class="doc-list">
-      <li><a href="{{ site.github.url }}/tutorials/custom_matchers">
+      <li><a href="{{ site.baseurl }}/tutorials/custom_matchers">
         Custom Matchers
       </a></li>
-      <li><a href="{{ site.github.url }}/tutorials/custom_equality">
+      <li><a href="{{ site.baseurl }}/tutorials/custom_equality">
         Custom Equality Testers
       </a></li>
-      <li><a href="{{ site.github.url }}/tutorials/custom_asymmetric_equality_testers">
+      <li><a href="{{ site.baseurl }}/tutorials/custom_asymmetric_equality_testers">
         Custom Asymmetric Equality Testers
       </a></li>
-      <li><a href="{{ site.github.url }}/tutorials/custom_object_formatters">
+      <li><a href="{{ site.baseurl }}/tutorials/custom_object_formatters">
         Custom Object Formatters
       </a></li>
     </ol>
 
     <h3>Spies/Mocking</h3>
     <ol class="doc-list">
-      <li><a href="{{ site.github.url }}/tutorials/spying_on_properties">
+      <li><a href="{{ site.baseurl }}/tutorials/spying_on_properties">
         Spying on Properties</a></li>
-      <li><a href="{{ site.github.url }}/tutorials/default_spy_strategy">
+      <li><a href="{{ site.baseurl }}/tutorials/default_spy_strategy">
         Default Spy Strategy</a></li>
-      <li><a href="{{ site.github.url }}/tutorials/module_mocking">Module Mocking</a></li>
+      <li><a href="{{ site.baseurl }}/tutorials/module_mocking">Module Mocking</a></li>
     </ol>
 
     <h3>Other Jasmine Features</h3>
     <ol class="doc-list">
-      <li><a href="{{ site.github.url }}/tutorials/custom_reporter">
+      <li><a href="{{ site.baseurl }}/tutorials/custom_reporter">
         Custom Reporters
       </a></li>
-      <li><a href="{{ site.github.url }}/tutorials/running_specs_in_parallel">
+      <li><a href="{{ site.baseurl }}/tutorials/running_specs_in_parallel">
         Running Specs in Parallel
       </a></li>
-      <li><a href="{{ site.github.url }}/tutorials/use_without_globals">
+      <li><a href="{{ site.baseurl }}/tutorials/use_without_globals">
         Use Without Globals
       </a></li>
     </ol>
 
     <h3>Techniques</h3>
     <ol class="doc-list">
-      <li><a href="{{ site.github.url }}/tutorials/sharing_behaviors">Sharing Behaviors</a></li>
+      <li><a href="{{ site.baseurl }}/tutorials/sharing_behaviors">Sharing Behaviors</a></li>
     </ol>
 
     <h3>Guides for Specific Environments</h3>
     <ol class="doc-list">
-      <li><a href="{{ site.github.url }}/tutorials/react_with_browser">Testing React in the Browser</a></li>
-      <li><a href="{{ site.github.url }}/tutorials/react_with_node">Testing React in Node</a></li>
+      <li><a href="{{ site.baseurl }}/tutorials/react_with_browser">Testing React in the Browser</a></li>
+      <li><a href="{{ site.baseurl }}/tutorials/react_with_node">Testing React in Node</a></li>
     </ol>
   </div>
   <div>
@@ -82,7 +82,7 @@ big_header: true
     {% assign versions = site.api | sort: 'sortKey' %}
     {% for version in versions reversed %}
     {% if version.url contains "/global" and version.archived != true %}
-    <li><a href="{{ site.github.url }}{{ version.url }}">{{ version.url | remove_first: "/api/" | remove: "/global" | capitalize }}</a></li>
+    <li><a href="{{ site.baseurl }}{{ version.url }}">{{ version.url | remove_first: "/api/" | remove: "/global" | capitalize }}</a></li>
     {% endif %}
     {% endfor %}
     </ol>
@@ -91,7 +91,7 @@ big_header: true
       {% assign versions = site.npm-api | sort: 'sortKey' %}
       {% for version in versions reversed %}
       {% if version.title == "Class: Jasmine" and version.archived != true %}
-      <li><a href="{{ site.github.url }}{{ version.url }}">{{ version.url | remove_first: "/api/npm/" | remove: "/Jasmine" | capitalize }}</a></li>
+      <li><a href="{{ site.baseurl }}{{ version.url }}">{{ version.url | remove_first: "/api/npm/" | remove: "/Jasmine" | capitalize }}</a></li>
       {% endif %}
       {% endfor %}
     </ol>
@@ -100,12 +100,12 @@ big_header: true
     {% assign versions = site.browser-runner-api | sort: 'sortKey' %}
     {% for version in versions reversed %}
     {% if version.url contains "/module-jasmine-browser-runner" and version.archived != true %}
-    <li><a href="{{ site.github.url }}{{ version.url }}">{{ version.url | remove_first: "/api/browser-runner/" | remove: "/module-jasmine-browser-runner" | capitalize }}</a></li>
+    <li><a href="{{ site.baseurl }}{{ version.url }}">{{ version.url | remove_first: "/api/browser-runner/" | remove: "/module-jasmine-browser-runner" | capitalize }}</a></li>
     {% endif %}
     {% endfor %}
     </ol>
   </div>
 </div>
 <div class="main-content">
-  <h3><a href="{{site.github.url}}/pages/archives.html">Archived documentation</a></h3>
+  <h3><a href="{{site.baseurl}}/pages/archives.html">Archived documentation</a></h3>
 </div>
