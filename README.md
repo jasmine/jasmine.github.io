@@ -85,10 +85,6 @@ To archive an old tutorial:
   and/or `_browser-runner-api/module-jasmine-browser-runner.html`. The sort key
   should be a string with three digits for the major and minor versions, e.g.
   "004.003" for version 4.3.
-- If the new version is a prerelease (e.g. alpha, beta), add a `prereleaseFor`
-  tag (e.g. `prereleaseFor: "5.0"`) to every generated HTML page for the new
-  version. This will prevent it from being treated as the current version and
-  add the correct banner to each page.
 - Archive the oldest non-archived version by adding `archived: true` to 
   `_api/<old version>/global.html>`, `_npm-api/Jasmine.html`, and/or 
   `_browser-runner-api/module-jasmine-browser-runner.html`. This will remove the

@@ -23,7 +23,7 @@
 </head>
 <body>
 {% include header.html %}
-{% include newVersionLink.html %}
+{% new_version_link %}
 <div class="main-content">
   <h1>{{ page.file_name | remove: ".js" | replace: "_", " " | capitalize }}</h1>
   {{content}}

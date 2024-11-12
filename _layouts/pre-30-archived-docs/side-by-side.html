@@ -41,7 +41,7 @@
     </div>
     <div class="content-push small"></div>
   <div id="background"></div>
-  {% include newVersionLink.html %}
+  {% new_version_link %}
   {{ content }}
   <script>
     (document.querySelector(".version") || {}).innerHTML = (typeof jasmine !== "undefined") ? jasmine.version : "";
