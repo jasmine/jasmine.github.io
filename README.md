@@ -81,10 +81,6 @@ To archive an old tutorial:
 - Update the edge API docs as described in the previous section
 - Copy the edge docs to the new version for each package, e.g.
   `cp -r _api/edge _api/4.4`
-- Set the sort key in `_api/<new version>/global.html>`, `_npm-api/Jasmine.html`,
-  and/or `_browser-runner-api/module-jasmine-browser-runner.html`. The sort key
-  should be a string with three digits for the major and minor versions, e.g.
-  "004.003" for version 4.3.
 - Archive the oldest non-archived version by adding `archived: true` to 
   `_api/<old version>/global.html>`, `_npm-api/Jasmine.html`, and/or 
   `_browser-runner-api/module-jasmine-browser-runner.html`. This will remove the
