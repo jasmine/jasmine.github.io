@@ -272,6 +272,74 @@ describe("A suite with some shared setup", function() {
  will run.
  */
 
+
+/**
+ ## Asynchronous Support
+
+ Jasmine also has support for running specs that require testing
+ asynchronous operations. The functions that you pass to `beforeAll`,
+ `afterAll`, `beforeEach`, `afterEach`, and `it` can be declared async.
+
+ Jasmine also supports asynchronous functions that explicitly return
+ promises or that take a callback. See the
+ [Asynchronous Work tutorial](/tutorials/async) for more information.
+ */
+describe("Using async/await", function () {
+    beforeEach(async function () {
+        await soon();
+        value = 0;
+    });
+
+    /**
+     This spec will not start until the promise returned from the call to
+     `beforeEach` above is settled. And this spec will not complete until
+     the promise that it returns is settled.
+     */
+    it("supports async execution of test preparation and expectations",
+        async function () {
+            await soon();
+            value++;
+            expect(value).toBeGreaterThan(0);
+        }
+    );
+
+    function soon() {
+        return new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                resolve();
+            }, 1);
+        });
+    }
+});
+
+
+/**
+ By default jasmine will wait for 5 seconds for an asynchronous spec to
+ finish before causing a timeout failure. If the timeout expires before
+ `done` is called, the current spec will be marked as failed and suite
+ execution will continue as if `done` was called.
+
+ If specific specs should fail faster or need more time this can be
+ adjusted by passing a timeout value to `it`, etc.
+
+ If the entire suite should have a different timeout,
+ `jasmine.DEFAULT_TIMEOUT_INTERVAL` can be set globally, outside of any
+ given describe.
+ */
+describe("long asynchronous specs", function() {
+    beforeEach(async function() {
+        await somethingSlow();
+    }, 1000);
+
+    it("takes a long time", async function() {
+        await somethingReallySlow();
+    }, 10000);
+
+    afterEach(async function() {
+        await somethingSlow();
+    }, 1000);
+});
+
 /**
  ## Spies
 
@@ -658,73 +726,6 @@ describe("Matching with finesse", function() {
             });
         });
     });
-
-    /**
-     ## Asynchronous Support
-
-     Jasmine also has support for running specs that require testing
-     asynchronous operations. The functions that you pass to `beforeAll`,
-     `afterAll`, `beforeEach`, `afterEach`, and `it` can be declared async.
-
-     Jasmine also supports asynchronous functions that explicitly return
-     promises or that take a callback. See the
-     [Asynchronous Work tutorial](/tutorials/async) for more information.
-     */
-    describe("Using async/await", function () {
-        beforeEach(async function () {
-            await soon();
-            value = 0;
-        });
-
-        /**
-         This spec will not start until the promise returned from the call to
-         `beforeEach` above is settled. And this spec will not complete until
-         the promise that it returns is settled.
-         */
-        it("supports async execution of test preparation and expectations",
-            async function () {
-                await soon();
-                value++;
-                expect(value).toBeGreaterThan(0);
-            }
-        );
-    });
-
-
-    /**
-     By default jasmine will wait for 5 seconds for an asynchronous spec to
-     finish before causing a timeout failure. If the timeout expires before
-     `done` is called, the current spec will be marked as failed and suite
-     execution will continue as if `done` was called.
-
-     If specific specs should fail faster or need more time this can be
-     adjusted by passing a timeout value to `it`, etc.
-
-     If the entire suite should have a different timeout,
-     `jasmine.DEFAULT_TIMEOUT_INTERVAL` can be set globally, outside of any
-     given describe.
-     */
-    describe("long asynchronous specs", function() {
-        beforeEach(async function() {
-            await somethingSlow();
-        }, 1000);
-
-        it("takes a long time", async function() {
-            await somethingReallySlow();
-        }, 10000);
-
-        afterEach(async function() {
-            await somethingSlow();
-        }, 1000);
-    });
-
-    function soon() {
-        return new Promise(function(resolve, reject) {
-            setTimeout(function() {
-                resolve();
-            }, 1);
-        });
-    }
 });
 
 

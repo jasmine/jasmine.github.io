@@ -482,7 +482,101 @@ will run.</p>
       </div>
     </td>
     <td class="code">
-      {% highlight javascript %} {% endhighlight %}
+      {% highlight javascript %}
+ {% endhighlight %}
+    </td>
+  </tr>
+  <tr id="section-Asynchronous_Support">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-Asynchronous_Support">&#182;</a>
+      </div>
+      <div>
+        <h2>Asynchronous Support</h2>
+<p>Jasmine also has support for running specs that require testing
+asynchronous operations. The functions that you pass to <code>beforeAll</code>,
+<code>afterAll</code>, <code>beforeEach</code>, <code>afterEach</code>, and <code>it</code> can be declared async.</p>
+<p>Jasmine also supports asynchronous functions that explicitly return
+promises or that take a callback. See the
+<a href="/tutorials/async">Asynchronous Work tutorial</a> for more information.</p>
+
+      </div>
+    </td>
+    <td class="code">
+      {% highlight javascript %}describe("Using async/await", function () {
+    beforeEach(async function () {
+        await soon();
+        value = 0;
+    });
+ {% endhighlight %}
+    </td>
+  </tr>
+  <tr id="section-This_spec_will_not_start_until_the_promise_returned_from_the_call_to">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-This_spec_will_not_start_until_the_promise_returned_from_the_call_to">&#182;</a>
+      </div>
+      <div>
+        <p>This spec will not start until the promise returned from the call to
+<code>beforeEach</code> above is settled. And this spec will not complete until
+the promise that it returns is settled.</p>
+
+      </div>
+    </td>
+    <td class="code">
+      {% highlight javascript %}    it("supports async execution of test preparation and expectations",
+        async function () {
+            await soon();
+            value++;
+            expect(value).toBeGreaterThan(0);
+        }
+    );
+
+    function soon() {
+        return new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                resolve();
+            }, 1);
+        });
+    }
+});
+
+ {% endhighlight %}
+    </td>
+  </tr>
+  <tr id="section-By_default_jasmine_will_wait_for_5_seconds_for_an_asynchronous_spec_to">
+    <td class="docs">
+      <div class="pilwrap">
+        <a class="pilcrow" href="#section-By_default_jasmine_will_wait_for_5_seconds_for_an_asynchronous_spec_to">&#182;</a>
+      </div>
+      <div>
+        <p>By default jasmine will wait for 5 seconds for an asynchronous spec to
+finish before causing a timeout failure. If the timeout expires before
+<code>done</code> is called, the current spec will be marked as failed and suite
+execution will continue as if <code>done</code> was called.</p>
+<p>If specific specs should fail faster or need more time this can be
+adjusted by passing a timeout value to <code>it</code>, etc.</p>
+<p>If the entire suite should have a different timeout,
+<code>jasmine.DEFAULT_TIMEOUT_INTERVAL</code> can be set globally, outside of any
+given describe.</p>
+
+      </div>
+    </td>
+    <td class="code">
+      {% highlight javascript %}describe("long asynchronous specs", function() {
+    beforeEach(async function() {
+        await somethingSlow();
+    }, 1000);
+
+    it("takes a long time", async function() {
+        await somethingReallySlow();
+    }, 10000);
+
+    afterEach(async function() {
+        await somethingSlow();
+    }, 1000);
+});
+ {% endhighlight %}
     </td>
   </tr>
   <tr id="section-Spies">
@@ -1070,99 +1164,6 @@ the current date.</p>
             });
         });
     });
- {% endhighlight %}
-    </td>
-  </tr>
-  <tr id="section-Asynchronous_Support">
-    <td class="docs">
-      <div class="pilwrap">
-        <a class="pilcrow" href="#section-Asynchronous_Support">&#182;</a>
-      </div>
-      <div>
-        <h2>Asynchronous Support</h2>
-<p>Jasmine also has support for running specs that require testing
-asynchronous operations. The functions that you pass to <code>beforeAll</code>,
-<code>afterAll</code>, <code>beforeEach</code>, <code>afterEach</code>, and <code>it</code> can be declared async.</p>
-<p>Jasmine also supports asynchronous functions that explicitly return
-promises or that take a callback. See the
-<a href="/tutorials/async">Asynchronous Work tutorial</a> for more information.</p>
-
-      </div>
-    </td>
-    <td class="code">
-      {% highlight javascript %}    describe("Using async/await", function () {
-        beforeEach(async function () {
-            await soon();
-            value = 0;
-        });
- {% endhighlight %}
-    </td>
-  </tr>
-  <tr id="section-This_spec_will_not_start_until_the_promise_returned_from_the_call_to">
-    <td class="docs">
-      <div class="pilwrap">
-        <a class="pilcrow" href="#section-This_spec_will_not_start_until_the_promise_returned_from_the_call_to">&#182;</a>
-      </div>
-      <div>
-        <p>This spec will not start until the promise returned from the call to
-<code>beforeEach</code> above is settled. And this spec will not complete until
-the promise that it returns is settled.</p>
-
-      </div>
-    </td>
-    <td class="code">
-      {% highlight javascript %}        it("supports async execution of test preparation and expectations",
-            async function () {
-                await soon();
-                value++;
-                expect(value).toBeGreaterThan(0);
-            }
-        );
-    });
-
- {% endhighlight %}
-    </td>
-  </tr>
-  <tr id="section-By_default_jasmine_will_wait_for_5_seconds_for_an_asynchronous_spec_to">
-    <td class="docs">
-      <div class="pilwrap">
-        <a class="pilcrow" href="#section-By_default_jasmine_will_wait_for_5_seconds_for_an_asynchronous_spec_to">&#182;</a>
-      </div>
-      <div>
-        <p>By default jasmine will wait for 5 seconds for an asynchronous spec to
-finish before causing a timeout failure. If the timeout expires before
-<code>done</code> is called, the current spec will be marked as failed and suite
-execution will continue as if <code>done</code> was called.</p>
-<p>If specific specs should fail faster or need more time this can be
-adjusted by passing a timeout value to <code>it</code>, etc.</p>
-<p>If the entire suite should have a different timeout,
-<code>jasmine.DEFAULT_TIMEOUT_INTERVAL</code> can be set globally, outside of any
-given describe.</p>
-
-      </div>
-    </td>
-    <td class="code">
-      {% highlight javascript %}    describe("long asynchronous specs", function() {
-        beforeEach(async function() {
-            await somethingSlow();
-        }, 1000);
-
-        it("takes a long time", async function() {
-            await somethingReallySlow();
-        }, 10000);
-
-        afterEach(async function() {
-            await somethingSlow();
-        }, 1000);
-    });
-
-    function soon() {
-        return new Promise(function(resolve, reject) {
-            setTimeout(function() {
-                resolve();
-            }, 1);
-        });
-    }
 });
 
 
