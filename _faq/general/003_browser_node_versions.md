@@ -52,11 +52,8 @@ supported, check the release notes for the Jasmine packages that you're using.
     </tr>
     <tr>
       <td>Safari</td>
-      <td>
-        Major versions that run on OS X versions that still receive security
-        updates, and that are available on Saucelabs
-      </td>
-      <td>Past-EOL versions listed in Jasmine release notes</td>
+      <td></td>
+      <td>Versions that are known to work and available in CI</td>
       <td>Everything else</td>
     </tr>
     <tr>
