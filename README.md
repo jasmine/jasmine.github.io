@@ -31,7 +31,7 @@ Note that some files are auto-generated:
 
 * Everything under `_api`, `_npm_api`, and `_browser-runner-runner-api`
 * A few of `_tutorials/*.md`. The ones that are auto-generated have a comment
-  neaer the top saying what they were generated from.
+  near the top saying what they were generated from.
 
 Don't edit those files directly as any changes you make to them will be lost 
 the next time the documentation is generated.
