@@ -1852,6 +1852,97 @@ expect(new Error()).toBeInstanceOf(Error);</code></pre>
     
 
     
+    <h4 class="name" id="toBeNullish"><span class="type-signature"></span>toBeNullish<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p><a href="global.html#expect"><code>expect</code></a> the actual value to be <code>null</code> or <code>undefined</code>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>5.6.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>expect(result).toBeNullish():</code></pre>
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="toBePositiveInfinity"><span class="type-signature"></span>toBePositiveInfinity<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
@@ -3298,6 +3389,237 @@ expect(mySpy).not.toHaveBeenCalled();</code></pre>
     <pre class="prettyprint"><code>const el = document.createElement('div');
 el.className = 'foo bar baz';
 expect(el).toHaveClass('bar');</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toHaveClasses"><span class="type-signature"></span>toHaveClasses<span class="signature">(expected)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p><a href="global.html#expect"><code>expect</code></a> the actual value to be a DOM element that has the expected classes</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>expected</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The class names to test for</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>5.6.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const el = document.createElement('div');
+el.className = 'foo bar baz';
+expect(el).toHaveClasses(['bar', 'baz']);</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toHaveNoOtherSpyInteractions"><span class="type-signature"></span>toHaveNoOtherSpyInteractions<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p><a href="global.html#expect"><code>expect</code></a> the actual (a <code>SpyObj</code>) spies to have not been called except interactions which was already tracked with <code>toHaveBeenCalled</code>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>expect(mySpyObj).toHaveNoOtherSpyInteractions();
+expect(mySpyObj).not.toHaveNoOtherSpyInteractions();</code></pre>
 
 
 
