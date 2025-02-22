@@ -57,11 +57,21 @@ title: Frequently Asked Questions
     </ol>
   </li>
   <li>
+    <a href="#security">Security</a>
+    <ol>
+      {% for faq in site.faq %}
+      {% if faq.path contains '_faq/security/' %}
+      <li><a href="#{{faq.slug}}">{{ faq.question }}</a></li>
+      {% endif %}
+      {% endfor %}
+    </ol>
+  </li>
+  <li>
     <a href="#contrib">Contributing to Jasmine</a>
     <ol>
-    {% for faq in site.faq %}
+      {% for faq in site.faq %}
       {% if faq.path contains '_faq/contrib/' %}
-        <li><a href="#{{faq.slug}}">{{ faq.question }}</a></li>
+      <li><a href="#{{faq.slug}}">{{ faq.question }}</a></li>
       {% endif %}
     {% endfor %}
     </ol>
@@ -117,6 +127,18 @@ title: Frequently Asked Questions
 	 <a href="#toc">Back to FAQ index</a>
   {% endif %}
 {% endfor %}
+
+
+<h2 id="security">Security</h2>
+
+{% for faq in site.faq %}
+  {% if faq.path contains '_faq/security/' %}
+    <h2 id={{faq.slug}} data-anchor-id="{{faq.slug}}">{{ faq.question }}</h2>
+    <div class="answer">{{ faq.content }}</div>
+      <a href="#toc">Back to FAQ index</a>
+  {% endif %}
+{% endfor %}
+
 
 <h2 id="contrib">Contributing</h2>
 
