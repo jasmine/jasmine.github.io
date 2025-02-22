@@ -11,16 +11,13 @@ to test against in CI, and are available to us for local testing are fully
 supported. Older versions are supported on a best effort basis for as long as
 it's practical to do so.
 
-This approach allows us to maintain support for older versions of Node and
-non-evergreen browsers for longer. However, it does mean that minor releases of
-Jasmine may drop support for outdated platforms in minor releases. We'll make
-reasonable efforts to avoid doing that if a major release is planned for the
-near future, but won't do a major release just to drop support for an outdated
-platform.
+This approach allows Jasmine to keep supporting older versions of Node and
+non-evergreen browsers for longer. However, it does mean that support for
+outdated platforms may be dropped in minor versions of Jasmine.
 
-As a general rule, the support status of platform versions is determined as
-follows. This is subject to change. If you need to know what's currently 
-supported, check the release notes for the Jasmine packages that you're using.
+Currently, the support status of platform versions is determined as follows.
+This is subject to change. If you need to know what's currently supported, check
+the release notes for the Jasmine packages that you're using.
 
 <table>
   <thead>
@@ -66,7 +63,7 @@ supported, check the release notes for the Jasmine packages that you're using.
 </table>
 
 \* In practice, Jasmine is very likely to work with older versions of evergreen
-browers. However, only the latest versions are tested.
+browsers. However, only the latest versions are tested.
 
 "Supported on a best effort basis" means that:
 * Jasmine is still tested against that browser or Node version prior to release.
@@ -86,5 +83,5 @@ browers. However, only the latest versions are tested.
 
 [Selenium-webdriver, which is a dependency of jasmine-browser-runner, has a 
 more restrictive rolling support window policy](https://www.npmjs.com/package/selenium-webdriver).
-This hasn't proven to be a problem in practice, but jasmine-browser-runner users
+So far that hasn't caused any problems, but jasmine-browser-runner users
 with a low tolerance for broken builds should be aware of it.
