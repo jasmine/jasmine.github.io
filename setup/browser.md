@@ -69,7 +69,9 @@ To use a browser other than Firefox, add a `browser` field to
 ```javascript
 export default {
   // ...
-  "browser": "chrome"
+  browser: {
+    name: "chrome"
+  }
 }
 ```
 
