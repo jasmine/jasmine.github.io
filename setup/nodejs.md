@@ -225,7 +225,7 @@ const runner = new Jasmine();
 ### Load configuration from a file or from an object
 
 ```javascript
-runner.loadConfigFile('spec/support/jasmine.json');
+await runner.loadConfigFile('spec/support/jasmine.json');
 
 runner.loadConfig({
     spec_dir: 'spec',
@@ -305,10 +305,23 @@ runner.execute(['fooSpec.js'], 'a spec name');
 ### A simple example using the library
 
 ```javascript
+// CommonJS
 const Jasmine = require('jasmine');
 const runner = new Jasmine();
 
-runner.loadConfigFile('spec/support/jasmine.json');
+runner.loadConfigFile('spec/support/jasmine.json')
+    .then(function() {
+        runner.configureDefaultReporter({
+            showColors: false
+        });
+        runner.execute();
+    });
+
+// or ESM:
+import Jasmine from 'jasmine';
+const runner = new Jasmine();
+
+await runner.loadConfigFile('spec/support/jasmine.json');
 runner.configureDefaultReporter({
     showColors: false
 });
