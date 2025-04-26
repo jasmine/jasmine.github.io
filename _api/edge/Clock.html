@@ -132,6 +132,104 @@ prettify: true
     
 
     
+    <h4 class="name" id="autoTick"><span class="type-signature"></span>autoTick<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Updates the clock to automatically advance time.</p>
+<p>With this mode, the clock advances to the first scheduled timer and fires it, in a loop.
+Between each timer, it will also break the event loop, allowing any scheduled promise
+callbacks to execute <em>before</em> running the next one.</p>
+<p>This mode allows tests to be authored in a way that does not need to be aware of the
+mock clock. Consequently, tests which have been authored without a mock clock installed
+can one with auto tick enabled without any other updates to the test logic.</p>
+<p>In many cases, this can greatly improve test execution speed because asynchronous tasks
+will execute as quickly as possible rather than waiting real time to complete.</p>
+<p>Furthermore, tests can be authored in a consitent manner. They can always be written in an asynchronous style
+rather than having <code>tick</code> sprinkled throughout the tests with mock time in order to manually
+advance the clock.</p>
+<p>When auto tick is enabled, <code>tick</code> can still be used to synchronously advance the clock if necessary.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>5.7.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="install"><span class="type-signature"></span>install<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Clock.html">Clock</a>}</span></h4>
     
 
