@@ -149,7 +149,7 @@ mock clock. Consequently, tests which have been authored without a mock clock in
 can one with auto tick enabled without any other updates to the test logic.</p>
 <p>In many cases, this can greatly improve test execution speed because asynchronous tasks
 will execute as quickly as possible rather than waiting real time to complete.</p>
-<p>Furthermore, tests can be authored in a consitent manner. They can always be written in an asynchronous style
+<p>Furthermore, tests can be authored in a consistent manner. They can always be written in an asynchronous style
 rather than having <code>tick</code> sprinkled throughout the tests with mock time in order to manually
 advance the clock.</p>
 <p>When auto tick is enabled, <code>tick</code> can still be used to synchronously advance the clock if necessary.</p>
