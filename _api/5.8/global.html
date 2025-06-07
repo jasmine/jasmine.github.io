@@ -2,7 +2,6 @@
 layout: default
 title: "Global"
 prettify: true
-archived: true
 ---
 
 <div class="main-content api-docs">
@@ -4058,7 +4057,8 @@ milliseconds from the spec's start time</p></td>
 in a future release. In many Jasmine configurations they are passed
 through JSON serialization and deserialization, which is inherently
 lossy. In such cases, the expected and actual values may be placeholders
-or approximations of the original objects.</p>
+or approximations of the original objects. jasmine-browser-runner 3.0 and
+later omits them entirely.</p>
 </div>
 
 
@@ -5182,7 +5182,10 @@ or false if it should be skipped.</p>
 
             
 
-            <td class="description last"><p>The name of the file the spec was defined in.</p></td>
+            <td class="description last"><p>The name of the file the spec was defined in.
+Note: The value may be incorrect if zone.js is installed or
+<code>it</code>/<code>fit</code>/<code>xit</code> have been replaced with versions that don't maintain the
+same call stack height as the originals.</p></td>
         </tr>
 
     
@@ -5572,7 +5575,10 @@ or false if it should be skipped.</p>
 
             
 
-            <td class="description last"><p>The name of the file the suite was defined in.</p></td>
+            <td class="description last"><p>The name of the file the suite was defined in.
+Note: The value may be incorrect if zone.js is installed or
+<code>describe</code>/<code>fdescribe</code>/<code>xdescribe</code> have been replaced with versions that
+don't maintain the same call stack height as the originals.</p></td>
         </tr>
 
     
