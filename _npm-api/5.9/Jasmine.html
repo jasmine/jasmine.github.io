@@ -2,7 +2,6 @@
 layout: default
 title: "Class: Jasmine"
 prettify: true
-archived: true
 ---
 
 <div class="main-content api-docs">
@@ -1856,6 +1855,9 @@ configured set</p></td>
 <span class="param-type">string</span>
 |
 
+<span class="param-type">RegExp</span>
+|
+
 <span class="param-type">object</span>
 
 
@@ -1877,8 +1879,9 @@ configured set</p></td>
             
 
             <td class="description last"><p>Optional specification of what specs to run.
-Can be either a string or an object. If it's a string, it will be
-interpreted as a regex that matches the full names of specs to run. If it's
+Can be a RegExp, a string, or an object. If it's a RegExp, it will be matched
+against the full names of specs. If it's a string, it will be converted to
+a RegExp and then handled in the same way. If it's
 an object, it should have a path property whose value is an array of spec
 or suite descriptions.
 Regex used to filter specs. If specified, only
