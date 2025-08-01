@@ -1,0 +1,475 @@
+---
+layout: default
+title: "Interface: AsymmetricEqualityTester"
+prettify: true
+---
+
+<div class="main-content api-docs">
+  <nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-jasmine-core.html">jasmine-core</a></li></ul><h3>Namespaces</h3><ul><li><a href="asymmetricEqualityTesters.html">asymmetricEqualityTesters</a></li><li><a href="async-matchers.html">async-matchers</a></li><li><a href="jasmine.html">jasmine</a></li><li><a href="matchers.html">matchers</a></li><li><a href="Spy_calls.html">Spy#calls</a></li></ul><h3>Classes</h3><ul><li><a href="Clock.html">Clock</a></li><li><a href="Env.html">Env</a></li><li><a href="jsApiReporter.html">jsApiReporter</a></li><li><a href="MatchersUtil.html">MatchersUtil</a></li><li><a href="ParallelReportDispatcher.html">ParallelReportDispatcher</a></li><li><a href="Spy.html">Spy</a></li><li><a href="Timer.html">Timer</a></li></ul><h3>Interfaces</h3><ul><li><a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a></li><li><a href="Configuration.html">Configuration</a></li><li><a href="Reporter.html">Reporter</a></li><li><a href="ReporterCapabilities.html">ReporterCapabilities</a></li><li><a href="Spec.html">Spec</a></li><li><a href="SpyStrategy.html">SpyStrategy</a></li><li><a href="Suite.html">Suite</a></li><li><a href="ThrowUnlessFailure.html">ThrowUnlessFailure</a></li></ul><h3>Global</h3><ul><li><a href="global.html#afterAll">afterAll</a></li><li><a href="global.html#afterEach">afterEach</a></li><li><a href="global.html#beforeAll">beforeAll</a></li><li><a href="global.html#beforeEach">beforeEach</a></li><li><a href="global.html#describe">describe</a></li><li><a href="global.html#expect">expect</a></li><li><a href="global.html#expectAsync">expectAsync</a></li><li><a href="global.html#fail">fail</a></li><li><a href="global.html#fdescribe">fdescribe</a></li><li><a href="global.html#fit">fit</a></li><li><a href="global.html#it">it</a></li><li><a href="global.html#pending">pending</a></li><li><a href="global.html#setSpecProperty">setSpecProperty</a></li><li><a href="global.html#setSuiteProperty">setSuiteProperty</a></li><li><a href="global.html#spyOn">spyOn</a></li><li><a href="global.html#spyOnAllFunctions">spyOnAllFunctions</a></li><li><a href="global.html#spyOnProperty">spyOnProperty</a></li><li><a href="global.html#throwUnless">throwUnless</a></li><li><a href="global.html#throwUnlessAsync">throwUnlessAsync</a></li><li><a href="global.html#xdescribe">xdescribe</a></li><li><a href="global.html#xit">xit</a></li></ul>
+  </nav>
+
+  <div class="docs">
+    <h1 class="page-title">Interface: AsymmetricEqualityTester</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>AsymmetricEqualityTester</h2>
+        
+            <div class="class-description"><p>An asymmetric equality tester is an object that can match multiple
+objects. Examples include jasmine.any() and jasmine.stringMatching(). Jasmine
+includes a number of built-in asymmetric equality testers, such as
+<code>jasmine.objectContaining</code>. User-defined asymmetric equality testers are
+also supported.</p>
+<p>Asymmetric equality testers work with any matcher, including user-defined
+custom matchers, that uses <a href="MatchersUtil.html#equals"><code>MatchersUtil#equals</code></a> or
+<a href="MatchersUtil.html#contains"><code>MatchersUtil#contains</code></a>.</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="/tutorials/custom_asymmetric_equality_testers">custom asymmetric_equality_testers</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+        
+            <h3>Example</h3>
+            
+    <pre class="prettyprint"><code>function numberDivisibleBy(divisor) {
+  return {
+    asymmetricMatch: function(n) {
+      return typeof n === 'number' &amp;&amp; n % divisor === 0;
+    },
+    jasmineToString: function() {
+      return `&lt;a number divisible by ${divisor}>`;
+    }
+  };
+}
+
+const actual = {
+  n: 2,
+  otherFields: "don't care"
+};
+
+expect(actual).toEqual(jasmine.objectContaining({n: numberDivisibleBy(2)}));</code></pre>
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="asymmetricMatch"><span class="type-signature"></span>asymmetricMatch<span class="signature">(value, matchersUtil)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Determines whether a value matches this tester</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">any</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The value to test</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>matchersUtil</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="MatchersUtil.html">MatchersUtil</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>utilities for testing equality, etc</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="jasmineToString"><span class="type-signature"></span>jasmineToString<span class="signature">(pp)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Returns a string representation of this tester to use in matcher failure messages</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>pp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function that takes a value and returns a pretty-printed representation</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+  </div>
+
+  <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a>.
+  </footer>
+</div>

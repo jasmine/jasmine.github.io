@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 {% if layout.include_docco == true or page.include_docco == true %}
-<link rel="stylesheet" href="{{ site.github.url }}/css/jasmine_docco.css" type="text/css" />
+<link rel="stylesheet" href="{{ site.baseurl }}/css/jasmine_docco.css" type="text/css">
 {% endif %}
-<link rel="stylesheet" href="{{ site.github.url }}/css/site.css" type="text/css" />
-<link rel="stylesheet" href="{{ site.github.url }}/css/highlight.css" type="text/css" />
+<link rel="stylesheet" href="{{ site.baseurl }}/css/site.css" type="text/css">
+<link rel="stylesheet" href="{{ site.baseurl }}/css/highlight.css" type="text/css">
 {% if page.prettify == true %}
 <script src="scripts/prettify/prettify.js"></script>
 <script src="scripts/prettify/lang-css.js"></script>
 <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
 {% endif %}
-<script src="{{ site.github.url }}/scripts/simple-jekyll-search.min.js"></script>
-<script src="{{ site.github.url }}/scripts/search.js"></script>
-<script src="{{ site.github.url }}/scripts/site.js"></script>
-<script src="{{ site.github.url }}/scripts/anchor.min.js"></script>
+<script src="{{ site.baseurl }}/scripts/simple-jekyll-search.min.js"></script>
+<script src="{{ site.baseurl }}/scripts/search.js"></script>
+<script src="{{ site.baseurl }}/scripts/site.js"></script>
+<script src="{{ site.baseurl }}/scripts/anchor.min.js"></script>
 <title>{{ page.title }}</title>
 </head>
 <body>
 {% include header.html %}
-{% include newVersionLink.html %}
+{% new_version_link %}
 {{ content }}
 {% include footer.html %}
 {% if page.prettify == true %}

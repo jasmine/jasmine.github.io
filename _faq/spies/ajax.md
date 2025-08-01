@@ -1,13 +1,8 @@
 ---
-question: How can I mock AJAX calls?
+question: How can I mock AJAX/fetch/XMLHTTPRequest calls?
 ---
 
-If you're using `XMLHttpRequest` or any library that uses it under the hood,
-[jasmine-ajax](https://github.com/jasmine/jasmine-ajax) is a good choice. It
-takes care of the sometimes intricate details of mocking `XMLHttpRequest` and
-provides a nice API for verifying requests and stubbing responses.
-
-Unlike `XMLHttpRequest`, newer HTTP client APIs such as
+Modern HTTP client APIs such as
 [axios](https://www.npmjs.com/package/axios) or
 [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) are easy
 to mock by hand using Jasmine spies. Simply inject the HTTP client into the
@@ -38,7 +33,7 @@ describe('loadThing', function() {
   });
 
   it('stores the thing', function() {
-    const payload = return {
+    const payload = {
       id: 17,
       name: 'the thing you requested'
     };
@@ -57,3 +52,8 @@ describe('loadThing', function() {
   });
 });
 ```
+
+If you're using the older `XMLHttpRequest`,
+[jasmine-ajax](https://github.com/jasmine/jasmine-ajax) is a good choice. It
+takes care of the sometimes intricate details of mocking `XMLHttpRequest` and
+provides a nice API for verifying requests and stubbing responses.

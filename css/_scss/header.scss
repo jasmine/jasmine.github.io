@@ -1,8 +1,8 @@
 @import 'constants';
 
 .header {
-  // Will be set to either position: relative or position: sticky below.
-  // Either allows title and search to be positioned within.
+  // Allow title and search to be positioned within.
+  position: relative;
   background-color: $jasmine-color;
   width: 100%;
   // Allow the search menu to extend outside the header
@@ -31,8 +31,6 @@
   }
 
   &.small-header {
-    position: sticky;
-    top: 0;
     height: 80px;
 
     .header-title {
@@ -45,7 +43,6 @@
   }
 
   &.big-header {
-    position: relative;
     height: 300px;
 
     .header-logo {

@@ -1,9 +1,9 @@
 ---
 layout: article
-title: Spying on properties
+title: Spying on Properties
 ---
 
-# Spying on properties
+# Spying on Properties
 
 Properties are more complicated than functions. In Jasmine, you can do anything with a property spy that you
 can do with a function spy, but you may need to use different syntax.

@@ -1,0 +1,1243 @@
+---
+layout: default
+title: "Interface: Configuration"
+prettify: true
+---
+
+<div class="main-content api-docs">
+  <nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ConsoleReporter.html">ConsoleReporter</a></li><li><a href="Jasmine.html">Jasmine</a></li><li><a href="ParallelRunner.html">ParallelRunner</a></li><li><a href="Runner.html">Runner</a></li></ul><h3>Interfaces</h3><ul><li><a href="Configuration.html">Configuration</a></li><li><a href="ConsoleReporterOptions.html">ConsoleReporterOptions</a></li><li><a href="EnumeratedSuiteOrSpec.html">EnumeratedSuiteOrSpec</a></li><li><a href="JasmineOptions.html">JasmineOptions</a></li><li><a href="ParallelRunnerOptions.html">ParallelRunnerOptions</a></li></ul>
+  </nav>
+
+  <div class="docs">
+    <h1 class="page-title">Interface: Configuration</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>Configuration</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="alwaysListPendingSpecs"><span class="type-signature"></span>alwaysListPendingSpecs<span class="type-signature"> :boolean|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>Whether the default reporter should list pending specs even if there are
+failures.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>true</li>
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="failSpecWithNoExpectations"><span class="type-signature"></span>failSpecWithNoExpectations<span class="type-signature"> :boolean|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>Whether to fail specs that contain no expectations.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>false</li>
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="globalSetup"><span class="type-signature"></span>globalSetup<span class="type-signature"> :function|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>A function that will be called exactly once, even in parallel mode,
+before the test suite runs. This is intended to be used to initialize
+out-of-process state such as starting up an external service.</p>
+<p>If the globalSetup function is async or otherwise returns a promise,
+Jasmine will wait up to <a href="Configuration.html#globalSetupTimeout"><code>Configuration#globalSetupTimeout</code></a>
+milliseconds for it to finish before running specs. Callbacks are not
+supported.</p>
+<p>globalSetup may be run in a different process from the specs. In-process
+side effects that it causes, including changes to the Jasmine
+environment, are not guaranteed to affect any or all specs. Use either
+beforeEach or beforeAll for in-process setup.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">function</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="globalSetupTimeout"><span class="type-signature"></span>globalSetupTimeout<span class="type-signature"> :Number|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>The number of milliseconds to wait for an asynchronous
+<a href="Configuration.html#globalSetup"><code>Configuration#globalSetup</code></a> to complete.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Number</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>5000</li>
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="globalTeardown"><span class="type-signature"></span>globalTeardown<span class="type-signature"> :function|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>A function that will be called exactly once, even in parallel mode,
+after the test suite runs. This is intended to be used to clean up
+out-of-process state such as shutting down an external service.</p>
+<p>If the globalTeardown function is async or otherwise returns a promise,
+Jasmine will wait up to <a href="Configuration.html#globalTeardownTimeout"><code>Configuration#globalTeardownTimeout</code></a>
+milliseconds for it to finish. Callbacks are not supported.</p>
+<p>globalTeardown may be run in a different process from the specs.
+In-process side effects caused by specs, including changes to the Jasmine
+environment, are not guaranteed to be visible to globalTeardown. Use
+either afterEach or afterAll for in-process cleanup.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">function</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="globalTeardownTimeout"><span class="type-signature"></span>globalTeardownTimeout<span class="type-signature"> :Number|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>The number of milliseconds to wait for an asynchronous
+<a href="Configuration.html#globalTeardown"><code>Configuration#globalTeardown</code></a> to complete.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Number</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>5000</li>
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="helpers"><span class="type-signature"></span>helpers<span class="type-signature"> :Array.&lt;string>|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>An array of helper file paths or <a href="https://github.com/isaacs/node-glob#glob-primer">globs</a>
+that match helper files. Each path or glob will be evaluated relative to
+the spec directory. Helpers are loaded before specs.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;string></span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="jsLoader"><span class="type-signature"></span>jsLoader<span class="type-signature"> :string|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>Specifies how to load files with names ending in .js. Valid values are
+&quot;require&quot; and &quot;import&quot;. &quot;import&quot; should be safe in all cases, and is
+required if your project contains ES modules with filenames ending in .js.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"require"</li>
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="random"><span class="type-signature"></span>random<span class="type-signature"> :boolean|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>Whether to run specs in a random order.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>true</li>
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="reporters"><span class="type-signature"></span>reporters<span class="type-signature"> :Array.&lt;Reporter>|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>An array of reporters. Each object in the array will be passed to
+<a href="Jasmine.html#addReporter"><code>Jasmine#addReporter</code></a> or <a href="ParallelRunner.html#addReporter"><code>ParallelRunner#addReporter</code></a>.</p>
+<p>This provides a middle ground between the --reporter= CLI option and full
+programmatic usage. Note that because reporters are objects with methods,
+this option can only be used in JavaScript config files
+(e.g <code>spec/support/jasmine.js</code>), not JSON.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;Reporter></span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="/tutorials/custom_reporter">custom reporter</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="requires"><span class="type-signature"></span>requires<span class="type-signature"> :Array.&lt;string>|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>An array of module names to load via require() at the start of execution.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;string></span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="spec_dir"><span class="type-signature"></span>spec_dir<span class="type-signature"> :string|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>The directory that spec files are contained in, relative to the project
+base directory.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="spec_files"><span class="type-signature"></span>spec_files<span class="type-signature"> :Array.&lt;string>|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>An array of spec file paths or <a href="https://github.com/isaacs/node-glob#glob-primer">globs</a>
+that match helper files. Each path or glob will be evaluated relative to
+the spec directory.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;string></span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="stopOnSpecFailure"><span class="type-signature"></span>stopOnSpecFailure<span class="type-signature"> :boolean|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>Whether to stop suite execution on the first spec failure.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>false</li>
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="stopSpecOnExpectationFailure"><span class="type-signature"></span>stopSpecOnExpectationFailure<span class="type-signature"> :boolean|undefined</span></h4>
+
+
+
+
+<div class="description">
+    <p>Whether to stop each spec on the first expectation failure.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>false</li>
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+  </div>
+
+  <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a>.
+  </footer>
+</div>

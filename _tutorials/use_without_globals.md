@@ -2,7 +2,7 @@
 layout: faq # FAQ styling for lists and code blocks is right for this page
 ---
 
-<h1>Using Jasmine without global functions</h1>
+<h1>Using Jasmine Without Global Functions</h1>
 
 Normally, Jasmine creates globals like `describe`, `it`, and `expect` that you
 can use to write your specs. If you're running Jasmine

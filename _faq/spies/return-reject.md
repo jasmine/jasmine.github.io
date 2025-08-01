@@ -2,8 +2,6 @@
 question: How can I configure a spy to return a rejected promise without triggering an unhandled promise rejection error?
 ---
 
-It’s important to understand that the JavaScript runtime decides which promise rejections are considered unhandled, not Jasmine. Jasmine just responds to the unhandled rejection event emitted by the JavaScript runtime.
-
 Simply creating a rejected promise is enough to trigger an unhandled rejection
 event in Node and most browsers if you allow control to return to the JavaScript
 runtime without attaching a rejection handler. That's true even if you don't do
@@ -36,7 +34,7 @@ it('does not cause an unhandled promise rejection', async function() {
 });
 ```
 You can make this a bit clearer by using the
-[rejectWith]({{ site.github.url }}/api/edge/SpyStrategy.html#rejectWith) spy strategy:
+[rejectWith]({{ site.baseurl }}/api/edge/SpyStrategy.html#rejectWith) spy strategy:
 
 ```javascript
 it('does not cause an unhandled promise rejection', async function() {
@@ -45,6 +43,3 @@ it('does not cause an unhandled promise rejection', async function() {
   await expectAsync(doSomething(foo)).toBeRejected();
 });
 ```
-
-As mentioned above, Jasmine doesn't determine which rejections count as
-unhandled. Please don't open issues asking us to change that.

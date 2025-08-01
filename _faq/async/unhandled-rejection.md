@@ -2,10 +2,6 @@
 question: I'm getting an unhandled promise rejection error but I think it's a false positive.
 ---
 
-It's important to understand that the JavaScript runtime decides which promise
-rejections are considered unhandled, not Jasmine. Jasmine just responds to the
-unhandled rejection event emitted by the JavaScript runtime.
-
 Simply creating a rejected promise is often enough to trigger an unhandled
 promise rejection event if you allow control to return to the JavaScript
 runtime without first attaching a rejection handler. That's true even if you
@@ -71,6 +67,3 @@ it('causes an unhandled rejection', async function() {
 
 See also [How can I configure a spy to return a rejected promise without triggering an unhandled promise rejection error?](#return-reject)
 for how to avoid unhandled rejections when configuring spies.
-
-As mentioned above, Jasmine doesn't determine which rejections count as
-unhandled. Please don't open issues asking us to change that.

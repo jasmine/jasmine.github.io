@@ -1,26 +1,25 @@
 <div class="header {% if page.big_header %}big-header{% else %}small-header{% endif %}">
   {% if page.big_header %}
     <div class="header-logo-wrapper">
-      <img class="header-logo" src="{{ site.github.url }}/images/jasmine-white-circle.svg" alt=""/>
+      <img class="header-logo" src="{{ site.baseurl }}/images/jasmine-white-circle.svg" alt="">
     </div>
   {% endif %}
   <div class="header-title">
-    <a class="home" href="{{ site.github.url }}/index.html">
-      <img src="{{ site.github.url }}/images/jasmine-white-horizontal.svg" width = '600' height = '140' alt="Documentation Home" />
+    <a class="home" href="{{ site.baseurl }}/index.html">
+      <img src="{{ site.baseurl }}/images/jasmine-white-horizontal.svg" width = '600' height = '140' alt="Documentation Home">
     </a>
     {% if page.big_header %}
       <div class="header-title-text">Simple JavaScript testing</div>
     {% endif %}
   </div>
   <div class="search-wrapper">
-    <input name="search" placeholder="search" autocomplete="off" />
+    <input name="search" placeholder="search" autocomplete="off">
     <ul class="searchResults"></ul>
   </div>
 </div>
 <div class="menu">
-  <a class="menu-option" href="{{ site.github.url }}/pages/getting_started.html">Get Started</a>
-  <a class="menu-option" href="{{ site.github.url }}/pages/docs_home.html">Docs</a>
-  <a class="menu-option" href="{{ site.github.url }}/pages/support.html">Support</a>
-  <a class="menu-option" href="https://github.com/jasmine/jasmine/releases">Releases</a>
-  <a class="menu-option" href="https://github.com/jasmine/jasmine">Github</a>
+  <a class="menu-option" href="{{ site.baseurl }}/pages/getting_started.html">Get Started</a>
+  <a class="menu-option" href="{{ site.baseurl }}/pages/docs_home.html">Documentation</a>
+  <a class="menu-option" href="{{ site.baseurl }}/pages/faq.html">FAQ</a>
+  <a class="menu-option" href="https://github.com/jasmine/">Github</a>
 </div>
