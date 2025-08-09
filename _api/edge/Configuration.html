@@ -180,6 +180,85 @@ This prevents memory leaks, but you won't be able to run jasmine multiple times.
 
         
             
+<h4 class="name" id="detectLateRejectionHandling"><span class="type-signature"></span>detectLateRejectionHandling<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+<div class="description">
+    <p>Whether to detect late promise rejection handling during spec
+execution. If this option is enabled, a promise rejection that triggers
+the JavaScript runtime's unhandled rejection event will not be treated
+as an error as long as it's handled before the spec finishes.</p>
+<p>This option is off by default because it imposes a performance penalty.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>5.10.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>false</li>
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
 <h4 class="name" id="failSpecWithNoExpectations"><span class="type-signature"></span>failSpecWithNoExpectations<span class="type-signature"> :Boolean</span></h4>
 
 
@@ -337,7 +416,7 @@ error.</p>
 
 
 <div class="description">
-    <p>Whether or not reporters should hide disabled specs from their output.
+    <p>Whether reporters should hide disabled specs from their output.
 Currently only supported by Jasmine's HTMLReporter</p>
 </div>
 
@@ -795,10 +874,10 @@ but it might not be immediate.</p>
 
 
 <div class="description">
-    <p>Whether or not to issue warnings for certain deprecated functionality
+    <p>Whether to issue warnings for certain deprecated functionality
 every time it's used. If not set or set to false, deprecation warnings
 for methods that tend to be called frequently will be issued only once
-or otherwise throttled to to prevent the suite output from being flooded
+or otherwise throttled to prevent the suite output from being flooded
 with warnings.</p>
 </div>
 
