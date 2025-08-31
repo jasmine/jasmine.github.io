@@ -7,8 +7,8 @@ promise rejection event if you allow control to return to the JavaScript
 runtime without first attaching a rejection handler. That's true even if you
 don't do anything with the promise. Jasmine turns unhandled rejections into
 failures because they almost always mean that something unexpectedly went wrong,
-and becuase there's no way to distinguish "real" unhandled rejections from the
-ones that would eventually be handled in the future.
+and because there's no cheap way to distinguish "real" unhandled rejections from 
+the ones that will eventually be handled in the future.
 
 Consider this spec:
 
@@ -23,7 +23,6 @@ it('causes an unhandled rejection', async function() {
   }
 });
 ```
-
 
 The rejection will eventually be handled via the `try`/`catch`.  But the JS
 runtime detects the unhandled rejection before that part of the spec runs. This
@@ -47,7 +46,7 @@ it('causes an unhandled rejection', async function() {
 });
 ```
 
-As a last resort, you can suppress the unhandled rejection by attaching a no-op
+Alternately, you can suppress the unhandled rejection by attaching a no-op
 catch handler:
 
 ```
@@ -64,6 +63,13 @@ it('causes an unhandled rejection', async function() {
   // Do something with `rejection`
 });
 ```
+
+Another option is to set the [detectLateRejectionHandling](/api/edge/Configuration.html#detectLateRejectionHandling)
+core configuration property to true. With that option enabled, Jasmine will use
+the browser or Node's `rejectionhandled` event to detect rejections that were
+handled after the browser or Node emitted an unhandled rejection. The
+`detectLateRejectionHandling` option is off by default because it imposes a
+performance penatly.
 
 See also [How can I configure a spy to return a rejected promise without triggering an unhandled promise rejection error?](#return-reject)
 for how to avoid unhandled rejections when configuring spies.

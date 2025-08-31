@@ -43,3 +43,11 @@ it('does not cause an unhandled promise rejection', async function() {
   await expectAsync(doSomething(foo)).toBeRejected();
 });
 ```
+
+Another option is to set the [detectLateRejectionHandling](/api/edge/Configuration.html#detectLateRejectionHandling)
+core configuration property to true. With that option enabled, Jasmine will use
+the browser or Node's `rejectionhandled` event to detect rejections that were
+handled after the browser or Node emitted an unhandled rejection. The
+`detectLateRejectionHandling` option is off by default because it imposes a
+performance penatly.
+
