@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Module: jasmine-core"
+title: "Class: HtmlSpecFilter"
 prettify: true
 ---
 
@@ -10,7 +10,7 @@ prettify: true
   </nav>
 
   <div class="docs">
-    <h1 class="page-title">Module: jasmine-core</h1>
+    <h1 class="page-title">Class: HtmlSpecFilter</h1>
 
     
 
@@ -21,8 +21,10 @@ prettify: true
 
 <header>
     
+        <h2><span class="attribs"><span class="type-signature"></span></span>HtmlSpecFilter<span class="signature">(options)</span><span class="type-signature"></span></h2>
         
-            
+            <div class="class-description"><p>Legacy HTML spec filter, for backward compatibility
+with boot files that predate <a href="HtmlExactSpecFilter.html"><code>HtmlExactSpecFilter</code></a>.</p></div>
         
     
 </header>
@@ -31,20 +33,69 @@ prettify: true
     <div class="container-overview">
     
         
-            <div class="description"><p>Note: Only available on Node.</p></div>
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id="HtmlSpecFilter"><span class="type-signature"></span>new HtmlSpecFilter<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
         
 
         
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
             
 
+            <td class="type">
+            
+            </td>
 
+            
 
+            
 
+            <td class="description last"><p>Object with a filterString method</p></td>
+        </tr>
 
-
-
-
-
+    
+    </tbody>
+</table>
 
 
 
@@ -56,7 +107,8 @@ prettify: true
     
 
     
-
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>1.2.0</li></ul></dd>
     
 
     
@@ -67,6 +119,10 @@ prettify: true
 
     
 
+    
+
+    
+        <dt class="important tag-deprecated">Deprecated:</dt><dd class="yes-def tag-deprecated"><ul class="dummy"><li>Yes</li></ul></dd>
     
 
     
@@ -105,7 +161,6 @@ prettify: true
 
 
 
-        
     
     </div>
 
@@ -132,7 +187,7 @@ prettify: true
     
 
     
-    <h4 class="name" id=".boot"><span class="type-signature">(static) </span>boot<span class="signature">(reinitialize<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="jasmine.html">jasmine</a>}</span></h4>
+    <h4 class="name" id="matches"><span class="type-signature"></span>matches<span class="signature">(specName)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
     
 
     
@@ -140,9 +195,7 @@ prettify: true
 
 
 <div class="description">
-    <p>Boots a copy of Jasmine and returns an object as described in <a href="jasmine.html"><code>jasmine</code></a>.
-If boot is called multiple times, the same object is returned every time
-unless true is passed.</p>
+    <p>Determines whether the spec with the specified name should be executed.</p>
 </div>
 
 
@@ -166,11 +219,7 @@ unless true is passed.</p>
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
-        
-        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -182,39 +231,23 @@ unless true is passed.</p>
 
         <tr>
             
-                <td class="name"><code>reinitialize</code></td>
+                <td class="name"><code>specName</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">boolean</span>
+<span class="param-type">string</span>
 
 
             
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
 
-            <td class="description last"><p>Whether to create a new copy of Jasmine if one already exists</p></td>
+            <td class="description last"><p>The full name of the spec</p></td>
         </tr>
 
     
@@ -286,7 +319,7 @@ unless true is passed.</p>
     </dt>
     <dd>
         
-<span class="param-type"><a href="jasmine.html">jasmine</a></span>
+<span class="param-type">boolean</span>
 
 
     </dd>
@@ -295,165 +328,6 @@ unless true is passed.</p>
     
 
 
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id=".noGlobals"><span class="type-signature">(static) </span>noGlobals<span class="signature">(reinitialize<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Boots a copy of Jasmine and returns an object containing the properties
-that would normally be added to the global object. If noGlobals is called
-multiple times, the same object is returned every time unless true is passed.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>reinitialize</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-
-            <td class="description last"><p>Whether to create a new copy of Jasmine if one already exists</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>const {describe, beforeEach, it, expect, jasmine} = require('jasmine-core').noGlobals();</code></pre>
 
 
 
