@@ -909,7 +909,7 @@ in the actual.</p>
         <a class="pilcrow" href="#section-jasminearrayContainingapiedgeglobalhtmlarrayContaining_is_for">&#182;</a>
       </div>
       <div>
-        <p>[jasmine.arrayContaining](/api/edge/global.html#.arrayContaining is for
+        <p><a href="/api/edge/global.html#.arrayContaining">jasmine.arrayContaining</a> is for
 those times when an expectation only cares about some of the values in an
 array.</p>
 
