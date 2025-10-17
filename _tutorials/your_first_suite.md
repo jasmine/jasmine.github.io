@@ -591,7 +591,14 @@ can stub any function and tracks calls to it and all arguments. A spy only
 exists in the <code>describe</code> or <code>it</code> block in which it is defined, and will be
 removed after each spec. There are special matchers for interacting with spies.</p>
 
+
+<p>Jasmine has test double functions called <a href="/api/edge/Spy.html">spies</a>.
+A spy can stub any function and tracks calls to it and all arguments.
+A spy only exists in the <code>describe</code> or <code>it</code> block in which it is defined, and will be removed after each spec.
+There are special matchers for interacting with spies.Spies function  are never executed so our function setBar will not run insted our spy function will run.We can set a spy using spyOn function.Currently, we are calling spy function on setBar property of foo object.So our spy will keep track of how many times it ran,with what arguments,etc.Our setBar function ,which sets value of bar, is never called.</p>
+
       </div>
+
     </td>
     <td class="code">
       {% highlight javascript %}describe("A spy", function() {
