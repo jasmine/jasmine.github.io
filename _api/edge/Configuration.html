@@ -259,6 +259,161 @@ as an error as long as it's handled before the spec finishes.</p>
 
         
             
+<h4 class="name" id="extraDescribeStackFrames"><span class="type-signature"></span>extraDescribeStackFrames<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    <p>The number of extra stack frames inserted by a wrapper around
+<a href="global.html#describe"><code>describe</code></a> or by some other local modification. Jasmine uses this
+to determine the filename for <a href="global.html#SpecStartedEvent"><code>SpecStartedEvent</code></a> and
+<a href="global.html#SpecDoneEvent"><code>SpecDoneEvent</code></a>.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>5.13.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>0</li>
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="extraItStackFrames"><span class="type-signature"></span>extraItStackFrames<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    <p>The number of extra stack frames inserted by a wrapper around <a href="global.html#it"><code>it</code></a>
+or by some other local modification. Jasmine uses this to determine the
+filename for <a href="global.html#SpecStartedEvent"><code>SpecStartedEvent</code></a> and <a href="global.html#SpecDoneEvent"><code>SpecDoneEvent</code></a>.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>5.13.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>0</li>
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
 <h4 class="name" id="failSpecWithNoExpectations"><span class="type-signature"></span>failSpecWithNoExpectations<span class="type-signature"> :Boolean</span></h4>
 
 
@@ -390,7 +545,7 @@ error.</p>
     
     <dt class="tag-default">Default Value:</dt>
     <dd class="tag-default"><ul class="dummy">
-            <li>false</li>
+            <li>true</li>
         </ul></dd>
     
 
@@ -455,6 +610,8 @@ Currently only supported by Jasmine's HTMLReporter</p>
 
     
 
+    
+        <dt class="important tag-deprecated">Deprecated:</dt><dd class="yes-def tag-deprecated"><ul class="dummy"><li>Yes</li></ul></dd>
     
 
     
@@ -542,6 +699,90 @@ Currently only supported by Jasmine's HTMLReporter</p>
     <dt class="tag-default">Default Value:</dt>
     <dd class="tag-default"><ul class="dummy">
             <li>true</li>
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="safariYieldStrategy"><span class="type-signature"></span>safariYieldStrategy<span class="type-signature"> :'count'|'time'</span></h4>
+
+
+
+
+<div class="description">
+    <p>The strategy to use in Safari and similar browsers to determine how often
+to yield control by calling setTimeout. If set to &quot;count&quot;, the default,
+the frequency of setTimeout calls is based on the number of relevant
+function calls. If set to &quot;time&quot;, the frequency of setTimeout calls is
+based on elapsed time. Using &quot;time&quot; may provide a significant performance
+improvement, but as of 6.0 it hasn't been tested with a wide variety of
+workloads and should be considered experimental.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">'count'</span>
+|
+
+<span class="param-type">'time'</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>6.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>'count'</li>
         </ul></dd>
     
 

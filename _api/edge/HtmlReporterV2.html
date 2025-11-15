@@ -1,16 +1,16 @@
 ---
 layout: default
-title: "Interface: Reporter"
+title: "Class: HtmlReporterV2"
 prettify: true
 ---
 
 <div class="main-content api-docs">
   <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-jasmine-core.html">jasmine-core</a></li></ul><h3>Namespaces</h3><ul><li><a href="asymmetricEqualityTesters.html">asymmetricEqualityTesters</a></li><li><a href="async-matchers.html">async-matchers</a></li><li><a href="jasmine.html">jasmine</a></li><li><a href="matchers.html">matchers</a></li><li><a href="Spy_calls.html">Spy#calls</a></li></ul><h3>Classes</h3><ul><li><a href="Clock.html">Clock</a></li><li><a href="Env.html">Env</a></li><li><a href="HtmlReporter.html">HtmlReporter</a></li><li><a href="jsApiReporter.html">jsApiReporter</a></li><li><a href="MatchersUtil.html">MatchersUtil</a></li><li><a href="ParallelReportDispatcher.html">ParallelReportDispatcher</a></li><li><a href="QueryString.html">QueryString</a></li><li><a href="Spy.html">Spy</a></li><li><a href="Timer.html">Timer</a></li></ul><h3>Interfaces</h3><ul><li><a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a></li><li><a href="Configuration.html">Configuration</a></li><li><a href="Reporter.html">Reporter</a></li><li><a href="ReporterCapabilities.html">ReporterCapabilities</a></li><li><a href="Spec.html">Spec</a></li><li><a href="SpyStrategy.html">SpyStrategy</a></li><li><a href="Suite.html">Suite</a></li><li><a href="ThrowUnlessFailure.html">ThrowUnlessFailure</a></li></ul><h3>Global</h3><ul><li><a href="global.html#afterAll">afterAll</a></li><li><a href="global.html#afterEach">afterEach</a></li><li><a href="global.html#beforeAll">beforeAll</a></li><li><a href="global.html#beforeEach">beforeEach</a></li><li><a href="global.html#describe">describe</a></li><li><a href="global.html#expect">expect</a></li><li><a href="global.html#expectAsync">expectAsync</a></li><li><a href="global.html#fail">fail</a></li><li><a href="global.html#fdescribe">fdescribe</a></li><li><a href="global.html#fit">fit</a></li><li><a href="global.html#getSpecProperty">getSpecProperty</a></li><li><a href="global.html#it">it</a></li><li><a href="global.html#pending">pending</a></li><li><a href="global.html#setSpecProperty">setSpecProperty</a></li><li><a href="global.html#setSuiteProperty">setSuiteProperty</a></li><li><a href="global.html#spyOn">spyOn</a></li><li><a href="global.html#spyOnAllFunctions">spyOnAllFunctions</a></li><li><a href="global.html#spyOnProperty">spyOnProperty</a></li><li><a href="global.html#throwUnless">throwUnless</a></li><li><a href="global.html#throwUnlessAsync">throwUnlessAsync</a></li><li><a href="global.html#xdescribe">xdescribe</a></li><li><a href="global.html#xit">xit</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-jasmine-core.html">jasmine-core</a></li></ul><h3>Namespaces</h3><ul><li><a href="asymmetricEqualityTesters.html">asymmetricEqualityTesters</a></li><li><a href="async-matchers.html">async-matchers</a></li><li><a href="jasmine.html">jasmine</a></li><li><a href="matchers.html">matchers</a></li><li><a href="Spy_calls.html">Spy#calls</a></li></ul><h3>Classes</h3><ul><li><a href="Clock.html">Clock</a></li><li><a href="Env.html">Env</a></li><li><a href="HtmlReporter.html">HtmlReporter</a></li><li><a href="HtmlReporterV2.html">HtmlReporterV2</a></li><li><a href="HtmlReporterV2Urls.html">HtmlReporterV2Urls</a></li><li><a href="HtmlSpecFilter.html">HtmlSpecFilter</a></li><li><a href="jsApiReporter.html">jsApiReporter</a></li><li><a href="MatchersUtil.html">MatchersUtil</a></li><li><a href="ParallelReportDispatcher.html">ParallelReportDispatcher</a></li><li><a href="QueryString.html">QueryString</a></li><li><a href="Spy.html">Spy</a></li><li><a href="Timer.html">Timer</a></li></ul><h3>Interfaces</h3><ul><li><a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a></li><li><a href="Configuration.html">Configuration</a></li><li><a href="Reporter.html">Reporter</a></li><li><a href="ReporterCapabilities.html">ReporterCapabilities</a></li><li><a href="Spec.html">Spec</a></li><li><a href="SpyStrategy.html">SpyStrategy</a></li><li><a href="Suite.html">Suite</a></li><li><a href="ThrowUnlessFailure.html">ThrowUnlessFailure</a></li></ul><h3>Global</h3><ul><li><a href="global.html#afterAll">afterAll</a></li><li><a href="global.html#afterEach">afterEach</a></li><li><a href="global.html#beforeAll">beforeAll</a></li><li><a href="global.html#beforeEach">beforeEach</a></li><li><a href="global.html#describe">describe</a></li><li><a href="global.html#expect">expect</a></li><li><a href="global.html#expectAsync">expectAsync</a></li><li><a href="global.html#fail">fail</a></li><li><a href="global.html#fdescribe">fdescribe</a></li><li><a href="global.html#fit">fit</a></li><li><a href="global.html#getSpecProperty">getSpecProperty</a></li><li><a href="global.html#it">it</a></li><li><a href="global.html#pending">pending</a></li><li><a href="global.html#setSpecProperty">setSpecProperty</a></li><li><a href="global.html#setSuiteProperty">setSuiteProperty</a></li><li><a href="global.html#spyOn">spyOn</a></li><li><a href="global.html#spyOnAllFunctions">spyOnAllFunctions</a></li><li><a href="global.html#spyOnProperty">spyOnProperty</a></li><li><a href="global.html#throwUnless">throwUnless</a></li><li><a href="global.html#throwUnlessAsync">throwUnlessAsync</a></li><li><a href="global.html#xdescribe">xdescribe</a></li><li><a href="global.html#xit">xit</a></li></ul>
   </nav>
 
   <div class="docs">
-    <h1 class="page-title">Interface: Reporter</h1>
+    <h1 class="page-title">Class: HtmlReporterV2</h1>
 
     
 
@@ -21,7 +21,9 @@ prettify: true
 
 <header>
     
-        <h2>Reporter</h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>HtmlReporterV2<span class="signature">(options)</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description"><p>Displays results and allows re-running individual specs and suites.</p></div>
         
     
 </header>
@@ -30,10 +32,73 @@ prettify: true
     <div class="container-overview">
     
         
-            <div class="description"><p>This represents the available reporter callback for an object passed to <a href="Env.html#addReporter"><code>Env#addReporter</code></a>.</p></div>
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id="HtmlReporterV2"><span class="type-signature"></span>new HtmlReporterV2<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
         
 
         
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Options object</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
 
 
 <dl class="details">
@@ -41,7 +106,23 @@ prettify: true
     
 
     
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>6.0.0</li></ul></dd>
+    
 
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="Reporter.html">Reporter</a></li>
+        
+    </ul></dd>
     
 
     
@@ -60,26 +141,41 @@ prettify: true
 
     
 
-    
-
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="/tutorials/custom_reporter">custom reporter</a></li>
-        </ul>
-    </dd>
     
 
     
 </dl>
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const env = jasmine.getEnv();
+const urls = new jasmine.HtmlReporterV2Urls();
+const reporter = new jasmine.HtmlReporterV2({
+   env,
+   urls,
+   container: document.body
+});</code></pre>
+
+
+
     
     </div>
 
@@ -95,85 +191,6 @@ prettify: true
 
     
 
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="reporterCapabilities"><span class="type-signature"></span>reporterCapabilities<span class="type-signature"> :<a href="ReporterCapabilities.html">ReporterCapabilities</a>|undefined</span></h4>
-
-
-
-
-<div class="description">
-    <p>Used to tell Jasmine what optional or uncommonly implemented features
-the reporter supports. If not specified, the defaults described in
-<a href="ReporterCapabilities.html"><code>ReporterCapabilities</code></a> will apply.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><a href="ReporterCapabilities.html">ReporterCapabilities</a></span>
-|
-
-<span class="param-type">undefined</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-    <dt class="tag-since">Since:</dt>
-    <dd class="tag-since"><ul class="dummy"><li>5.0</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
     
 
     
@@ -312,6 +329,13 @@ the reporter supports. If not specified, the defaults described in
 
     
 
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="Reporter.html#jasmineDone">Reporter#jasmineDone</a></li>
+        
+    </ul></dd>
     
 
     
@@ -504,6 +528,13 @@ the reporter supports. If not specified, the defaults described in
 
     
 
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="Reporter.html#jasmineStarted">Reporter#jasmineStarted</a></li>
+        
+    </ul></dd>
     
 
     
@@ -698,197 +729,12 @@ the reporter supports. If not specified, the defaults described in
     
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="/tutorials/async">async</a></li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
         
-<div class="param-desc">
-    <p>Optionally return a Promise instead of using <code>done</code> to cause Jasmine to wait for completion.</p>
-</div>
-
-
-
-    
-
-
-
-
-
+            <li><a href="Reporter.html#specDone">Reporter#specDone</a></li>
         
-            
-
-    
-
-    
-    <h4 class="name" id="specStarted"><span class="type-signature"></span>specStarted<span class="signature">(result, done<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p><code>specStarted</code> is invoked when an <code>it</code> starts to run (including associated <code>beforeEach</code> functions)</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>result</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#SpecStartedEvent">SpecStartedEvent</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Information about the individual <a href="global.html#it"><code>it</code></a> being run</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>done</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Used to specify to Jasmine that this callback is asynchronous and Jasmine should wait until it has been called before moving on.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
+    </ul></dd>
     
 
     
@@ -1083,6 +929,13 @@ the reporter supports. If not specified, the defaults described in
     
 
     
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="Reporter.html#suiteDone">Reporter#suiteDone</a></li>
+        
+    </ul></dd>
+    
 
     
 
@@ -1274,6 +1127,13 @@ the reporter supports. If not specified, the defaults described in
 
     
 
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="Reporter.html#suiteStarted">Reporter#suiteStarted</a></li>
+        
+    </ul></dd>
     
 
     
