@@ -50,7 +50,10 @@ the release notes for the Jasmine packages that you're using.
     <tr>
       <td>Safari</td>
       <td></td>
-      <td>Versions that are known to work and available in CI</td>
+      <td>
+        The latest version available on GitHub Actions, plus any pre-18 versions
+        that are still known to work and available on Saucelabs
+      </td>
       <td>Everything else</td>
     </tr>
     <tr>
