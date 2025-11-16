@@ -2,7 +2,6 @@
 layout: default
 title: "Global"
 prettify: true
-archived: true
 ---
 
 <div class="main-content api-docs">
@@ -5277,12 +5276,11 @@ If you have code that you need to test asynchronously, you can declare that you 
 
             
 
-            <td class="description last"><p>Deprecated. The name of the file the spec was defined in.
+            <td class="description last"><p>The name of the file the spec was defined in.
 Note: The value may be incorrect if zone.js is installed or
 <code>it</code>/<code>fit</code>/<code>xit</code> have been replaced with versions that don't maintain the
-same call stack height as the originals. This property may be removed in
-a future version unless there is enough user interest in keeping it.
-See <a href="https://github.com/jasmine/jasmine/issues/2065">https://github.com/jasmine/jasmine/issues/2065</a>.</p></td>
+same call stack height as the originals. You can fix that by setting
+<a href="Configuration.html#extraItStackFrames"><code>Configuration#extraItStackFrames</code></a>.</p></td>
         </tr>
 
     
@@ -6023,12 +6021,11 @@ See <a href="https://github.com/jasmine/jasmine/issues/2065">https://github.com/
 
             
 
-            <td class="description last"><p>Deprecated. The name of the file the suite was defined in.
+            <td class="description last"><p>The name of the file the suite was defined in.
 Note: The value may be incorrect if zone.js is installed or
 <code>describe</code>/<code>fdescribe</code>/<code>xdescribe</code> have been replaced with versions that
-don't maintain the same call stack height as the originals. This property
-may be removed in a future version unless there is enough user interest
-in keeping it. See <a href="https://github.com/jasmine/jasmine/issues/2065">https://github.com/jasmine/jasmine/issues/2065</a>.</p></td>
+don't maintain the same call stack height as the originals. You can fix
+that by setting <a href="Configuration.html#extraDescribeStackFrames"><code>Configuration#extraDescribeStackFrames</code></a>.</p></td>
         </tr>
 
     
