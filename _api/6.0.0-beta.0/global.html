@@ -2,7 +2,6 @@
 layout: default
 title: "Global"
 prettify: true
-archived: true
 ---
 
 <div class="main-content api-docs">
@@ -4886,7 +4885,7 @@ If you have code that you need to test asynchronously, you can declare that you 
             <td class="type">
             
                 
-<span class="param-type">Int</span>
+<span class="param-type">int</span>
 
 
             
@@ -4897,6 +4896,29 @@ If you have code that you need to test asynchronously, you can declare that you 
             
 
             <td class="description last"><p>The total number of specs defined in this suite. Note that this property is not present when Jasmine is run in parallel mode.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>numExcludedSpecs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The number of specs that will be excluded from execution. Note that this property is not present when Jasmine is run in parallel mode.</p></td>
         </tr>
 
     
@@ -5396,7 +5418,7 @@ same call stack height as the originals. You can fix that by setting
 
             
 
-            <td class="description last"><p>Once the spec has completed, this string represents the pass/fail status of this spec.</p></td>
+            <td class="description last"><p>The result of this spec. May be 'passed', 'failed', 'pending', or 'excluded'.</p></td>
         </tr>
 
     
