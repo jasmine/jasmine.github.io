@@ -1927,7 +1927,7 @@ in order for Jasmine to associate them with the correct spec.</p>
 
 
 <div class="description">
-    <p>Get a user-defined property as part of the properties field of <code>SpecResult</code></p>
+    <p>Get a user-defined property as part of the properties field of <a href="global.html#SpecResult"><code>SpecResult</code></a></p>
 </div>
 
 
@@ -2469,7 +2469,7 @@ complete sentence.</p>
 
 
 <div class="description">
-    <p>Sets a user-defined property that will be provided to reporters as part of the properties field of <code>SpecResult</code></p>
+    <p>Sets a user-defined property that will be provided to reporters as part of the properties field of <a href="global.html#SpecResult"><code>SpecResult</code></a></p>
 </div>
 
 
@@ -2627,7 +2627,7 @@ complete sentence.</p>
 
 
 <div class="description">
-    <p>Sets a user-defined property that will be provided to reporters as part of the properties field of <code>SuiteResult</code></p>
+    <p>Sets a user-defined property that will be provided to reporters as part of the properties field of <a href="global.html#SuiteResult"><code>SuiteResult</code></a></p>
 </div>
 
 
@@ -4210,6 +4210,12 @@ milliseconds from the spec's start time</p></td>
 
 <div class="description">
     <p>Describes the result of evaluating an expectation</p>
+<p>Note: The expected and actual properties are deprecated and may be removed
+in a future release. In many Jasmine configurations they are passed
+through JSON serialization and deserialization, which is inherently
+lossy. In such cases, the expected and actual values may be placeholders
+or approximations of the original objects. jasmine-browser-runner 3.0 and
+later omits them entirely.</p>
 </div>
 
 
@@ -4330,6 +4336,52 @@ milliseconds from the spec's start time</p></td>
             
 
             <td class="description last"><p>Whether the expectation passed or failed.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>expected</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Deprecated. If the expectation failed, what was the expected value.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>actual</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Deprecated. If the expectation failed, what actual value was produced.</p></td>
         </tr>
 
     
@@ -5128,7 +5180,150 @@ If you have code that you need to test asynchronously, you can declare that you 
 
             
                 
-<h4 class="name" id="SpecDoneEvent">SpecDoneEvent</h4>
+
+    
+
+    
+    <h4 class="name" id="SpecFilter"><span class="type-signature"></span>SpecFilter<span class="signature">(spec)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>A function that takes a spec and returns true if it should be executed
+or false if it should be skipped.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>spec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Spec.html">Spec</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The spec that the filter is being applied to.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>boolean</p>
+</div>
+
+
+
+    
+
+
+
+
+
+            
+                
+<h4 class="name" id="SpecResult">SpecResult</h4>
 
 
 
@@ -5522,358 +5717,7 @@ same call stack height as the originals. You can fix that by setting
 
             
                 
-
-    
-
-    
-    <h4 class="name" id="SpecFilter"><span class="type-signature"></span>SpecFilter<span class="signature">(spec)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>A function that takes a spec and returns true if it should be executed
-or false if it should be skipped.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>spec</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Spec.html">Spec</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The spec that the filter is being applied to.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>boolean</p>
-</div>
-
-
-
-    
-
-
-
-
-
-            
-                
-<h4 class="name" id="SpecStartedEvent">SpecStartedEvent</h4>
-
-
-
-
-
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The unique id of this spec.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>description</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The description passed to the <a href="global.html#it"><code>it</code></a> that created this spec.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>fullName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The full description including all ancestors of this spec.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>parentSuiteId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-|
-
-<span class="param-type">null</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The ID of the suite containing this spec, or null if this spec is not in a describe().</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>filename</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Deprecated. The name of the file the spec was defined in.
-Note: The value may be incorrect if zone.js is installed or
-<code>it</code>/<code>fit</code>/<code>xit</code> have been replaced with versions that don't maintain the
-same call stack height as the originals. This property may be removed in
-a future version unless there is enough user interest in keeping it.
-See <a href="https://github.com/jasmine/jasmine/issues/2065">https://github.com/jasmine/jasmine/issues/2065</a>.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-    <dt class="tag-since">Since:</dt>
-    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-            
-                
-<h4 class="name" id="SuiteDoneEvent">SuiteDoneEvent</h4>
+<h4 class="name" id="SuiteResult">SuiteResult</h4>
 
 
 
@@ -6157,214 +6001,6 @@ that by setting <a href="Configuration.html#extraDescribeStackFrames"><code>Conf
     
     <dt class="tag-since">Since:</dt>
     <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-            
-                
-<h4 class="name" id="SuiteStartedEvent">SuiteStartedEvent</h4>
-
-
-
-
-
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The unique id of this suite.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>description</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The description text passed to the <a href="global.html#describe"><code>describe</code></a> that made this suite.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>fullName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The full description including all ancestors of this suite.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>parentSuiteId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-|
-
-<span class="param-type">null</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The ID of the suite containing this suite, or null if this is not in another describe().</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>filename</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Deprecated. The name of the file the suite was defined in.
-Note: The value may be incorrect if zone.js is installed or
-<code>describe</code>/<code>fdescribe</code>/<code>xdescribe</code> have been replaced with versions that
-don't maintain the same call stack height as the originals. This property
-may be removed in a future version unless there is enough user interest
-in keeping it. See <a href="https://github.com/jasmine/jasmine/issues/2065">https://github.com/jasmine/jasmine/issues/2065</a>.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-    <dt class="tag-since">Since:</dt>
-    <dd class="tag-since"><ul class="dummy"><li>6.0.0</li></ul></dd>
     
 
     
