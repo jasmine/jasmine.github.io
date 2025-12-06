@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Interface: ThrowUnlessFailure"
+title: "Class: HtmlSpecFilter"
 prettify: true
 ---
 
@@ -10,7 +10,7 @@ prettify: true
   </nav>
 
   <div class="docs">
-    <h1 class="page-title">Interface: ThrowUnlessFailure</h1>
+    <h1 class="page-title">Class: HtmlSpecFilter</h1>
 
     
 
@@ -21,7 +21,7 @@ prettify: true
 
 <header>
     
-        <h2>ThrowUnlessFailure</h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>HtmlSpecFilter<span class="signature">(options)</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -30,19 +30,29 @@ prettify: true
     <div class="container-overview">
     
         
-            <div class="description"><p>Represents a failure of an expectation evaluated with
-<a href="global.html#throwUnless"><code>throwUnless</code></a>. Properties of this error are a subset of the
-properties of <a href="global.html#ExpectationResult"><code>ExpectationResult</code></a> and have the same values.</p></div>
-        
-
-        
-
-
-    <h5 class="subsection-title">Properties:</h5>
 
     
 
-<table class="props">
+    
+    <h4 class="name" id="HtmlSpecFilter"><span class="type-signature"></span>new HtmlSpecFilter<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -64,15 +74,10 @@ properties of <a href="global.html#ExpectationResult"><code>ExpectationResult</c
 
         <tr>
             
-                <td class="name"><code>matcherName</code></td>
+                <td class="name"><code>options</code></td>
             
 
             <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
             
             </td>
 
@@ -80,35 +85,168 @@ properties of <a href="global.html#ExpectationResult"><code>ExpectationResult</c
 
             
 
-            <td class="description last"><p>The name of the matcher that was executed for this expectation.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>message</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The failure message for the expectation.</p></td>
+            <td class="description last"><p>Options object. See lib/jasmine-core/boot1.js for details.</p></td>
         </tr>
 
     
     </tbody>
 </table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use <a href="HtmlReporterV2Urls.html"><code>HtmlReporterV2Urls</code></a> instead.</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="matches"><span class="type-signature"></span>matches<span class="signature">(specName)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Determines whether the spec with the specified name should be executed.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>specName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The full name of the spec</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
 
 
 
@@ -149,35 +287,43 @@ properties of <a href="global.html#ExpectationResult"><code>ExpectationResult</c
 </dl>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
         
-    
-    </div>
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
 
     
-        <h3 class="subsection-title">Extends</h3>
+
+
+
+
 
         
-
-
-    <ul>
-        <li>Error</li>
-    </ul>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
     
 
     
