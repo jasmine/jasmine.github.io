@@ -61,7 +61,6 @@ task :update_edge_jasmine_npm => ['.current_npm_version/reporters'] do
   download_npm_file('jasmine.js')
   download_npm_file('parallel_runner.js')
   download_npm_file('runner_base.js')
-  download_npm_file('reporters/console_reporter.js')
 end
 
 desc "make section of docs for a newly released version of jasmine"
