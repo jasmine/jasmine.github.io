@@ -107,6 +107,7 @@ prettify: true
 <div class="description">
     <p>Run some shared teardown once after all of the specs in the <a href="global.html#describe"><code>describe</code></a> are run.</p>
 <p><em>Note:</em> Be careful, sharing the teardown from a afterAll makes it easy to accidentally leak state between your specs so that they erroneously pass or fail.</p>
+<p><code>afterAll</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -306,6 +307,7 @@ prettify: true
 
 <div class="description">
     <p>Run some shared teardown after each of the specs in the <a href="global.html#describe"><code>describe</code></a> in which it is called.</p>
+<p><code>afterEach</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -506,6 +508,7 @@ prettify: true
 <div class="description">
     <p>Run some shared setup once before all of the specs in the <a href="global.html#describe"><code>describe</code></a> are run.</p>
 <p><em>Note:</em> Be careful, sharing the setup from a beforeAll makes it easy to accidentally leak state between your specs so that they erroneously pass or fail.</p>
+<p><code>beforeAll</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -705,6 +708,7 @@ prettify: true
 
 <div class="description">
     <p>Run some shared setup before each of the specs in the <a href="global.html#describe"><code>describe</code></a> in which it is called.</p>
+<p><code>beforeEach</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -905,6 +909,7 @@ prettify: true
 <div class="description">
     <p>Create a group of specs (often called a suite).</p>
 <p>Calls to <code>describe</code> can be nested within other calls to compose your suite as a tree.</p>
+<p><code>describe</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -1063,6 +1068,7 @@ prettify: true
 
 <div class="description">
     <p>Create an expectation for a spec.</p>
+<p><code>expect</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -1219,6 +1225,7 @@ prettify: true
 that are provided by an asynchronous expectation all return promises
 which must be either returned from the spec or waited for using <code>await</code>
 in order for Jasmine to associate them with the correct spec.</p>
+<p><code>expectAsync</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -1379,6 +1386,7 @@ in order for Jasmine to associate them with the correct spec.</p>
 
 <div class="description">
     <p>Explicitly mark a spec as failed.</p>
+<p><code>fail</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -1530,6 +1538,7 @@ in order for Jasmine to associate them with the correct spec.</p>
 <div class="description">
     <p>A focused <a href="global.html#describe"><code><code>describe</code></code></a></p>
 <p>If suites or specs are focused, only those that are focused will be executed</p>
+<p><code>fdescribe</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -1696,6 +1705,7 @@ in order for Jasmine to associate them with the correct spec.</p>
 <div class="description">
     <p>A focused <a href="global.html#it"><code><code>it</code></code></a></p>
 <p>If suites or specs are focused, only those that are focused will be executed.</p>
+<p><code>fit</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -1928,6 +1938,7 @@ in order for Jasmine to associate them with the correct spec.</p>
 
 <div class="description">
     <p>Get a user-defined property as part of the properties field of <code>SpecResult</code></p>
+<p><code>getSpecProperty</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -2089,6 +2100,7 @@ in order for Jasmine to associate them with the correct spec.</p>
 The name <code>it</code> is a pronoun for the test target, not an abbreviation of anything. It makes the
 spec more readable by connecting the function name <code>it</code> and the argument <code>description</code> as a
 complete sentence.</p>
+<p><code>it</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -2323,6 +2335,7 @@ complete sentence.</p>
 
 <div class="description">
     <p>Mark a spec as pending, expectation results will be ignored.</p>
+<p><code>pending</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -2470,6 +2483,7 @@ complete sentence.</p>
 
 <div class="description">
     <p>Sets a user-defined property that will be provided to reporters as part of the properties field of <code>SpecResult</code></p>
+<p><code>setSpecProperty</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -2628,6 +2642,7 @@ complete sentence.</p>
 
 <div class="description">
     <p>Sets a user-defined property that will be provided to reporters as part of the properties field of <code>SuiteResult</code></p>
+<p><code>setSuiteProperty</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -2786,6 +2801,7 @@ complete sentence.</p>
 
 <div class="description">
     <p>Install a spy onto an existing object.</p>
+<p><code>spyOn</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -2962,6 +2978,7 @@ complete sentence.</p>
 
 <div class="description">
     <p>Installs spies on all writable and configurable properties of an object.</p>
+<p><code>spyOnAllFunctions</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -3142,6 +3159,7 @@ complete sentence.</p>
 
 <div class="description">
     <p>Install a spy on a property installed with <code>Object.defineProperty</code> onto an existing object.</p>
+<p><code>spyOnProperty</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -3376,7 +3394,7 @@ complete sentence.</p>
     
 
     
-    <h4 class="name" id="throwUnless"><span class="type-signature"></span>throwUnless<span class="signature">(actual, actual)</span><span class="type-signature"> &rarr; {<a href="matchers.html">matchers</a>}</span></h4>
+    <h4 class="name" id="throwUnless"><span class="type-signature"></span>throwUnless<span class="signature">(actual)</span><span class="type-signature"> &rarr; {<a href="matchers.html">matchers</a>}</span></h4>
     
 
     
@@ -3393,6 +3411,7 @@ It can also be used to integration-test custom matchers.</p>
 thrown. A failed expectation will not result in a spec failure unless the
 exception propagates back to Jasmine, either via the call stack or via
 the global unhandled exception/unhandled promise rejection events.</p>
+<p><code>throwUnless</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -3424,24 +3443,6 @@ the global unhandled exception/unhandled promise rejection events.</p>
     </thead>
 
     <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>actual</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
     
 
         <tr>
@@ -3555,7 +3556,7 @@ the global unhandled exception/unhandled promise rejection events.</p>
     
 
     
-    <h4 class="name" id="throwUnlessAsync"><span class="type-signature"></span>throwUnlessAsync<span class="signature">(actual, actual)</span><span class="type-signature"> &rarr; {<a href="matchers.html">matchers</a>}</span></h4>
+    <h4 class="name" id="throwUnlessAsync"><span class="type-signature"></span>throwUnlessAsync<span class="signature">(actual)</span><span class="type-signature"> &rarr; {<a href="matchers.html">matchers</a>}</span></h4>
     
 
     
@@ -3572,6 +3573,7 @@ It can also be used to integration-test custom matchers.</p>
 thrown. A failed expectation will not result in a spec failure unless the
 exception propagates back to Jasmine, either via the call stack or via
 the global unhandled exception/unhandled promise rejection events.</p>
+<p><code>throwUnlessAsync</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -3603,24 +3605,6 @@ the global unhandled exception/unhandled promise rejection events.</p>
     </thead>
 
     <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>actual</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
     
 
         <tr>
@@ -3744,6 +3728,7 @@ the global unhandled exception/unhandled promise rejection events.</p>
 <div class="description">
     <p>A temporarily disabled <a href="global.html#describe"><code><code>describe</code></code></a></p>
 <p>Specs within an <code>xdescribe</code> will be marked pending and not executed</p>
+<p><code>xdescribe</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
@@ -3903,6 +3888,7 @@ the global unhandled exception/unhandled promise rejection events.</p>
 <div class="description">
     <p>A temporarily disabled <a href="global.html#it"><code><code>it</code></code></a></p>
 <p>The spec will report as <code>pending</code> and will not be executed.</p>
+<p><code>xit</code> may be overwritten by user or library code to customize Jasmine's behavior.</p>
 </div>
 
 
