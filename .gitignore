@@ -11,4 +11,5 @@ _api/edge/fonts/
 .current_version
 .current_browser_runner_version
 .current_npm_version
+.current_reporters_version
 .jekyll-cache

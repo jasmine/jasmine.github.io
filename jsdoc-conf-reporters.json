@@ -1,0 +1,28 @@
+{
+  "source": {
+    "include": [ ".current_reporters_version" ],
+    "includePattern": ".+\\.js$"
+  },
+  "tags": {
+    "allowUnknownTags": false,
+    "dictionaries": ["jsdoc"]
+  },
+  "opts": {
+    "destination": "_reporters-api/edge",
+    "encoding": "utf8",
+    "recurse": true
+  },
+  "plugins": [
+    "plugins/markdown",
+    "_jsdoc_plugins/see_tutorials",
+    "_jsdoc_plugins/emitted_name"
+  ],
+  "templates": {
+    "cleverLinks": true,
+    "default": {
+      "outputSourceFiles": false,
+      "useLongnameInNav": true,
+      "layoutFile": "_layouts/jsdoc-layout.tmpl"
+    }
+  }
+}

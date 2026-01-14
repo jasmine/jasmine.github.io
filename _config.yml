@@ -23,6 +23,9 @@ collections:
   npm-api:
     output: true
     permalink: api/npm/:path
+  reporters-api:
+    output: true
+    permalink: api/reporters/:path
   tutorials:
     output: true
     permalink: tutorials/:path

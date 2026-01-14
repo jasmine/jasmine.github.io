@@ -41,8 +41,9 @@ the next time the documentation is generated.
 First, update the jasmine API docs:
 
 - Update local copies of jasmine using `bundle exec rake update_edge_jasmine`
-  `bundle exec rake update_edge_jasmine_npm`, and/or
-  `bundle exec rake update_edge_jasmine_browser` as appropriate
+  `bundle exec rake update_edge_jasmine_npm`,
+  `bundle exec rake update_edge_jasmine_browser`, and/or 
+  `bundle exec rake update_edge_reporters` as appropriate
 - Run `npm run jsdoc` to update the API documentation
 
 Then, regenerate the tutorials:
@@ -82,8 +83,10 @@ To archive an old tutorial:
 - Copy the edge docs to the new version for each package, e.g.
   `cp -r _api/edge _api/4.4`
 - Archive the oldest non-archived version by adding `archived: true` to 
-  `_api/<old version>/global.html>`, `_npm-api/Jasmine.html`, and/or 
-  `_browser-runner-api/module-jasmine-browser-runner.html`. This will remove the
+  `_api/<old version>/global.html`, `_npm-api/<old version>/Jasmine.html`, 
+  `_browser-runner-api/<old version>/module-jasmine-browser-runner.html`. and/or
+  `_reporters-api/<old version>/index.html`.
+  This will remove the
   version from the listing on the docs home page. It will still be published at
   the same URLs and can still be reached through the Archived Documentation link.
 

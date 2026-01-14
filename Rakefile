@@ -4,16 +4,16 @@ require 'fileutils'
 require 'tilt'
 require 'yaml'
 
-file '.current_version' do
-  FileUtils.mkdir_p('.current_version')
-end
-
-file '.current_browser_runner_version/lib' do
-  FileUtils.mkdir_p('.current_browser_runner_version/lib')
-end
-
-file '.current_npm_version/reporters' do
-  FileUtils.mkdir_p('.current_npm_version/reporters')
+# Create parent dirs for jsdoc sources
+[
+  '.current_version',
+  '.current_browser_runner_version/lib',
+  '.current_npm_version',
+  '.current_reporters_version'
+].each do |path|
+  file path do
+    FileUtils.mkdir_p(path)
+  end
 end
 
 def download_core_file(file_name)
@@ -57,11 +57,22 @@ def download_npm_file(file_name)
 end
 
 desc "update jasmine-npm for edge docs"
-task :update_edge_jasmine_npm => ['.current_npm_version/reporters'] do
+task :update_edge_jasmine_npm => ['.current_npm_version'] do
   download_npm_file('jasmine.js')
   download_npm_file('parallel_runner.js')
   download_npm_file('runner_base.js')
 end
+
+
+desc "update @jasminejs/reporters for edge docs"
+task :update_edge_reporters => ['.current_reporters_version'] do
+  download_reporters_file('console_reporter.js')
+end
+
+def download_reporters_file(file_name)
+  `curl -L 'https://raw.github.com/jasmine/reporters/main/lib/#{file_name}' > .current_reporters_version/#{file_name}`
+end
+
 
 desc "make section of docs for a newly released version of jasmine"
 task :release, [:version] do |t, args|

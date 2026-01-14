@@ -77,6 +77,7 @@ big_header: true
   </div>
   <div>
     <h2>API Reference</h2>
+
     <h3>jasmine-core</h3>
     <ol class="doc-list">
     {% assign versions = site.api | sortByVersion %}
@@ -86,6 +87,7 @@ big_header: true
     {% endif %}
     {% endfor %}
     </ol>
+
     <h3>jasmine-npm</h3>
     <ol class="doc-list">
       {% assign versions = site.npm-api | sortByVersion %}
@@ -95,6 +97,7 @@ big_header: true
       {% endif %}
       {% endfor %}
     </ol>
+
     <h3>jasmine-browser-runner</h3>
     <ol class="doc-list">
     {% assign versions = site.browser-runner-api | sortByVersion %}
@@ -104,6 +107,17 @@ big_header: true
     {% endif %}
     {% endfor %}
     </ol>
+
+    <h3>reporters</h3>
+    <ol class="doc-list">
+      {% assign versions = site.reporters-api | sortByVersion %}
+      {% for version in versions reversed %}
+      {% if version.url contains "/index" and version.archived != true %}
+      <li><a href="{{ site.baseurl }}{{ version.url }}">{{ version.url | remove_first: "/api/reporters/" | remove: "/index" | capitalize }}</a></li>
+      {% endif %}
+      {% endfor %}
+    </ol>
+
   </div>
 </div>
 <div class="main-content">

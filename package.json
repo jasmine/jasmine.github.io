@@ -1,9 +1,10 @@
 {
   "scripts": {
-    "jsdoc": "npm run jsdoc-core && npm run jsdoc-browser-runner && npm run jsdoc-npm",
+    "jsdoc": "npm run jsdoc-core && npm run jsdoc-browser-runner && npm run jsdoc-npm && npm run jsdoc-reporters",
     "jsdoc-core": "jsdoc -c jsdoc-conf-core.json --verbose",
     "jsdoc-browser-runner": "jsdoc -c jsdoc-conf-browser-runner.json --verbose",
     "jsdoc-npm": "jsdoc -c jsdoc-conf-npm.json --verbose",
+    "jsdoc-reporters": "jsdoc -c jsdoc-conf-reporters.json --verbose",
     "install": "cp node_modules/anchor-js/anchor.min.js scripts/anchor.min.js"
   },
   "dependencies": {
