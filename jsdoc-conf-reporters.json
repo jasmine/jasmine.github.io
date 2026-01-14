@@ -1,6 +1,6 @@
 {
   "source": {
-    "include": [ ".current_reporters_version" ],
+    "include": [ ".jsdoc_sources/reporters" ],
     "includePattern": ".+\\.js$"
   },
   "tags": {

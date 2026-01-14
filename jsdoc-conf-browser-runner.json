@@ -1,6 +1,6 @@
 {
   "source": {
-    "include": [ ".current_browser_runner_version" ],
+    "include": [ ".jsdoc_sources/browser_runner" ],
     "includePattern": ".+\\.js$"
   },
   "tags": {

@@ -1,6 +1,6 @@
 {
   "source": {
-    "include": [ ".current_npm_version" ],
+    "include": [ ".jsdoc_sources/npm" ],
     "includePattern": ".+\\.js$"
   },
   "tags": {
