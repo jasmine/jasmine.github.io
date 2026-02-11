@@ -55,8 +55,8 @@ set of utility functions for matchers to use to perform tasks like
 determining whether two objects are equal (see:
 <a href="/api/edge/MatchersUtil.html"><code>MatchersUtil</code></a> for reference documentation).
 By using <code>MatchersUtil</code> where appropriate, custom matchers can work with
-<a href="http://localhost:4000/tutorials/custom_equality">custom equality testers</a>
-and <a href="http://localhost:4000/tutorials/custom_object_formatters">custom object formatters</a>
+<a href="/tutorials/custom_equality">custom equality testers</a>
+and <a href="/tutorials/custom_object_formatters">custom object formatters</a>
 without any extra effort.</p>
 
       </div>
