@@ -22,8 +22,8 @@ const customMatchers = {
      determining whether two objects are equal (see:
      [`MatchersUtil`](/api/edge/MatchersUtil.html) for reference documentation).
      By using `MatchersUtil` where appropriate, custom matchers can work with
-     [custom equality testers](http://localhost:4000/tutorials/custom_equality)
-     and [custom object formatters](http://localhost:4000/tutorials/custom_object_formatters)
+     [custom equality testers](/tutorials/custom_equality)
+     and [custom object formatters](/tutorials/custom_object_formatters)
      without any extra effort.
      */
     toBeGoofy: function (matchersUtil) {
