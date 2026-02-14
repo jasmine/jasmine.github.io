@@ -181,43 +181,18 @@ To run the specs:
 2. Run `npx jasmine-browser-runner`.
 3. Visit <http://localhost:8888>.
 
-## Remote Grid support (Saucelabs, BrowserStack, etc.)
+## Remote Grid support (Saucelabs, etc.)
 
 jasmine-browser-runner can run your Jasmine specs on a remote grid
-provider like [Saucelabs](https://saucelabs.com/),
-[BrowserStack](https://browserstack.com) or your own Selenium Grid.
-To use a remote grid hub, set the `browser` object
-in your config file as follows:
+provider like [Saucelabs](https://saucelabs.com/) or your own Selenium Grid.
+To use a remote grid hub, set the `browser` object in your config file as 
+follows:
 
 ```javascript
 // jasmine-browser.mjs
 export default {
   // ...
-  // BrowserStack
-  "browser": {
-    "name": "safari",
-    "useRemoteSeleniumGrid": true,
-    "remoteSeleniumGrid": {
-      "url": "https://hub-cloud.browserstack.com/wd/hub",
-      "bstack:options": {
-        "browserVersion": "16",
-        "os": "OS X",
-        "osVersion": "Monterey",
-        "local": "true",
-        "localIdentifier": "tunnel ID",
-        "debug": "true",
-        "userName": "your BrowserStack username",
-        "accessKey": "your BrowserStack access key"
-      }
-    }
-  }
-}
-```
-```javascript
-// jasmine-browser.mjs
-export default {
-  // ...
-  // Saucelabs
+  // This example is for Saucelabs.
   "browser": {
     "name": "safari",
     "useRemoteSeleniumGrid": true,

@@ -78,18 +78,14 @@ be included in the capabilities object passed through to Selenium Webdriver.</p>
             <h3>Example</h3>
             
     <pre class="prettyprint"><code>{
-   "url": "https://hub-cloud.browserstack.com/wd/hub",
-   "bstack:options": {
-     "browserVersion": "16",
-     "os": "OS X",
-     "osVersion": "Monterey",
-     "local": "true",
-     "localIdentifier": "tunnel ID",
-     "debug": "true",
-     "userName": "your BrowserStack username",
-     "accessKey": "your BrowserStack access key"
-   }
- }</code></pre>
+  "url": "https://ondemand.saucelabs.com/wd/hub",
+  "platformName": "macOS 12",
+  "sauce:options": {
+    "tunnelName": "the same tunnel name that was provided to Sauce Connect",
+    "userName": "your Saucelabs username",
+    "accessKey": "your Saucelabs access key"
+ }
+}</code></pre>
 
         
     
