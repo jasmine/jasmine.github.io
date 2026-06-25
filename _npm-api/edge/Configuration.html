@@ -167,83 +167,6 @@ failures.</p>
 
         
             
-<h4 class="name" id="failSpecWithNoExpectations"><span class="type-signature"></span>failSpecWithNoExpectations<span class="type-signature"> :boolean|undefined</span></h4>
-
-
-
-
-<div class="description">
-    <p>Whether to fail specs that contain no expectations.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">boolean</span>
-|
-
-<span class="param-type">undefined</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use env.failSpecWithNoExpectations instead.</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>false</li>
-        </ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
 <h4 class="name" id="globalSetup"><span class="type-signature"></span>globalSetup<span class="type-signature"> :function|undefined</span></h4>
 
 
@@ -627,15 +550,19 @@ the spec directory. Helpers are loaded before specs.</p>
 
         
             
-<h4 class="name" id="jsLoader"><span class="type-signature"></span>jsLoader<span class="type-signature"> :string|undefined</span></h4>
+<h4 class="name" id="loader"><span class="type-signature"></span>loader<span class="type-signature"> :string|undefined</span></h4>
 
 
 
 
 <div class="description">
-    <p>Specifies how to load files with names ending in .js. Valid values are
-&quot;require&quot; and &quot;import&quot;. &quot;import&quot; should be safe in all cases, and is
-required if your project contains ES modules with filenames ending in .js.</p>
+    <p>Specifies a module containing a custom loader that will be used to load
+config files, source files, spec files, etc.</p>
+<p>If provided, it must refer to a module whose default export is a function
+that loads modules. The function must take a single argument, which will
+be a module import specifier or file path, and return a promise that
+resolves to the corresponding loaded module. The argument will be a
+module import specifier or file path.</p>
 </div>
 
 
@@ -684,84 +611,7 @@ required if your project contains ES modules with filenames ending in .js.</p>
     
     <dt class="tag-default">Default Value:</dt>
     <dd class="tag-default"><ul class="dummy">
-            <li>"require"</li>
-        </ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="random"><span class="type-signature"></span>random<span class="type-signature"> :boolean|undefined</span></h4>
-
-
-
-
-<div class="description">
-    <p>Whether to run specs in a random order.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">boolean</span>
-|
-
-<span class="param-type">undefined</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use env.random instead.</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>true</li>
+            <li>undefined</li>
         </ul></dd>
     
 
@@ -1058,160 +908,6 @@ the spec directory.</p>
 
     
 
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="stopOnSpecFailure"><span class="type-signature"></span>stopOnSpecFailure<span class="type-signature"> :boolean|undefined</span></h4>
-
-
-
-
-<div class="description">
-    <p>Whether to stop suite execution on the first spec failure.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">boolean</span>
-|
-
-<span class="param-type">undefined</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use env.stopOnSpecFailure instead.</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>false</li>
-        </ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="stopSpecOnExpectationFailure"><span class="type-signature"></span>stopSpecOnExpectationFailure<span class="type-signature"> :boolean|undefined</span></h4>
-
-
-
-
-<div class="description">
-    <p>Whether to stop each spec on the first expectation failure.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">boolean</span>
-|
-
-<span class="param-type">undefined</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use env.stopSpecOnExpectationFailure instead.</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>false</li>
-        </ul></dd>
     
 
     

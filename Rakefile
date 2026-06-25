@@ -29,14 +29,12 @@ task :update_edge_jasmine, [:path] => [CORE_SRC] do |t, args|
     system('cp', "#{args.path}/lib/jasmine-core/jasmine.js", CORE_SRC)
     system('cp', "#{args.path}/lib/jasmine-core.js", CORE_SRC)
     system('cp', "#{args.path}/lib/jasmine-core/jasmine-html.js", CORE_SRC)
-    system('cp', "#{args.path}/lib/jasmine-core/boot0.js", CORE_SRC)
-    system('cp', "#{args.path}/lib/jasmine-core/boot1.js", CORE_SRC)
+    system('cp', "#{args.path}/lib/jasmine-core/boot.js", CORE_SRC)
   else
     download_core_file('jasmine-core/jasmine.js')
     download_core_file('jasmine-core.js')
     download_core_file('jasmine-core/jasmine-html.js')
-    download_core_file('jasmine-core/boot0.js')
-    download_core_file('jasmine-core/boot1.js')
+    download_core_file('jasmine-core/boot.js')
   end
 end
 

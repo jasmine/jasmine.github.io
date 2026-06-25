@@ -1551,7 +1551,7 @@ specs with matching full names will be run.</p></td>
     
 
     
-    <h4 class="name" id="loadConfig"><span class="type-signature"></span>loadConfig<span class="signature">(config)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="loadConfig"><span class="type-signature">(async) </span>loadConfig<span class="signature">(config)</span><span class="type-signature"></span></h4>
     
 
     
@@ -1700,7 +1700,7 @@ specs with matching full names will be run.</p></td>
 any JS file that's loadable as a module and provides a Jasmine config
 as its default export.</p>
 <p>The config file will be loaded via dynamic import() unless this Jasmine
-instance has already been configured with {jsLoader: 'require'}. Dynamic
+instance has already been configured a custom loader. Dynamic
 import() supports ES modules as well as nearly all CommonJS modules.</p>
 </div>
 

@@ -101,8 +101,8 @@ prettify: true
 <div class="description">
     <p>Whether to create the globals (describe, it, etc) that make up Jasmine's
 spec-writing interface. If it is set to false, the spec-writing interface
-can be accessed via jasmine-core's <code>noGlobals</code> method, e.g.:</p>
-<p><code>const {describe, it, expect, jasmine} = require('jasmine-core').noGlobals();</code></p>
+can be imported from jasmine-core in spec files, e.g.:</p>
+<p><code>const {describe, it, expect, jasmine} = require('jasmine-core');</code></p>
 </div>
 
 
