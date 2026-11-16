@@ -204,7 +204,7 @@ provides the global <a href="/api/edge/global.html#beforeEach">beforeEach</a>,
         <a class="pilcrow" href="#section-The_beforeAll_function_is_called_only_once_before_all_the_specs_in_describe_are_run,">&#182;</a>
       </div>
       <div>
-        <p>The <code>beforeAll</code> function is called only once before all the specs in describe are run,</p>
+        <p>The <code>beforeAll</code> function is called only once before all the specs in <code>describe</code> are run,</p>
 
       </div>
     </td>
@@ -293,7 +293,7 @@ use the <code>function</code> keyword and not arrow functions.</p>
       </div>
       <div>
         <h3>Manually failing a spec with fail</h3>
-<p>The fail function causes a spec to fail. It can take a failure message or
+<p>The <code>fail</code> function causes a spec to fail. It can take a failure message or
 an Error object as a parameter.</p>
 
       </div>
@@ -495,7 +495,7 @@ will run.</p>
         <h2>Asynchronous Support</h2>
 <p>Jasmine also has support for running specs that require testing
 asynchronous operations. The functions that you pass to <code>beforeAll</code>,
-<code>afterAll</code>, <code>beforeEach</code>, <code>afterEach</code>, and <code>it</code> can be declared async.</p>
+<code>afterAll</code>, <code>beforeEach</code>, <code>afterEach</code>, and <code>it</code> can be declared <code>async</code>.</p>
 <p>Jasmine also supports asynchronous functions that explicitly return
 promises or that take a callback. See the
 <a href="/tutorials/async">Asynchronous Work tutorial</a> for more information.</p>
