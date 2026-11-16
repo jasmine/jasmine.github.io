@@ -14,7 +14,7 @@ source files are linked in the &lt;head&gt; of SpecRunner.html. You can replace
 those files with your own.
 
 You don't need a web server to run the standalone distribution, but it helps. 
-Some browsers provide mroe limited error information to scripts running from 
+Some browsers provide more limited error information to scripts running from 
 `file:// URLs`. That can make it harder to debug uncaught exceptions and
 unhandled promise rejections. If that's a concern, consider using a simple web
 server like the one provided by the [serve](https://www.npmjs.com/package/serve)
